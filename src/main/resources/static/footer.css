@@ -1,0 +1,26 @@
+
+.footerBg{
+	background-color: #ffffd0;
+	/*padding: 30px;*/
+	font-size: 10pt;
+	padding: 5px 0px;
+}
+
+.office{
+	width: 70%;
+	margin:25px auto;
+	word-spacing: 8px;
+	color: #808080;
+}
+
+.office2{
+	width: 70%;
+	margin: 25px auto;
+	color: #808080;
+}
+
+.office3{
+	width: 70%;
+	margin:25px auto;
+	color: #808080;
+}
