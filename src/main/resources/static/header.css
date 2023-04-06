@@ -16,10 +16,19 @@
 
 .newzips{
 	font-size: 30pt;
-	
 	margin: 0 auto;	
 	padding: 20px 0;
 	text-align: center;
-	width: 40%;
+
+}
+
+.category{
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 10px 0;
 	border-radius: 5px;
+	background-color: #fffc93;
+	color: #808080;
+	word-spacing: 5px;
 }

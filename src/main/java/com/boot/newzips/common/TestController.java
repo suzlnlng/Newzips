@@ -19,5 +19,12 @@ public class TestController {
 		return "header";
 		
 	}
+	
+	@GetMapping("/newzips/footer")
+	public String footer() {
+		
+		return "footer";
+		
+	}
 
 }
