@@ -23,12 +23,12 @@
 }
 
 .category{
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 	text-align: center;
 	padding: 10px 0;
 	border-radius: 5px;
 	background-color: #fffc93;
 	color: #808080;
-	word-spacing: 5px;
+	word-spacing: 8px;
 }

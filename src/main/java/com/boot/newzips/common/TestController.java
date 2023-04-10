@@ -22,5 +22,12 @@ public class TestController {
 		return "itemDetail";
 		
 	}
+	
+	@GetMapping("/newzips/01_Home")
+	public String Home() {
+		
+		return "01_Home";
+		
+	}
 
 }

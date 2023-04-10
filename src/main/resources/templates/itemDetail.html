@@ -2,6 +2,8 @@
 <html layout:decorate="~{layout}">
 <meta charset="UTF-8">
 
+
+
 <!-- 이 페이지의 css추가 방법? -->
 <!--
 <th:block layout:fragment="css">
@@ -17,8 +19,39 @@
 -->
 <body>
 <div layout:fragment="content">
-	<h1>content</h1>
-</div>
+
+	<div class="mainImage">
+		<img/>   	
+	</div>  
+	<div class="info">
+		<div><b><매물정보></b></div>
+		<dl></dl>
+		<div>
+			<div class="infoOutline">
+				<ul class="infoList">
+					<li>매물번호</li>
+					<li>소재지</li>
+					<li>전/월세</li>
+					<li>보증금/금액</li>
+					<li>증개비</li>
+					<li>중기청전세대출비</li>
+				</ul>
+			</div>
+			<div class="infoContentOutline">
+				<ul class="infoContent">
+					<li>매물번호내용</li>
+					<li>소재지내용</li>
+					<li>전/월세내용</li>
+					<li>보증금/금액내용</li>
+					<li>증개비내용</li>
+					<li>중기청전세대출비내용</li>
+				</ul>
+			</div>
+		</div>
+	
+	</div>
+
+<hr class="hide"/>
 </body>
 
 </html>

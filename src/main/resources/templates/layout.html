@@ -6,19 +6,21 @@
 
 <link rel="stylesheet" type="text/css" th:href="@{/header.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/footer.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/itemDetail.css}">
 
 
 </head>
 <body>
 
 <!-- header.html의 headerFragment 사용 -->
-<th:block th:replace="header :: headerFragment"></th:block>
+<header th:replace="header :: headerFragment"></header>
 
 <!-- 현재 layout의 content사용이라는데 걍 변경되는 어쩌구인 듯 -->
 <th:block layout:fragment="content"></th:block>
 
+<br/>
 <!-- footer.html의 footerFragment 사용 -->
-<th:block th:replace="footer :: footerFragment"></th:block>
+<footer th:replace="footer :: footerFragment"></footer>
 
 </body>
 </html>
