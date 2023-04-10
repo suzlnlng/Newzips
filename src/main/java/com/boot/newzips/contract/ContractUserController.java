@@ -11,5 +11,11 @@ public class ContractUserController {
 		
 		return "/user/contract_user";
 	}
+	
+	@GetMapping("newzips/reservation_user_contract1")
+	public String usercontract1() {
+		
+		return "/user/reservation_user_contract1";
+	}
 
 }

@@ -6,26 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ReservationUserController {
 	
-	@GetMapping("newzips/reservation_user")
-	public String reservationUser() {
-		
-		return "/user/reservation_user";
-	}
-	
-	@GetMapping("newzips/reservation_resident")
-	public String reservationResident() {
-		
-		return "/user/reservation_resident";
-	}
-	
-	@GetMapping("newzips/reservation_user_complete")
-	public String reservationUserComplete() {
-		
-		return "/user/reservation_user_complete";
-	}
-	
-	
-	
 	
 	@GetMapping("newzips/reservation_user1")
 	public String user1() {
