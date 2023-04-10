@@ -25,10 +25,6 @@ public class ReservationUserController {
 		return "/user/reservation_user_complete1";
 	}
 	
-	@GetMapping("newzips/reservation_user_contract1")
-	public String usercontract1() {
-		
-		return "/user/reservation_user_contract1";
-	}
+	
 
 }
