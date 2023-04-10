@@ -12,6 +12,8 @@ public class ContractUserController {
 		return "/user/contract_user";
 	}
 	
+	//아 존나 모르겠다
+	
 	@GetMapping("newzips/reservation_user_contract1")
 	public String usercontract1() {
 		
