@@ -8,12 +8,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<<<<<<< HEAD
-    <link rel="shortcut icon" href="assets/images/favicon.png">
-=======
     <link rel="shortcut icon" href="/assets/images/favicon.png">
->>>>>>> 2224c07fc006bdebc30f26fa39059f398228a7ca
     <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/js/lib/slick/slick.css">
+    <link rel="stylesheet" href="/assets/js/lib/slick/slick-theme.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
@@ -29,52 +27,13 @@
 
         <header>
 
-            <div class="top-header">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-6 col-md-7 col-sm-12">
-                            <div class="header-address">
-                                <a href="#">
-                                    <i class="la la-phone-square"></i>
-                                    <span>(647) 346-0855</span>
-                                </a>
-                                <a href="#">
-                                    <i class="la la-map-marker"></i>
-                                    <span>CF Fairview Mall, Toronto, ON</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-5 col-sm-12">
-                            <div class="header-social">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="header">
+            <div class="header shd">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
                                 <a class="navbar-brand" href="01_Home.html">
-<<<<<<< HEAD
-                                    <img src="assets/images/logo.png" alt="">
-=======
                                     <img src="/assets/images/logo.png" alt="">
->>>>>>> 2224c07fc006bdebc30f26fa39059f398228a7ca
                                 </a>
                                 <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
                                     <span class="icon-spar"></span>
@@ -89,9 +48,9 @@
                                                 Home
                                             </a>
                                             <div class="dropdown-menu animated">
-                                                <a class="dropdown-item active" href="01_Home.html">White Menu with Center Search</a>
+                                                <a class="dropdown-item" href="01_Home.html">White Menu with Center Search</a>
                                                 <a class="dropdown-item" href="02_Home.html">Image Menu with Center Search 2</a>
-                                                <a class="dropdown-item" href="03_Home.html">Map with Center Search</a>
+                                                <a class="dropdown-item active" href="03_Home.html">Map with Center Search</a>
                                                 <a class="dropdown-item" href="04_Home.html">Geo SVG Map</a>
                                                 <a class="dropdown-item" href="05_Home.html">Slider Header</a>
                                                 <a class="dropdown-item" href="06_Home.html">Image Header with Description</a>
@@ -159,6 +118,81 @@
 
         </header><!--header end-->
 
+        <section id="map-container" class="fullwidth-home-map hp3">
+            <h3 class="vis-hid">Visible Heading</h3>
+            <div id="map" data-map-zoom="9"></div>
+        </section>
+
+        <section class="form-banner">
+            <h3 class="vis-hid">Invisible Heading</h3>
+            <div class="banner_form">
+                <div class="container">
+                    <form action="#" class="row banner-search">
+                        <div class="form_field addres">
+                            <input type="text" class="form-control" placeholder="Enter Address, City or State">
+                        </div>
+                        <div class="form_field tpmax">
+                            <div class="form-group">
+                                <div class="drop-menu">
+                                    <div class="select">
+                                        <span>Any type</span>
+                                        <i class="fa fa-angle-down"></i>
+                                    </div>
+                                    <input type="hidden" name="gender">
+                                    <ul class="dropeddown">
+                                        <li>For Sale</li>
+                                        <li>For Rent</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_field tpmax">
+                            <div class="form-group">
+                                <div class="drop-menu">
+                                    <div class="select">
+                                        <span>Min Price</span>
+                                        <i class="fa fa-angle-down"></i>
+                                    </div>
+                                    <input type="hidden" name="gender">
+                                    <ul class="dropeddown">
+                                        <li>300$</li>
+                                        <li>400$</li>
+                                        <li>500$</li>
+                                        <li>200$</li>
+                                        <li>600$</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_field tpmax">
+                            <div class="form-group">
+                                <div class="drop-menu">
+                                    <div class="select">
+                                        <span>Max Price</span>
+                                        <i class="fa fa-angle-down"></i>
+                                    </div>
+                                    <input type="hidden" name="gender">
+                                    <ul class="dropeddown">
+                                        <li>2000</li>
+                                        <li>3000</li>
+                                        <li>4000</li>
+                                        <li>5000</li>
+                                        <li>6000</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_field srch-btn">
+                            <a href="#" class="btn btn-outline-primary ">
+                                <i class="la la-search"></i>
+                                <span>Search</span>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div><!--banner_form end-->
+        </section><!--form-banner end-->
+
         <div class="popup" id="sign-popup">
             <h3>Sign In to your Account</h3>
             <div class="popup-form">
@@ -217,116 +251,7 @@
             </div>
         </div><!--popup end-->
 
-        <section class="banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="banner-content">
-                            <h1>Discover best properties in one place</h1>
-                        </div>
-                        <form action="#" class="row banner-search">
-                            <div class="form_field addres">
-                                <input type="text" class="form-control" placeholder="Enter Address, City or State">
-                            </div>
-                            <div class="form_field tpmax">
-                                <div class="form-group">
-                                    <div class="drop-menu">
-                                        <div class="select">
-                                            <span>Any type</span>
-                                            <i class="fa fa-angle-down"></i>
-                                        </div>
-                                        <input type="hidden" name="gender">
-                                        <ul class="dropeddown">
-                                            <li>For Sale</li>
-                                            <li>For Rent</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form_field tpmax">
-                                <div class="form-group">
-                                    <div class="drop-menu">
-                                        <div class="select">
-                                            <span>Min Price</span>
-                                            <i class="fa fa-angle-down"></i>
-                                        </div>
-                                        <input type="hidden" name="gender">
-                                        <ul class="dropeddown">
-                                            <li>300$</li>
-                                            <li>400$</li>
-                                            <li>500$</li>
-                                            <li>200$</li>
-                                            <li>600$</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form_field tpmax">
-                                <div class="form-group">
-                                    <div class="drop-menu">
-                                        <div class="select">
-                                            <span>Max Price</span>
-                                            <i class="fa fa-angle-down"></i>
-                                        </div>
-                                        <input type="hidden" name="gender">
-                                        <ul class="dropeddown">
-                                            <li>2000</li>
-                                            <li>3000</li>
-                                            <li>4000</li>
-                                            <li>5000</li>
-                                            <li>6000</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form_field srch-btn">
-                                <a href="#" class="btn btn-outline-primary ">
-                                    <i class="la la-search"></i>
-                                    <span>Search</span>
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="intro section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 pl-0">
-                        <div class="intro-content">
-                            <h3>Homes around the world</h3>
-                            <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-                            </p>
-                            <a href="#" class="btn btn-outline-primary view-btn">
-                                <i class="icon-arrow-right-circle"></i>View for rent</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 pr-0">
-                        <div class="intro-img">
-                            <img src="https://via.placeholder.com/570x400" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-                <div class="intro-thumb-row">
-                    <a href="#" class="intro-thumb">
-                        <img src="https://via.placeholder.com/95x70" alt="">
-                        <h6>Homes</h6>
-                    </a>
-                    <a href="#" class="intro-thumb">
-                        <img src="https://via.placeholder.com/95x70" alt="">
-                        <h6>Appartments</h6>
-                    </a>
-                    <a href="#" class="intro-thumb">
-                        <img src="https://via.placeholder.com/95x70" alt="">
-                        <h6>Garages</h6>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="popular-listing section-padding">
+        <section class="popular-listing hp2 section-padding">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
@@ -385,7 +310,7 @@
                             <div class="card-body">
                                 <a href="24_Property_Single.html" title="">
                                     <h3>Traditional Apartments</h3>
-                                    <p> <i class="la la-map-marker"></i>212 5th Ave, New York</p>
+                                    <p><i class="la la-map-marker"></i>212 5th Ave, New York</p>
                                 </a>
                                 <ul>
                                     <li>3 Bathrooms</li>
@@ -418,7 +343,7 @@
                             <div class="card-body">
                                 <a href="24_Property_Single.html" title="">
                                     <h3>Traditional Apartments</h3>
-                                    <p> <i class="la la-map-marker"></i>212 5th Ave, New York</p>
+                                    <p><i class="la la-map-marker"></i>212 5th Ave, New York</p>
                                 </a>
                                 <ul>
                                     <li>3 Bathrooms</li>
@@ -440,60 +365,7 @@
             </div>
         </section>
 
-        <div class="alert alert-success" role="alert">
-            <strong>Added to Favourites</strong> You can check your favourite items here <a href="#" class="alert-link">Favourite Items</a>.
-            <a href="#" title="" class="close-alert"><i class="la la-close"></i></a>
-        </div>
-
-        <section class="explore-feature section-padding">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <div class="section-heading">
-                            <span>Explore Features</span>
-                            <h3>Service You Need</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-4 col-sm-6 col-md-6 col-lg-4">
-                        <a href="#" title="">
-                            <div class="card">
-                                <div class="card-body">
-                                    <i class="icon-home"></i>
-                                    <h3>Perfect Tools</h3>
-                                    <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit conseat ipsum, nec sagittis sem nibh.</p>
-                                </div>
-                            </div><!--card end-->
-                        </a>
-                    </div>
-                    <div class="col-xl-4 col-sm-6 col-md-6 col-lg-4">
-                        <a href="#" title="">
-                            <div class="card">
-                                <div class="card-body">
-                                    <i class="icon-cursor"></i>
-                                    <h3>Search in Click</h3>
-                                    <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit conseat ipsum, nec sagittis sem nibh.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-xl-4 col-sm-6 col-md-6 col-lg-4">
-                        <a href="#" title="">
-                            <div class="card">
-                                <div class="card-body">
-                                    <i class="icon-lock"></i>
-                                    <h3>User Control</h3>
-                                    <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit conseat ipsum, nec sagittis sem nibh.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="popular-cities section-padding">
+        <section class="popular-cities hp3 section-padding">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
@@ -504,53 +376,256 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-4 col-md-6">
+                    <div class="col-lg-6">
                         <a href="#">
                             <div class="card">
                                 <div class="overlay"></div>
-                                <img src="https://via.placeholder.com/370x370" alt="" class="img-fluid">
+                                <div class="overlay-stick"></div>
+                                <img src="https://via.placeholder.com/570x450" alt="" class="img-fluid">
                                 <div class="card-body">
                                     <h4>New York</h4>
-                                    <p>5 Listings</p>
                                     <i class="fa fa-angle-right"></i>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="col-xl-4 col-md-6">
-                        <a href="#">
-                            <div class="card">
-                                <div class="overlay"></div>
-                                <img src="https://via.placeholder.com/370x370" alt="" class="img-fluid">
-                                <div class="card-body">
-                                    <h4>London</h4>
-                                    <p>10 Listings</p>
-                                    <i class="fa fa-angle-right"></i>
-                                </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                 <a href="#">
+                                    <div class="card mgb-30">
+                                        <div class="overlay"></div>
+                                        <div class="overlay-stick"></div>
+                                        <img src="https://via.placeholder.com/570x240" alt="" class="img-fluid">
+                                        <div class="card-body">
+                                            <h4>Los Angeles</h4>
+                                            <i class="fa fa-angle-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <a href="#">
-                            <div class="card">
-                                <div class="overlay"></div>
-                                <img src="https://via.placeholder.com/370x370" alt="" class="img-fluid">
-                                <div class="card-body">
-                                    <h4>Melbrone</h4>
-                                    <p>7 Listings</p>
-                                    <i class="fa fa-angle-right"></i>
-                                </div>
+                            <div class="col-lg-6">
+                                <a href="#">
+                                    <div class="card">
+                                        <div class="overlay"></div>
+                                        <div class="overlay-stick"></div>
+                                        <img src="https://via.placeholder.com/270x180" alt="" class="img-fluid">
+                                        <div class="card-body">
+                                            <h4>Melburn</h4>
+                                            <i class="fa fa-angle-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                            <div class="col-lg-6">
+                                <a href="#">
+                                    <div class="card">
+                                        <div class="overlay"></div>
+                                        <div class="overlay-stick"></div>
+                                        <img src="https://via.placeholder.com/270x180" alt="" class="img-fluid">
+                                        <div class="card-body">
+                                            <h4>Seattle</h4>
+                                            <i class="fa fa-angle-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="map-container" class="fullwidth-home-map">
-            <h3 class="vis-hid">Visible Heading</h3>
-            <div id="map" data-map-zoom="9"></div>
+        <section class="pricing-sec section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="section-heading">
+                            <span>Perfect Price</span>
+                            <h3>Explore Our Pricing</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-sec">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="price">
+                                <h4>Basic</h4>
+                                <h2>Free</h2>
+                                <ul>
+                                    <li>One Property Included</li>
+                                    <li>90 days expiration</li>
+                                    <li>Rent and sell real estate</li>
+                                    <li>Image Gallery</li>
+                                    <li>30 Days Support</li>
+                                </ul>
+                                <a href="#" title="" class="btn btn-default">Select Plan</a>
+                            </div><!--price end-->
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="price">
+                                <h4>Standart</h4>
+                                <h2>$25.50</h2>
+                                <ul>
+                                    <li>Five Property Included</li>
+                                    <li>180 days expiration</li>
+                                    <li>Rent and sell real estate</li>
+                                    <li>Image Gallery</li>
+                                    <li>90 Days Support</li>
+                                </ul>
+                                <a href="#" title="" class="btn btn-default">Select Plan</a>
+                            </div><!--price end-->
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="price">
+                                <h4>Basic</h4>
+                                <h2>$99.00</h2>
+                                <ul>
+                                    <li>Unlimited Property Included</li>
+                                    <li>280 days expiration</li>
+                                    <li>Rent and sell real estate</li>
+                                    <li>Image Gallery</li>
+                                    <li>180 Days Support</li>
+                                </ul>
+                                <a href="#" title="" class="btn btn-default">Select Plan</a>
+                            </div><!--price end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <section class="agents-sec section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="section-heading">
+                            <span>Perfect Team</span>
+                            <h3>Meet Our Agents</h3>
+                        </div>
+                    </div>
+                </div><!--justify-content-center end-->
+                <div class="agents-details">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="agent">
+                                <div class="agent_img">
+                                    <a href="11_Agent_Profile.html" title="">
+                                        <img src="https://via.placeholder.com/270x239" alt="">
+                                    </a>
+                                    <div class="view-post">
+                                        <a href="11_Agent_Profile.html" title="" class="view-posts">View Profile</a>
+                                    </div>
+                                </div><!--agent-img end-->
+                                <div class="agent_info">
+                                    <h3><a href="11_Agent_Profile.html" title="">Tomas Wilkinson</a></h3>
+                                    <span>Douglas and Eleman Agency</span>
+                                    <strong><i class="la la-phone"></i>+1 212-925-3797</strong>
+                                </div><!--agent-info end-->
+                                <a href="11_Agent_Profile.html" title="" class="ext-link"></a>
+                            </div><!--agent end-->
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="agent">
+                                <div class="agent_img">
+                                    <a href="11_Agent_Profile.html" title="">
+                                        <img src="https://via.placeholder.com/270x239" alt="">
+                                    </a>
+                                    <div class="view-post">
+                                        <a href="11_Agent_Profile.html" title="" class="view-posts">View Profile</a>
+                                    </div>
+                                </div><!--agent-img end-->
+                                <div class="agent_info">
+                                    <h3><a href="11_Agent_Profile.html" title="">Alexandra Pirlo</a></h3>
+                                    <span>Douglas and Eleman Agency</span>
+                                    <strong><i class="la la-phone"></i>+1 212-925-3797</strong>
+                                </div><!--agent-info end-->
+                                <a href="11_Agent_Profile.html" title="" class="ext-link"></a>
+                            </div><!--agent end-->
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="agent">
+                                <div class="agent_img">
+                                    <a href="11_Agent_Profile.html" title="">
+                                        <img src="https://via.placeholder.com/270x239" alt="">
+                                    </a>
+                                    <div class="view-post">
+                                        <a href="11_Agent_Profile.html" title="" class="view-posts">View Profile</a>
+                                    </div>
+                                </div><!--agent-img end-->
+                                <div class="agent_info">
+                                    <h3><a href="11_Agent_Profile.html" title="">Amanda Gates</a></h3>
+                                    <span>Douglas and Eleman Agency</span>
+                                    <strong><i class="la la-phone"></i>+1 212-925-3797</strong>
+                                </div><!--agent-info end-->
+                                <a href="11_Agent_Profile.html" title="" class="ext-link"></a>
+                            </div><!--agent end-->
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="agent">
+                                <div class="agent_img">
+                                    <a href="11_Agent_Profile.html" title=""><img src="https://via.placeholder.com/270x239" alt=""></a>
+                                    <div class="view-post">
+                                        <a href="11_Agent_Profile.html" title="" class="view-posts">View Profile</a>
+                                    </div>
+                                </div><!--agent-img end-->
+                                <div class="agent_info">
+                                    <h3><a href="11_Agent_Profile.html" title="">Tayler Gronos</a></h3>
+                                    <span>Douglas and Eleman Agency</span>
+                                    <strong><i class="la la-phone"></i>+1 212-925-3797</strong>
+                                </div><!--agent-info end-->
+                                <a href="11_Agent_Profile.html" title="" class="ext-link"></a>
+                            </div><!--agent end-->
+                        </div>
+                    </div>
+                </div><!--agents-details end-->
+            </div>
+        </section><!--agents-sec end-->
+
+        <section class="partner-sec section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="section-heading">
+                            <span>Trusted by the Best</span>
+                            <h3>Real Estate Partners</h3>
+                        </div>
+                    </div>
+                </div><!--justify-content-center end-->
+                <div class="partner-carousel">
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                    <div class="partner-logo">
+                        <a href="#" title=""><img src="https://via.placeholder.com/136x37" alt=""></a>
+                    </div><!--partner-logo end-->
+                </div><!--partner-carousel end-->
+            </div>
+        </section><!--agents-sec end-->
 
         <a href="#" title="">    
             <section class="cta section-padding">
@@ -571,11 +646,7 @@
                 <div class="row">
                     <div class="col-xl-4 col-sm-6 col-md-4">
                         <div class="bottom-logo">
-<<<<<<< HEAD
-                            <img src="assets/images/logo.png" alt="" class="img-fluid">
-=======
                             <img src="/assets/images/logo.png" alt="" class="img-fluid">
->>>>>>> 2224c07fc006bdebc30f26fa39059f398228a7ca
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6 col-md-3">
@@ -650,21 +721,10 @@
 
 
 
-<<<<<<< HEAD
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/modernizr-3.6.0.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/scripts.js"></script>
-
-    <!-- Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVwc4veKudU0qjYrLrrQXacCkDkcy3AeQ"></script>
-    <script src="assets/js/map-cluster/infobox.min.js"></script>
-    <script src="assets/js/map-cluster/markerclusterer.js"></script>
-    <script src="assets/js/map-cluster/maps.js"></script>
-=======
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/modernizr-3.6.0.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/lib/slick/slick.js"></script>
     <script src="/assets/js/scripts.js"></script>
 
     <!-- Maps -->
@@ -672,7 +732,6 @@
     <script src="/assets/js/map-cluster/infobox.min.js"></script>
     <script src="/assets/js/map-cluster/markerclusterer.js"></script>
     <script src="/assets/js/map-cluster/maps.js"></script>
->>>>>>> 2224c07fc006bdebc30f26fa39059f398228a7ca
 
 
 

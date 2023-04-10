@@ -10,7 +10,7 @@ public class TestController {
 	@GetMapping("/newzips/test")
 	public String test() {
 		
-		return "test";
+		return "01_Home";
 		
 	}
 	
@@ -19,7 +19,7 @@ public class TestController {
 	@GetMapping("/newzips/itemDetail")
 	public String itemDetail() {
 		
-		return "itemDetail";
+		return "home1";
 		
 	}
 	
