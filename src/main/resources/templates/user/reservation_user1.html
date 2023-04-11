@@ -240,19 +240,42 @@
                                 </div><!--agent-info end-->
                             </div><!--agent-profile end-->
                         </div>
+                        
+                        <!-- 방문 날짜 -->
                         <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
-                            <div class="contact-agent5">
+                           <div class="contact-agent">
                             <div style="margin-top: 40px"></div>
-                                <h2>방문 가능 시간</h2>
-                                <div style="margin-bottom: 10px"></div>
+                                <h3 style="margin-bottom: 15px;">방문 가능 날짜 선택</h3>
                                 <form>
                                     <div class="form-field">
-                                        <input type="date" name="date">
-                                    </div><!--form-field end-->
-                                    <div class="form-field">
-                                        <input type="time" name="time">
-                                    </div><!--form-field end-->   
-                                 </form>
+                                        <input type="date" name="date" id="Date" style="width: 40%">
+                                    </div>
+                                    <div style="margin-bottom: 12%;"></div>
+                                </form>
+                                
+                                 <!--   시간선택      -->
+                                <form style="width: 100%;">
+                                <div class="middle_text">시간 선택</div>
+                                    <div>
+                                    	<div class="am_pm">오전</div>
+                                    	<input type="button" id="btn1" value="09:00">
+										<input type="button" id="btn2" value="10:00">
+										<input type="button" id="btn3" value="11:00">
+                                    </div>	
+                                    	
+                                   	<div>
+                                   		<div class="am_pm">오후</div>
+                                    	<input type="button" id="btn4" value="12:00">
+                                    	<input type="button" id="btn5" value="13:00">
+                                    	<input type="button" id="btn6" value="14:00">
+                                    	<input type="button" id="btn7" value="15:00">
+                                    	<input type="button" id="btn8" value="16:00">
+                                    	<input type="button" id="btn9" value="17:00">
+                                    	<input type="button" id="btn10" value="18:00">
+                                    </div>
+                                    <div style="margin-bottom: 7%;"></div>
+                                 </form> 
+                                
                                  
                                  <div style="margin-top: 160px;"></div>
                                  <h2>요청사항</h2>
@@ -373,6 +396,8 @@
     <script src="/assets/js/modernizr-3.6.0.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/scripts.js"></script>
+    
+    <script src="/assets/js/datetime.js"></script>
 
     <!-- Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
