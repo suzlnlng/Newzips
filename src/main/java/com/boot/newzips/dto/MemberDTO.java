@@ -9,6 +9,7 @@ public class MemberDTO {
 	
 	private String userId;
 	private String userPwd;
+	private String userPwd2;
 	private String userName;
 	private String userBirth;
 	private String userPhone;
@@ -20,3 +21,4 @@ public class MemberDTO {
 	
 
 }
+
