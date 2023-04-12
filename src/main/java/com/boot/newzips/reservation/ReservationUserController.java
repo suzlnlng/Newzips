@@ -11,35 +11,61 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.newzips.dto.ResidenceReservDTO;
+import com.boot.newzips.dto.VisitorReservDTO;
+import com.boot.newzips.service.ReservationUserService;
 import com.boot.newzips.service.ResidentService;
 
 @RestController
 public class ReservationUserController {
 	
-	@Resource
-	private ResidentService residentService;
+	@Resource //의존성 주입을 함으로써 Service 안에 있는 ResidentServiceImpl도 딸려옴
+	private ResidentService residentService; 
+	private ReservationUserService reservationUserService;
+	
 	
 
+	@GetMapping("/")
+	public ModelAndView index() throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("index");
+		
+		return mav;
+		
+	}
 	
-	@RequestMapping(value = "/reservation_resident1.action",method = RequestMethod.GET)
+	
 	@GetMapping("/reservation_resident1.action")
 	public ModelAndView reservation_resident() throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("/user/reservation_resident1");
+		mav.setViewName("/user/reservation_resident1"); //jsp(html)로 갈때는 setViewName / class는 setView
 		
 		return mav;
 				
 	}
 	
-	@RequestMapping(value = "/reservation_user1.action")
+	
+	
+	
 	@GetMapping("/reservation_user1.action")
 	public ModelAndView reservation_user() throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("/user/reservation_user1");
+		mav.setViewName("user/reservation_user1");
+		
+		return mav;
+	}
+	
+	@PostMapping("/reservation_user1.action")
+	public ModelAndView reservation_user_ok(VisitorReservDTO dto,HttpServletRequest request) throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("redirect:/reservation_user_complete1.action");
 		
 		return mav;
 	}

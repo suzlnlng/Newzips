@@ -17,30 +17,29 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
     
     
-    <script type="text/javascript">
-    
-    const sendIt = () => {
-    	
-    	var f = document.myForm;
-    	
-    	str = f.message.value;
-    	str = str.trim();
-
-    	if(!str){
-    		alert("요청사항을 선택하세요.");
-    		f.message.focus();
-    		return;
-    	}
-    	f.message.value = str;
-    	
-    	f.action="/reservation_resident1.action"
-    	f.submit();
-    }
-    
-    alert('맞나')
-    
-    
-    </script>
+    <script>
+		  const timeButtons = document.querySelectorAll('.time-button');
+		  let selectedButton = null;
+		
+		  function handleButtonClick(event) {
+		    const clickedButton = event.target;
+		
+		    if (selectedButton) {
+		      selectedButton.classList.remove('selected');
+		    }
+		
+		    if (selectedButton !== clickedButton) {
+		      clickedButton.classList.add('selected');
+		      selectedButton = clickedButton;
+		    } else {
+		      selectedButton = null;
+		    }
+		  }
+		
+		  timeButtons.forEach(button => {
+		    button.addEventListener('click', handleButtonClick);
+		  });
+	</script>
     
     
 </head>
@@ -275,26 +274,21 @@
                                 
                                 <!--   시간선택      -->
                                 <form style="width: 100%;">
-                                <div class="middle_text">시간 선택</div>
-                                    <div>
-                                    	<div class="am_pm">오전</div>
-                                    	<input type="button" id="time" value="09:00">
-										<input type="button" id="time" value="10:00">
-										<input type="button" id="time" value="11:00">
-                                    </div>	
-                                    	
-                                   	<div>
-                                   		<div class="am_pm">오후</div>
-                                    	<input type="button" id="time" value="12:00">
-                                    	<input type="button" id="time" value="13:00">
-                                    	<input type="button" id="time" value="14:00">
-                                    	<input type="button" id="time" value="15:00">
-                                    	<input type="button" id="time" value="16:00">
-                                    	<input type="button" id="time" value="17:00">
-                                    	<input type="button" id="time" value="18:00">
-                                    </div>
-                                    <div style="margin-bottom: 7%;"></div>
-                                 </form> 
+								  <div class="middle_text">시간 선택</div>
+								  <div>
+								    <input type="button" class="time-button" value="09:00">
+								    <input type="button" class="time-button" value="10:00">
+								    <input type="button" class="time-button" value="11:00">
+								    <input type="button" class="time-button" value="12:00">
+								    <input type="button" class="time-button" value="13:00">
+								    <input type="button" class="time-button" value="14:00">
+								    <input type="button" class="time-button" value="15:00">
+								    <input type="button" class="time-button" value="16:00">
+								    <input type="button" class="time-button" value="17:00">
+								    <input type="button" class="time-button" value="18:00">
+								  </div>
+								  <div style="margin-bottom: 7%;"></div>
+								</form>
 
                                  
                                  
@@ -307,7 +301,7 @@
                                     </div><!--form-field end-->
                                     <div class="form-field5">
                                     <div style="margin-bottom: 30px;"></div>
-                                        <button type="submit" class="btn2" onclick="sendIt();">예약하기</button>
+                                        <button type="submit" class="btn2" onclick="timeButtons();">예약하기</button>
                                     </div><!--form-field end-->
                                     
                                     

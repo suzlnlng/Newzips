@@ -17,7 +17,9 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	select * from reservationUser where userId=#{userId}
 </select>
 
-<delete id="deleteReservationUser" parameterType="int"></delete>
+<delete id="deleteReservationUser" parameterType="int">
+	delete from reservationUser where userId = #{userId}
+</delete>
 
 
 </mapper>
