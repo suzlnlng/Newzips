@@ -1,29 +1,52 @@
 package com.boot.newzips.reservation;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
-@Controller
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.boot.newzips.dto.ResidenceReservDTO;
+import com.boot.newzips.service.ResidentService;
+
+@RestController
 public class ReservationUserController {
 	
+	@Resource
+	private ResidentService residentService;
 	
-	@GetMapping("newzips/reservation_user1")
-	public String user1() {
-		
-		return "/user/reservation_user1";
-	}
 
-	@GetMapping("newzips/reservation_resident1")
-	public String resident1() {
+	
+	@RequestMapping(value = "/reservation_resident1.action",method = RequestMethod.GET)
+	@GetMapping("/reservation_resident1.action")
+	public ModelAndView reservation_resident() throws Exception{
 		
-		return "/user/reservation_resident1";
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("/user/reservation_resident1");
+		
+		return mav;
+				
 	}
 	
-	@GetMapping("newzips/reservation_user_complete1")
-	public String usercomplete1() {
+	@RequestMapping(value = "/reservation_user1.action")
+	@GetMapping("/reservation_user1.action")
+	public ModelAndView reservation_user() throws Exception{
 		
-		return "/user/reservation_user_complete1";
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("/user/reservation_user1");
+		
+		return mav;
 	}
+	
+	
+	
+	
 	
 	
 	

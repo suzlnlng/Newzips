@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.newzips.mapper.ReservationUserMapper">
+
+<!-- 방문자 예약 -->
+
+<insert id="insertReservationUser" parameterType="com.boot.newzips.dto.VisitorReservDTO">
+	insert into reservationUser (reservNo,userId,itemId,realtorId,visitDate,visitTime,confirm) 
+	values (#{reservNo},#{userId},#{itemId},#{realtorId},#{visitDate},#{visitTime},#{confirm})
+</insert>
+
+<select id="selectReservationUser" parameterType="int" resultType="com.boot.newzips.dto.VisitorReservDTO">
+	select * from reservationUser where userId=#{userId}
+</select>
+
+<delete id="deleteReservationUser" parameterType="int"></delete>
+
+
+</mapper>
