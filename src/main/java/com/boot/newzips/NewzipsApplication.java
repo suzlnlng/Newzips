@@ -12,27 +12,27 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class NewzipsApplication {
-	
-	@Autowired
-	ApplicationContext applicationContext;
+   
+   @Autowired
+   ApplicationContext applicationContext;
 
-	public static void main(String[] args) {
-		SpringApplication.run(NewzipsApplication.class, args);
-	}
-	
-	@Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
-		
-		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-		
-		sessionFactory.setDataSource(dataSource);
-		
-		//xml∆ƒ¿œ ∏µŒ ¿–æÓø√∞Õ¿”
-		sessionFactory.setMapperLocations(
-				applicationContext.getResources("classpath:mybatis/mapper/*.xml"));
-		
-		return sessionFactory.getObject();		
-		
-	}
+   public static void main(String[] args) {
+      SpringApplication.run(NewzipsApplication.class, args);
+   }
+   
+   @Bean
+   public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
+      
+      SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+      
+      sessionFactory.setDataSource(dataSource);
+      
+      //xmlÌååÏùº Î™®Îëê ÏùΩÏñ¥Ïò¨Í≤ÉÏûÑ
+      sessionFactory.setMapperLocations(
+            applicationContext.getResources("classpath:mybatis/mapper/*.xml"));
+      
+      return sessionFactory.getObject();      
+      
+   }
 
 }

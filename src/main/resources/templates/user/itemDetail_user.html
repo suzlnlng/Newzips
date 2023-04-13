@@ -250,21 +250,23 @@
                     <div class="card">
                         <div class="card-body">
                             <a href="#">                       
-                                <h3><span th:text="${dtoR.itemId}"></span></h3>
-                                <p><i class="la la-map-marker"></i>주소</p>
+                                <h3 th:if="${dtoL.yearly_monthly}=='전세'">[[${dtoL.yearly_monthly}]] [[${dtoL.yearly_monthly}]]</h3>                                
+                                <h3 th:if="${dtoL.yearly_monthly}=='월세'">[[${dtoL.yearly_monthly}]] [[${dtoL.yearly_monthly}]] / [[${dtoL.yearly_monthly}]]</h3>                                
+                                <p><i class="la la-map-marker"></i>[[${dtoL.addrDetail}]]</p>
                             </a>
                             <ul>
-                                <li>해당층/건물층&nbsp;&nbsp;&nbsp;1층/10층</li>
-                                <li>방 수/욕실 수&nbsp;&nbsp;&nbsp;2개/1개</li>
-                                <li>전용/공급면적&nbsp;&nbsp;&nbsp;00.00㎡/00.00㎡</li>
+                                <li>해당층/건물층&nbsp;&nbsp;&nbsp;[[${dtoR.roomFloor}]]층/[[${dtoB.totalFloors}]]층</li>
+                                <li>방 수/욕실 수&nbsp;&nbsp;&nbsp;[[${dtoR.rooms}]]개/[[${dtoR.bathrooms}]]개</li>
+                                <li>전용/공급면적&nbsp;&nbsp;&nbsp;[[${dtoR.area}]]㎡/[[${dtoR.supplyArea}]]㎡</li>
                             </ul>
                             
                         </div><!--card-body end-->
                         
-                        <div class="rate-info">
-                            <h5>가격</h5>
+                        <!-- <div class="rate-info">
+                            <h5 th:text="${dtoL.yearly_monthly}"></h5>/ &nbsp;&nbsp;&nbsp;
+                            <h5 th:text="${dtoL.yearly_monthly}">가격</h5>
                             <span>유형</span>
-                        </div><!--rate-info end-->
+                        </div>rate-info end -->
                         <div class="rate-info" style="margin-top: 15px;">                        	
                             <button type="button" class="btn4">♥</button>
                             <button class="btn3" onclick="location.href='http://localhost:8080/newzips/reservation_user_contract1'">계약하기</button>                            
