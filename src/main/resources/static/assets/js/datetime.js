@@ -7,11 +7,11 @@ document.getElementById("Date").setAttribute("max", "2023-04-24");
 
 
 
-$('input').click(function(){
+
+ $('input').click(function(){
   $('input').removeClass("active");
   $(this).addClass("active");
 });
-
 
  
 

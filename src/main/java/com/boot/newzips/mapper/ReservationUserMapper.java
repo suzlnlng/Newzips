@@ -6,6 +6,8 @@ import com.boot.newzips.dto.VisitorReservDTO;
 
 @Mapper
 public interface ReservationUserMapper {
+	
+	public int maxReservNo() throws Exception;
 
 	public void insertReservationUser(VisitorReservDTO dto) throws Exception;
 	

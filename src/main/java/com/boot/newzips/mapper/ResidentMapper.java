@@ -7,6 +7,8 @@ import com.boot.newzips.dto.ResidenceReservDTO;
 @Mapper
 public interface ResidentMapper {
 	
+	
+	
 	public void insertReservation(ResidenceReservDTO dto) throws Exception;
 	
 	public ResidenceReservDTO selectReservation(int userId) throws Exception;

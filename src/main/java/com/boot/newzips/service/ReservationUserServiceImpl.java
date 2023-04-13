@@ -17,6 +17,11 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	public ReservationUserMapper reservationUserMapper;
 	
 	@Override
+	public int maxReservNo() throws Exception {
+		return reservationUserMapper.maxReservNo();
+	}
+	
+	@Override
 	public void insertReservationUser(VisitorReservDTO dto) throws Exception {
 		reservationUserMapper.insertReservationUser(dto);
 		
@@ -32,5 +37,9 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 		reservationUserMapper.deleteReservationUser(userId);
 		
 	}
+
+	
+
+	
 
 }

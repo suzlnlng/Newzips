@@ -8,6 +8,10 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 방문자 예약 -->
 
+<select id="maxReservNo" resultType="int">
+	select nvl(max(num),0) from reservationUser
+</select>
+
 <insert id="insertReservationUser" parameterType="com.boot.newzips.dto.VisitorReservDTO">
 	insert into reservationUser (reservNo,userId,itemId,realtorId,visitDate,visitTime,confirm) 
 	values (#{reservNo},#{userId},#{itemId},#{realtorId},#{visitDate},#{visitTime},#{confirm})

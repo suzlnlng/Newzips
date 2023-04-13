@@ -47,8 +47,7 @@ public class ReservationUserController {
 				
 	}
 	
-	
-	
+		
 	
 	@GetMapping("/reservation_user1.action")
 	public ModelAndView reservation_user() throws Exception{
@@ -58,18 +57,33 @@ public class ReservationUserController {
 		mav.setViewName("user/reservation_user1");
 		
 		return mav;
+		
 	}
+	
 	
 	@PostMapping("/reservation_user1.action")
 	public ModelAndView reservation_user_ok(VisitorReservDTO dto,HttpServletRequest request) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
+		int maxReservNo = reservationUserService.maxReservNo();
+		
+		reservationUserService.insertReservationUser(dto);
+		
 		mav.setViewName("redirect:/reservation_user_complete1.action");
 		
 		return mav;
 	}
 	
+	@GetMapping("/reservation_user_complete1.action")
+	public ModelAndView reservation_user_complete() throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("user/reservation_user_complete1");
+		
+		return mav;
+	}
 	
 	
 	

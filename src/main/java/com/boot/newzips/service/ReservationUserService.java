@@ -4,7 +4,9 @@ import com.boot.newzips.dto.VisitorReservDTO;
 
 public interface ReservationUserService {
 	
-public void insertReservationUser(VisitorReservDTO dto) throws Exception;
+	public int maxReservNo() throws Exception;
+	
+	public void insertReservationUser(VisitorReservDTO dto) throws Exception;
 	
 	public VisitorReservDTO selectReservationUser(int userId) throws Exception;
 	

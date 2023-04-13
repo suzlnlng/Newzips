@@ -15,6 +15,33 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     
     <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
+    
+        <script>
+		    function validateForm() {
+		        const date = document.getElementById("Date").value;
+		        const time = document.querySelectorAll('.time-button.selected');
+		        
+		        if (!date) {
+		            alert("날짜를 선택해주세요.");
+		        } else if(time.length===0) {
+		        	alert("시간을 선택해주세요.");
+		        } else {
+		        	alert("예약이 완료되었습니다.");
+		        	
+		        	action = "/reservation_user_complete1.action";
+		            submit();
+		        }
+		        		
+		   		}
+		
+		    function selectTime(button) {
+		        const selected = document.querySelectorAll('.time-button.selected');
+		        selected.forEach((btn) => {
+		            btn.classList.remove('selected');
+		        });
+		        button.classList.add('selected');
+		    }
+		</script>
 </head>
 
 <body>
@@ -254,27 +281,25 @@
                                 </form>
                                 
                                  <!--   시간선택      -->
+                                <!--   시간선택      -->
                                 <form style="width: 100%;">
-                                <div class="middle_text">시간 선택</div>
-                                    <div>
-                                    	<div class="am_pm">오전</div>
-                                    	<input type="button" id="btn1" value="09:00">
-										<input type="button" id="btn2" value="10:00">
-										<input type="button" id="btn3" value="11:00">
-                                    </div>	
-                                    	
-                                   	<div>
-                                   		<div class="am_pm">오후</div>
-                                    	<input type="button" id="btn4" value="12:00">
-                                    	<input type="button" id="btn5" value="13:00">
-                                    	<input type="button" id="btn6" value="14:00">
-                                    	<input type="button" id="btn7" value="15:00">
-                                    	<input type="button" id="btn8" value="16:00">
-                                    	<input type="button" id="btn9" value="17:00">
-                                    	<input type="button" id="btn10" value="18:00">
-                                    </div>
-                                    <div style="margin-bottom: 7%;"></div>
-                                 </form> 
+								    <div class="middle_text">시간 선택</div>
+								    <div>
+								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none;">
+								        <input type="button" class="time-button" value="09:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="10:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="11:00" onclick="selectTime(this)"><br/>
+								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none;">
+								        <input type="button" class="time-button" value="12:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="13:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="14:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="15:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="16:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="17:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="18:00" onclick="selectTime(this)">
+								    </div>
+								    <div style="margin-bottom: 7%;"></div>
+								</form> 
                                 
                                  
                                  <div style="margin-top: 160px;"></div>
@@ -286,7 +311,7 @@
                                     </div><!--form-field end-->
                                     <div class="form-field5">
                                     <div style="margin-bottom: 30px;"></div>
-                                        <button type="submit" class="btn2">예약하기</button>
+                                        <button type="submit" class="btn2" onclick="validateForm();">예약하기</button>
                                     </div><!--form-field end-->
                                 </form>
                             </div><!--contact-agent end-->
