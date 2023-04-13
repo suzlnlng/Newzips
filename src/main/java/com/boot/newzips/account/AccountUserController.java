@@ -8,16 +8,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.boot.newzips.dto.MemberDTO;
+
 @RestController
-@RequestMapping(value="/newzips", method= {RequestMethod.GET, RequestMethod.POST} )
+@RequestMapping(value="/newzips")
 public class AccountUserController {
 
-	@PostMapping("/join")
-	public ModelAndView join() throws Exception{
+	@GetMapping("/join")
+	public ModelAndView join(MemberDTO memberDTO) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("user/join_user");
+		mav.setViewName("user/join_user2");
+		
+		return mav;
+		
+	}
+	
+	@PostMapping("/join")
+	public ModelAndView join_ok(MemberDTO memberDTO) throws Exception{
+		
+		System.out.println("회원가입 post");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//mav.setViewName("user/join_user2");
 		
 		return mav;
 		
@@ -25,7 +40,7 @@ public class AccountUserController {
 	
 	
 	@GetMapping("/login")
-	public ModelAndView login() throws Exception{
+	public ModelAndView login(LoginForm loginForm) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -35,8 +50,8 @@ public class AccountUserController {
 		
 	}
 	
-	@PostMapping("/newzips/login_ok")
-	public ModelAndView login_ok() throws Exception{
+	@PostMapping("/newzips/login")
+	public ModelAndView login_ok(LoginForm loginForm) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
