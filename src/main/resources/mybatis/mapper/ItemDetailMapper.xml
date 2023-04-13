@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.newzips.itemDetail.ItemDetailMapper">
+
+<select id="getReadData_roomInfo" parameterType="String" resultType="com.boot.newzips.dto.RoomInfoDTO">
+	select itemId,roomType,roomFloor,area,supplyArea,rooms,bathrooms,roomDirection,heating,balcony,availableDate,options 
+	from roominfo where itemId=#{itemId}
+</select>
+
+<select id="getReadData_buildingInfo" parameterType="String" resultType="com.boot.newzips.dto.BuildingInfoDTO">
+	select itemId,totalFloors,elevator,buildingUse,secureFacility,approvalDate
+	from buildinginfo where itemId=#{itemId}
+</select>
+
+<select id="getReadData_listing" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO">
+	select itemId,addrCity,addrGu,addrDetail,yearly_monthly,maintenanceCost,maintenanceList,ectList,parking,parkingCost,contract
+	from listing where itemId=#{itemId}
+</select>
+
+<select id="getReadData_jun" parameterType="String" resultType="com.boot.newzips.dto.JunsaeListingDTO">
+	select itemId,yearlyFee,yearlyFee_web,contractPeriod
+	from junsaelisting where itemId=#{itemId}
+</select>
+
+<select id="getReadData_wol" parameterType="String" resultType="com.boot.newzips.dto.WolseListingDTO">
+	select itemId,deposit,deposit_web,monthlyFee,monthlyFee_web,contractPeriod
+	from wolselisting where itemId=#{itemId}
+</select>
+
+
+
+</mapper>
