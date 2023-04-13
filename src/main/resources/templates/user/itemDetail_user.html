@@ -250,8 +250,8 @@
                     <div class="card">
                         <div class="card-body">
                             <a href="#">                       
-                                <h3 th:if="${dtoL.yearly_monthly}=='전세'">[[${dtoL.yearly_monthly}]] [[${dtoL.yearly_monthly}]]</h3>                                
-                                <h3 th:if="${dtoL.yearly_monthly}=='월세'">[[${dtoL.yearly_monthly}]] [[${dtoL.yearly_monthly}]] / [[${dtoL.yearly_monthly}]]</h3>                                
+                                <h3 th:if="${dtoL.yearly_monthly}=='전세'">[[${dtoL.yearly_monthly}]] [[${dtoJ.yearlyFee_web}]]</h3>                                
+                                <h3 th:if="${dtoL.yearly_monthly}=='월세'">[[${dtoL.yearly_monthly}]] [[${dtoW.deposit_web}]] / [[${dtoL.monthlyFee_web}]]</h3>                                
                                 <p><i class="la la-map-marker"></i>[[${dtoL.addrDetail}]]</p>
                             </a>
                             <ul>

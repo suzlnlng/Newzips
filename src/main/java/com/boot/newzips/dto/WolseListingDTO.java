@@ -5,10 +5,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class junsaeListingDTO {
+public class WolseListingDTO {
 	
 	private String itemId;
-	private int yearlyFee;
+	private int deposit;
+	private int deposit_web;
+	private int monthlyFee;	
+	private int monthlyFee_web;
 	private int contractPeriod;
 
 }
