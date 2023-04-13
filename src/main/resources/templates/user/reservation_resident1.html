@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -15,6 +15,33 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     
     <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
+    
+    
+    <script>
+    function validateForm() {
+        const date = document.getElementById("Date").value;
+        const time = document.querySelectorAll('.time-button.selected');
+        
+        if (!date) {
+            alert("날짜를 선택해주세요.");
+        } else if(time.length===0) {
+        	alert("시간을 선택해주세요.");
+        } else {
+        	alert("예약이 완료되었습니다.");
+        }
+
+   		}
+
+    function selectTime(button) {
+        const selected = document.querySelectorAll('.time-button.selected');
+        selected.forEach((btn) => {
+            btn.classList.remove('selected');
+        });
+        button.classList.add('selected');
+    }
+</script>
+    
+    
 </head>
 
 <body>
@@ -225,6 +252,7 @@
             </div>
         </section>
 
+		
         <section class="page-main-content section-padding">
             <div class="container">
                 <div class="agent-profile-sec">
@@ -236,29 +264,42 @@
                         <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
                             <div class="contact-agent">
                             <div style="margin-top: 40px"></div>
-                                <h2>방문 가능 시간</h2>
-                                <div style="margin-bottom: 10px"></div>
+                                <h3 style="margin-bottom: 15px;">방문 가능 날짜 선택</h3>
                                 <form>
-                                    <div class="form-field">
-                                        <input type="date" name="date">
-                                    </div><!--form-field end-->
-                                    <div class="form-field">
-                                        <input type="time" name="time">
-                                    </div><!--form-field end-->   
-                                 </form>
+								    <div class="form-field">
+								        <input type="date" name="date" id="Date" style="width: 40%">
+								    </div>
+								    <div style="margin-bottom: 12%;"></div>
+								</form>
+                                
+                                <!--   시간선택      -->
+                                <form style="width: 100%;">
+								    <div class="middle_text">시간 선택</div>
+								    <div>
+								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none;">
+								        <input type="button" class="time-button" value="09:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="10:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="11:00" onclick="selectTime(this)"><br/>
+								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none;">
+								        <input type="button" class="time-button" value="12:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="13:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="14:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="15:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="16:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="17:00" onclick="selectTime(this)">
+								        <input type="button" class="time-button" value="18:00" onclick="selectTime(this)">
+								    </div>
+								    <div style="margin-bottom: 7%;"></div>
+								</form>
+
+                                                                  
                                  
-                                 <div style="margin-top: 160px;"></div>
-                                 <h2>중개인에게 요청사항</h2>
-                                 <div style="margin-bottom: 10px"></div>
-                                 <form>                                                    
-                                    <div class="form-field">
-                                        <textarea name="message" placeholder="요청사항을 입력하세요. ex)비밀번호 0000" style="resize: none; width: 108%"></textarea>
-                                    </div><!--form-field end-->
-                                    <div class="form-field5">
-                                    <div style="margin-bottom: 30px;"></div>
-                                        <button type="submit" class="btn2">예약하기</button>
-                                    </div><!--form-field end-->
-                                </form>
+                                 <form>
+								    <div class="form-field5">
+								        <div style="margin-bottom: 30px;"></div>
+								        <button type="submit" class="btn2" onclick="validateForm();">예약하기</button>
+								    </div> 
+								</form>
                             </div><!--contact-agent end-->
                         </div>
                     </div>
@@ -366,6 +407,8 @@
     <script src="/assets/js/modernizr-3.6.0.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/scripts.js"></script>
+    
+    <script src="/assets/js/datetime.js"></script>
 
     <!-- Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>

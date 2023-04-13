@@ -18,7 +18,7 @@ public class NewzipsApplication {
 
    public static void main(String[] args) {
       SpringApplication.run(NewzipsApplication.class, args);
-   }
+   } 
    
    @Bean
    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
@@ -26,8 +26,7 @@ public class NewzipsApplication {
       SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
       
       sessionFactory.setDataSource(dataSource);
-      
-      //xml파일 모두 읽어올것임
+
       sessionFactory.setMapperLocations(
             applicationContext.getResources("classpath:mybatis/mapper/*.xml"));
       
