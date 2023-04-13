@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.newzips.itemList.ItemListMapper">
+
+<!-- itemList_mapper.xml -->
+
+<select id="selectListingDTO" resultType="com.boot.newzips.dto.ListingDTO"> 
+  SELECT itemId, ADDRDETAIL,  <!-- ListingDTO에서 itemId와 ADDRDETAIL를 받아온다 -->
+    CASE
+      WHEN YEARLY_MONTHLY = '전세' THEN #{(junsaeListing != null) ? junsaeListing.yearlyFee : null} 
+      <!-- ListingDTO에서 YEARLY_MONTHLY가 전세면 junsaeListing를 찾아가 itemId가 같은 데이터가 있으면 알맞은 yearlyFee를 가져오고 없으면 null값을 줌 -->
+      WHEN YEARLY_MONTHLY = '월세' THEN #{(wolseListingDTO != null) ? wolseListingDTO.deposit : null}
+    END AS PRICE 
+    <!-- 전세/월세에서 가져온 deposit이나 yearlyFee는 PRICE에 담긴다 -->
+  FROM (
+    SELECT ROWNUM AS RN, L.* 
+    FROM LISTING L 
+    WHERE YEARLY_MONTHLY IN ('전세', '월세')
+    ORDER BY itemId DESC
+  ) 
+  WHERE RN BETWEEN #{start} AND #{end}
+</select>
+
+
+
+
+
+
+</mapper>
