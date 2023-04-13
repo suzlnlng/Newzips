@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class junsaeListing {
+public class junsaeListingDTO {
 	
 	private String itemId;
 	private int yearlyFee;
