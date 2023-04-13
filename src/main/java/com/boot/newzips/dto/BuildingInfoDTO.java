@@ -8,10 +8,8 @@ import lombok.Setter;
 public class BuildingInfoDTO {
 	
 	private String itemId;
-	private String buildingName;
 	private String totalFloors;
-	private int totalHouseholds;
-	private int totalParking;
+	private String elevator;
 	private String buildingUse;
 	private String secureFacility;
 	private String approvalDate;

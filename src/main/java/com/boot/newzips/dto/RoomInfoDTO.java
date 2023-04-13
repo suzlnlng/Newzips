@@ -17,7 +17,6 @@ public class RoomInfoDTO {
 	private String roomDirection;
 	private String heating;
 	private String balcony;
-	private String entranceType;
 	private String availableDate;
 	private String options;	
 

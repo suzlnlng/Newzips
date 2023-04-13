@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+.agent-profile5 {
+  float: left;
+  width: 200%;
+  padding-right: 5px;
+}
+.agent-img5 {
+  float: left;
+  width: 355px;
+  height: 250px;
+}
+.agent-img6 {
+  float: left;
+  width: 150px;
+  height: 250px;
+}
+
+.agent-info5 {
+  float: left;
+  width: 415px;
+  border:1px solid #dfe0e5;
+  padding: 27px 29px 40px 30px;
+  border-left: 0;
+  line-height: 1;
+  height: 250px;
+}
+.agent-info6 {
+  float: left;
+  width: 415px;
+  border:1px solid #dfe0e5;
+  border-left: 0;
+  line-height: 1;
+  height: 250px;
+}
+.agent-info7 {
+  float: left;
+  width: 415px;
+  
+  padding: 27px 29px 40px 30px;
+  border-left: 0;
+  line-height: 1;
+  height: 150px;
+}
+.agent-info8 {
+  float: left;
+  width: 385px;
+  padding: 27px 29px 40px 30px;
+  border:1px solid #dfe0e5;
+  border-left: 0;
+  line-height: 1;
+  height: 72px;
+}
+.agent-info9 {
+  float: left;
+  width: 590px;
+  border:1px solid #dfe0e5;
+  padding: 27px 29px 40px 30px;
+  border-left: 0;
+  line-height: 1;
+  height: 150px;
+}
+
+.contact-agent5 {
+  float: left;
+  width: 100%;
+  padding-left: 0;
+  line-height: 1;
+}
+
+.form-field5 {
+  float: left;
+  width: 40%;
+  margin-bottom: 15px;
+  margin-left: 30%;
+}
+
+.form-field input,
+.form-field textarea5 {
+  width: 100%;
+  font-size: 18px;
+  color: #67686c;
+  border:1px solid #dfe0e5;
+  background-color: #fff;
+}
+.form-field button5 {
+  margin-top: 3px;
+  cursor: pointer;
+  margin-left: 60%;
+}
+
+.btn-default5 {
+  float: right;
+  font-size: 14px;
+  height: 51px;
+  line-height: 51px;
+  border:1px solid;
+  padding: 0 27px;
+  border-radius: 15px;
+  text-transform: capitalize;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: initial;
+}
+
+.form_field > ul5 {
+  width: 50%;
+}
+.form_field > ul li5 {
+  float: left;
+  width: 10%;
+  margin-bottom: 8px;
+}
+
+.btn5 {
+  float: left;
+  width: 60%;
+  color: #ffffff;
+  font-size: 14px;
+  height: 51px;
+  line-height: 51px;
+  border-radius: 30px;
+  text-align: center;
+  border:0;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.time-select {
+	margin-right: 10px;	
+}

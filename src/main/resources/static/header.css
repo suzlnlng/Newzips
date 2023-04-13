@@ -1,0 +1,34 @@
+.headerBox{
+	margin-left: 70%;
+	display: inline;
+}
+
+
+.headerBtn{
+	background-color: #92a7e0;
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+	border: none;
+	border-radius: 5px;
+	height: 25px;
+}
+
+.newzips{
+	font-size: 30pt;
+	margin: 0 auto;	
+	padding: 20px 0;
+	text-align: center;
+
+}
+
+.category{
+	width: 60%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 10px 0;
+	border-radius: 5px;
+	background-color: #fffc93;
+	color: #808080;
+	word-spacing: 8px;
+}

@@ -17,7 +17,7 @@ public class ReviewDTO {
 	private int environment;
 	private int maintenance;
 	private String content;
-	private int like;
+	private int like;//도움
 	
 
 }
