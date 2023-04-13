@@ -53,6 +53,7 @@ public class ItemDetailUserController {
 		mav.setViewName("user/itemDetail_user");		
 				
 		return mav;
+		
 	}
 	
 }

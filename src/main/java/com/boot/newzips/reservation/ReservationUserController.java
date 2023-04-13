@@ -18,7 +18,7 @@ import com.boot.newzips.service.ResidentService;
 @RestController
 public class ReservationUserController {
 	
-	@Resource //ÀÇÁ¸¼º ÁÖÀÔÀ» ÇÔÀ¸·Î½á Service ¾È¿¡ ÀÖ´Â ResidentServiceImplµµ µþ·Á¿È
+	@Resource //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Î½ï¿½ Service ï¿½È¿ï¿½ ï¿½Ö´ï¿½ ResidentServiceImplï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private ResidentService residentService; 
 	
 	@Resource
@@ -41,16 +41,16 @@ public class ReservationUserController {
 	@GetMapping("/reservation_user1.action")
 	public ModelAndView reservation_user() throws Exception{
 		
-		//¸Å¹°¹øÈ£¸¦ ÁÖ¼Ò¿¡¼­ ¹Þ¾Æ¿À±â
-		//ÀÓÀÇ·Î ¼³Á¤
+		//ï¿½Å¹ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ö¼Ò¿ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
+		//ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String itemId = "";
 		
-		//¸Å¹°¹øÈ£ ±âÁØÀ¸·Î µ¥ÀÌÅÍ ºÒ·¯¿À±â
+		//ï¿½Å¹ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//mav¿¡ µ¥ÀÌÅÍ ´ã±â
+		//mavï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		
 		mav.setViewName("user/reservation_user1");
 		
@@ -60,9 +60,11 @@ public class ReservationUserController {
 	
 	
 	@PostMapping("/reservation_user1.action")
-	public ModelAndView reservation_user_ok(VisitorReservDTO dto,HttpServletRequest request) throws Exception{
+	public ModelAndView reservation_user_ok(HttpServletRequest request) throws Exception{
 		
-		System.out.println("post ¹æ½Ä!!");
+		System.out.println("post ï¿½ï¿½ï¿½!!");
+		
+		System.out.println(request.getParameter("visitDate"));
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -76,10 +78,10 @@ public class ReservationUserController {
 	@GetMapping("/reservation_user_complete1.action")
 	public ModelAndView reservation_user_complete() throws Exception{
 		
-		//ÁÖ¼Ò¿¡¼­ itemId ¹Þ¾Æ¿À±â
-		//ÇØ´ç id¿¡ ´ëÇÑ µ¥ÀÌÅÍ ºÒ·¯¿À±â
+		//ï¿½Ö¼Ò¿ï¿½ï¿½ï¿½ itemId ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
+		//ï¿½Ø´ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 		
-		//mav¿¡ ´ã±â
+		//mavï¿½ï¿½ ï¿½ï¿½ï¿½
 		
 		ModelAndView mav = new ModelAndView();
 		

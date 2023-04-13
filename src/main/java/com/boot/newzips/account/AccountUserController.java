@@ -10,9 +10,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.newzips.dto.MemberDTO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @RestController
-@RequestMapping(value="/newzips")
+@RequestMapping("/newzips")
 public class AccountUserController {
+	
+	private final AccountUserService accountUserService;
 
 	@GetMapping("/join")
 	public ModelAndView join(MemberDTO memberDTO) throws Exception{
@@ -32,7 +37,9 @@ public class AccountUserController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//mav.setViewName("user/join_user2");
+		accountUserService.createMember(memberDTO);
+		
+		mav.setViewName("redirect:/newzips");
 		
 		return mav;
 		
@@ -50,8 +57,11 @@ public class AccountUserController {
 		
 	}
 	
-	@PostMapping("/newzips/login")
+	@PostMapping("/login")
 	public ModelAndView login_ok(LoginForm loginForm) throws Exception{
+		
+		System.out.println("id: " + loginForm.getUserId());
+		System.out.println("pwd: " + loginForm.getUserPwd());
 		
 		ModelAndView mav = new ModelAndView();
 		
