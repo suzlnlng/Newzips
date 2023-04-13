@@ -9,9 +9,9 @@ public class WolseListingDTO {
 	
 	private String itemId;
 	private int deposit;
-	private int deposit_web;
+	private String deposit_web;
 	private int monthlyFee;	
-	private int monthlyFee_web;
+	private String monthlyFee_web;
 	private int contractPeriod;
 
 }

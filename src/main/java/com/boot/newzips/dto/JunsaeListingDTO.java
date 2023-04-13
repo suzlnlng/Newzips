@@ -9,7 +9,7 @@ public class JunsaeListingDTO {
 	
 	private String itemId;
 	private int yearlyFee;
-	private int yearlyFee_web;
+	private String yearlyFee_web;
 	private int contractPeriod;
 
 }
