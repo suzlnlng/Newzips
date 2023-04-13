@@ -1,5 +1,7 @@
 package com.boot.newzips.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,29 +17,43 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	
 	@Autowired
 	public ReservationUserMapper reservationUserMapper;
-	
+
 	@Override
-	public int maxReservNo() throws Exception {
-		return reservationUserMapper.maxReservNo();
+	public void insertReservation(VisitorReservDTO dto) throws Exception {
+		reservationUserMapper.insertReservation(dto);	
 	}
-	
+
 	@Override
-	public void insertReservationUser(VisitorReservDTO dto) throws Exception {
-		reservationUserMapper.insertReservationUser(dto);
+	public String selectAvailableDate(Map<String, Object> map) throws Exception {
+		return reservationUserMapper.selectAvailableDate(map);
+	}
+
+	@Override
+	public String selectAvailableTime(Map<String, Object> map) throws Exception {
+		return reservationUserMapper.selectAvailableTime(map);
+	}
+
+	@Override
+	public VisitorReservDTO selectReservationReservNo(int reservNo) throws Exception {
+		return reservationUserMapper.selectReservationReservNo(reservNo);
+	}
+
+	@Override
+	public VisitorReservDTO selectReservationUserId(String userId) throws Exception {
+		return reservationUserMapper.selectReservationUserId(userId);
+	}
+
+	@Override
+	public void deleteReservation(int reservNo) throws Exception {
+		reservationUserMapper.deleteReservation(reservNo);
 		
 	}
 
-	@Override
-	public VisitorReservDTO selectReservationUser(int userId) throws Exception {
-		return reservationUserMapper.selectReservationUser(userId);
-	}
+	
 
-	@Override
-	public void deleteReservationUser(int userId) throws Exception {
-		reservationUserMapper.deleteReservationUser(userId);
-		
-	}
-
+	
+	
+	
 	
 
 	

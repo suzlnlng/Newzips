@@ -8,22 +8,51 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 방문자 예약 -->
 
-<select id="maxReservNo" resultType="int">
-	select nvl(max(num),0) from reservationUser
-</select>
-
-<insert id="insertReservationUser" parameterType="com.boot.newzips.dto.VisitorReservDTO">
-	insert into reservationUser (reservNo,userId,itemId,realtorId,visitDate,visitTime,confirm) 
+<insert id="insertReservation" parameterType="com.boot.newzips.dto.VisitorReservDTO">
+	insert into reservation (reservNo,userId,itemId,realtorId,visitDate,visitTime,confirm) 
 	values (#{reservNo},#{userId},#{itemId},#{realtorId},#{visitDate},#{visitTime},#{confirm})
 </insert>
 
-<select id="selectReservationUser" parameterType="int" resultType="com.boot.newzips.dto.VisitorReservDTO">
-	select * from reservationUser where userId=#{userId}
-</select>
 
-<delete id="deleteReservationUser" parameterType="int">
-	delete from reservationUser where userId = #{userId}
-</delete>
+  <!-- 예약 가능한 날짜 조회 -->
+  <select id="selectAvailableDate" parameterType="map" resultType="string">
+    SELECT visitTime FROM availability
+    WHERE userId = #{userId}
+      AND itemId = #{itemId}
+      AND visitDate = #{visitDate}
+  </select>
+  
+  
+  <!-- 예약 가능한 시간 조회 -->
+  <select id="selectAvailableTime" parameterType="map" resultType="string">
+    SELECT visitTime FROM availability
+    WHERE userId = #{userId}
+      AND itemId = #{itemId}
+      AND visitDate = #{visitDate}
+      AND visetTime = #{visitTime}
+  </select>
+
+
+	<!-- 예약번호로 조회 -->
+	<select id="selectReservationReservNo" parameterType="int" resultType="com.boot.newzips.dto.VisitorReservDTO">
+		SELECT reservNo, userId, itemId, realtorId, visitDate, visitTime, confirm
+	    FROM reservation
+	    WHERE reservNo = #{reservNo}
+	</select>
+	
+	
+	<!-- 유저아이디로 조회 -->
+	<select id="selectReservationUserId" parameterType="int" resultType="com.boot.newzips.dto.VisitorReservDTO">
+		SELECT reservNo, userId, itemId, realtorId, visitDate, visitTime, confirm
+	    FROM reservation
+	    WHERE userId = #{userId}
+	</select>
+	
+	
+	<!-- 삭제 -->
+	<delete id="deleteReservation" parameterType="int">
+		delete from reservation where reservNo = #{reservNo}
+	</delete>
 
 
 </mapper>

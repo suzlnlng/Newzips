@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.boot.newzips.dto.ResidenceReservDTO;
-import com.boot.newzips.mapper.ResidentMapper;
+import com.boot.newzips.mapper.ReservationResidentMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,24 +13,25 @@ import lombok.RequiredArgsConstructor;
 public class ResidentServiceImpl implements ResidentService{
 
 	@Autowired
-	public ResidentMapper residentMapper;
+	public ReservationResidentMapper reservationResidentMapper;
+
+	@Override
+	public void insertResidentReserv(ResidenceReservDTO dto) throws Exception {
+		reservationResidentMapper.insertResidentReserv(dto);
+			}
+
+	@Override
+	public ResidenceReservDTO selectResidentReserv(String userId, String itemId) throws Exception {
+		return reservationResidentMapper.selectResidentReserv(userId, itemId);
+	}
+
+	@Override
+	public void deleteResidentReserv(ResidenceReservDTO dto) throws Exception {
+		reservationResidentMapper.deleteResidentReserv(dto);
+		
+	}
 	
-	@Override
-	public void insertReservation(ResidenceReservDTO dto) throws Exception {
-		residentMapper.insertReservation(dto);
-		
-	}
-
-	@Override
-	public ResidenceReservDTO selectReservation(int userId) throws Exception {
-		return residentMapper.selectReservation(userId);
-	}
-
-	@Override
-	public void deleteReservation(int userId) throws Exception {
-		residentMapper.deleteReservation(userId);
-		
-	}
+	
 	
 
 }
