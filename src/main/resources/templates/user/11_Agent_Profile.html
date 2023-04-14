@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -8,48 +8,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" href="/assets/images/favicon.png">
-    <link rel="stylesheet" href="/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
-    
-    <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
-    
-        <script>
-		    function validateForm() {
-		    	
-		    	const f = document.reservationForm;
-		    	
-		        const date = document.getElementById("Date").value;
-		        const time = document.querySelectorAll('.time-button.selected');
-		        
-		        if (!date) {
-		            alert("날짜를 선택해주세요.");
-		        } else if(time.length===0) {
-		        	alert("시간을 선택해주세요.");
-		        } else {
-		        	alert("예약이 완료되었습니다.");
-		        	console.log("dfdf")
-		        	
-		        	f.visitDate = date;
-		        	f.visitTime = time;
-		        	
-		        	f.action = "/reservation_user1.action";
-		            f.submit();
-		            
-		        }
-		        console.log("dfdf")
-		   		}
-		
-		    function selectTime(button) {
-		        const selected = document.querySelectorAll('.time-button.selected');
-		        selected.forEach((btn) => {
-		            btn.classList.remove('selected');
-		        });
-		        button.classList.add('selected');
-		    }
-		</script>
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/color.css">
 </head>
 
 <body>
@@ -103,7 +66,7 @@
                         <div class="col-xl-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
                                 <a class="navbar-brand" href="01_Home.html">
-                                    <img src="/assets/images/logo.png" alt="">
+                                    <img src="assets/images/logo.png" alt="">
                                 </a>
                                 <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
                                     <span class="icon-spar"></span>
@@ -245,13 +208,11 @@
                 </form>
             </div>
         </div><!--popup end-->
-        
-        
 
         <section class="pager-sec bfr">
             <div class="container">
                 <div class="pager-sec-details">
-                    <h3>사용자 예약</h3>
+                    <h3>Agent Profile</h3>
                     <ul>
                         <li><a href="#" title="">Home</a></li>
                         <li><span>Agent Profile</span></li>
@@ -263,73 +224,55 @@
         <section class="page-main-content section-padding">
             <div class="container">
                 <div class="agent-profile-sec">
-                    <div class="row" style="flex-direction: column;">
+                    <div class="row">
                         <div class="col-xl-8 col-lg-9 col-md-12 pl-0 pr-0">
-                            <div class="agent-profile5">
-                                <div class="agent-img5" style="margin-right: 60px;">
-                                    <img src="https://via.placeholder.com/355x250" alt="">
+                            <div class="agent-profile">
+                                <div class="agent-img">
+                                    <img src="https://via.placeholder.com/355x407" alt="">
                                 </div><!--agent-img end-->
-                                <div class="agent-info5">
-                                    <h3>매물정보</h3>
-                                    <p>보증금, 전월세, 중개비 등등</p>                                                                
+                                <div class="agent-info">
+                                    <h3>Tomas Wilkinson</h3>
+                                    <h4>Douglas and Eleman Agency</h4>
+                                    <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet maurs. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odi non  mauris vitae erat consequat.</p>
+                                    <ul class="cont-links">
+                                        <li><span><i class="la la-phone"></i>+1 212-925-3797</span></li>
+                                        <li><a href="mailto:example@example.com" title=""><i class="la la-envelope"></i>tomas@contact.com</a></li>
+                                    </ul>
+                                    <ul class="socio-links">
+                                        <li><a href="#" title=""><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#" title=""><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#" title=""><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#" title=""><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
                                 </div><!--agent-info end-->
                             </div><!--agent-profile end-->
                         </div>
-                        
-                        <!-- 방문 날짜 -->
-                        <form name="reservationForm" method="post">
-                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
-                           <div class="contact-agent">
-                           
-                          	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                          	<input type="hidden" th:name="itemId" th:value="${itemId}">
-                          	
-                            <div style="margin-top: 40px"></div>
-                                <h3 style="margin-bottom: 15px;">방문 가능 날짜 선택</h3>
-
+                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0">
+                            <div class="contact-agent">
+                                <h3>Contact Agent</h3>
+                                <form>
                                     <div class="form-field">
-                                        <input type="date" name="date" id="Date" style="width: 40%">
-                                    </div>
-                                    <div style="margin-bottom: 12%;"></div>
-
-                                <!--   시간선택      -->
-
-								    <div class="middle_text">시간 선택</div>
-								    <div>
-								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none;">
-								        <input type="button" class="time-button" value="09:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="10:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="11:00" onclick="selectTime(this)"><br/>
-								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none;">
-								        <input type="button" class="time-button" value="12:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="13:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="14:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="15:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="16:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="17:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="18:00" onclick="selectTime(this)">
-								    </div>
-								    <div style="margin-bottom: 7%;"></div>
-
-                                
-                                 
-                                 <div style="margin-top: 160px;"></div>
-                                                                                 
-                                    
-                                    <div class="form-field5">
-                                    <div style="margin-bottom: 30px;"></div>
-                                        <button type="submit" class="btn2" onclick="validateForm();">예약하기</button>
+                                        <input type="text" name="name" placeholder="Your Name">
                                     </div><!--form-field end-->
-                                    
+                                    <div class="form-field">
+                                        <input type="text" name="emal" placeholder="Your Email">
+                                    </div><!--form-field end-->
+                                    <div class="form-field">
+                                        <input type="text" name="phone" placeholder="Your Phone">
+                                    </div><!--form-field end-->
+                                    <div class="form-field">
+                                        <textarea name="message" placeholder="Your Message"></textarea>
+                                    </div><!--form-field end-->
+                                    <div class="form-field">
+                                        <button type="submit" class="btn2">Contact</button>
+                                    </div><!--form-field end-->
+                                </form>
                             </div><!--contact-agent end-->
                         </div>
-                        </form>
                     </div>
                 </div><!--agent-profile-sec end-->
             </div>
         </section><!--page-main-content end-->
-        
- 
 
         <a href="#" title="">    
             <section class="cta st2 section-padding">
@@ -350,7 +293,7 @@
                 <div class="row">
                     <div class="col-xl-4 col-sm-6 col-md-4">
                         <div class="bottom-logo">
-                            <img src="/assets/images/logo.png" alt="" class="img-fluid">
+                            <img src="assets/images/logo.png" alt="" class="img-fluid">
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6 col-md-3">
@@ -420,18 +363,16 @@
     </div><!--wrapper end-->
 
 
-    <script src="/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="/assets/js/modernizr-3.6.0.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/scripts.js"></script>
-    
-    <script src="/assets/js/datetime.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
 
     <!-- Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-    <script src="/assets/js/map-cluster/infobox.min.js"></script>
-    <script src="/assets/js/map-cluster/markerclusterer.js"></script>
-    <script src="/assets/js/map-cluster/maps.js"></script>
+    <script src="assets/js/map-cluster/infobox.min.js"></script>
+    <script src="assets/js/map-cluster/markerclusterer.js"></script>
+    <script src="assets/js/map-cluster/maps.js"></script>
 
 
 

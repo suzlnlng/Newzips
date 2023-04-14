@@ -13,11 +13,11 @@ import com.boot.newzips.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@RequestMapping("/newzips")
 @RestController
+@RequestMapping("/newzips")
 public class AccountUserController {
 	
-	//private final AccountUserService accountUserService;
+	private final AccountUserService accountUserService;
 
 	@GetMapping("/join")
 	public ModelAndView join(MemberDTO memberDTO) throws Exception{
@@ -45,8 +45,6 @@ public class AccountUserController {
 	@GetMapping("/login")
 	public ModelAndView login(LoginForm loginForm) throws Exception{
 		
-		System.out.println("login");
-		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("user/login_user");
@@ -58,8 +56,6 @@ public class AccountUserController {
 	@PostMapping("/login")
 	public ModelAndView login_ok(LoginForm loginForm) throws Exception{
 		
-		System.out.println("login_ok");
-		
 		ModelAndView mav = new ModelAndView();
 				
 		System.out.println(loginForm.getUserId());
@@ -70,7 +66,6 @@ public class AccountUserController {
 		return mav;
 		
 	}
-	
 	
 	
 }
