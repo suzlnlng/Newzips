@@ -16,22 +16,23 @@ public class NewzipsApplication {
    @Autowired
    ApplicationContext applicationContext;
 
-   public static void main(String[] args) {
-      SpringApplication.run(NewzipsApplication.class, args);
-   } 
-   
-   @Bean
-   public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
-      
-      SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-      
-      sessionFactory.setDataSource(dataSource);
+	public static void main(String[] args) {
+		SpringApplication.run(NewzipsApplication.class, args);
+	} 
+	
+	@Bean
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
+		
+		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+		
+		sessionFactory.setDataSource(dataSource);
 
-      sessionFactory.setMapperLocations(
-            applicationContext.getResources("classpath:mybatis/mapper/*.xml"));
-      
-      return sessionFactory.getObject();      
-      
-   }
+		sessionFactory.setMapperLocations(
+				applicationContext.getResources("classpath:mybatis/mapper/*.xml"));
+		
+		return sessionFactory.getObject();		
+		
+	}
+
 
 }

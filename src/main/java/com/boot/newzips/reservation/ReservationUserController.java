@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 
 import com.boot.newzips.service.ReservationUserService;
@@ -19,7 +18,7 @@ import com.boot.newzips.service.ResidentService;
 @RestController
 public class ReservationUserController {
 	
-	@Resource //ÀÇÁ¸¼º ÁÖÀÔÀ» ÇÔÀ¸·Î½á Service ¾È¿¡ ÀÖ´Â ResidentServiceImplµµ µş·Á¿È
+	@Resource //ì˜ì¡´ì„± ì£¼ì…ì„ í•¨ìœ¼ë¡œì¨ Service ì•ˆì— ìˆëŠ” ResidentServiceImplë„ ë”¸ë ¤ì˜´
 	private ResidentService residentService; 
 	
 	@Resource
@@ -39,24 +38,22 @@ public class ReservationUserController {
 	
 	
 	
-	@GetMapping("/newzips/reservation_user1.action")
+	@GetMapping("/reservation_user1.action")
 	public ModelAndView reservation_user(HttpServletRequest request) throws Exception{
 		
-		//¸Å¹°¹øÈ£¸¦ ÁÖ¼Ò¿¡¼­ ¹Ş¾Æ¿À±â
-		//ÀÓÀÇ·Î ¼³Á¤
+		//ë§¤ë¬¼ë²ˆí˜¸ë¥¼ ì£¼ì†Œì—ì„œ ë°›ì•„ì˜¤ê¸°
+		//ì„ì˜ë¡œ ì„¤ì •
 		String itemId = request.getParameter("itemId");
 		itemId = "32906223";
 		
 		
-		//¸Å¹°¹øÈ£ ±âÁØÀ¸·Î µ¥ÀÌÅÍ ºÒ·¯¿À±â
-		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
-		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
+		//ë§¤ë¬¼ë²ˆí˜¸ ê¸°ì¤€ìœ¼ë¡œ ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
+		VisitorReservDTO dto = reservationUserService.select
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//mav¿¡ µ¥ÀÌÅÍ ´ã±â
-		mav.addObject("dtoV",dtoV);
-		mav.addObject("dtoR",dtoR);
+		//mavì— ë°ì´í„° ë‹´ê¸°
+		mav.addObject("dto",dto);
 		
 		mav.setViewName("user/reservation_user1");
 		
@@ -65,13 +62,13 @@ public class ReservationUserController {
 	}
 	
 	
-	@PostMapping("/newzips/reservation_user1.action")
+	@PostMapping("/reservation_user1.action")
 	public ModelAndView reservation_user_ok(VisitorReservDTO dto,HttpServletRequest request) throws Exception{
 		
-		System.out.println("post ¹æ½Ä!!");
-		//reservation_user¸Ş¼Òµå¶û µ¿ÀÏÇÏ°Ô ÀÛ¼ºÇÏ´Âµ¥,
-		//reservation_user1ÆäÀÌÁö¿¡¼­ ³Ñ¾î¿Â ³¯Â¥¿Í ½Ã°£À» Æ÷ÇÔÇÑ
-		//¿¹¾à Á¤º¸¸¦ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ³Ö´Â°úÁ¤À» Ãß°¡ÇØ¼­ ÀÛ¼º!!
+		System.out.println("post ë°©ì‹!!");
+		//reservation_userë©”ì†Œë“œë‘ ë™ì¼í•˜ê²Œ ì‘ì„±í•˜ëŠ”ë°,
+		//reservation_user1í˜ì´ì§€ì—ì„œ ë„˜ì–´ì˜¨ ë‚ ì§œì™€ ì‹œê°„ì„ í¬í•¨í•œ
+		//ì˜ˆì•½ ì •ë³´ë¥¼ ë°ì´í„°ë² ì´ìŠ¤ì— ë„£ëŠ”ê³¼ì •ì„ ì¶”ê°€í•´ì„œ ì‘ì„±!!
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -81,13 +78,13 @@ public class ReservationUserController {
 		return mav;
 	}
 	
-	@GetMapping("/newzips/reservation_user_complete1.action")
+	@GetMapping("/reservation_user_complete1.action")
 	public ModelAndView reservation_user_complete() throws Exception{
 		
-		//ÁÖ¼Ò¿¡¼­ itemId ¹Ş¾Æ¿À±â
-		//ÇØ´ç id¿¡ ´ëÇÑ µ¥ÀÌÅÍ ºÒ·¯¿À±â
+		//ì£¼ì†Œì—ì„œ itemId ë°›ì•„ì˜¤ê¸°
+		//í•´ë‹¹ idì— ëŒ€í•œ ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
 		
-		//mav¿¡ ´ã±â
+		//mavì— ë‹´ê¸°
 		
 				
 		ModelAndView mav = new ModelAndView();

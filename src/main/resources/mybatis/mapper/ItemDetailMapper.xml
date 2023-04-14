@@ -29,7 +29,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 <select id="getReadData_wol" parameterType="String" resultType="com.boot.newzips.dto.WolseListingDTO">
 	select itemId,deposit,deposit_web,monthlyFee,monthlyFee_web,contractPeriod
 	from wolselisting where itemId=#{itemId}
-</select>
+</select> 
 
 
 
