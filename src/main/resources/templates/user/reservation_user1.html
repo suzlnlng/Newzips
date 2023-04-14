@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
     
         <script>
+        
+        
 		    function validateForm() {
 		    	
 		    	const f = document.reservationForm;
@@ -30,21 +32,18 @@
 		        	alert("시간을 선택해주세요.");
 		        } else {
 		        	alert("예약이 완료되었습니다.");
+		        	alert(time);
+		        	alert(date);
 		        	console.log("dfdf")
-<<<<<<< HEAD
-		        	action = "/newzips/reservation_user_complete1.action";
-		            submit();
-=======
 		        	
-		        	f.visitDate = date;
-		        	f.visitTime = time;
+		        	f.visitDate.value = date;
+		        	f.visitTime.value = time;
 		        	
-		        	f.action = "/reservation_user1.action";
+		        	f.action = "/newzips/reservation_user1";
 		            f.submit();
->>>>>>> 832a9981f89e3effbda43aa5d436b4df6da7b6de
 		            
 		        }
-		        console.log("dfdf")
+		        console.log("되고있나요")
 		   		}
 		
 		    function selectTime(button) {
@@ -293,7 +292,7 @@
                                 <h3 style="margin-bottom: 15px;">방문 가능 날짜 선택</h3>
 
                                     <div class="form-field">
-                                        <input type="date" name="date" id="Date" style="width: 40%">
+                                        <input type="date" name="visitDate" id="Date" style="width: 40%">
                                     </div>
                                     <div style="margin-bottom: 12%;"></div>
 
@@ -301,18 +300,18 @@
 
 								    <div class="middle_text">시간 선택</div>
 								    <div>
-								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none;">
-								        <input type="button" class="time-button" value="09:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="10:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="11:00" onclick="selectTime(this)"><br/>
-								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none;">
-								        <input type="button" class="time-button" value="12:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="13:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="14:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="15:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="16:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="17:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="18:00" onclick="selectTime(this)">
+								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none;" name="visitTime">
+								        <input type="button" class="time-button" value="09:00" onclick="selectTime(this)" name="visitTime">
+								        <input type="button" class="time-button" value="10:00" onclick="selectTime(this)" name="visitTime">
+								        <input type="button" class="time-button" value="11:00" onclick="selectTime(this)" name="visitTime"><br/>
+								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none;" name="visitTime">
+								        <input type="button" class="time-button" value="12:00" onclick="selectTime(this)" name="visitTime">
+								        <input type="button" class="time-button" value="13:00" onclick="selectTime(this)" name="visitTime">
+								        <input type="button" class="time-button" value="14:00" onclick="selectTime(this)" name="visitTime">
+								        <input type="button" class="time-button" value="15:00" onclick="selectTime(this)" name="visitTime">
+								        <input type="button" class="time-button" value="16:00" onclick="selectTime(this)" name="visitTime">
+								        <input type="button" class="time-button" value="17:00" onclick="selectTime(this)" name="visitTime">
+								        <input type="button" class="time-button" value="18:00" onclick="selectTime(this)" name="visitTime">
 								    </div>
 								    <div style="margin-bottom: 7%;"></div>
 

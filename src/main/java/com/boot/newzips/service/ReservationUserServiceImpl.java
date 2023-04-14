@@ -35,7 +35,7 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	}
 
 	@Override
-	public VisitorReservDTO selectReservationReservNo(int reservNo) throws Exception {
+	public VisitorReservDTO selectReservationReservNo(String reservNo) throws Exception {
 		return reservationUserMapper.selectReservationReservNo(reservNo);
 	}
 
@@ -43,13 +43,7 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	public VisitorReservDTO selectReservationUserId(String userId) throws Exception {
 		return reservationUserMapper.selectReservationUserId(userId);
 	}
-
-	@Override
-	public void deleteReservation(int reservNo) throws Exception {
-		reservationUserMapper.deleteReservation(reservNo);
-		
-	}
-
+	
 	@Override
 	public VisitorReservDTO selectReservationItemId(String itemId) throws Exception {
 		return reservationUserMapper.selectReservationItemId(itemId);
@@ -59,6 +53,14 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	public RoomInfoDTO getReservationRoomInfo(String itemId) throws Exception {
 		return reservationUserMapper.getReservationRoomInfo(itemId);
 	}
+
+	@Override
+	public void deleteReservation(int reservNo) throws Exception {
+		reservationUserMapper.deleteReservation(reservNo);
+		
+	}
+
+	
 
 	
 

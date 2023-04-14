@@ -14,7 +14,7 @@ public interface ReservationUserService {
 			
 			public String selectAvailableTime(Map<String, Object> map) throws Exception;
 			
-			public VisitorReservDTO selectReservationReservNo(int reservNo) throws Exception;
+			public VisitorReservDTO selectReservationReservNo(String reservNo) throws Exception;
 			
 			public VisitorReservDTO selectReservationUserId(String userId) throws Exception;
 			
