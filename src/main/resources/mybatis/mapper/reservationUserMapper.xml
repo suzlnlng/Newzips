@@ -42,10 +42,24 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 유저아이디로 조회 -->
-	<select id="selectReservationUserId" parameterType="int" resultType="com.boot.newzips.dto.VisitorReservDTO">
+	<select id="selectReservationUserId" parameterType="String" resultType="com.boot.newzips.dto.VisitorReservDTO">
 		SELECT reservNo, userId, itemId, realtorId, visitDate, visitTime, confirm
 	    FROM reservation
 	    WHERE userId = #{userId}
+	</select>
+	
+	<!-- itemId로 조회 -->
+	<select id="selectReservationItemId" parameterType="String" resultType="com.boot.newzips.dto.VisitorReservDTO">
+		SELECT reservNo, userId, itemId, realtorId, visitDate, visitTime, confirm
+	    FROM reservation
+	    WHERE itemId = #{itemId}
+	</select>
+	
+	<!-- roomInfo -->
+	<select id="getReservationRoomInfo" parameterType="String" resultType="com.boot.newzips.dto.RoomInfoDTO">
+		select itemId,roomType,roomFloor,area,supplyArea,roomDirection,heating,availableDate
+		FROM room
+		WHERE itemId = #{itemId}
 	</select>
 	
 	

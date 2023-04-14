@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 import com.boot.newzips.mapper.ReservationUserMapper;
 
@@ -47,6 +48,16 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	public void deleteReservation(int reservNo) throws Exception {
 		reservationUserMapper.deleteReservation(reservNo);
 		
+	}
+
+	@Override
+	public VisitorReservDTO selectReservationItemId(String itemId) throws Exception {
+		return reservationUserMapper.selectReservationItemId(itemId);
+	}
+
+	@Override
+	public RoomInfoDTO getReservationRoomInfo(String itemId) throws Exception {
+		return reservationUserMapper.getReservationRoomInfo(itemId);
 	}
 
 	
