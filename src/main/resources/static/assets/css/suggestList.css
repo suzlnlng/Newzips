@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+body{
+	color: #383E65;	
+}
+
+#content_list{
+width: 100%;
+height: 30px;
+font-size: 30px;
+font-weight: bold;
+padding-top: 50px;
+padding-left: 180px;
+border-bottom-color: #7F7F7F;
+justify-content: center;
+color: #383E65;
+}
+
+#content_area{
+width: 80%;
+height: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 30px 180px;
+gap: 60px;
+
+}
+
+#content_box{
+margin-top: 80px;
+}
+
+#item_image
+{
+width: 300px;
+height: 200px;
+align-content: center;
+margin-top: 30px;
+border: 1px solid black;
+}
+
+.itemList_shortcut
+{
+width:780px; 
+height: 150px; 
+padding-top: 20px;
+border-bottom-color: #7F7F7F;
+justify-content: center;
+display: inline-block !important;
+border: 1px solid black;
+}
+
+.itemList_shortcut ul
+{
+	font-weight: bold;
+	font-size: 16px;
+	margin:auto;
+	margin-right: 60px;
+	display: inline-block;
+}
+
+.itemList_shortcut ul li
+{
+	font-weight: normal;
+	font-size: 13px;
+	margin-top: 10px;
+}
+
+.confirm_button{
+width: 100px;
+height: 50px;
+border: 1px solid #6A7BE7;
+color: #6A7BE7;
+border-radius: 30px;
+background-color: #ffffff;
+transition: background-color 1s ease;
+}
+
+.confirm_button:hover{
+	background-color: #6A7BE7;
+	color: #FFFFFF ;
+}
+
+
+
+
+

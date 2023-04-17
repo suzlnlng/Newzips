@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.newzips.reservation.ReservationRealtorMapper">
+
+
+<select id="getReserverInfo" resultType="com.boot.newzips.dto.ReservInfoDTO">
+	select reservNo,userId,itemId,visitDate,visitTime,confirm from visitorreserv order by visitdate asc, visittime asc
+</select>
+
+<select id="getItemInfo" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO">
+	select * from listing where itemid=#{itemid}
+</select>
+
+<select id="getJunsaeInfo" parameterType="String" resultType="com.boot.newzips.dto.JunsaeListingDTO">
+	select * from junsaelisting where itemid=#{itemid}
+</select>
+
+<select id="getWolseInfo" parameterType="String" resultType="com.boot.newzips.dto.WolseListingDTO">
+	select * from wolselisting where itemid=#{itemid}
+</select>
+
+<select id="getMemberInfo" parameterType="String" resultType="com.boot.newzips.dto.MemberDTO">
+	select * from member where userid=#{userid}
+</select>
+
+
+</mapper>

@@ -15,4 +15,10 @@ public class VisitorReservDTO {
 	private String visitTime;
 	private String confirm;
 
+	private ListingDTO listing;
+	private JunsaeListingDTO junsae;
+	private WolseListingDTO wolse;
+	private MemberDTO member;
+	
+	
 }

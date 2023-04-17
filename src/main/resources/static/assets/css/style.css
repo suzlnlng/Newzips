@@ -2822,7 +2822,7 @@ header.pb .menu-button span {
   padding: 110px 0 110px 0;
 }
 .page-main-content.section-padding {
-  padding: 20px 0 110px 0;
+  padding: 110px 0 110px 0;
 }
 .about-us-sec {
   float: left;
@@ -2904,10 +2904,10 @@ header.pb .menu-button span {
 
 .agent-info {
   float: left;
-  width: 270px;
+  width: 415px;
   border:1px solid #dfe0e5;
-  padding: 20px 15px 15px 20px;
-  margin-bottom: 45px;
+  padding: 27px 29px 40px 30px;
+  border-left: 0;
   line-height: 1;
 }
 .agent-profile .col-lg-6 {
@@ -2930,7 +2930,7 @@ header.pb .menu-button span {
   float: left;
   width: 100%;
   color: #67686c;
-  padding: 5px 0 25px 0;
+  padding: 17px 0 31px 0;
 }
 .cont-links {
   float: left;
@@ -3221,7 +3221,6 @@ header.pb .menu-button span {
 .listing-main-sec-details {
   float: left;
   width: 100%;
-  display: inline-;
 }/*
 .listing-main-sec-details .row {
   margin-right: -15px;
@@ -3343,14 +3342,13 @@ select::-ms-expand {
 }
 .card_bod_full {
   float: right;
-  width: 50%;
+  width: 61.6%;
   border:1px solid rgba(0,0,0,.125);
-  margin-left: -20px;
+  border-left: 0;
   padding-bottom: 13px;
   padding-left: 7px;
   padding-right: 6px;
   line-height: 1;
-
 }
 .list-products .card .card-body h3 {
   margin-bottom: 6px;

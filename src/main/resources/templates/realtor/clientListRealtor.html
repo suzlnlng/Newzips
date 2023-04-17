@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/reservationRequest.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/suggestList.css">
     
     <style type="text/css">
 
@@ -180,7 +180,7 @@
 
 <section>
 <div id="content_list" style="justify-content: center;">
-	방문 예약 요청 리스트
+	매물 제안 리스트
 	<hr style="margin-left: 0px; width: 90%;"/>
 </div>
 </section>
@@ -191,30 +191,16 @@
 
 <section>
     <div id="content_box">
-        <div id="content_area"  th:if="${reservInfoDTO!=null}"  th:each="dto: ${reservInfoDTO}">
-            <div class="item_image">
-                <img alt="매물사진" src="/assets/images/newzips_logo.png">
-            </div>
+        <div id="content_area" >
             <div class="itemList_shortcut" style="margin-left: 30px;">
-                <ul>예약 일정
-                    <li>예약 일자 ㅣ [[${dto.visitDate}]]</li>
-                    <li>예약 시간 ㅣ [[${dto.visitTime}]]</li>
-                    <li> </li>
-                    <li> </li>
-                </ul>
-                <ul>예약 매물 정보
-                    <li>매물 번호 ㅣ [[${dto.itemId}]]</li>
-                    <li>주소지 ㅣ [[${dto.addrDetail}]]</li>
-                    <li>전월세 ㅣ [[${dto.yearly_monthly}]]</li>
-                    <li th:if="${dto.yearly_monthly=='전세'}">금액 ㅣ [[${dto.yearlyFee}]]만원</li>
-                    <li th:if="${dto.yearly_monthly=='월세'}">금액 ㅣ 보증금 [[${dto.deposit}]] / [[${dto.yearlyFee}]]만원</li>
-                </ul>
-                <ul>예약자 정보
-                    <li>아이디ㅣ [[${dto.userId}]]</li>
-                    <li>성함ㅣ [[${dto.userName}]]</li>
-                    <li>연락처 ㅣ [[${dto.userPhone}]]</li>
-                    <li th:if="${dto.yearly_monthly=='전세'}">금액 ㅣ [[${dto.yearlyFee}]]만원</li>
-                    <li th:if="${dto.yearly_monthly=='월세'}">금액 ㅣ 보증금 [[${dto.deposit}]] / [[${dto.yearlyFee}]]만원</li>
+                <ul>고객이 선택한 조건이에요!
+                    <li>아이디 ㅣ </li>
+                    <li>지역 ㅣ </li>
+                    <li>전월세 ㅣ </li>
+                    <li>금액 ㅣ </li>
+                    <li>방 수 ㅣ </li>
+                    <li>관리비 ㅣ </li>
+                    <li> ㅣ </li>
                 </ul>
             </div>
             <div>
