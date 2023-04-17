@@ -7,8 +7,8 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.boot.newzips.account.AccountUserMapper">
 
 <insert id="createMember" parameterType="com.boot.newzips.dto.MemberDTO">
-	insert into member (userId,userPwd,userName,userBirth,userPhone,userAddr,userDetailedAddr,userEmail,userRole,emailReceive,marketing)
-	values (#{userId},#{userPwd},#{userName},#{userBirth},#{userPhone},#{userAddr},#{userDetailedAddr},#{userEmail},#{userRole},#{emailReceive},#{marketing})
+	insert into member (userId,userPwd,userName,userBirth,userPhone,userZipCode,userAddr,userDetailedAddr,userEmail,userRole,emailReceive)
+	values (#{userId},#{userPwd},#{userName},#{userBirth},#{userPhone},#{userZipCode},#{userAddr},#{userDetailedAddr},#{userEmail},#{userRole},#{emailReceive})
 </insert>
 
 <update id="updateMember" parameterType="com.boot.newzips.dto.MemberDTO">

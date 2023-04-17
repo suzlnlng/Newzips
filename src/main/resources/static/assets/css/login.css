@@ -113,6 +113,19 @@ form {
 	width: 80%; /* hr의 너비를 100%로 설정하여 부모 요소에 가득 차게 설정 */
 }
 
+.login-check-field .input-error{
+	width: 80%;
+	text-align:left;
+	margin-left:59px;
+    font-size: 12px;
+    font-weight: bold;
+	color: red; 
+}
+
+
+
+/* ================ social =============== */
+
 .social-container {
 	margin: 20px 0;
 }

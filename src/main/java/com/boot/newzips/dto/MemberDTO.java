@@ -1,5 +1,6 @@
 package com.boot.newzips.dto;
 
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotEmpty;
 
 import lombok.Getter;
@@ -43,9 +44,6 @@ public class MemberDTO {
 	
 	
 	private String emailReceive;
-	
-	
-	private String marketing;
 	
 }
 

@@ -25,12 +25,9 @@ public class AccountUserServiceImpl implements AccountUserService {
 
 	@Override
 	public void createMember(MemberDTO memberDTO) throws Exception {
-		
-		System.out.println("service");		
 
 		memberDTO.setUserPwd(passwordEncoder.encode(memberDTO.getUserPwd()));
 		memberDTO.setUserRole("USER");
-		memberDTO.setMarketing("T");//제거하기
 
 		accountUserMapper.createMember(memberDTO);
 		

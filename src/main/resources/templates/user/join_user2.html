@@ -16,6 +16,9 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    
+ 
+    
 
 </head>
 
@@ -178,7 +181,7 @@
 		      <img src="/assets/images/newzips_logo_1.png" alt="logo">
 		      </div>
 
-		      <form th:object="${memberDTO}" tf:action="@{/newzips/join}" name="joinForm" method="post">
+		      <form th:object="${memberDTO}" th:action="@{/newzips/join}" name="joinForm" method="post">
 		      
 		      	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 		        
@@ -274,7 +277,9 @@
 				<input type="checkbox" id="select3" name="check" onclick="itemCheck()"/>
 				<label for="select3"></label>  &nbsp;&nbsp;[선택] 이메일 수신 동의<br/>
 				<div style="margin-bottom: 10px"></div>
+				<input type="hidden" th:field="*{emailReceive}"/>
 		        
+		        <p id="userTermCheckError" class="input-error"></p>
 				</div>
 				<!-- login-check-field 끝 -->
 				
@@ -296,8 +301,6 @@
 		    <div style="margin-top: 10px"></div>
 		    
 
-		    
-		    
 		  </div>
 		  
 		</div>
@@ -396,7 +399,8 @@
 
     </div><!--wrapper end-->
 
-	<script>
+   <script>
+   
 	function findAddr(){
 		new daum.Postcode({
 	        oncomplete: function(data) {
@@ -455,27 +459,42 @@
 		
 	}
 	
-	function sendIt(){
+	function sendIt() {
 		
 		var f = document.joinForm;
+		
+		var ct = checkTerms();
 		
 		var sel1 = document.getElementById("select1").checked;
 		var sel2 = document.getElementById("select2").checked;
 		var sel3 = document.getElementById("select3").checked;
 		
-		f.emailService = sel3;
+		var emailReceive = document.getElementById("emailReceive");
+		emailReceive.value = sel3;
 		
-		alert(f.emailService);
-		
-		if(sel1 && sel2 && sel3){
+		if(sel1 && sel2 && ct){
 			f.submit();
 		}
 
+	}
+	
+	function checkTerms(){
+		
+		var f = document.joinForm;
+		var sel1 = document.getElementById("select1").checked;
+		var sel2 = document.getElementById("select2").checked;
+		
+		if(!(sel1 && sel2)){
+			$("#userTermCheckError").html("이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.");
+			return false;
+		}
+		
+		return true;
 		
 	}
 	
+	
 	</script>
-
 
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/modernizr-3.6.0.min.js"></script>

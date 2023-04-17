@@ -1,5 +1,6 @@
 package com.boot.newzips.account;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.dao.DataIntegrityViolationException;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,10 +39,17 @@ public class AccountUserController {
 	
 	@PostMapping("/join")
 	public String join_ok(@Valid MemberDTO memberDTO, BindingResult bindingResult) throws Exception{
+
+		System.out.println("=========================");
+		System.out.println("=========================");
+		System.out.println(memberDTO.getEmailReceive());
+		//memberDTO.setEmailReceive(emailReceive);
 		
-		ModelAndView mav = new ModelAndView();
+
 		
 		if(bindingResult.hasErrors()) {
+			System.out.println("=========================");
+			System.out.println(bindingResult.getErrorCount());
 			return "user/join_user2";
 		}
 		
@@ -67,7 +76,7 @@ public class AccountUserController {
 			
 			e.printStackTrace();
 			
-			bindingResult.rejectValue("userId", "duplicateError","이미 등록된 사용자입니다. 다른 아이디를 사용해주세요.");
+			bindingResult.rejectValue("userId", "이미 등록된 사용자입니다. 다른 아이디를 사용해주세요.");
 			
 			return "user/join_user2";
 			
