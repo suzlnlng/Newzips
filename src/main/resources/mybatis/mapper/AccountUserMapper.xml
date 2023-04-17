@@ -7,14 +7,18 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.boot.newzips.account.AccountUserMapper">
 
 <insert id="createMember" parameterType="com.boot.newzips.dto.MemberDTO">
-	insert into member (userId,userPwd,userName,userBirth,userPhone,userAge,userAddr,userEmail,emailReceive,marketing)
-	values (#{userId},#{userPwd},#{userName},#{userBirth},#{userPhone},#{userAge},#{userAddr},#{userEmail},#{emailReceive},#{marketing})
+	insert into member (userId,userPwd,userName,userBirth,userPhone,userAddr,userDetailedAddr,userEmail,userRole,emailReceive,marketing)
+	values (#{userId},#{userPwd},#{userName},#{userBirth},#{userPhone},#{userAddr},#{userDetailedAddr},#{userEmail},#{userRole},#{emailReceive},#{marketing})
 </insert>
 
 <update id="updateMember" parameterType="com.boot.newzips.dto.MemberDTO">
 	update member set userPwd=#{userPwd},userPhone=#{userPhone},userAddr=#{userAddr},userEmail=#{userEmail},
 	emailReceive=#{emailReceive},marketing=#{marketing} where userId=#{userId}
 </update>
+
+<select id="getUser" parameterType="String" resultType="com.boot.newzips.account.LoginForm">
+	select userId,userPwd,userRole from member where userId=#{userId}
+</select>
 
 <!-- <select id="getMemberId" parameterType="map" resultType=""></select>
 

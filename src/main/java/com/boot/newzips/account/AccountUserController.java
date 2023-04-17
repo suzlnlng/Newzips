@@ -1,6 +1,11 @@
 package com.boot.newzips.account;
 
+import javax.validation.Valid;
+
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +18,7 @@ import com.boot.newzips.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@RestController
+@Controller
 @RequestMapping("/newzips")
 public class AccountUserController {
 	
@@ -31,14 +36,52 @@ public class AccountUserController {
 	}
 	
 	@PostMapping("/join")
-	public ModelAndView join_ok(MemberDTO memberDTO) throws Exception{
-		
-		System.out.println("join_ok");
+	public String join_ok(@Valid MemberDTO memberDTO, BindingResult bindingResult) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
+		if(bindingResult.hasErrors()) {
+			return "user/join_user2";
+		}
 		
-		return mav;
+		//패스워드1이랑 패스워드2가 같지 않으면~
+		if(!memberDTO.getUserPwd().equals(memberDTO.getUserPwd2())) {
+			//password2 -> 오류적용할 변수
+			//passwordInCorrect -> 사용자 정의 오류명(내가 만든것)
+			//오류메세지
+			System.out.println("pwd: " + memberDTO.getUserPwd());
+			System.out.println("pwd2: " + memberDTO.getUserPwd2());
+			bindingResult.rejectValue("userPwd2", "passwordInCorrect",
+					"2개의 패스워드가 일치하지 않습니다");
+			
+			return "user/join_user2";
+			
+		}
+		
+		try {
+		
+			accountUserService.createMember(memberDTO);
+
+			
+		} catch (DataIntegrityViolationException e) {
+			
+			e.printStackTrace();
+			
+			bindingResult.rejectValue("userId", "duplicateError","이미 등록된 사용자입니다. 다른 아이디를 사용해주세요.");
+			
+			return "user/join_user2";
+			
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+			
+			bindingResult.reject("signupFailed", e.getMessage());
+			
+			return "user/join_user2";
+			
+		}
+
+		return "redirect:/newzips";
 		
 	}
 	
@@ -52,20 +95,5 @@ public class AccountUserController {
 		return mav;
 		
 	}
-	
-	@PostMapping("/login")
-	public ModelAndView login_ok(LoginForm loginForm) throws Exception{
-		
-		ModelAndView mav = new ModelAndView();
-				
-		System.out.println(loginForm.getUserId());
-		System.out.println(loginForm.getUserPwd());
-		
-		mav.setViewName("redirect:/newzips");
-		
-		return mav;
-		
-	}
-	
 	
 }

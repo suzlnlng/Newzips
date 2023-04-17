@@ -15,9 +15,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     
-    <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
-    
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+
 </head>
 
 <body>
@@ -179,57 +178,117 @@
 		      <img src="/assets/images/newzips_logo_1.png" alt="logo">
 		      </div>
 
-		      <form th:object="${memberDTO}" tf:action="@{/newzips/join}" method="post">
+		      <form th:object="${memberDTO}" tf:action="@{/newzips/join}" name="joinForm" method="post">
 		      
 		      	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 		        
 		        <div style="margin-bottom: 10px"></div>
 		        
 		        <div class="login-form-field">
+		        <p class="input-description"><strong>아이디</strong></p>
 		          <input type="text" th:field="*{userId}" placeholder="아이디">
+		        <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="input-error"></p>
 		        </div>
 		        <div style="margin-bottom: 10px"></div>
 		        <div class="login-form-field">
+		        <p class="input-description"><strong>비밀번호</strong></p>
 		          <input type="password" th:field="*{userPwd}" placeholder="비밀번호">
+		          <p th:if="${#fields.hasErrors('userPwd')}" th:errors="*{userPwd}" class="input-error"></p>
 		        </div>
 		        
 		        <div style="margin-bottom: 10px"></div>
 		        <div class="login-form-field">
+		        <p class="input-description"><strong>비밀번호 확인</strong></p>
 		          <input type="password" th:field="*{userPwd2}" placeholder="비밀번호 확인">
+		          <p th:if="${#fields.hasErrors('userPwd2')}" th:errors="*{userPwd2}" class="input-error"></p>
 		        </div>
 		        
 		        <div style="margin-bottom: 10px"></div>
 		        <div class="login-form-field">
+				<p class="input-description"><strong>이름</strong></p>
 		          <input type="text" th:field="*{userName}" placeholder="이름">
+		          <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="input-error"></p>
 		        </div>
 		        
 		        <div style="margin-bottom: 10px"></div>
 		        <div class="login-form-field">
-		          <input type="text" th:field="*{userPwd}" placeholder="핸드폰 번호">
+		        		        <p class="input-description"><strong>핸드폰 번호</strong></p>
+		          <input type="text" th:field="*{userPhone}" placeholder="핸드폰 번호">
+		          <p th:if="${#fields.hasErrors('userPhone')}" th:errors="*{userPhone}" class="input-error"></p>
 		        </div>
 		        
 		        <div style="margin-bottom: 10px"></div>
 		        <div class="login-form-field">
-		          <input type="text" th:field="*{userAddr}" placeholder="주소">
+		        		        <p class="input-description"><strong>생년월일</strong></p>
+		          <input type="text" th:field="*{userBirth}" placeholder="생년월일 8자리">
+		          <p th:if="${#fields.hasErrors('userBirth')}" th:errors="*{userBirth}" class="input-error"></p>
 		        </div>
 		        
 		        <div style="margin-bottom: 10px"></div>
 		        <div class="login-form-field">
+		        		        <p class="input-description"><strong>주소</strong></p>
+		          <input type="text" th:field="*{userZipCode}" placeholder="우편번호" readonly onclick="findAddr()">
+		          <p th:if="${#fields.hasErrors('userZipCode')}" th:errors="*{userZipCode}" class="input-error"></p>
+		        </div>
+
+		        <div class="login-form-field">
+		          <input type="text" th:field="*{userAddr}" placeholder="주소" readonly>
+		          <p th:if="${#fields.hasErrors('userAddr')}" th:errors="*{userAddr}" class="input-error"></p>
+		        </div>
+
+		        <div class="login-form-field">
+		          <input type="text" th:field="*{userDetailedAddr}" placeholder="상세주소">
+		          <p th:if="${#fields.hasErrors('userDetailedAddr')}" th:errors="*{userDetailedAddr}" class="input-error"></p>
+		        </div>
+		        
+		        <div style="margin-bottom: 10px"></div>
+		        <div class="login-form-field">
+		        		        <p class="input-description"><strong>이메일</strong></p>
 		          <input type="text" th:field="*{userEmail}" placeholder="이메일">
+		          <p th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}" class="input-error"></p>
 		        </div>
 		        
 		        
+		        <div style="margin-top: 20px"></div>
 		        
+		        <div class="login-check-field">
+		        <input  type="checkbox"
+		        	id="selectall"
+			       name="check" 
+			       onclick="allCheck()"/><label for="selectall"></label> <b>모두 동의 [선택 정보 포함]</b>
+			
+			<div style="margin-top: 20px"></div>
+			
+				<hr/>
+				
+		        <div style="margin-top: 20px"></div>
 		        
+		       <input type= "checkbox" id="select1" name="check" onclick="itemCheck()"/>
+		       <label for="select1" ></label>  &nbsp;&nbsp;[필수] 이용약관 동의<br/>
+		       <div style="margin-bottom: 10px"></div>
+		       
+				<input type="checkbox" id="select2" name="check" onclick="itemCheck()"/>
+				<label for="select2"></label>  &nbsp;&nbsp;[필수] 개인정보 수집 및 이용동의<br/>
+				<div style="margin-bottom: 10px"></div>
+				
+				<input type="checkbox" id="select3" name="check" onclick="itemCheck()"/>
+				<label for="select3"></label>  &nbsp;&nbsp;[선택] 이메일 수신 동의<br/>
+				<div style="margin-bottom: 10px"></div>
+		        
+				</div>
+				<!-- login-check-field 끝 -->
+				
 		      <div style="margin-top: 20px"></div>
 			
 			<div style="margin-top: 10px"></div>
 		    
 		    <!-- 로그인 버튼 -->                                                                                                                
 		      <div class="login-form-field">
-		        <button type="submit" class="btn2">회원가입</button>
+		        <button type="button" class="btn2" onclick="sendIt()">회원가입</button>
 		      </div>
+		      
 		    </form>
+		    <!-- joinForm 끝 -->
 		    
 		    <div style="margin-top: 20px"></div>
 		   
@@ -337,6 +396,86 @@
 
     </div><!--wrapper end-->
 
+	<script>
+	function findAddr(){
+		new daum.Postcode({
+	        oncomplete: function(data) {
+	        	
+	        	console.log(data);
+	        	
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	            var roadAddr = data.roadAddress; // 도로명 주소 변수
+	            var jibunAddr = data.jibunAddress; // 지번 주소 변수
+	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	            document.getElementById('userZipCode').value = data.zonecode;
+	            if(roadAddr !== ''){
+	                document.getElementById("userAddr").value = roadAddr;
+	            } 
+	            else if(jibunAddr !== ''){
+	                document.getElementById("userAddr").value = jibunAddr;
+	            }
+	        }
+	    }).open();
+	}
+	
+	function allCheck() {
+		
+		var obj = document.getElementsByName("check");
+		
+		if (obj[0].checked){
+			for (i=1; i<obj.length; i++){
+				obj[i].checked = true;
+			}
+		}else{
+			for (i=1; i<obj.length; i++){
+				obj[i].checked = false;
+			}
+		}
+		
+	}
+	
+	function itemCheck(){
+		
+		var c = 0;
+		var obj = document.getElementsByName("check");
+		
+		for(i=1; i<obj.length; i++){
+		    if(obj[i].checked){
+		    	c++;
+		    }
+		 }
+		
+		if (c==(obj.length-1)){
+			obj[0].checked = true;
+		}else{
+			obj[0].checked = false;
+		}
+		
+	}
+	
+	function sendIt(){
+		
+		var f = document.joinForm;
+		
+		var sel1 = document.getElementById("select1").checked;
+		var sel2 = document.getElementById("select2").checked;
+		var sel3 = document.getElementById("select3").checked;
+		
+		f.emailService = sel3;
+		
+		alert(f.emailService);
+		
+		if(sel1 && sel2 && sel3){
+			f.submit();
+		}
+
+		
+	}
+	
+	</script>
+
 
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/modernizr-3.6.0.min.js"></script>
@@ -348,6 +487,9 @@
     <script src="/assets/js/map-cluster/infobox.min.js"></script>
     <script src="/assets/js/map-cluster/markerclusterer.js"></script>
     <script src="/assets/js/map-cluster/maps.js"></script>
+    
+    <!-- 주소 -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
 
