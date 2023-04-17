@@ -16,44 +16,65 @@
     
     <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
     
-        <script>
-        
-        
-		    function validateForm() {
-		    	
-		    	const f = document.reservationForm;
-		    	
-		        const date = document.getElementById("Date").value;
-		        const time = document.querySelectorAll('.time-button.selected');
-		        
-		        if (!date) {
-		            alert("날짜를 선택해주세요.");
-		        } else if(time.length===0) {
-		        	alert("시간을 선택해주세요.");
-		        } else {
-		        	alert("예약이 완료되었습니다.");
-		        	alert(time);
-		        	alert(date);
-		        	console.log("dfdf")
-		        	
-		        	f.visitDate.value = date;
-		        	f.visitTime.value = time;
-		        	
-		        	f.action = "/newzips/reservation_user1";
-		            f.submit();
-		            
-		        }
-		        console.log("되고있나요")
-		   		}
-		
-		    function selectTime(button) {
-		        const selected = document.querySelectorAll('.time-button.selected');
-		        selected.forEach((btn) => {
-		            btn.classList.remove('selected');
-		        });
-		        button.classList.add('selected');
-		    }
-		</script>
+       <script>
+       
+       function selectTime(button) {
+           const buttons = document.getElementsByName("visitTime");
+           for (let i = 0; i < buttons.length; i++) {
+               buttons[i].classList.remove("active");
+           }
+           button.classList.add("active");
+       }
+
+       function validateForm() {
+           const date = document.getElementById("Date").value;
+           const timeButtons = document.getElementsByName("visitTime");
+           let time = null;
+           for (let i = 0; i < timeButtons.length; i++) {
+               if (timeButtons[i].classList.contains("active")) {
+                   time = timeButtons[i].value;
+                   break;
+               }
+           }
+           if (date === "") {
+               alert("날짜를 선택해주세요.");
+           } else if (time === null) {
+               alert("시간을 선택해주세요.");
+           } else {
+               alert("예약되었습니다.\n날짜: " + date + ", 시간: " + time);
+               
+               const form = document.reservationForm;
+               const vd = document.getElementById("visitDate");
+               const vt = document.getElementById("visitTime");
+               
+               vd.value = date;
+               vt.value = time;
+
+               //form.action = "/newzips/reservation_user1";
+               
+               alert(form.method);
+               alert(form.visitTime);
+               alert(form.visitDate);
+               alert(form.action);
+               
+               form.submit();
+               
+               /*
+               const form = document.getElementById("reservationForm");
+               const hiddenInput = document.createElement("input");
+               hiddenInput.type = "hidden";
+               hiddenInput.name = "visitTime";
+               hiddenInput.value = time;
+               form.appendChild(hiddenInput);
+               form.action = "/newzips/reservation_user1";
+               form.method="post";
+               form.submit();
+               */
+               
+           }       
+       }
+</script>
+
 </head>
 
 <body>
@@ -281,18 +302,17 @@
                         </div>
                         
                         <!-- 방문 날짜 -->
-                        <form name="reservationForm" method="post">
+                        <form th:action="@{/newzips/reservation_user1}" name="reservationForm" method="post" >
+                        <!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/> -->
+
                         <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
                            <div class="contact-agent">
                            
-                          	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                          	<input type="hidden" th:name="itemId" th:value="${itemId}">
-                          	
                             <div style="margin-top: 40px"></div>
                                 <h3 style="margin-bottom: 15px;">방문 가능 날짜 선택</h3>
 
                                     <div class="form-field">
-                                        <input type="date" name="visitDate" id="Date" style="width: 40%">
+                                        <input type="date" name="visitDate" id="Date" style="width: 40%" min="today();">
                                     </div>
                                     <div style="margin-bottom: 12%;"></div>
 
@@ -300,11 +320,11 @@
 
 								    <div class="middle_text">시간 선택</div>
 								    <div>
-								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none;" name="visitTime">
+								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none;">
 								        <input type="button" class="time-button" value="09:00" onclick="selectTime(this)" name="visitTime">
 								        <input type="button" class="time-button" value="10:00" onclick="selectTime(this)" name="visitTime">
 								        <input type="button" class="time-button" value="11:00" onclick="selectTime(this)" name="visitTime"><br/>
-								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none;" name="visitTime">
+								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none;">
 								        <input type="button" class="time-button" value="12:00" onclick="selectTime(this)" name="visitTime">
 								        <input type="button" class="time-button" value="13:00" onclick="selectTime(this)" name="visitTime">
 								        <input type="button" class="time-button" value="14:00" onclick="selectTime(this)" name="visitTime">
@@ -322,7 +342,9 @@
                                     
                                     <div class="form-field5">
                                     <div style="margin-bottom: 30px;"></div>
-                                        <button type="submit" class="btn2" onclick="validateForm();">예약하기</button>
+                                        <input type="hidden" th:field="*{visitDate}"/>
+                        				<input type="hidden" th:field="*{visitTime}"/>
+                                        <button type="button" class="btn2" onclick="validateForm();">예약하기</button>
                                     </div><!--form-field end-->
                                     
                             </div><!--contact-agent end-->

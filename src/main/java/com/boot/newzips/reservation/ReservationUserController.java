@@ -37,7 +37,7 @@ public class ReservationUserController {
 		//임의로 설정
 		String itemId = request.getParameter("itemId");
 		itemId = "32906223";
-		
+
 		
 		//매물번호 기준으로 데이터 불러오기
 		
@@ -79,33 +79,35 @@ public class ReservationUserController {
 		model.addAttribute("visitTime",visitTime);
 		
 		dto.setItemId(itemId);
-		System.out.println(dto.getVisitDate());
-		System.out.println(dto.getVisitTime());
-		
-		
-		reservationUserService.insertReservation(dto);
-		
-		System.out.println(request.getParameter("visitDate"));
-		
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("redirect:/newzips/reservation_user_complete1");
-		
-		return mav;
+        dto.setVisitDate(visitDate);
+        dto.setVisitTime(visitTime);
+        
+
+        reservationUserService.insertReservation(dto);
+
+        ModelAndView mav = new ModelAndView();
+
+        // mav에 데이터 담기
+        mav.addObject("dtoV",dto);
+        mav.addObject("dtoR",reservationUserService.getReservationRoomInfo(itemId));
+        mav.addObject("visitDate",visitDate);
+        mav.addObject("visitTime",visitTime);
+        mav.setViewName("user/reservation_user_complete1");
+
+        return mav;
 		
 	}
 	
 	
 	
 	@GetMapping("/newzips/reservation_user_complete1")
-	public ModelAndView reservation_user_complete(HttpServletRequest request) throws Exception{
+	public ModelAndView reservation_user_complete(HttpServletRequest request,
+												  @RequestParam("itemId") String itemId) throws Exception{
 		
 		//주소에서 itemId 받아오기
 		//해당 id에 대한 데이터 불러오기
 		
 		//mav에 담기
-		String itemId = request.getParameter("itemId");
-		itemId = "32906223";
 		
 		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
 		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
@@ -114,6 +116,9 @@ public class ReservationUserController {
 		
 		mav.addObject("dtoV",dtoV);
 		mav.addObject("dtoR",dtoR);
+		mav.addObject("itemId",itemId);
+		mav.addObject("visitDate",request.getParameter("visitDate"));
+		mav.addObject("visitTime",request.getParameter("visitTime"));
 		
 		mav.setViewName("user/reservation_user_complete1");
 		
