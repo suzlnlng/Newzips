@@ -9,7 +9,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 <!-- 방문자 예약 -->
 
 <insert id="insertReservation" parameterType="com.boot.newzips.dto.VisitorReservDTO">
-	insert into reservation (reservNo,userId,itemId,realtorId,visitDate,visitTime,confirm) 
+	insert into VISITORRESERV (reservNo,userId,itemId,realtorId,visitDate,visitTime,confirm) 
 	values (#{reservNo},#{userId},#{itemId},#{realtorId},#{visitDate},#{visitTime},#{confirm})
 </insert>
 
@@ -37,7 +37,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectReservationReservNo" parameterType="String" resultType="com.boot.newzips.dto.VisitorReservDTO">
 		SELECT reservNo, userId, itemId, realtorId, visitDate, visitTime, confirm
 	    FROM VISITORRESERV
-	    WHERE reservNo = #{reservNo, jdbcType=VARCHAR}
+	    WHERE reservNo = #{reservNo}
 	</select>
 	
 	
@@ -62,8 +62,8 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 삭제 -->
-	<delete id="deleteReservation" parameterType="int">
-		delete from reservation where reservNo = #{reservNo, jdbcType=VARCHAR}
+	<delete id="deleteReservation" parameterType="String">
+		delete from VISITORRESERV where reservNo = #{reservNo}
 	</delete>
 
 

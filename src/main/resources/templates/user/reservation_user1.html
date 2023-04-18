@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -50,7 +50,7 @@
                vd.value = date;
                vt.value = time;
 
-               //form.action = "/newzips/reservation_user1";
+               form.action = "/newzips/reservation_user1";
                
                alert(form.method);
                alert(form.visitTime);
@@ -303,8 +303,9 @@
                         
                         <!-- 방문 날짜 -->
                         <form th:action="@{/newzips/reservation_user1}" name="reservationForm" method="post" >
-                        <!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/> -->
-
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <input type="hidden" th:field="*{visitDate}"/>
+                        <input type="hidden" th:field="*{visitTime}"/>
                         <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
                            <div class="contact-agent">
                            
@@ -312,7 +313,7 @@
                                 <h3 style="margin-bottom: 15px;">방문 가능 날짜 선택</h3>
 
                                     <div class="form-field">
-                                        <input type="date" name="visitDate" id="Date" style="width: 40%" min="today();">
+                                        <input type="date" name="visitDate" id="Date" style="width: 40%">
                                     </div>
                                     <div style="margin-bottom: 12%;"></div>
 
@@ -342,8 +343,6 @@
                                     
                                     <div class="form-field5">
                                     <div style="margin-bottom: 30px;"></div>
-                                        <input type="hidden" th:field="*{visitDate}"/>
-                        				<input type="hidden" th:field="*{visitTime}"/>
                                         <button type="button" class="btn2" onclick="validateForm();">예약하기</button>
                                     </div><!--form-field end-->
                                     
