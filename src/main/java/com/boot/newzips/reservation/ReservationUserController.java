@@ -31,7 +31,7 @@ public class ReservationUserController {
 	
 	
 	@GetMapping("/newzips/reservation_user1")
-	public ModelAndView reservation_user(HttpServletRequest request) throws Exception{
+	public ModelAndView reservation_user(VisitorReservDTO visitorReservDTO, HttpServletRequest request) throws Exception{
 		
 		//매물번호를 주소에서 받아오기
 		//임의로 설정
@@ -58,41 +58,44 @@ public class ReservationUserController {
 	
 	
 	@PostMapping("/newzips/reservation_user1")
-	public ModelAndView reservation_user_ok(VisitorReservDTO dto,HttpServletRequest request,
-			@RequestParam("visitDate") String visitDate, 
-			@RequestParam("visitTime") String visitTime,
+	public ModelAndView reservation_user_ok(VisitorReservDTO visitorReservDTO,HttpServletRequest request,
 			Model model) throws Exception{
+
+		ModelAndView mav = new ModelAndView();
 		
 		System.out.println("post 방식!!");
+		System.out.println("=====================");
+		System.out.println(visitorReservDTO.getVisitDate());
+		System.out.println(visitorReservDTO.getVisitTime());
 		//reservation_user메소드랑 동일하게 작성하는데,
 		//reservation_user1페이지에서 넘어온 날짜와 시간을 포함한
 		//예약 정보를 데이터베이스에 넣는과정을 추가해서 작성!!
 		
-		String itemId = request.getParameter("itemId");
-		itemId = "32906223";
-		
-		dto.setReservNo("12345");
-		dto.setUserId("user1");
-		dto.setRealtorId("realtor1");
-		
-		model.addAttribute("visitDate",visitDate);
-		model.addAttribute("visitTime",visitTime);
-		
-		dto.setItemId(itemId);
-        dto.setVisitDate(visitDate);
-        dto.setVisitTime(visitTime);
-        
-
-        reservationUserService.insertReservation(dto);
-
-        ModelAndView mav = new ModelAndView();
-
-        // mav에 데이터 담기
-        mav.addObject("dtoV",dto);
-        mav.addObject("dtoR",reservationUserService.getReservationRoomInfo(itemId));
-        mav.addObject("visitDate",visitDate);
-        mav.addObject("visitTime",visitTime);
-        mav.setViewName("user/reservation_user_complete1");
+//		String itemId = request.getParameter("itemId");
+//		itemId = "32906223";
+//		
+//		dto.setReservNo("12345");
+//		dto.setUserId("user1");
+//		dto.setRealtorId("realtor1");
+//		
+////		model.addAttribute("visitDate",visitDate);
+////		model.addAttribute("visitTime",visitTime);
+//		
+//		dto.setItemId(itemId);
+//        dto.setVisitDate(visitDate);
+//        dto.setVisitTime(visitTime);
+//        
+//
+//        reservationUserService.insertReservation(dto);
+//
+//        ModelAndView mav = new ModelAndView();
+//
+//        // mav에 데이터 담기
+//        mav.addObject("dtoV",dto);
+//        mav.addObject("dtoR",reservationUserService.getReservationRoomInfo(itemId));
+//        mav.addObject("visitDate",visitDate);
+//        mav.addObject("visitTime",visitTime);
+//        mav.setViewName("user/reservation_user_complete1");
 
         return mav;
 		
