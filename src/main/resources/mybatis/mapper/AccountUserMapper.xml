@@ -16,8 +16,12 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	emailReceive=#{emailReceive},marketing=#{marketing} where userId=#{userId}
 </update>
 
-<select id="getUser" parameterType="String" resultType="com.boot.newzips.account.LoginForm">
+<select id="getUserById" parameterType="String" resultType="com.boot.newzips.account.LoginForm">
 	select userId,userPwd,userRole from member where userId=#{userId}
+</select>
+
+<select id="getUserByEmail" parameterType="String" resultType="com.boot.newzips.account.LoginForm">
+	select userId,userPwd,userRole from member where userEmail=#{userEmail}
 </select>
 
 <!-- <select id="getMemberId" parameterType="map" resultType=""></select>

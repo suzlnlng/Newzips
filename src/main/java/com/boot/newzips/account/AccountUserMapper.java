@@ -13,6 +13,8 @@ public interface AccountUserMapper {
 	
 	public void updateMember(MemberDTO memberDTO) throws Exception;
 	
-	public Optional<LoginForm> getUser(String userId) throws Exception;
+	public Optional<MemberDTO> getUserById(String userId) throws Exception;
+	
+	public Optional<MemberDTO> getUserByEmail(String userEmail) throws Exception;
 
 }

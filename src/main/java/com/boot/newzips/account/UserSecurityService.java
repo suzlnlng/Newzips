@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.boot.newzips.dto.MemberDTO;
+
 import lombok.RequiredArgsConstructor;
 
 
@@ -24,36 +26,28 @@ public class UserSecurityService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 		
-		Optional<LoginForm> _user = null;
+		
+		Optional<MemberDTO> _user = null;
+		
 		try {
-			_user = accountUserMapper.getUser(userId);
+			_user = accountUserMapper.getUserById(userId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		System.out.println("============================================================");
-		System.out.println(_user.get().getUserId());
 
 		if (!_user.isPresent()) {
 			throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
 		}
 		
-		LoginForm user = _user.get();
+		MemberDTO user = _user.get();
 		
-		System.out.println(user.getUserRole());
-		
-		System.out.println(user.getUserPwd());
-		
-		System.out.println();
-		System.out.println();
-		
+		//유저에 권한부여
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
 		if("admin".equals(user.getUserRole().toString())) {
 			authorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getRole()));
 		}else {
-			System.out.println("여기서 권한 추가");
 			authorities.add(new SimpleGrantedAuthority(UserRole.USER.getRole()));
 		}
 		

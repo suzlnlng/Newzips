@@ -38,11 +38,26 @@ public class AccountUserServiceImpl implements AccountUserService {
 		accountUserMapper.updateMember(dto);
 	}
 
-
+	
 	@Override
-	public Optional<LoginForm> getUser(String userId) throws Exception {
+	public Optional<MemberDTO> getUserById(String userId) throws Exception {
 		
-		Optional<LoginForm> searchUser = accountUserMapper.getUser(userId);
+		Optional<MemberDTO> searchUser = accountUserMapper.getUserById(userId);
+		
+		if(!searchUser.isPresent()) {
+			return searchUser;
+		}else {
+			System.out.println("유저 없음");
+			throw new Exception("User Not Found!!");
+		}
+		
+	}
+
+	
+	@Override
+	public Optional<MemberDTO> getUserByEmail(String userEmail) throws Exception {
+		
+		Optional<MemberDTO> searchUser = accountUserMapper.getUserByEmail(userEmail);
 		
 		if(!searchUser.isPresent()) {
 			return searchUser;
