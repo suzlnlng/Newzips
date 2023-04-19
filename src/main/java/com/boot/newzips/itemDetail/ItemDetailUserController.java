@@ -29,7 +29,7 @@ public class ItemDetailUserController {
 	public ModelAndView itemDetail_user(HttpServletRequest request) throws Exception{
 		
 		String itemId = request.getParameter("itemId");
-		itemId = "2396640";
+		itemId = "3428";
 				
 		ModelAndView mav = new ModelAndView();	
 		
@@ -53,6 +53,7 @@ public class ItemDetailUserController {
 		mav.setViewName("user/itemDetail_user");		
 				
 		return mav;
+		
 	}
 	
 }

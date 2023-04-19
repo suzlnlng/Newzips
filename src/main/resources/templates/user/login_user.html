@@ -1,20 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Selio - Real Estate HTML Template</title>
+    <title>Newzip's</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="shortcut icon" href="/assets/images/favicon.png">
     <link rel="stylesheet" href="/assets/css/animate.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/login.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
-
-	<link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    
+    
 </head>
 
 <body>
@@ -68,7 +71,7 @@
                         <div class="col-xl-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
                                 <a class="navbar-brand" href="01_Home.html">
-                                    <img src="/assets/images/logo.png" alt="">
+                                    <img src="/assets/images/newzips_logo_1.png" alt="">
                                 </a>
                                 <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
                                     <span class="icon-spar"></span>
@@ -153,143 +156,92 @@
 
         </header><!--header end-->
 
-        <div class="popup" id="sign-popup">
-            <h3>Sign In to your Account</h3>
-            <div class="popup-form">
-                <form>
-                    <div class="form-field">
-                        <input type="text" name="username" placeholder="Username">
-                    </div>
-                    <div class="form-field">
-                        <input type="text" name="password" placeholder="Password">
-                    </div>
-                    <div class="form-cp">
-                        <div class="form-field">
-                            <div class="input-field">
-                                <input type="checkbox" name="ccc" id="cc1">
-                                <label for="cc1">
-                                    <span></span>
-                                    <small>Remember me</small>
-                                </label>
-                            </div>
-                        </div>
-                        <a href="#" title="">Forgot Password?</a>
-                    </div><!--form-cp end-->
-                    <button type="submit" class="btn2">Sign In</button>
-                </form>
-                <a href="#" title="" class="fb-btn"> <i class="fa fa-facebook"></i>Sign In With Facebook</a>
-            </div>
-        </div><!--popup end-->
-
-        <div class="popup" id="register-popup">
-            <h3>Register</h3>
-            <div class="popup-form">
-                <form>
-                    <div class="form-field">
-                        <input type="text" name="username" placeholder="Username">
-                    </div>
-                    <div class="form-field">
-                        <input type="text" name="email" placeholder="Email">
-                    </div>
-                    <div class="form-field">
-                        <input type="text" name="password" placeholder="Password">
-                    </div>
-                    <div class="form-cp">
-                        <div class="form-field">
-                            <div class="input-field">
-                                <input type="checkbox" name="ccc" id="cc2">
-                                <label for="cc2">
-                                    <span></span>
-                                    <small>I agree with terms</small>
-                                </label>
-                            </div>
-                        </div>
-                        <a href="#" title="" class="signin-op">Have an account?</a>
-                    </div><!--form-cp end-->
-                    <button type="submit" class="btn2">Register</button>
-                </form>
-            </div>
-        </div><!--popup end-->
-        
-        
 
         <section class="pager-sec bfr">
             <div class="container">
                 <div class="pager-sec-details">
-                    <h3>방문 예약 신청 완료</h3>
+                    <h3>로그인</h3>
                     <ul>
                         <li><a href="#" title="">Home</a></li>
                         <li><span>Agent Profile</span></li>
                     </ul>
-                </div><!--pager-sec-details end-->
+                </div>
             </div>
         </section>
 
-        <section class="page-main-content section-padding">
-            <div class="container">
-                <div class="agent-profile-sec">
-                    <div class="row" style="flex-direction: column;">
-                        <div class="col-xl-8 col-lg-9 col-md-12 pl-0 pr-0">
-                            <div class="agent-profile5">
-                                <div class="agent-img5" style="margin-right: 60px;">
-                                    <img src="https://via.placeholder.com/355x250" alt="">
-                                </div><!--agent-img end-->
-                                
-                                
-                                <div class="agent-info5">
-                                    <h3>매물정보</h3>
-                                    <p>보증금, 전월세, 중개비 등등</p>                                                                
-                                </div><!--agent-info end-->
-                            </div><!--agent-profile end-->
-                        </div>
-                        
-                        <div>
-							<dl>
-								<dt>날짜</dt>
-								<dd>[[${dto.visitDate }]]</dd>
-								<dt>시간</dt>
-								<dd>[[${dto.visitTime }]]</dd>			
-							</dl>		
-						</div>
-                        
-                        
-                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
-                            <div class="contact-agent5">
-                            <div style="margin-top: 40px"></div>
+		<!-- 아이디 비밀번호 입력 -->
+		<section class="page-main-content section-padding">
+		  <div class="container">
+		    <div class="login">
+		      <div style="margin-top: 40px"></div>
+		      <div class="login-form-field">
+		      <img src="/assets/images/newzips_logo_1.png" alt="logo">
+		      </div>
+		      <form th:object="${loginForm}" tf:action="@{/newzips/login}" method="post">
+		      
+		      	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+		        
+		        <div style="margin-bottom: 10px"></div>
+		        
+		        <div class="login-form-field">
+		          <input type="text" th:field="*{userId}" placeholder="아이디">
+		        </div>
+		        <div style="margin-bottom: 10px"></div>
+		        <div class="login-form-field">
+		          <input type="password" th:field="*{userPwd}" placeholder="비밀번호">
+		        </div>
+		      <div style="margin-top: 20px"></div>
 
-                                 <h2>요청사항</h2>
-                                 <div style="margin-bottom: 10px"></div>
-                            <form>                                                    
-                                  <div class="form-field">
-                                      <textarea name="message" placeholder="요청사항" style="resize: none; width: 108%" disabled="disabled"></textarea>
-                                  </div><!--form-field end-->                                
-                            </form>
-                            
-                            <form>
-                            <div class="form-field" >
-                                <h2>중개인이 매칭될 예정입니다. 매칭된 중개인은 마이페이지 > 방문예약에서 확인하실 수 있습니다.</h2>
-                            </div><!--form-field end-->  
-                            </form>
-                            
+			<div style="margin-left: 50px"></div>
+			<div class="login-check-field">
+			<input type= "checkbox" id="select1" name="check" onclick=""/>
+		       <label for="select1"></label>&nbsp;&nbsp;아이디 저장
+			</div>
+			
+			<div style="margin-top: 10px"></div>
+		    
+		    <!-- 로그인 버튼 -->                                                                                                                
+		      <div class="login-form-field">
+		        <button type="submit" class="btn2">로그인</button>
+		      </div>
+		    </form>
+		    
+		    <div style="margin-top: 20px"></div>
+		    
+		    <div class="login-check-field">
+		     <span><a href="#"><span>아이디 찾기</span></a> ｜ <a href="#"><span>비밀번호 찾기</span></a></span>
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <a th:href="@{/newzips/join}" class="a-right">회원가입</a>
+		    </div>
+		    <!-- <div class="login-form-field"> -->
+		    <div class="d-inline my-2 my-lg-0">
+		        
 
-                                    <div class="form-field5">
-                                    <div style="margin-bottom: 30px;"></div>
-                                        <button type="submit" class="btn2">확인</button>
-                                    </div><!--form-field end-->
-                                </form>
-                            </div><!--contact-agent end-->
-                        </div>
-                    </div>
-                </div><!--agent-profile-sec end-->
-            </div>
-        </section><!--page-main-content end-->
+		    </div>
+		    
+		    <div style="margin-top: 10px"></div>
+		    
+		    <div class="login-form-field">
+		    <div>─────────────── 또는 ────────────────</div>
+		    </div>
+		    
+		    <div class="login-form-field">
+		    <div class="social-container">
+		    <a href="/oauth2/authorization/google"><img src="/assets/images/google.png" alt="Google 로고"></a>
+				<a href="/oauth2/authorization/kakao"><img src="/assets/images/kakao.png" alt="카카오 로고"></a>
+				<a href="/oauth2/authorization/naver" ><img src="/assets/images/naver.png" alt="네이버 로고"></a>
+		    </div>
+		    </div>
+		    
+		  </div>
+		  
+		</div>
+		</section>
         
-        
-        
-        
-        
-       
-   
 
         <a href="#" title="">    
             <section class="cta st2 section-padding">
@@ -304,6 +256,10 @@
                 </div>
             </section>
         </a>
+        
+        
+        
+        
 
         <section class="bottom section-padding">
             <div class="container">

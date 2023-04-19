@@ -1,30 +1,133 @@
 package com.boot.newzips.reservation;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.swing.text.View;
 
-@Controller
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.boot.newzips.dto.RoomInfoDTO;
+import com.boot.newzips.dto.VisitorReservDTO;
+
+import com.boot.newzips.service.ReservationUserService;
+import com.boot.newzips.service.ResidentService;
+
+@RestController
 public class ReservationUserController {
 	
+	@Resource 
+	private ResidentService residentService; 
 	
-	@GetMapping("newzips/reservation_user1")
-	public String user1() {
+	@Resource
+	private ReservationUserService reservationUserService;
+	
+	
+	
+	@GetMapping("/newzips/reservation_user1")
+	public ModelAndView reservation_user(VisitorReservDTO visitorReservDTO, HttpServletRequest request) throws Exception{
 		
-		return "/user/reservation_user1";
-	}
+		//매물번호를 주소에서 받아오기
+		//임의로 설정
+		String itemId = request.getParameter("itemId");
+		itemId = "32906223";
 
-	@GetMapping("newzips/reservation_resident1")
-	public String resident1() {
 		
-		return "/user/reservation_resident1";
+		//매물번호 기준으로 데이터 불러오기
+		
+		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
+		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//mav에 데이터 담기
+		mav.addObject("dtoV",dtoV);
+		mav.addObject("dtoR",dtoR);
+		
+		mav.setViewName("user/reservation_user1");
+		
+		return mav;
+		
 	}
 	
-	@GetMapping("newzips/reservation_user_complete1")
-	public String usercomplete1() {
+	
+	@PostMapping("/newzips/reservation_user1")
+	public ModelAndView reservation_user_ok(VisitorReservDTO visitorReservDTO,HttpServletRequest request,
+			Model model) throws Exception{
+
+		ModelAndView mav = new ModelAndView();
 		
-		return "/user/reservation_user_complete1";
+		System.out.println("post 방식!!");
+		System.out.println("=====================");
+		System.out.println(visitorReservDTO.getVisitDate());
+		System.out.println(visitorReservDTO.getVisitTime());
+		//reservation_user메소드랑 동일하게 작성하는데,
+		//reservation_user1페이지에서 넘어온 날짜와 시간을 포함한
+		//예약 정보를 데이터베이스에 넣는과정을 추가해서 작성!!
+		
+//		String itemId = request.getParameter("itemId");
+//		itemId = "32906223";
+//		
+//		dto.setReservNo("12345");
+//		dto.setUserId("user1");
+//		dto.setRealtorId("realtor1");
+//		
+////		model.addAttribute("visitDate",visitDate);
+////		model.addAttribute("visitTime",visitTime);
+//		
+//		dto.setItemId(itemId);
+//        dto.setVisitDate(visitDate);
+//        dto.setVisitTime(visitTime);
+//        
+//
+//        reservationUserService.insertReservation(dto);
+//
+//        ModelAndView mav = new ModelAndView();
+//
+//        // mav에 데이터 담기
+//        mav.addObject("dtoV",dto);
+//        mav.addObject("dtoR",reservationUserService.getReservationRoomInfo(itemId));
+//        mav.addObject("visitDate",visitDate);
+//        mav.addObject("visitTime",visitTime);
+//        mav.setViewName("user/reservation_user_complete1");
+
+        return mav;
+		
 	}
 	
+	
+	
+	@GetMapping("/newzips/reservation_user_complete1")
+	public ModelAndView reservation_user_complete(HttpServletRequest request,
+												  @RequestParam("itemId") String itemId) throws Exception{
+		
+		//주소에서 itemId 받아오기
+		//해당 id에 대한 데이터 불러오기
+		
+		//mav에 담기
+		
+		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
+		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
+				
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("dtoV",dtoV);
+		mav.addObject("dtoR",dtoR);
+		mav.addObject("itemId",itemId);
+		mav.addObject("visitDate",request.getParameter("visitDate"));
+		mav.addObject("visitTime",request.getParameter("visitTime"));
+		
+		mav.setViewName("user/reservation_user_complete1");
+		
+		return mav;
+	}
+		
 	
 
 }
