@@ -21,9 +21,14 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	from listing where itemId=#{itemId}
 </select>
 
-<select id="getReadData_junsae" parameterType="String" resultType="com.boot.newzips.dto.junsaeListingDTO>
-	select itemId,addrCity,addrGu,addrDetail,yearly_monthly,maintenanceCost,maintenanceList,ectList,parking,parkingCost,contract
-	from listing where itemId=#{itemId}
+<select id="getReadData_jun" parameterType="String" resultType="com.boot.newzips.dto.JunsaeListingDTO">
+	select itemId,yearlyFee,yearlyFee_web,contractPeriod
+	from junsaelisting where itemId=#{itemId}
+</select>
+
+<select id="getReadData_wol" parameterType="String" resultType="com.boot.newzips.dto.WolseListingDTO">
+	select itemId,deposit,deposit_web,monthlyFee,monthlyFee_web,contractPeriod
+	from wolselisting where itemId=#{itemId}
 </select>
 
 
