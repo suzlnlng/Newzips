@@ -10,6 +10,8 @@ public interface AccountUserService {
 
 	public void createMember(MemberDTO memberDTO) throws Exception;
 	
+	public void createOauthMember(MemberDTO memberDTO) throws Exception;
+	
 	public void updateMember(MemberDTO memberDTO) throws Exception;
 	
 	public Optional<MemberDTO> getUserById(String userId) throws Exception;

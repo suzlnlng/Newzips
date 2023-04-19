@@ -32,6 +32,16 @@ public class AccountUserServiceImpl implements AccountUserService {
 		accountUserMapper.createMember(memberDTO);
 		
 	}
+	
+	@Override
+	public void createOauthMember(MemberDTO memberDTO) throws Exception {
+		
+		memberDTO.setUserPwd(passwordEncoder.encode(memberDTO.getUserPwd()));
+		
+		accountUserMapper.createOauthMember(memberDTO);
+		
+	}
+	
 
 	@Override
 	public void updateMember(MemberDTO dto) throws Exception {
@@ -67,7 +77,8 @@ public class AccountUserServiceImpl implements AccountUserService {
 		}
 		
 	}
-	
+
+
 
 
 }

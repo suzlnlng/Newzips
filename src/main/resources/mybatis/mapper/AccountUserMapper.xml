@@ -11,16 +11,21 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	values (#{userId},#{userPwd},#{userName},#{userBirth},#{userPhone},#{userZipCode},#{userAddr},#{userDetailedAddr},#{userEmail},#{userRole},#{emailReceive})
 </insert>
 
+<insert id="createOauthMember" parameterType="com.boot.newzips.dto.MemberDTO">
+	insert into member (userId,userName,userEmail,userRole)
+	values (#{userId},#{userName},#{userEmail},#{userRole})
+</insert>
+
 <update id="updateMember" parameterType="com.boot.newzips.dto.MemberDTO">
 	update member set userPwd=#{userPwd},userPhone=#{userPhone},userAddr=#{userAddr},userEmail=#{userEmail},
 	emailReceive=#{emailReceive},marketing=#{marketing} where userId=#{userId}
 </update>
 
-<select id="getUserById" parameterType="String" resultType="com.boot.newzips.account.LoginForm">
+<select id="getUserById" parameterType="String" resultType="com.boot.newzips.dto.MemberDTO">
 	select userId,userPwd,userRole from member where userId=#{userId}
 </select>
 
-<select id="getUserByEmail" parameterType="String" resultType="com.boot.newzips.account.LoginForm">
+<select id="getUserByEmail" parameterType="String" resultType="com.boot.newzips.dto.MemberDTO">
 	select userId,userPwd,userRole from member where userEmail=#{userEmail}
 </select>
 

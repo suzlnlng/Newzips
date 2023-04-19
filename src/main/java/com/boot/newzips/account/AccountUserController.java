@@ -82,7 +82,7 @@ public class AccountUserController {
 	}
 	
 	@GetMapping("/login")
-	public ModelAndView login(LoginForm loginForm) throws Exception{
+	public ModelAndView login(MemberDTO memberDTO) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		

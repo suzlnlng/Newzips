@@ -78,7 +78,7 @@ public class BaseCustomOAuth2UserService implements OAuth2UserService<OAuth2User
 		if(!_user.isPresent()) {
 			
 			try {
-				accountUserMapper.createMember(memberDTO);
+				accountUserMapper.createOauthMember(memberDTO);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

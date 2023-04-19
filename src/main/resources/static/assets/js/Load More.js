@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var offset = 0; // 초기 offset 값
-  var limit = 10; // 한 번에 가져올 데이터 갯수
+  var limit = 5; // 한 번에 가져올 데이터 갯수
 
   loadMorePosts(limit); // 최초 데이터 로딩
 

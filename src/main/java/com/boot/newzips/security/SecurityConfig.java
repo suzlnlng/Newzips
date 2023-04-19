@@ -42,7 +42,7 @@ public class SecurityConfig {
 			.usernameParameter("userId")
 			.passwordParameter("userPwd")
 			.defaultSuccessUrl("/newzips")
-			.failureUrl("/newzips/join")
+			.failureUrl("/newzips/login")
 			.failureHandler(customFailureHandler)
 		.and()
 		.logout()

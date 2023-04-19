@@ -134,7 +134,7 @@
                                             <li class="nav-item signin-btn">
                                                 <a href="#" class="nav-link">
                                                     <i class="la la-sign-in"></i>
-                                                    <span><b class="signin-op">Sign in</b> or <b class="reg-op">Register</b></span>
+                                                    <span><b class="signin-op">로그인</b> or <b class="reg-op">회원가입</b></span>
                                                 </a>
 
                                             </li>
@@ -177,7 +177,7 @@
 		      <div class="login-form-field">
 		      <img src="/assets/images/newzips_logo_1.png" alt="logo">
 		      </div>
-		      <form th:object="${loginForm}" tf:action="@{/newzips/login}" method="post">
+		      <form th:object="${memberDTO}" tf:action="@{/newzips/login}" method="post">
 		      
 		      	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 		        
