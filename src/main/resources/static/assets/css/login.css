@@ -11,10 +11,36 @@ form {
     text-align: center;
 }
 
+
+/* ================ login-form-field =============== */
+
 .login-form-field {
     display: inline-block;
     text-align: center;
     width: 100%; /* 추가 */
+    margin: 0;
+}
+
+.login-form-field .input-description{
+	width: 80%;
+	text-align:left;
+	margin-left:59px;
+    font-size: 13px;
+    font-weight: bold;
+	color: #383E65; 
+}
+
+.login-form-field .input-error{
+	width: 80%;
+	text-align:left;
+	margin-left:59px;
+    font-size: 12px;
+    font-weight: bold;
+	color: red; 
+}
+
+.login-form-field .a-right{
+	text-align: right;
 }
 
 .login-form-field input {
@@ -27,7 +53,6 @@ form {
     background-color: #fff;
 }
 
-
 .login-form-field button {
     width: 70%; /* 추가 */
     height: 48px;
@@ -36,4 +61,88 @@ form {
     border: none;
     margin-left:85px;
     text-align: center;
+}
+
+
+/* ================ login-check-field =============== */
+
+.login-check-field {
+    display: inline-block;
+    margin-left:60px;
+    text-align: left;
+    color: #808080;
+    width: 100%; /* 추가 */
+}
+
+
+.login-check-field input[type="checkbox"]{
+	display: none;
+}
+
+.login-check-field input[type="checkbox"] + label{
+   cursor: pointer;
+}
+
+.login-check-field input[type="checkbox"] + label:before{
+  content:"";
+  display:inline-block;
+  width:17px;
+  height:17px;
+  line-height:17px;
+  border:1px solid #cbcbcb;
+  vertical-align:middle;/*체크 전과 체크 후 높이 차이 때문에 설정*/
+  }
+
+/*checked된 input 바로 다음의 label:before 에 체크 후 CSS 설정*/  
+.login-check-field input[type="checkbox"]:checked + label:before{
+  content:"\f00c";/*폰트어썸 유니코드*/
+  font-family:"Font Awesome 5 free"; /*폰트어썸 아이콘 사용*/
+  font-weight:900;/*폰트어썸 설정*/
+  color:#fff;
+  background-color:#6A7BE7;
+  border-color:#6A7BE7;
+  font-size:13px;
+  text-align:center;
+  }
+
+.login-check-field hr{
+	margin: 0; /* hr의 기본 마진을 제거 */
+	text-align: left;
+	border: none; /* hr의 기본 테두리를 제거 */
+	border-top: 1px solid #dfe0e5 ; /* hr의 위쪽 테두리를 1px 실선으로 추가 */
+	width: 80%; /* hr의 너비를 100%로 설정하여 부모 요소에 가득 차게 설정 */
+}
+
+.login-check-field .input-error{
+	width: 80%;
+	text-align:left;
+	margin-left:59px;
+    font-size: 12px;
+    font-weight: bold;
+	color: red; 
+}
+
+
+
+/* ================ social =============== */
+
+.social-container {
+	margin: 20px 0;
+}
+
+.social-container a {
+	border: 1px solid #DDDDDD;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+	height: 50px;
+	width: 50px;
+}
+
+
+.social-container img {
+	width: 40px;
+	height: 40px;
 }

@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     
-    <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     
     
 </head>
@@ -192,8 +192,10 @@
 		        </div>
 		      <div style="margin-top: 20px"></div>
 
-			<div style="margin-left: 50px">
-			<input type="checkbox"/>아이디 저장
+			<div style="margin-left: 50px"></div>
+			<div class="login-check-field">
+			<input type= "checkbox" id="select1" name="check" onclick=""/>
+		       <label for="select1"></label>&nbsp;&nbsp;아이디 저장
 			</div>
 			
 			<div style="margin-top: 10px"></div>
@@ -206,23 +208,34 @@
 		    
 		    <div style="margin-top: 20px"></div>
 		    
+		    <div class="login-check-field">
+		     <span><a href="#"><span>아이디 찾기</span></a> ｜ <a href="#"><span>비밀번호 찾기</span></a></span>
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <a th:href="@{/newzips/join}" class="a-right">회원가입</a>
+		    </div>
 		    <!-- <div class="login-form-field"> -->
 		    <div class="d-inline my-2 my-lg-0">
-		    <span><a href="#" class="nav-link"><span>아이디 찾기</span></a> ｜ <a href="#" class="nav-link"><span>비밀번호 찾기</span></a></span>     
-		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    회원가입
+		        
+
 		    </div>
 		    
 		    <div style="margin-top: 10px"></div>
 		    
 		    <div class="login-form-field">
-		    <div>───────────── 또는 ──────────────</div>
+		    <div>─────────────── 또는 ────────────────</div>
 		    </div>
 		    
-		    <div class="login-form-field">카카오톡</div>
-		    
+		    <div class="login-form-field">
+		    <div class="social-container">
+		    <a href="/oauth2/authorization/google"><img src="/assets/images/google.png" alt="Google 로고"></a>
+				<a href="/oauth2/authorization/kakao"><img src="/assets/images/kakao.png" alt="카카오 로고"></a>
+				<a href="/oauth2/authorization/naver" ><img src="/assets/images/naver.png" alt="네이버 로고"></a>
+		    </div>
+		    </div>
 		    
 		  </div>
 		  

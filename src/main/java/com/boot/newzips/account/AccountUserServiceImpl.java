@@ -1,6 +1,12 @@
 package com.boot.newzips.account;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +24,12 @@ public class AccountUserServiceImpl implements AccountUserService {
 	private final PasswordEncoder passwordEncoder;
 
 	@Override
-	public void createMember(MemberDTO dto) throws Exception {
-		
-		dto.setUserPwd(passwordEncoder.encode(dto.getUserPwd()));
-		
-		accountUserMapper.createMember(dto);
+	public void createMember(MemberDTO memberDTO) throws Exception {
+
+		memberDTO.setUserPwd(passwordEncoder.encode(memberDTO.getUserPwd()));
+		memberDTO.setUserRole("USER");
+
+		accountUserMapper.createMember(memberDTO);
 		
 	}
 
@@ -30,8 +37,22 @@ public class AccountUserServiceImpl implements AccountUserService {
 	public void updateMember(MemberDTO dto) throws Exception {
 		accountUserMapper.updateMember(dto);
 	}
+
+
+	@Override
+	public Optional<LoginForm> getUser(String userId) throws Exception {
+		
+		Optional<LoginForm> searchUser = accountUserMapper.getUser(userId);
+		
+		if(!searchUser.isPresent()) {
+			return searchUser;
+		}else {
+			System.out.println("유저 없음");
+			throw new Exception("User Not Found!!");
+		}
+		
+	}
 	
-	
-	
+
 
 }

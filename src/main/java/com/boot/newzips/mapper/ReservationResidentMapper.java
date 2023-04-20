@@ -9,7 +9,7 @@ public interface ReservationResidentMapper {
 
 	public void insertResidentReserv(ResidenceReservDTO dto) throws Exception;
 	
-	public ResidenceReservDTO selectResidentReserv(String userId, String itemId) throws Exception;
+	public ResidenceReservDTO selectResidenceReservUserId(String userId) throws Exception;
 	
 	public void deleteResidentReserv(ResidenceReservDTO dto) throws Exception;
 }

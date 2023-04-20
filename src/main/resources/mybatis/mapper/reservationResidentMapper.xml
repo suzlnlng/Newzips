@@ -10,18 +10,19 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 
 
 <insert id="insertResidentReserv" parameterType="com.boot.newzips.dto.ResidenceReservDTO">
-  INSERT INTO residentReserv (userId, itemId, date, time, available)
-  VALUES (#{userId}, #{itemId}, #{date}, #{time}, #{available})
+  INSERT INTO RESIDENCERESERV (userId, itemId, availableDate, availableTime, available)
+  VALUES (#{userId}, #{itemId}, #{availableDate}, #{availableTime}, #{available})
 </insert>
 
-<!-- 유저 아이디와 아이템 아이디로 조회 -->
-<select id="selectResidentReserv" parameterType="String" resultType="com.boot.newzips.dto.ResidenceReservDTO">
-  select userId,itemId,date,time,available from residentReserv where userId = #{userId} and itemId=#{itemId}
+<!-- 유저 아이디로 조회 -->
+<select id="selectResidenceReservUserId" parameterType="String" resultType="com.boot.newzips.dto.ResidenceReservDTO">
+  select userId, itemId, availableDate, availableTime, available from RESIDENCERESERV where userId = #{userId}
 </select>
+
 
 <!-- 예약 정보를 삭제 -->
 <delete id="deleteResidentReserv" parameterType="com.boot.newzips.dto.ResidenceReservDTO">
-  DELETE FROM residentReserv WHERE userId = #{userId} and itemId=#{itemId} and date=#{date} and #time={time}
+  DELETE FROM RESIDENCERESERV WHERE userId = #{userId}
 </delete>
 
 
