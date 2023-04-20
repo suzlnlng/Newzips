@@ -55,7 +55,7 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	}
 
 	@Override
-	public void deleteReservation(int reservNo) throws Exception {
+	public void deleteReservation(String reservNo) throws Exception {
 		reservationUserMapper.deleteReservation(reservNo);
 		
 	}

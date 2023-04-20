@@ -32,5 +32,5 @@ public interface ReservationUserMapper {
 		public RoomInfoDTO getReservationRoomInfo(String itemId) throws Exception;
 		
 		// ªË¡¶
-		public void deleteReservation(int reservNo) throws Exception;
+		public void deleteReservation(String reservNo) throws Exception;
 }

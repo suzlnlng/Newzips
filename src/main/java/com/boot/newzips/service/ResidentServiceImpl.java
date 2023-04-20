@@ -21,8 +21,8 @@ public class ResidentServiceImpl implements ResidentService{
 			}
 
 	@Override
-	public ResidenceReservDTO selectResidentReserv(String userId, String itemId) throws Exception {
-		return reservationResidentMapper.selectResidentReserv(userId, itemId);
+	public ResidenceReservDTO selectResidenceReservUserId(String userId) throws Exception {
+		return reservationResidentMapper.selectResidenceReservUserId(userId);
 	}
 
 	@Override

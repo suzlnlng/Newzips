@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -16,31 +16,9 @@
     
     <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
     
-    
-    <script>
-    function validateForm() {
-        const date = document.getElementById("Date").value;
-        const time = document.querySelectorAll('.time-button.selected');
-        
-        if (!date) {
-            alert("날짜를 선택해주세요.");
-        } else if(time.length===0) {
-        	alert("시간을 선택해주세요.");
-        } else {
-        	alert("예약이 완료되었습니다.");
-        }
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-   		}
 
-    function selectTime(button) {
-        const selected = document.querySelectorAll('.time-button.selected');
-        selected.forEach((btn) => {
-            btn.classList.remove('selected');
-        });
-        button.classList.add('selected');
-    }
-</script>
-    
     
 </head>
 
@@ -261,59 +239,108 @@
                             <div class="agent-profile5">                                                             
                             </div><!--agent-profile end-->
                         </div>
-                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
-                            <div class="contact-agent">
+                        
+						
+                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0; padding-right: 0;">
+                            <div class="contact-agent" style="width: 130%; padding-left:0; margin-left: -15%;">
+                            
                             <div style="margin-top: 40px"></div>
-                                <h3 style="margin-bottom: 15px;">방문 가능 날짜 선택</h3>
-                                <form>
-								    <div class="form-field">
-								        <input type="date" name="date" id="Date" style="width: 40%">
-								    </div>
-								    <div style="margin-bottom: 12%;"></div>
-								</form>
+                                <h3 style="margin-bottom: 15px; text-align: center;"></h3>
                                 
-                                <!--   시간선택      -->
-                                <form style="width: 100%;">
-								    <div class="middle_text">시간 선택</div>
-								    <div>
-								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none;">
-								        <input type="button" class="time-button" value="09:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="10:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="11:00" onclick="selectTime(this)"><br/>
-								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none;">
-								        <input type="button" class="time-button" value="12:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="13:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="14:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="15:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="16:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="17:00" onclick="selectTime(this)">
-								        <input type="button" class="time-button" value="18:00" onclick="selectTime(this)">
-								    </div>
-								    <div style="margin-bottom: 7%;"></div>
-								</form>
+                                <div style="display: flex; align-items: center;">
+                                <div id="datepicker" style="font-size: 2.3em;"></div>
+                               <div class="container" style="font-size: 40px; max-width:250px; margin-right: 0; margin-left: 100px;">
+								  <div class="time-slot">
+								    <span>9:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+								  </div>
+								  <div class="time-slot">
+								    <span>10:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+								  </div>
+								  <div class="time-slot">
+								    <span>11:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+								  </div>
+								  <div class="time-slot">
+								    <span>12:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+								  </div>
+								  <div class="time-slot">
+								    <span>13:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>14:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>15:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>16:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>17:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>18:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+						    </div>
+						    </div>
 
-                                                                  
-                                 
-                                 <form>
+                                <div style="margin-bottom: 5%;"></div>
+                               
+                                 <form style="width: 55%;">
 								    <div class="form-field5">
 								        <div style="margin-bottom: 30px;"></div>
-								        <button type="submit" class="btn2" onclick="validateForm();">예약하기</button>
+								        <button type="submit" class="btn2" style="width: 40%; margin-left: 100%;" onclick="makeReservation();">저장</button>
 								    </div> 
 								</form>
                             </div><!--contact-agent end-->
                         </div>
+
+                        
                     </div>
                 </div><!--agent-profile-sec end-->
             </div>
         </section><!--page-main-content end-->
         
         
-        
-        
-        
-       
-   
-
         <a href="#" title="">    
             <section class="cta st2 section-padding">
                 <div class="container">
@@ -406,15 +433,105 @@
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/modernizr-3.6.0.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/scripts.js"></script>
     
-    <script src="/assets/js/datetime.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="/assets/js/map-cluster/infobox.min.js"></script>
     <script src="/assets/js/map-cluster/markerclusterer.js"></script>
     <script src="/assets/js/map-cluster/maps.js"></script>
+
+
+<script type="text/javascript">
+    
+    const timeSlots = document.querySelectorAll('.time-slot');
+
+    timeSlots.forEach((timeSlot) => {
+      const toggleSwitch = timeSlot.querySelector('.toggle-switch input');
+      const toggleLabel = timeSlot.querySelector('.toggle-label');
+      
+      toggleSwitch.addEventListener('change', () => {
+        if (toggleLabel !== null) {
+          toggleLabel.textContent = toggleSwitch.checked ? 'on' : 'off';
+        }
+        const time = toggleSwitch.closest('.time-slot').querySelector('span').textContent;
+        if (toggleSwitch.checked) {
+          selectedTimes.push(time);
+        } else {
+          const index = selectedTimes.indexOf(time);
+          if (index !== -1) {
+            selectedTimes.splice(index, 1);
+          }
+        }
+      });
+    });
+    
+    $(function() {
+      $("#datepicker").datepicker({
+    	  minDate:0,
+        onSelect: function(dateText) {
+          const dateObject = $(this).datepicker('getDate');
+          const year = dateObject.getFullYear();
+          const month = ("0" + (dateObject.getMonth() + 1)).slice(-2);
+          const day = ("0" + dateObject.getDate()).slice(-2);
+          selectedDate = year + '-' + month + '-' + day;
+        }
+      });
+    });
+
+    let selectedDate = '';
+    let selectedTimes = [];
+
+    function makeReservation() {
+      if (selectedDate === '') {
+        alert('날짜를 선택해주세요.');
+        return;
+      }
+      
+      if(selectedTimes.length === 0){
+    	  alert("시간을 선택해주세요.");
+    	  return;
+      }
+  											  //join(', ')..?여러개 선택하면 ,로 구분해주는거야..
+      const confirmMsg = `날짜: ${selectedDate}\n시간: ${selectedTimes.join(', ')}\n\n맞으면 확인눌러`;
+      const confirmed = confirm(confirmMsg);
+      if(confirmed){
+      const reservationData = { //먼저 날짜, 시간 데이터를 reservationData 객체에 저장
+    		  date:selectedDate,
+    		  time:selectedTimes
+      	};
+      }
+      
+      const formData = new FormData(); //선택한 날짜, 시간 데이터를 폼에 넣어주는 작업쓰
+      formData.append("date", reservationData.date);
+      reservationData.time.forEach((time) => { 
+          formData.append("time", time);
+      });
+
+      const formElement = document.createElement('form'); //createElement은 사용자 지정 그런건 줄 알았는데..document.createElement('form')이렇게 쓰면 <form>요소를 생성하는거래...
+      formElement.method = 'post'; // formElement.method는 form이 전송될 HTTPmetehod를 지정하는 속성이거등..
+      formElement.action = '/newzips/reservation_resident1';  //자바스크립트에서는 Thymeleaf의 th:method 속성 안쓴닥오..
+      formElement.name = 'reservationForm';
+
+      for (const [key, value] of formData.entries()) { //formData는 key,value쌍의 데이터를 담는 일종의 컨테이너임...
+    	  												//암튼 formDsata에 있는 모든 key-value 쌍을 꺼내가꼬 해당 key-value쌍에 대한 빈 input 엘리먼트 생성하고 form에 추가하는거임
+          const inputElement = document.createElement('input'); //input..?이 데이터를 담은 애라고..
+          inputElement.type = 'hidden';	 //<input>은 입력필드를 생성하는데 입력필드는 값을 입력하고 제출할 때 서버로 데이터를 전송할 수 있거등
+          inputElement.name = key;  //reservationData 객체에 저장된 정보를 <input>에 담아서 서버로 전송할 수 있는 형태로 만든기 위해 <input>사용
+          inputElement.value = value;  
+          formElement.appendChild(inputElement);  //formElement안에 inputElement를 추가하는거야..긍까 자식요소로 추가하는거지..
+          
+      }											  //긍까 forElement가 제출될 때 inputElement도 같이 제출되는거임
+				//appendChild가 뭐냐..?부모 자식 그거할때 쓰는거임 ..forElement랑 inputElement랑 부모 자식 관계로 하게..
+      document.body.appendChild(formElement);
+      formElement.submit();
+
+    }
+
+</script>
+
 
 
 

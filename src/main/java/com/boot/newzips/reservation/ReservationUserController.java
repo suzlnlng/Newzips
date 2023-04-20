@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.boot.newzips.dto.ResidenceReservDTO;
 import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 
 import com.boot.newzips.service.ReservationUserService;
 import com.boot.newzips.service.ResidentService;
+
+import oracle.jdbc.proxy.annotation.GetProxy;
 
 @RestController
 public class ReservationUserController {
@@ -29,9 +32,53 @@ public class ReservationUserController {
 	private ReservationUserService reservationUserService;
 	
 	
+	@GetMapping("/newzips/reservation_resident1")
+	public ModelAndView reservation_resident(ResidenceReservDTO residenceReservDTO, HttpServletRequest request) throws Exception {
+
+		//임의로 설정
+		String userId = request.getParameter("userId");
+		userId = "123";
+		
+		//유저아이디 기준으로 데이터 불러오기
+		ResidenceReservDTO dtoRR = residentService.selectResidenceReservUserId(userId);
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("dtoRR",dtoRR);
+		
+		mav.setViewName("user/reservation_resident1");
+		
+		return mav;
+		
+	}
+	
+	@PostMapping("/newzips/reservation_resident1")
+	public ModelAndView reservation_resident_ok(ResidenceReservDTO residentReservDTO,
+												HttpServletRequest request) throws Exception{
+		
+		System.out.println("되긴 하는거니?");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		String date = request.getParameter("date");
+		String[] times = request.getParameterValues("time");
+		
+		System.out.println("되긴 하는거니?");
+		System.out.println(date);
+		System.out.println(times);
+		
+		//리다이렉트시켜쥬기
+		
+		return mav;
+		
+	}
+	
+	
 	
 	@GetMapping("/newzips/reservation_user1")
-	public ModelAndView reservation_user(VisitorReservDTO visitorReservDTO, HttpServletRequest request) throws Exception{
+	public ModelAndView reservation_user(VisitorReservDTO visitorReservDTO, 
+										 HttpServletRequest request,
+										 Model model) throws Exception{
 		
 		//매물번호를 주소에서 받아오기
 		//임의로 설정
@@ -63,10 +110,14 @@ public class ReservationUserController {
 
 		ModelAndView mav = new ModelAndView();
 		
+		String visitDate = request.getParameter("visitDate");
+		String visitTime = request.getParameter("visitTime");
+		
+		System.out.println(visitDate);
+		System.out.println(visitTime);
+		
 		System.out.println("post 방식!!");
 		System.out.println("=====================");
-		System.out.println(visitorReservDTO.getVisitDate());
-		System.out.println(visitorReservDTO.getVisitTime());
 		//reservation_user메소드랑 동일하게 작성하는데,
 		//reservation_user1페이지에서 넘어온 날짜와 시간을 포함한
 		//예약 정보를 데이터베이스에 넣는과정을 추가해서 작성!!
@@ -127,7 +178,5 @@ public class ReservationUserController {
 		
 		return mav;
 	}
-		
 	
-
 }

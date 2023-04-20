@@ -22,6 +22,6 @@ public interface ReservationUserService {
 
 			public RoomInfoDTO getReservationRoomInfo(String itemId) throws Exception;
 			
-			public void deleteReservation(int reservNo) throws Exception;
+			public void deleteReservation(String reservNo) throws Exception;
 
 }

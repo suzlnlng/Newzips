@@ -15,8 +15,10 @@
         
     <link rel="stylesheet" href="/assets/css/style.css">
 
+
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
+
 
 </head>
 
@@ -245,52 +247,53 @@
                         </div>
                         
                         <!-- 방문 날짜 -->
-                        <form th:object="${visitorReservDTO}" th:action="@{/newzips/reservation_user1}" name="reservationForm" method="post" >
-                        	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
-                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
-                           <div class="contact-agent">
+                        <form th:object="${visitorReservDTO}" th:action="@{/newzips/reservation_user1}" name="reservationForm" method="post" >
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <input type="hidden" th:field="*{visitDate}"/>
+                        <input type="hidden" th:field="*{visitTime}"/>
+
+                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0;">
+                           <div class="contact-agent" style="padding-left: 0;">
                            
-                            <div style="margin-top: 40px"></div>
+                            <div style="margin-top: 70px"></div>
                                 <h3 style="margin-bottom: 15px;">방문 가능 날짜 선택</h3>
 
                                     <div class="form-field">
-                                        <input type="date" name="visitdate" id="Date" style="width: 40%" min="today();">
-                                    
-                                        <div><input type="hidden" th:field="*{visitDate}"/></div>
-                        				
+                                        <input type="date" name="visitDate" id="Date" style="width: 40%">
+
                                     </div>
-                                    <div style="margin-bottom: 12%;"></div>
+                                    <div style="margin-bottom: 20%;"></div>
 
                                 <!--   시간선택      -->
 
 								    <div class="middle_text">시간 선택</div>
-								    <div>
-								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none;">
-								        <input type="button" class="time-button" value="09:00" onclick="selectTime(this)" name="visittime">
-								        <input type="button" class="time-button" value="10:00" onclick="selectTime(this)" name="visittime">
-								        <input type="button" class="time-button" value="11:00" onclick="selectTime(this)" name="visittime"><br/>
-								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none;">
-								        <input type="button" class="time-button" value="12:00" onclick="selectTime(this)" name="visittime">
-								        <input type="button" class="time-button" value="13:00" onclick="selectTime(this)" name="visittime">
-								        <input type="button" class="time-button" value="14:00" onclick="selectTime(this)" name="visittime">
-								        <input type="button" class="time-button" value="15:00" onclick="selectTime(this)" name="visittime">
-								        <input type="button" class="time-button" value="16:00" onclick="selectTime(this)" name="visittime">
-								        <input type="button" class="time-button" value="17:00" onclick="selectTime(this)" name="visittime">
-								        <input type="button" class="time-button" value="18:00" onclick="selectTime(this)" name="visittime">
+								    <div style="font-size: 20px; width: 150%;">
+								    	<input type="button" class="time-button" value="오전" disabled="disabled" style="border: none; padding: 0 0 0 8px; text-align: left;">
+								        <input type="button" class="time-button" value="09:00" onclick="selectTime(this)" name="visittime" style="margin-right: 10px;">
+								        <input type="button" class="time-button" value="10:00" onclick="selectTime(this)" name="visittime" style="margin-right: 10px;">
+								        <input type="button" class="time-button" value="11:00" onclick="selectTime(this)" name="visittime"><br/><br/>
+								        <input type="button" class="time-button" value="오후" disabled="disabled" style="border: none; padding: 0 0 0 8px; text-align: left;">
+								        <input type="button" class="time-button" value="12:00" onclick="selectTime(this)" name="visittime" style="margin-right: 10px;">
+								        <input type="button" class="time-button" value="13:00" onclick="selectTime(this)" name="visittime" style="margin-right: 10px;">
+								        <input type="button" class="time-button" value="14:00" onclick="selectTime(this)" name="visittime" style="margin-right: 10px;">
+								        <input type="button" class="time-button" value="15:00" onclick="selectTime(this)" name="visittime" style="margin-right: 10px;">
+								        <input type="button" class="time-button" value="16:00" onclick="selectTime(this)" name="visittime" style="margin-right: 10px;">
+								        <input type="button" class="time-button" value="17:00" onclick="selectTime(this)" name="visittime" style="margin-right: 10px;">
+								        <input type="button" class="time-button" value="18:00" onclick="selectTime(this)" name="visittime" style="margin-right: 10px;">
 								        <input type="hidden" th:field="*{visitTime}"/>
 								    </div>
-								    <div style="margin-bottom: 7%;"></div>
+								    <div style="margin-bottom: 15%;"></div>
 
                                 
                                  
-                                 <div style="margin-top: 160px;"></div>
+                                 <div style="margin-top: 50px;"></div>
                                                                                  
                                     
                                     <div class="form-field5">
-                                    <div style="margin-bottom: 30px;"></div>
+                                    <div style="margin-bottom: 70px;"></div>
 
-                                        <button type="button" class="btn2" onclick="validateForm();">예약하기</button>
+                                        <button type="button" class="btn2" onclick="validateForm();" style="width: 50%; margin-left: 35%;">예약하기</button>
                                     </div><!--form-field end-->
                                     
                             </div><!--contact-agent end-->
@@ -429,10 +432,10 @@
 
                //form.action = "/newzips/reservation_user1";
                
-               alert(form.method);
-               alert(form.visitTime);
-               alert(form.visitDate);
-               alert(form.action);
+//                alert(form.method);
+//                alert(form.visitTime);
+//                alert(form.visitDate);
+//                alert(form.action);
                
                form.submit();
                
