@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
+import com.boot.newzips.account.BaseCustomOAuth2UserService;
 import com.boot.newzips.account.UserSecurityService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,12 +24,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 	
 	private final AuthenticationFailureHandler customFailureHandler;
 	
 	private final UserSecurityService userSecurityService;
+	private final BaseCustomOAuth2UserService baseCustomOAuth2UserService;
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
@@ -41,14 +42,40 @@ public class SecurityConfig {
 			.usernameParameter("userId")
 			.passwordParameter("userPwd")
 			.defaultSuccessUrl("/newzips")
-			.failureUrl("/newzips/join")
+			.failureUrl("/newzips/login")
 			.failureHandler(customFailureHandler)
-		
+		.and()
+		.logout()
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/newzips")
+			.deleteCookies("JSESSIONID").
+			invalidateHttpSession(true)
+		.and()
+		.oauth2Login()
+			.loginPage("/newzips/login")
+			.defaultSuccessUrl("/newzips")
+			.userInfoEndpoint()
+			.userService(baseCustomOAuth2UserService)
 		;
 
 		return http.build();
 		
 	}
+	
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public AuthenticationManager authenticationManager(
+			AuthenticationConfiguration authenticationConfiguration) throws Exception{
+
+		return authenticationConfiguration.getAuthenticationManager();
+		
+	}
+	
 	
 
 	
@@ -75,25 +102,5 @@ public class SecurityConfig {
 		return authProvider;
 	}
 	*/
-	
-	
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
-	@Bean
-	public AuthenticationManager authenticationManager(
-			AuthenticationConfiguration authenticationConfiguration) throws Exception{
 
-		return authenticationConfiguration.getAuthenticationManager();
-		
-	}
-	
-
-	
-	
-	
-	
-	
 }

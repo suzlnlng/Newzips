@@ -1,5 +1,6 @@
 package com.boot.newzips.account;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,17 +33,27 @@ public class AccountUserServiceImpl implements AccountUserService {
 		accountUserMapper.createMember(memberDTO);
 		
 	}
+	
+	@Override
+	public void createOauthMember(MemberDTO memberDTO) throws Exception {
+		
+		memberDTO.setUserPwd(passwordEncoder.encode(memberDTO.getUserPwd()));
+		
+		accountUserMapper.createOauthMember(memberDTO);
+		
+	}
+	
 
 	@Override
 	public void updateMember(MemberDTO dto) throws Exception {
 		accountUserMapper.updateMember(dto);
 	}
 
-
+	
 	@Override
-	public Optional<LoginForm> getUser(String userId) throws Exception {
+	public Optional<MemberDTO> getUserById(String userId) throws Exception {
 		
-		Optional<LoginForm> searchUser = accountUserMapper.getUser(userId);
+		Optional<MemberDTO> searchUser = accountUserMapper.getUserById(userId);
 		
 		if(!searchUser.isPresent()) {
 			return searchUser;
@@ -52,7 +63,28 @@ public class AccountUserServiceImpl implements AccountUserService {
 		}
 		
 	}
+
 	
+	@Override
+	public Optional<MemberDTO> getUserByEmail(String userEmail) throws Exception {
+		
+		Optional<MemberDTO> searchUser = accountUserMapper.getUserByEmail(userEmail);
+		
+		if(!searchUser.isPresent()) {
+			return searchUser;
+		}else {
+			System.out.println("유저 없음");
+			throw new Exception("User Not Found!!");
+		}
+		
+	}
+
+	@Override
+	public String findId(Map<String, Object> params) throws Exception {
+		return accountUserMapper.findId(params);
+	}
+
+
 
 
 }

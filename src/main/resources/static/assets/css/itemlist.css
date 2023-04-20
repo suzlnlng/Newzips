@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.col-lg-4 {
+  width: 33.33%;
+  float: left;
+}
+
+.col-md-6 {
+  width: 50%;
+  float: left;
+}
+.col-lg-12 {
+  display: block;
+  margin: 0 auto;
+}

@@ -1,5 +1,8 @@
 package com.boot.newzips.account;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -40,28 +43,15 @@ public class AccountUserController {
 	@PostMapping("/join")
 	public String join_ok(@Valid MemberDTO memberDTO, BindingResult bindingResult) throws Exception{
 
-		System.out.println("=========================");
-		System.out.println("=========================");
-		System.out.println(memberDTO.getEmailReceive());
-		//memberDTO.setEmailReceive(emailReceive);
-		
-
-		
+		// validation을 통해 생기는 오류 join_user페이지로 넘기기
 		if(bindingResult.hasErrors()) {
-			System.out.println("=========================");
-			System.out.println(bindingResult.getErrorCount());
 			return "user/join_user2";
 		}
 		
-		//패스워드1이랑 패스워드2가 같지 않으면~
+		//비밀번호 & 비밀번호 재확인 비교 
 		if(!memberDTO.getUserPwd().equals(memberDTO.getUserPwd2())) {
-			//password2 -> 오류적용할 변수
-			//passwordInCorrect -> 사용자 정의 오류명(내가 만든것)
-			//오류메세지
-			System.out.println("pwd: " + memberDTO.getUserPwd());
-			System.out.println("pwd2: " + memberDTO.getUserPwd2());
 			bindingResult.rejectValue("userPwd2", "passwordInCorrect",
-					"2개의 패스워드가 일치하지 않습니다");
+					"비밀번호가 일치하지 않습니다");
 			
 			return "user/join_user2";
 			
@@ -95,7 +85,7 @@ public class AccountUserController {
 	}
 	
 	@GetMapping("/login")
-	public ModelAndView login(LoginForm loginForm) throws Exception{
+	public ModelAndView login(MemberDTO memberDTO) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -104,5 +94,28 @@ public class AccountUserController {
 		return mav;
 		
 	}
+	
+	@PostMapping("/findID")
+	public String findId(@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone){
+		
+		System.out.println("findId");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String, Object> params= new HashMap<String, Object>();
+		params.put("userName", userName);
+		params.put("userPhone", userPhone);
+		
+		try {
+			String userId = accountUserService.findId(params);
+			System.out.println(userId);
+			return userId;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
 	
 }

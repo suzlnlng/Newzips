@@ -3,11 +3,16 @@ package com.boot.newzips.dto;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotEmpty;
 
+import com.boot.newzips.account.UserRole;
+
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class MemberDTO {
 	
 	@NotEmpty(message = "아이디는 필수 항목입니다.")
@@ -39,11 +44,26 @@ public class MemberDTO {
 	@NotEmpty(message = "이메일은 필수 항목입니다.")
 	private String userEmail;
 	
-	
 	private String userRole;
-	
 	
 	private String emailReceive;
 	
+	@Builder
+	public MemberDTO(String userId, String userName, String userEmail, String userRole) {
+		this.userId = userId;
+		this.userName = userName;
+		this.userEmail = userEmail;
+		this.userRole = userRole;
+	}
+	
+	public MemberDTO update(String name) {
+		
+		this.userName = name;
+		return this;
+		
+	}	
+	
+	
 }
+
 

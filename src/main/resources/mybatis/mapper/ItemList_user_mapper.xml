@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.boot.newzips.itemList.ItemListUserMapper">
+
+
+
+<select id="YMListingDTO" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO"> 
+	select itemId, addrDetail, yearly_monthly
+	from listing where itemId=#{ITEMID, jdbcType=VARCHAR}
+</select>
+
+<select id="getread_wolse" parameterType="String" resultType="com.boot.newzips.dto.WolseListingDTO"> 
+	SELECT deposit, MONTHLYFEE,DEPOSIT_WEB,MONTHLYFEE_WEB
+    FROM WOLSELISTING where itemId = #{ITEMID, jdbcType=VARCHAR}
+</select>
+
+<select id="getread_junsae" parameterType="String" resultType="com.boot.newzips.dto.JunsaeListingDTO"> 
+	SELECT YEARLYFEE, yearlyFee_web
+    FROM JUNSAELISTING where itemId = #{ITEMID, jdbcType=VARCHAR}
+</select>
+
+<select id="getread_roominfo" parameterType="String" resultType="com.boot.newzips.dto.RoomInfoDTO"> 
+	Select roomType
+	From Roominfo where itemId = #{ITEMID, jdbcType=VARCHAR}
+	</select>
+
+
+<!-- 같은 DTO에 있는 모든 데이터를 함께 조회하는 쿼리 -->
+<select id="getreadDataAll" resultType="com.boot.newzips.dto.ListAllDTO">
+  SELECT l.itemId, l.addrDetail, l.yearly_monthly, wl.deposit, wl.DEPOSIT_WEB, wl.MONTHLYFEE_WEB, wl.MONTHLYFEE, jl.YEARLYFEE, jl.yearlyFee_web, ri.roomType
+  FROM listing l
+  LEFT JOIN WOLSELISTING wl ON l.itemId = wl.itemId
+  LEFT JOIN JUNSAELISTING jl ON l.itemId = jl.itemId
+  LEFT JOIN Roominfo ri ON l.itemid = ri.itemid
+  
+</select>
+
+<select id="getreadDatapage" resultType="com.boot.newzips.dto.ListAllDTO">
+SELECT ROWNUM rnum l.itemId, l.addrDetail, l.yearly_monthly, wl.deposit, wl.DEPOSIT_WEB, wl.MONTHLYFEE_WEB, wl.MONTHLYFEE, jl.YEARLYFEE, jl.yearlyFee_web, ri.roomType
+FROM listing l
+LEFT JOIN WOLSELISTING wl ON l.itemId = wl.itemId
+LEFT JOIN JUNSAELISTING jl ON l.itemId = jl.itemId
+LEFT JOIN Roominfo ri ON l.itemid = ri.itemid
+LIMIT 10 OFFSET 0
+</select>
+
+
+
+
+
+</mapper>
