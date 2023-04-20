@@ -1,5 +1,6 @@
 package com.boot.newzips.account;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,11 @@ public class AccountUserServiceImpl implements AccountUserService {
 			throw new Exception("User Not Found!!");
 		}
 		
+	}
+
+	@Override
+	public String findId(Map<String, Object> params) throws Exception {
+		return accountUserMapper.findId(params);
 	}
 
 

@@ -156,6 +156,22 @@
 
         </header><!--header end-->
 
+        <div class="popup" id="sign-popup">
+            <h3>아이디 찾기</h3>
+            <div class="popup-form">
+                <form th:action="@{/newzips/findID}" method="post">
+                    <div class="form-field">
+                        <input type="text" th:field="*{userName}" placeholder="이름">
+                    </div>
+                    <div class="form-field">
+                        <input type="text" th:field="*{userPhone}" placeholder="핸드폰 번호">
+                    </div>
+
+                    <button type="submit" class="btn2">아이디 찾기</button>
+                </form>
+            </div>
+        </div><!--popup end-->
+
 
         <section class="pager-sec bfr">
             <div class="container">
@@ -209,7 +225,7 @@
 		    <div style="margin-top: 20px"></div>
 		    
 		    <div class="login-check-field">
-		     <span><a href="#"><span>아이디 찾기</span></a> ｜ <a href="#"><span>비밀번호 찾기</span></a></span>
+		     <span><a href="#"><span class="signin-op">아이디 찾기</span></a> ｜ <a href="#"><span>비밀번호 찾기</span></a></span>
 		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -346,6 +362,18 @@
     <script src="/assets/js/map-cluster/infobox.min.js"></script>
     <script src="/assets/js/map-cluster/markerclusterer.js"></script>
     <script src="/assets/js/map-cluster/maps.js"></script>
+    
+    <script type="text/javascript">
+    
+    const findId = () => {
+    	
+    	var 
+    	
+    	
+    }
+    
+    
+    </script>
 
 
 

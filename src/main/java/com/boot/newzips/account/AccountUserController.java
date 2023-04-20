@@ -1,5 +1,8 @@
 package com.boot.newzips.account;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -91,5 +94,28 @@ public class AccountUserController {
 		return mav;
 		
 	}
+	
+	@PostMapping("/findID")
+	public String findId(@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone){
+		
+		System.out.println("findId");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String, Object> params= new HashMap<String, Object>();
+		params.put("userName", userName);
+		params.put("userPhone", userPhone);
+		
+		try {
+			String userId = accountUserService.findId(params);
+			System.out.println(userId);
+			return userId;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
 	
 }

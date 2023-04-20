@@ -1,5 +1,6 @@
 package com.boot.newzips.account;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,5 +18,7 @@ public interface AccountUserService {
 	public Optional<MemberDTO> getUserById(String userId) throws Exception;
 	
 	public Optional<MemberDTO> getUserByEmail(String userEmail) throws Exception;
+	
+	public String findId(Map<String, Object> params) throws Exception;
 
 }
