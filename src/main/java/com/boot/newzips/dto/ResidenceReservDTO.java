@@ -9,8 +9,8 @@ public class ResidenceReservDTO {
 	
 	private String userId;
 	private String itemId;
-	private String date;
-	private String time;
+	private String availableDate;
+	private String availableTime;
 	private String available;
 
 }

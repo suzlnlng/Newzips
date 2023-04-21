@@ -31,18 +31,20 @@ public class ReservationUserController {
 	@Resource
 	private ReservationUserService reservationUserService;
 	
-	
+	//거주자~~~
 	@GetMapping("/newzips/reservation_resident1")
-	public ModelAndView reservation_resident(ResidenceReservDTO residenceReservDTO, HttpServletRequest request) throws Exception {
+	public ModelAndView reservation_resident(ResidenceReservDTO residenceReservDTO, 
+											 HttpServletRequest request) throws Exception {
 
-		//임의로 설정
-		String userId = request.getParameter("userId");
-		userId = "123";
+		String userId = "newjeans";
+		String itemId = "35734431";
+		
 		
 		//유저아이디 기준으로 데이터 불러오기
 		ResidenceReservDTO dtoRR = residentService.selectResidenceReservUserId(userId);
 		
 		ModelAndView mav = new ModelAndView();
+		
 		
 		mav.addObject("dtoRR",dtoRR);
 		
@@ -53,28 +55,42 @@ public class ReservationUserController {
 	}
 	
 	@PostMapping("/newzips/reservation_resident1")
-	public ModelAndView reservation_resident_ok(ResidenceReservDTO residentReservDTO,
-												HttpServletRequest request) throws Exception{
+	public ModelAndView reservation_resident_ok(ResidenceReservDTO residenceReservDTO,HttpServletRequest request) throws Exception{
+		
+		System.out.println("되냑오");
+		
+		String userId = "newjeans";
+		String itemId = "35734431";
 		
 		System.out.println("되긴 하는거니?");
 		
-		ModelAndView mav = new ModelAndView();
 		
 		String date = request.getParameter("date");
 		String[] times = request.getParameterValues("time");
 		
-		System.out.println("되긴 하는거니?");
+
+		residenceReservDTO.setItemId(itemId);
+		residenceReservDTO.setUserId(userId);
+		residenceReservDTO.setDate(date);
+		residenceReservDTO.setTime(times[0]);
+
+		
+		//residentService를 통해 데이터베이스에 저장
+		residentService.insertResidentReserv(residenceReservDTO);
+		
+		
+		System.out.println("되긴 하는거니???");
 		System.out.println(date);
 		System.out.println(times);
 		
-		//리다이렉트시켜쥬기
-		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/newzips/reservation_user1");
 		return mav;
 		
 	}
 	
 	
-	
+	//방문자~~~
 	@GetMapping("/newzips/reservation_user1")
 	public ModelAndView reservation_user(VisitorReservDTO visitorReservDTO, 
 										 HttpServletRequest request,
@@ -86,10 +102,13 @@ public class ReservationUserController {
 		itemId = "32906223";
 
 		
+		
 		//매물번호 기준으로 데이터 불러오기
 		
 		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
 		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
+		
+		
 		
 		ModelAndView mav = new ModelAndView();
 		

@@ -10,8 +10,8 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 
 
 <insert id="insertResidentReserv" parameterType="com.boot.newzips.dto.ResidenceReservDTO">
-  INSERT INTO RESIDENCERESERV (userId, itemId, availableDate, availableTime, available)
-  VALUES (#{userId}, #{itemId}, #{availableDate}, #{availableTime}, #{available})
+  INSERT INTO RESIDENCERESERV (userId, itemId, availableDate, availableTime)
+  VALUES (#{userId}, #{itemId}, #{availableDate}, #{availableTime})
 </insert>
 
 <!-- 유저 아이디로 조회 -->
