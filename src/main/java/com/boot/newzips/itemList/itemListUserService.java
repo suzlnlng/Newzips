@@ -1,5 +1,6 @@
 package com.boot.newzips.itemList;
 import java.util.List;
+import java.util.Map;
 
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListAllDTO;
@@ -15,7 +16,7 @@ public interface itemListUserService {
 
     public List<JunsaeListingDTO> getread_junsae(String itemId) throws Exception;
     
-    public List<ListAllDTO> getreadDataAll() throws Exception;
+    public List<ListAllDTO> getreadDataAll(Map<String, Object> params) throws Exception;
     
     public List<ListAllDTO> getreadDatapage() throws Exception;
 }

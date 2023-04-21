@@ -1,5 +1,6 @@
 package com.boot.newzips.itemList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import com.boot.newzips.dto.JunsaeListingDTO;
@@ -17,7 +18,7 @@ public interface ItemListUserMapper {
 
     public List<JunsaeListingDTO> getread_junsae(String itemId) throws Exception;
 
-    public List<ListAllDTO> getreadDataAll() throws Exception;
+    public List<ListAllDTO> getreadDataAll(Map<String, Object> params) throws Exception;
     
     public List<ListAllDTO> getreadDatapage() throws Exception;
 

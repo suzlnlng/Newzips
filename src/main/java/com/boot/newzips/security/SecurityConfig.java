@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.boot.newzips.account.BaseCustomOAuth2UserService;
 import com.boot.newzips.account.UserSecurityService;
@@ -74,6 +75,13 @@ public class SecurityConfig {
 
 		return authenticationConfiguration.getAuthenticationManager();
 		
+	}
+	
+	@Bean
+	public MappingJackson2JsonView jsonView() {
+		MappingJackson2JsonView jsonView = new MappingJackson2JsonView();
+		jsonView.setContentType("application/json;chaset=UTF-8");
+		return jsonView;
 	}
 	
 	

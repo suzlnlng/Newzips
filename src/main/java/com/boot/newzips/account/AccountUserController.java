@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -95,25 +96,37 @@ public class AccountUserController {
 		
 	}
 	
-	@PostMapping("/findID")
-	public String findId(@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone){
+	@PostMapping("/findId")
+	public ModelAndView findId(HttpServletRequest request) throws Exception{
 		
+		ModelAndView mav = new ModelAndView("jsonView");
+		
+		String userName = request.getParameter("userName");
+		String userPhone = request.getParameter("userPhone");
+		
+		System.out.println("==================================");
 		System.out.println("findId");
 		
-		ModelAndView mav = new ModelAndView();
+		System.out.println(userName);
+		System.out.println(userPhone);
+		
+		String userId = null;
 		
 		Map<String, Object> params= new HashMap<String, Object>();
 		params.put("userName", userName);
 		params.put("userPhone", userPhone);
 		
 		try {
-			String userId = accountUserService.findId(params);
+			userId = accountUserService.findId(params);
+			System.out.println("=================");
 			System.out.println(userId);
-			return userId;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		}
+		
+		mav.addObject("userId", userId);
+		
+		return mav;
 		
 	}
 	
