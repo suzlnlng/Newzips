@@ -30,24 +30,24 @@
 
 <script type="text/javascript">
 
-	function btnActive(){
-
-		var selectBtn = document.getElementById('selectBtn');
-		
-		//클릭 이벤트 처리 함수
-		selectBtn.addEventListener("click", function() {
-		// 버튼 활성화/비활성화
-		selectBtn.disabled = !selectBtn.disabled;
-		});
-		
-		 if (selectBtn.disabled) {
-			    selectBtn.disabled = false;
-			    selectBtn.classList.remove('disabled');
-			  } else {
-			    selectBtn.disabled = true;
-			    selectBtn.classList.add('disabled');
-			  }
-	}
+	function btnActive() {
+	    var selectBtns = document.getElementsByName('selectBtn');
+	    for (var i = 0; i < selectBtns.length; i++) {
+	      var selectBtn = selectBtns[i];
+	      selectBtn.addEventListener('click', function() {
+	        this.disabled = !this.disabled;
+	        if (this.disabled) {
+	          this.classList.add('disabled');
+	        } else {
+	          this.classList.remove('disabled');
+	        }
+	      });
+	      // 초기에 비활성화된 버튼에 대해서도 클래스 추가
+	      if (selectBtn.disabled) {
+	        selectBtn.classList.add('disabled');
+	      }
+	    }
+	  }
 </script>
     <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -249,7 +249,7 @@
              </ul>
              </div>
              <div class="select_btn_area">
-                <input type="button" id="selectBtn" class="" value="선택" onclick="btnActive();"/>
+				<input type="button" name="selectBtn"  value="선택">
 	        </div>          
        </div> 
 		<div class="complete_btn_area">
