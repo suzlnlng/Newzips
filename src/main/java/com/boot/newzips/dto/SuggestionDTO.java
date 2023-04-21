@@ -8,14 +8,14 @@ import lombok.Setter;
 public class SuggestionDTO {
 	
 	private String userId;
+	private String userPhone;
 	private String addrCity;
 	private String addrGu;
-	private int price;
-	private String groundType;
+	private String yearly_monthly;
+	private int deposit;
+	private int monthlyFee;
+	private int rooms;
 	private int area; 
-	private String parking;
-	private String pet;
-	private String transport;
 	private int maintenanceCost;
 
 }
