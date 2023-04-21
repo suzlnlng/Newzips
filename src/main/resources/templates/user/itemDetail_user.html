@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>매물 상세정보</title>
+    <title>매물 상세정보(user)</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -252,8 +252,7 @@
                             <a href="#">                       
                                 <h3 th:if="${dtoL.yearly_monthly}=='전세'">[[${dtoL.yearly_monthly}]] [[${dtoJ.yearlyFee_web}]]</h3>                                
                                 <h3 th:if="${dtoL.yearly_monthly}=='월세'">[[${dtoL.yearly_monthly}]] [[${dtoW.deposit_web}]] / [[${dtoW.monthlyFee_web}]]</h3>                                
-                                <p><i class="la la-map-marker"></i>[[${dtoL.addrDetail}]]</p>
-                            </a>
+                                <p><i class="la la-map-marker"></i>[[${dtoL.addrDetail}]]</p>                            </a>
                             <ul>
                                 <li>해당층/건물층&nbsp;&nbsp;&nbsp;[[${dtoR.roomFloor}]]층/[[${dtoB.totalFloors}]]층</li>
                                 <li>방 수/욕실 수&nbsp;&nbsp;&nbsp;[[${dtoR.rooms}]]개/[[${dtoR.bathrooms}]]개</li>
@@ -269,7 +268,8 @@
                         </div>rate-info end -->
                         <div class="rate-info" style="margin-top: 15px;">                        	
                             <button type="button" class="btn4">♥</button>
-                            <button class="btn3" onclick="location.href='http://localhost:8080/newzips/reservation_user_contract1'">계약하기</button>                            
+                            <button class="btn3" onclick="location.href='http://localhost:8080/newzips/reservation_user_contract1'">방문예약</button>                            
+                            <button class="btn3" onclick="location.href='http://localhost:8080/newzips/reservation_user_contract1'">매물계약</button>                            
                         </div>
                     </div><!--card end-->
                 </div><!---property-hd-sec end-->
@@ -280,10 +280,10 @@
                                 <div class="property-imgs">
                                     <div class="property-main-img">
                                         <div class="property-img">
-                                            <img src="/assets/images/zzanggu1.jpg" alt="">
+                                            <img src="/assets/images/3428_main.png" alt="">
                                         </div><!--property-img end-->
                                         <div class="property-img">
-                                            <img src="/assets/images/zzanggu2.jpg" alt="">
+                                            <img src="/assets/images/3428_main2.png" alt="">
                                         </div><!--property-img end-->
                                         <div class="property-img">
                                             <img src="https://via.placeholder.com/770x515" alt="">
@@ -302,12 +302,12 @@
                                         <div class="row thumb-carous">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
                                                 <div class="property-img">
-                                                    <img src="/assets/images/zzanggu1.jpg" alt="">
+                                                    <img src="/assets/images/3428_main.png" alt="">
                                                 </div><!--property-img end-->
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
                                                 <div class="property-img">
-                                                    <img src="/assets/images/zzanggu2.jpg" alt="">
+                                                    <img src="/assets/images/3428_main2.png" alt="">
                                                 </div><!--property-img end-->
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
@@ -339,230 +339,100 @@
                                     <ul>
                                         <li>
                                             <h4>매물번호:</h4>
-                                            <span>12345678</span>
+                                            <span>[[${dtoR.itemId}]]</span>
                                         </li>
                                         <li>
                                             <h4>방종류:</h4>
-                                            <span>아파트/오피스텔/공동주택</span>
+                                            <span>[[${dtoR.roomType}]]</span>
                                         </li>                                       
                                         <li>
                                             <h4>해당층: </h4>
-                                            <span>1층</span>
+                                            <span>[[${dtoR.roomFloor}]]층</span>
                                         </li>
                                         <li>
                                             <h4>건물층: </h4>
-                                            <span>2층</span>
+                                            <span>[[${dtoB.totalFloors}]]층</span>
                                         </li>
                                         <li>
                                             <h4>전용면적: </h4>
-                                            <span>00.00㎡</span>
+                                            <span>[[${dtoR.area}]]㎡</span>
                                         </li>
                                         <li>
                                             <h4>욕실 수:</h4>
-                                            <span>5</span>
+                                            <span>[[${dtoR.bathrooms}]]개</span>
                                         </li>
                                         <li>
                                             <h4>방 수:</h4>
-                                            <span>7</span>
+                                            <span>[[${dtoR.rooms}]]개</span>
                                         </li>
                                         <li>
                                             <h4>방향:</h4>
-                                            <span>서</span>
+                                            <span>[[${dtoR.roomDirection}]]</span>
                                             <span style="font-size: 5pt;">(주실 방향 기준)</span>
                                         </li>
                                         <li>
                                             <h4>난방종류:</h4>
-                                            <span>개별난방/지역난방</span>
+                                            <span>[[${dtoR.heating}]]</span>
                                         </li>
                                         <li>
                                             <h4>건물주차:</h4>
-                                            <span>세대당 1대 주차 가능</span>
+                                            <span th:if="${dtoL.parking}=='F'">불가능</span>
+                                            <span th:if="${dtoL.parking}=='T'">가능</span>
                                         </li>
                                         <li>
                                             <h4>엘리베이터:</h4>
-                                            <span>있/없음</span>
+                                            <span th:if="${dtoB.elevator}=='F'">없음</span>
+                                            <span th:if="${dtoB.elevator}=='T'">있음</span>
                                         </li>
                                         <li>
                                             <h4>베란다/발코니:</h4>
-                                            <span>있/없음</span>
+                                            <span>[[${dtoR.balcony}]]</span>
                                         </li>
                                         <li>
-                                            <h4>현관타입:</h4>
-                                            <span>복도식</span>
+                                            <h4>주용도:</h4>
+                                            <span>[[${dtoB.buildingUse}]]</span>
                                         </li> 
                                         <li>
                                             <h4>입주가능일:</h4>
-                                            <span>즉시 입주 가능</span>
+                                            <span>[[${dtoR.availableDate}]]</span>
                                         </li>
                                         <li>
                                             <h4>사용승인일(준공일):</h4>
-                                            <span>2012.01.01</span>
+                                            <span>[[${dtoB.approvalDate}]]</span>
                                         </li>
                                     </ul>
                                 </div><!--details-info end-->
                                 
                                 <div class="features-dv">
-                                    <h3>옵션</h3>
-                                    <form class="form_field">
-                                        <ul>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c1">
-                                                <label for="c1">
-                                                    <span></span>
-                                                    <small>에어컨</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c2" checked>
-                                                <label for="c2">
-                                                    <span></span>
-                                                    <small>세탁기</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c2" checked>
-                                                <label for="c2">
-                                                    <span></span>
-                                                    <small>침대</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c2" checked>
-                                                <label for="c2">
-                                                    <span></span>
-                                                    <small>책상</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c2" checked>
-                                                <label for="c2">
-                                                    <span></span>
-                                                    <small>옷장</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c2" checked>
-                                                <label for="c2">
-                                                    <span></span>
-                                                    <small>TV</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c3">
-                                                <label for="c3">
-                                                    <span></span>
-                                                    <small>신발장</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c4" checked>
-                                                <label for="c4">
-                                                    <span></span>
-                                                    <small>냉장고</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c5" checked>
-                                                <label for="c5">
-                                                    <span></span>
-                                                    <small>인덕션</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c5" checked>
-                                                <label for="c5">
-                                                    <span></span>
-                                                    <small>가스레인지</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c6">
-                                                <label for="c6">
-                                                    <span></span>
-                                                    <small>전자레인지</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c6">
-                                                <label for="c6">
-                                                    <span></span>
-                                                    <small>전자도어락</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c6">
-                                                <label for="c6">
-                                                    <span></span>
-                                                    <small>비데</small>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </form>
-                                </div><!--features-dv end-->
-                                <div class="features-dv">
-                                    <h3>보안/안전시설</h3>
-                                    <form class="form_field">
-                                        <ul>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c1">
-                                                <label for="c1">
-                                                    <span></span>
-                                                    <small>비디오폰</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c2" checked>
-                                                <label for="c2">
-                                                    <span></span>
-                                                    <small>공동현관</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c2" checked>
-                                                <label for="c2">
-                                                    <span></span>
-                                                    <small>경비원</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c3">
-                                                <label for="c3">
-                                                    <span></span>
-                                                    <small>CCTV</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c4" checked>
-                                                <label for="c4">
-                                                    <span></span>
-                                                    <small>방범창</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c5" checked>
-                                                <label for="c5">
-                                                    <span></span>
-                                                    <small>인터폰</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c5" checked>
-                                                <label for="c5">
-                                                    <span></span>
-                                                    <small>카드키</small>
-                                                </label>
-                                            </li>
-                                            <li class="input-field">
-                                                <input type="checkbox" name="cc" id="c6">
-                                                <label for="c6">
-                                                    <span></span>
-                                                    <small>화재경보기</small>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </form>
-                                </div><!--features-dv end-->
-                                
+								    <h3>옵션</h3>
+								    <form class="form_field">
+								        <ul>
+								            <li class="input-field" th:each="option : ${#strings.arraySplit(dtoR.options, ',')}">
+								                <input type="checkbox" name="cc" th:id="${option}" th:checked="true" />
+								                <label for="${option}">
+								                    <span></span>
+								                    <small th:text="${option}"></small>
+								                </label>
+								            </li>
+								        </ul>
+								    </form>
+								</div><!-- 옵션 끝 -->
+								
+								<div class="features-dv">
+								    <h3>보안/안전시설</h3>
+								    <form class="form_field">
+								        <ul>
+								            <li class="input-field" th:each="security : ${#strings.arraySplit(dtoB.secureFacility, ',')}">
+								                <input type="checkbox" name="cc" th:id="${security}" th:checked="true" />
+								                <label for="${security}">
+								                    <span></span>
+								                    <small th:text="${security}"></small>
+								                </label>
+								            </li>
+								        </ul>
+								    </form>
+								</div><!-- 보안 끝 -->								
+                                                                
                                 <div class="floorplan">
                                     <h3>평면도</h3>
                                     <!-- <img src="https://via.placeholder.com/427x268" alt=""> -->

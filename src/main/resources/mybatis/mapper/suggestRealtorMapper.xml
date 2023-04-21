@@ -5,21 +5,36 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.boot.newzips.suggest.SuggestRealtorMapper">
 
-<select id="getSuggestInfo" resultType="com.boot.newzips.dto.SuggestionDTO">
+<select id="getSuggestList" resultType="com.boot.newzips.dto.SuggestionDTO">
 	select * from suggestion
 </select>
 
+<select id="getSuggestInfo" parameterType="String" resultType="com.boot.newzips.dto.SuggestionDTO">
+	select * from suggestion where userId=#{userId}
+</select>
+
+<select id="getRealtorSuggestion" parameterType="String" resultType="com.boot.newzips.dto.RealtorSuggestionDTO">
+	select * from realtorSuggestion where userId=#{userId}
+</select>
+
 <select id="getItemInfo" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO">
-	select * from listing where itemid=#{itemid}
+	select * from listing where itemId=#{itemId}
+</select>
+
+<select id="getSuggestItem" parameterType="map" resultType="com.boot.newzips.dto.ListingDTO">
+	select * from listing where addrCity=#{addrCity} and addrGu=#{addrGu}
 </select>
 
 <select id="getJunsaeInfo" parameterType="String" resultType="com.boot.newzips.dto.JunsaeListingDTO">
-	select * from junsaelisting where itemid=#{itemid}
+	select * from junsaeListing where itemId=#{itemId}
 </select>
 
 <select id="getWolseInfo" parameterType="String" resultType="com.boot.newzips.dto.WolseListingDTO">
-	select * from wolselisting where itemid=#{itemid}
+	select * from wolseListing where itemId=#{itemId}
 </select>
 
+<select id="getRoomInfo" parameterType="String" resultType="com.boot.newzips.dto.RoomInfoDTO">
+	select * from roomInfo where itemId=#{itemId}
+</select>
 
 </mapper>

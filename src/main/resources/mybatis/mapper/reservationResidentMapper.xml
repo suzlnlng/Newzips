@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.newzips.mapper.ReservationResidentMapper">
+
+<!-- 거주자 예약 -->
+
+
+<insert id="insertResidentReserv" parameterType="com.boot.newzips.dto.ResidenceReservDTO">
+  INSERT INTO residentReserv (userId, itemId, date, time, available)
+  VALUES (#{userId}, #{itemId}, #{date}, #{time}, #{available})
+</insert>
+
+<!-- 유저 아이디와 아이템 아이디로 조회 -->
+<select id="selectResidentReserv" parameterType="String" resultType="com.boot.newzips.dto.ResidenceReservDTO">
+  select userId,itemId,date,time,available from residentReserv where userId = #{userId} and itemId=#{itemId}
+</select>
+
+<!-- 예약 정보를 삭제 -->
+<delete id="deleteResidentReserv" parameterType="com.boot.newzips.dto.ResidenceReservDTO">
+  DELETE FROM residentReserv WHERE userId = #{userId} and itemId=#{itemId} and date=#{date} and #time={time}
+</delete>
+
+
+</mapper>
+

@@ -24,8 +24,31 @@
 </head>
 <html class="no-js" lang="en">
 
-
+<form action="/suggested_ok" method="get">
 <body>
+
+
+<script type="text/javascript">
+
+	function btnActive(){
+
+		var selectBtn = document.getElementById('selectBtn');
+		
+		//클릭 이벤트 처리 함수
+		selectBtn.addEventListener("click", function() {
+		// 버튼 활성화/비활성화
+		selectBtn.disabled = !selectBtn.disabled;
+		});
+		
+		 if (selectBtn.disabled) {
+			    selectBtn.disabled = false;
+			    selectBtn.classList.remove('disabled');
+			  } else {
+			    selectBtn.disabled = true;
+			    selectBtn.classList.add('disabled');
+			  }
+	}
+</script>
     <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
@@ -180,7 +203,7 @@
 
 <section>
 <div id="content_list" style="justify-content: center;">
-	매물 제안 리스트
+	보유한 매물 리스트
 	<hr style="margin-left: 0px; width: 90%;"/>
 </div>
 </section>
@@ -188,74 +211,57 @@
 
 <!-- ================================================================ -->
 
-
 <section>
-    <div id="content_box">
-        <div id="content_area" >
-            <div class="item_image">
-                <img alt="매물사진" src="/assets/images/newzips_logo.png">
-            </div>
-            <div class="itemList_shortcut" style="margin-left: 30px;">
-                <ul>고객 제안 조건
-                    <li>아이디 ㅣ </li>
-                    <li>지역 ㅣ </li>
-                    <li>금액 ㅣ </li>
-                    <li>관리비 ㅣ </li>
-                    <li>교통 ㅣ </li>
-                    <li>주차 ㅣ </li>
-                    <li>애완동물 ㅣ </li>
-                </ul>
-            </div>
-             <div>
-                <button class="confirm_button">제안하기</button>
-            </div>
-            <div>
-				<hr/>            
-            </div>
+	
+	<div class="container_suggest">
+		<div class="userInfo_area" th:if="${suggest!= null}">
+			<div id="suggest_username">
+                <p style="font-size: 50px;">[[${suggest.userId}]]</p>
+            </div>	
+			 <div class="suggestList_itemList_shortcut" >
+               		<ul>* 고객 매물 조건
+               			<li th:text="'아이디 ㅣ '+${suggest.userId}"></li>
+               			<li th:text="'지역ㅣ '+${suggest.addrCity} + ${suggest.addrGu}"></li>
+               			<li th:text="'전월세 ㅣ '+${suggest.yearly_monthly}"></li>
+               			 <li th:if="${suggest.yearly_monthly=='전세'}" th:text="'금액 ㅣ ' + ${suggest.deposit}"></li>
+						<li th:if="${suggest.yearly_monthly=='월세'}" 
+						th:text="'금액 ㅣ ' + ${suggest.deposit} + ${suggest.monthlyFee}"></li>
+               			<li th:text="'방 개수 ㅣ '+${suggest.rooms}"></li>
+               		</ul>
+               	</div>
         </div>
-    </div>
+       <div class="suggestList_area" th:if=${realtorListDTO!=null} th:each="realtor:${realtorListDTO}">
+       		<div id="suggest_itemImage">
+                <img id="suggest_item_img" th:if="suggest" 
+                alt="매물사진" src="/listing_images/35802035/1.png">
+            </div>
+   			<div class="suggestList_content">
+           	 <ul>* 제안 가능한 매물
+                 <li>매물번호 l &nbsp;&nbsp;&nbsp;[[${realtor.itemId}]]</li>
+                 <li>지역 l &nbsp;&nbsp;&nbsp;[[${realtor.addrCity}]] [[${realtor.addrGu}]]</li>
+                 <li>전월세 l &nbsp;&nbsp;&nbsp;[[${realtor.yearly_monthly}]]</li>
+                 <li th:if="${realtor.yearly_monthly=='전세'}">금액 l &nbsp;&nbsp;&nbsp;[[${realtor.deposit}]]만원</li>
+				<li th:if="${realtor.yearly_monthly=='월세'}">금액 l &nbsp;&nbsp;&nbsp;[[${realtor.deposit}]]만원 / [[${realtor.monthlyFee}]]만원</li>
+				<li>관리비 l &nbsp;&nbsp;&nbsp;[[${realtor.maintenanceCost}]]만원</li>
+                 <li>매물 종류 l &nbsp;&nbsp;&nbsp;[[${realtor.roomType}]]</li>
+                 <li>평 수 l &nbsp;&nbsp;&nbsp;[[${realtor.area}/3.305785]]평</li>
+                 <li>방 수 l &nbsp;&nbsp;&nbsp;[[${realtor.rooms}]]개</li>
+             </ul>
+             </div>
+             <div class="select_btn_area">
+                <input type="button" id="selectBtn" class="" value="선택" onclick="btnActive();"/>
+	        </div>          
+       </div> 
+		<div class="complete_btn_area">
+                <button id="complete_button" type="submit" ><a href="suggestListRealtor">완료</a></button>
+	    </div>  
+	
+	
+	</div>
+   
 </section>
 
-
-
-
-
 	
-
-
-<!-- ================================================================ -->
-
-
-
-      <section> 
-
-            <div class="container">
-                <div>
-                    <div class="row">
-                        <div class="col-xl-8 col-lg-9 col-md-12 pl-0 pr-0">
-                                <div class="agent-info">
-                                    
-                                    <hr/>
-                                 
-                                    <ul class="cont-links">
-                                        <li><span><i class="la la-phone"></i>성함 : 기미현</span></li>
-                                        <li><span><i class="la la-phone"></i>+1 212-925-3797</span></li>
-                                        <li><span><i class="la la-envelope"></i>전/월세 : 전세</span></li>
-                                        <li><span><i class="la la-phone"></i>금액 : 2억 7천만원</span></li>
-                                    </ul>
-                                    
-                                </div><!--agent-info end-->
-                            </div><!--agent-profile end-->
-                        </div>
-                      </div>
-                    </div>
- 		
-    </section> 
-
-
-
-
-
 
 
 
@@ -398,5 +404,5 @@
 
 
 </body>
-
+</form>
 </html>

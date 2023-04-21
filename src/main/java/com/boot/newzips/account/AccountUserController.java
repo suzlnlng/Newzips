@@ -8,24 +8,42 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
-@RequestMapping(value="/newzips", method= {RequestMethod.GET, RequestMethod.POST} )
-public class AccountUserController {
+import com.boot.newzips.dto.MemberDTO;
 
-	@PostMapping("/join")
-	public ModelAndView join() throws Exception{
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/newzips")
+public class AccountUserController {
+	
+	private final AccountUserService accountUserService;
+
+	@GetMapping("/join")
+	public ModelAndView join(MemberDTO memberDTO) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("user/join_user");
+		mav.setViewName("user/join_user2");
 		
 		return mav;
 		
 	}
 	
+	@PostMapping("/join")
+	public ModelAndView join_ok(MemberDTO memberDTO) throws Exception{
+		
+		System.out.println("join_ok");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		
+		return mav;
+		
+	}
 	
 	@GetMapping("/login")
-	public ModelAndView login() throws Exception{
+	public ModelAndView login(LoginForm loginForm) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -35,17 +53,19 @@ public class AccountUserController {
 		
 	}
 	
-	@PostMapping("/newzips/login_ok")
-	public ModelAndView login_ok() throws Exception{
+	@PostMapping("/login")
+	public ModelAndView login_ok(LoginForm loginForm) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
+				
+		System.out.println(loginForm.getUserId());
+		System.out.println(loginForm.getUserPwd());
 		
 		mav.setViewName("redirect:/newzips");
 		
 		return mav;
 		
 	}
-	
 	
 	
 }

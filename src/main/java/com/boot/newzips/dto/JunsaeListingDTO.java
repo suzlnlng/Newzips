@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 public class JunsaeListingDTO {
 	
 	private String itemId;

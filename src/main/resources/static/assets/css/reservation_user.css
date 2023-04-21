@@ -75,6 +75,7 @@
   margin-left: 30%;
 }
 
+
 .form-field input,
 .form-field textarea5 {
   width: 100%;
@@ -130,6 +131,43 @@
   overflow: hidden;
 }
 
-.time-select {
-	margin-right: 10px;	
+.am_pm {
+	display:inline-block;
+	margin-right: 10px;
+	margin-bottom:20px;
+	font-size:20px;
+	background: rgb(255,255,255);
+	border-radius: 5px;
+	width: 65px;
+	text-align: center;
+	padding: 5px;
+	
 }
+
+input {
+	display:inline-block;
+	margin-right: 20px;
+	margin-bottom:20px;
+	font-size:20px;
+	background: rgb(255,255,255);
+	border:1px solid rgb(106,123,231);
+	border-radius: 5px;
+	width: 65px;
+	text-align: center;
+	padding: 5px;
+	color: gray;
+}
+.active {
+	background: rgb(106,123,231);
+	color: #fff;
+}
+	
+	
+.middle_text {
+	font-size: 16px; 
+	font-weight: 500; 
+	margin-bottom: 15px; 
+	color: #242526;
+}
+
+

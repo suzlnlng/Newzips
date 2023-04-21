@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.newzips.mapper.ReservationUserMapper">
+
+<!-- 방문자 예약 -->
+
+<insert id="insertReservation" parameterType="com.boot.newzips.dto.VisitorReservDTO">
+	insert into reservation (reservNo,userId,itemId,realtorId,visitDate,visitTime,confirm) 
+	values (#{reservNo},#{userId},#{itemId},#{realtorId},#{visitDate},#{visitTime},#{confirm})
+</insert>
+
+
+  <!-- 예약 가능한 날짜 조회 -->
+  <select id="selectAvailableDate" parameterType="map" resultType="string">
+    SELECT visitTime FROM VISITORRESERV
+    WHERE userId = #{userId}
+      AND itemId = #{itemId}
+      AND visitDate = #{visitDate}
+  </select>
+  
+  
+  <!-- 예약 가능한 시간 조회 -->
+  <select id="selectAvailableTime" parameterType="map" resultType="string">
+    SELECT visitTime FROM VISITORRESERV
+    WHERE userId = #{userId}
+      AND itemId = #{itemId}
+      AND visitDate = #{visitDate}
+      AND visetTime = #{visitTime}
+  </select>
+
+
+	<!-- 예약번호로 조회 -->
+	<select id="selectReservationReservNo" parameterType="String" resultType="com.boot.newzips.dto.VisitorReservDTO">
+		SELECT reservNo, userId, itemId, realtorId, visitDate, visitTime, confirm
+	    FROM VISITORRESERV
+	    WHERE reservNo = #{reservNo, jdbcType=VARCHAR}
+	</select>
+	
+	
+	<!-- 유저아이디로 조회 -->
+	<select id="selectReservationUserId" parameterType="String" resultType="com.boot.newzips.dto.VisitorReservDTO">
+		SELECT reservNo, userId, itemId, realtorId, visitDate, visitTime, confirm
+	    FROM VISITORRESERV
+	    WHERE userId = #{userId}
+	</select>
+	
+	<!-- itemId로 조회 -->
+	<select id="selectReservationItemId" parameterType="String" resultType="com.boot.newzips.dto.VisitorReservDTO">
+		SELECT reservNo, userId, itemId, realtorId, visitDate, visitTime, confirm
+	    FROM VISITORRESERV where itemId=#{itemId}
+	</select>
+	
+	<!-- roomInfo -->
+	<select id="getReservationRoomInfo" parameterType="String" resultType="com.boot.newzips.dto.RoomInfoDTO">
+		select itemId, roomType, roomFloor, area, supplyArea, roomDirection, heating, availableDate
+		from ROOMINFO where itemId = #{itemId}
+	</select>
+	
+	
+	<!-- 삭제 -->
+	<delete id="deleteReservation" parameterType="int">
+		delete from reservation where reservNo = #{reservNo, jdbcType=VARCHAR}
+	</delete>
+
+
+</mapper>

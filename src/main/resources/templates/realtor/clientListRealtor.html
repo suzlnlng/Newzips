@@ -191,20 +191,28 @@
 
 <section>
     <div id="content_box">
-        <div id="content_area" >
-            <div class="itemList_shortcut" style="margin-left: 30px;">
-                <ul>고객이 선택한 조건이에요!
-                    <li>아이디 ㅣ </li>
-                    <li>지역 ㅣ </li>
-                    <li>전월세 ㅣ </li>
-                    <li>금액 ㅣ </li>
-                    <li>방 수 ㅣ </li>
-                    <li>관리비 ㅣ </li>
-                    <li> ㅣ </li>
+    <div id="introduce_msg">
+    	<span>#고객들이 원하는 매물이에요!</span>
+    </div>
+        <div id="content_area"  th:if=${suggestionDTO!=null} th:each="dto : ${suggestionDTO}">
+            <div id="user_name">
+                <p style="font-size: 50px;">[[${dto.userId}]]</p>
+            </div>
+               <div class="itemList_shortcut">
+              	 <ul>
+                    <li>지역 ㅣ [[${dto.addrCity}]] [[${dto.addrGu}]]</li>
+                    <li>전월세 ㅣ [[${dto.yearly_monthly}]]</li>
+                    <li th:if="${dto.monthlyFee!=null}">금액 ㅣ [[${dto.deposit}]]만원 / [[${dto.monthlyFee}]]만원</li>
+					<li th:if="${dto.monthlyFee==null}">금액 ㅣ [[${dto.deposit}]]만원</li>
+                    <li>방 수 ㅣ [[${dto.rooms}]]개</li>
+                    <li>평 수 ㅣ [[${dto.area}]]평</li>
+                    <li>관리비 ㅣ [[${dto.maintenanceCost}]]</li>
                 </ul>
             </div>
             <div>
-                <button class="confirm_button">확정</button>
+                <button class="confirm_button" >
+                <a th:href="|suggestListRealtor?userId=${dto.userId}&addrCity=${dto.addrCity}&addrGu=${dto.addrGu}|">
+                제안하기</button>
             </div>
             <div>
 				<hr/>            
@@ -223,40 +231,6 @@
 <!-- ================================================================ -->
 
 
-
-      <section> 
-
-            <div class="container">
-                <div>
-                    <div class="row">
-                        <div class="col-xl-8 col-lg-9 col-md-12 pl-0 pr-0">
-                                <div class="agent-info">
-                                    
-                                    <hr/>
-                                 
-                                    <ul class="cont-links">
-                                        <li><span><i class="la la-phone"></i>성함 : 기미현</span></li>
-                                        <li><span><i class="la la-phone"></i>+1 212-925-3797</span></li>
-                                        <li><span><i class="la la-envelope"></i>전/월세 : 전세</span></li>
-                                        <li><span><i class="la la-phone"></i>금액 : 2억 7천만원</span></li>
-                                    </ul>
-                                    
-                                </div><!--agent-info end-->
-                            </div><!--agent-profile end-->
-                        </div>
-                      </div>
-                    </div>
- 		
-    </section> 
-
-
-
-
-
-
-
-
-<!-- ================================================================================================ -->
 
 
 <!-- 
