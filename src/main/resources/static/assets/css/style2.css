@@ -3917,7 +3917,7 @@ header.fix {
   float: left;
   width: 100%;
   border:1px solid #dfe0e5;
-  border-top: 0;
+  /* border-top: 0; */
   padding: 34px 38px 34px 37px;
 }
 .property-thumb-imgs .col-lg-4 {
@@ -5684,8 +5684,8 @@ label.error {
 
 
 .property-main-img {
-  float: left;
-  width: 100%;
+  margin: 0 auto;
+  width: 95%;
 }
 .slick-slide {
   outline: none;
