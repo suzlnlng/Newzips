@@ -14,5 +14,8 @@ public class ContractDTO {
 	private String temporaryContract;
 	private int tempContractCost;
 	private String contract;
-
+	
+	
+	
+	
 }
