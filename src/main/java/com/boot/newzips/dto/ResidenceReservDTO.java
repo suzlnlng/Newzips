@@ -1,5 +1,7 @@
 package com.boot.newzips.dto;
 
+import java.sql.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 

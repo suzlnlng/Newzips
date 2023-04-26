@@ -30,6 +30,12 @@ public class ResidentServiceImpl implements ResidentService{
 		reservationResidentMapper.deleteResidentReserv(dto);
 		
 	}
+
+	@Override
+	public void updateResidentReserv(ResidenceReservDTO dto) throws Exception {
+		reservationResidentMapper.updateResidentReserv(dto);
+		
+	}
 	
 	
 	

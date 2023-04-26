@@ -1,23 +1,37 @@
 package com.boot.newzips.contract;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.boot.newzips.dto.ListingDTO;
+import com.boot.newzips.itemDetail.ItemDetailService;
+import com.boot.newzips.itemList.itemListUserService;
 
 @Controller
 public class ContractUserController {
 	
+	
 	@GetMapping("newzips/contract_user")
-	public String contractUser() {
+	public ModelAndView contractUser(HttpServletRequest request) throws Exception {
 		
-		return "/user/contract_user";
+		String userId = request.getParameter("userId");
+		userId = "karina";
+		
+		String itemId = request.getParameter("itemId");
+		itemId = "35738667";
+		
+		ModelAndView mav = new ModelAndView();
+
+		
+		mav.setViewName("/user/reservation_user_contract1");
+		
+		return mav;
 	}
 	
-	//아 존나 모르겠다
-	
-	@GetMapping("newzips/reservation_user_contract1")
-	public String usercontract1() {
-		
-		return "/user/reservation_user_contract1";
-	}
+
 
 }

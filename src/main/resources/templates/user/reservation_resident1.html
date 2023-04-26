@@ -242,9 +242,8 @@
                         
                         <form th:object="${residenceReservDTO}" th:action="@{/newzips/reservation_resident1}" name="makeReservation" method="post" onsubmit="return makeReservation(event);">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                         <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-					     <input type="hidden" th:field="*{date}"/>
-					    <input type="hidden" th:field="*{time}"/>
+					     <input type="hidden" th:field="*{availableDate}"/>
+					    <input type="hidden" th:field="*{availableTime}"/>
 						                        
                         <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0; padding-right: 0;">
                             <div class="contact-agent" style="width: 130%; padding-left:0; margin-left: -15%;">
@@ -258,70 +257,70 @@
 								  <div class="time-slot">
 								    <span>9:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="9:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 								  </div>
 								  <div class="time-slot">
 								    <span>10:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="10:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 								  </div>
 								  <div class="time-slot">
 								    <span>11:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="11:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 								  </div>
 								  <div class="time-slot">
 								    <span>12:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="12:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 								  </div>
 								  <div class="time-slot">
 								    <span>13:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="13:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 							    </div>
 							    <div class="time-slot">
 								    <span>14:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="14:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 							    </div>
 							    <div class="time-slot">
 								    <span>15:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="15:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 							    </div>
 							    <div class="time-slot">
 								    <span>16:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="16:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 							    </div>
 							    <div class="time-slot">
 								    <span>17:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="17:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 							    </div>
 							    <div class="time-slot">
 								    <span>18:00</span>
 								    <label class="toggle-switch">
-								      <input type="checkbox">
+								      <input type="checkbox" value="18:00">
 								      <span class="toggle-slider"></span>
 								    </label>
 							    </div>
@@ -447,93 +446,91 @@
     <script src="/assets/js/map-cluster/markerclusterer.js"></script>
     <script src="/assets/js/map-cluster/maps.js"></script>
 
-<script>
+<script type="text/javascript">
+    
+    const timeSlots = document.querySelectorAll('.time-slot');
 
-$(function() {
-    // 달력의 기본값을 오늘 날짜로 설정
-    $("#datepicker").datepicker({
-      dateFormat: "yyyy-mm-dd",
-      defaultDate: new Date(),
-      minDate: 0,
+    timeSlots.forEach((timeSlot) => {
+      const toggleSwitch = timeSlot.querySelector('.toggle-switch input');
+      const toggleLabel = timeSlot.querySelector('.toggle-label');
+      
+      toggleSwitch.addEventListener('change', () => {
+        if (toggleLabel !== null) {
+          toggleLabel.textContent = toggleSwitch.checked ? 'on' : 'off';
+        }
+        const time = toggleSwitch.closest('.time-slot').querySelector('span').textContent;
+        if (toggleSwitch.checked) {
+          selectedTimes.push(time);
+        } else {
+          const index = selectedTimes.indexOf(time);
+          if (index !== -1) {
+            selectedTimes.splice(index, 1);
+          }
+        }
+      });
+    });
+    
+    $(function() {
+      $("#datepicker").datepicker({
+    	  minDate:0,
+        onSelect: function(dateText) {
+          const dateObject = $(this).datepicker('getDate');
+          const year = dateObject.getFullYear();
+          const month = ("0" + (dateObject.getMonth() + 1)).slice(-2);
+          const day = ("0" + dateObject.getDate()).slice(-2);
+          selectedDate = year + '-' + month + '-' + day;
+        }
+      });
     });
 
-    const selectedDateElement = $("#datepicker");
-    const timeSlots = $(".time-slot");
     let selectedDate = '';
-    const selectedTimes = [];
-
-    selectedDateElement.on("change", () => {
-        const dateObject = selectedDateElement.datepicker("getDate");
-        const year = dateObject.getFullYear();
-        const month = ("0" + (dateObject.getMonth() + 1)).slice(-2);
-        const day = ("0" + dateObject.getDate()).slice(-2);
-        selectedDate = year + '-' + month + '-' + day;
-    });
-
-    timeSlots.each(function(index, timeSlot) {
-        const toggleSwitch = $(timeSlot).find('.toggle-switch input');
-        const toggleLabel = $(timeSlot).find('.toggle-label');
-
-        toggleSwitch.on("change", () => {
-            if (toggleLabel !== null) {
-              toggleLabel.text(toggleSwitch.prop("checked") ? 'on' : 'off');
-            }
-            const time = toggleSwitch.closest('.time-slot').find('span').text();
-            if (toggleSwitch.prop("checked")) {
-              selectedTimes.push(time);
-            } else {
-              const index = selectedTimes.indexOf(time);
-              if (index !== -1) {
-                selectedTimes.splice(index, 1);
-              }
-            }
-        });
-    });
+    let selectedTimes = [];
 
     function makeReservation() {
-        if (!selectedDate) {
-            alert('날짜를 선택해주세요.');
-            return;
-        }
+      if (selectedDate === '') {
+        alert('날짜를 선택해주세요.');
+        return;
+      }
+      
+      if(selectedTimes.length === 0){
+    	  alert("시간을 선택해주세요.");
+    	  return;
+      }
+  											  //join(', ')..?여러개 선택하면 ,로 구분해주는거야..
+      const confirmMsg = `날짜: ${selectedDate}\n시간: ${selectedTimes.join(', ')}\n\n맞으면 확인눌러`;
+      const confirmed = confirm(confirmMsg);
+      if(confirmed){
+      const reservationData = { //먼저 날짜, 시간 데이터를 reservationData 객체에 저장
+    		  date:selectedDate,
+    		  time:selectedTimes
+      	};
+      }
+      
+      const formData = new FormData(); //선택한 날짜, 시간 데이터를 폼에 넣어주는 작업쓰
+      formData.append("date", reservationData.date);
+      reservationData.time.forEach((time) => { 
+          formData.append("time", time);
+      });
 
-        if (selectedTimes.length === 0) {
-            alert('시간을 선택해주세요.');
-            return;
-        }
+      const formElement = document.createElement('form'); //createElement은 사용자 지정 그런건 줄 알았는데..document.createElement('form')이렇게 쓰면 <form>요소를 생성하는거래...
+      formElement.method = 'post'; // formElement.method는 form이 전송될 HTTPmetehod를 지정하는 속성이거등..
+      formElement.action = '/newzips/reservation_resident1';  //자바스크립트에서는 Thymeleaf의 th:method 속성 안쓴닥오..
+      formElement.name = 'reservationForm';
 
-        const confirmMsg = `날짜: ${selectedDate}\n시간: ${selectedTimes.join(', ')}\n\n맞으면 확인눌러`;
-        const confirmed = confirm(confirmMsg);
-        if (!confirmed) {
-          return;
-        }
+      for (const [key, value] of formData.entries()) { //formData는 key,value쌍의 데이터를 담는 일종의 컨테이너임...
+    	  												//암튼 formDsata에 있는 모든 key-value 쌍을 꺼내가꼬 해당 key-value쌍에 대한 빈 input 엘리먼트 생성하고 form에 추가하는거임
+          const inputElement = document.createElement('input'); //input..?이 데이터를 담은 애라고..
+          inputElement.type = 'hidden';	 //<input>은 입력필드를 생성하는데 입력필드는 값을 입력하고 제출할 때 서버로 데이터를 전송할 수 있거등
+          inputElement.name = key;  //reservationData 객체에 저장된 정보를 <input>에 담아서 서버로 전송할 수 있는 형태로 만든기 위해 <input>사용
+          inputElement.value = value;  
+          formElement.appendChild(inputElement);  //formElement안에 inputElement를 추가하는거야..긍까 자식요소로 추가하는거지..
+          
+      }											  //긍까 forElement가 제출될 때 inputElement도 같이 제출되는거임
+				//appendChild가 뭐냐..?부모 자식 그거할때 쓰는거임 ..forElement랑 inputElement랑 부모 자식 관계로 하게..
+      document.body.appendChild(formElement);
+      formElement.submit();
 
-        const formData = new FormData();
-        formData.append('date', selectedDate);
-
-        // 시간 토글들의 name은 모두 "time[]"으로 설정
-        const timeInputs = $('.time-slot input[type="checkbox"]');
-        timeInputs.each(function() {
-            $(this).attr('name', 'time[]');
-            $(this).prop('checked', false); // 디폴트로 off 설정
-        });
-
-        selectedTimes.forEach((time) => {
-            formData.append('time[]', time); // 여러개 선택할 수 있으므로 배열 형태로 전송
-        });
-
-        const form = $('<form>').attr({
-            'method': 'post',
-            'action': '/newzips/reservation_resident1'
-        }).append(formData);
-
-        $('body').append(form);
-
-        form.submit();
     }
-    
-    $('#submit-btn').on('click', makeReservation);
-});
-
 
 </script>
 
