@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.boot.newzips.dto.ListingDTO;
-import com.boot.newzips.mapper.ContractUserMapper;
+import com.boot.newzips.mapper.contractUserMapper;
 
 @Service
 public class ContractUserServiceImpl implements ContractUserService{
 
 	@Autowired
-	private ContractUserMapper contractUserMapper;
+	private contractUserMapper contractUserMapper;
 	
 	@Override
 	public ListingDTO getListing(String itemId) throws Exception {
-		return contractUserMapper.getListing(itemId);
+		return contractUserMapper.get
 	}
 
 }
