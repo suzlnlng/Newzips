@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE mapper 
+<!DOCTYPE mapper
 PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.boot.newzips.mapper.contractUserMapper">
 
-	<select id="getListing" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO">
-		select itemId,addrCity,addrGu,addrDetail,yearly_monthly,maintenanceCost,maintenanceList,ectList,parking,parkingCost,contract
-		from listing where itemId=#{itemId}
-	</select>
+<select id="getContract" parameterType="String" resultType="com.boot.newzips.dto.ContractUserDTO">
+	select r.realtorName,r.realtorPhone,r.realtorEmail, 
+			o.rooms,o.bathrooms, 
+			l.parking,l.parkingCost,l.addrDetail,l.yearly_monthly, 
+			w.deposit,w.deposit_web,w.monthlyFee,w.monthlyFee_web,
+			j.yearlyFee,j.yearlyFee_web
+	from visitorreserv u
+	join realtor r on u.realtorId = r.realtorId
+	join roominfo o on u.itemId = o.itemId
+	join listing l on u.itemId = l.itemId
+	join WOLSELISTING w on u.itemId = w.itemId
+	join JUNSAELISTING j on u.itemId = j.itemId
+	where u.userId = #{userId}
+</select>
+
+
+<select id="getUser" parameterType="String" resultType="com.boot.newzips.dto.MemberDTO">
+	SELECT userName, userPhone, userEmail
+	FROM MEMBER
+	WHERE userId = #{userId}
+</select>
+
+<select id="getListing" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO">
+	select addrDetail,yearly_monthly,parking,parkingCost
+	from listing
+	where itemId = #{itemId}
+</select>
+
+<select id="getWolse" parameterType="String" resultType="com.boot.newzips.dto.WolseListingDTO">
+	select deposit,monthlyFee,contractPeriod
+	from WOLSELISTING
+	where itemId = #{itemId}
+</select>
+
+<select id="getJunsae" parameterType="String" resultType="com.boot.newzips.dto.JunsaeListingDTO">
+	select yearlyFee,contractPeriod
+	from JUNSAELISTING
+	where itemId = #{itemId}
+</select>
+
 
 </mapper>
