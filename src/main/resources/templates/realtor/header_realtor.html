@@ -1,0 +1,120 @@
+<html>
+<meta charset="UTF-8">
+
+
+<div th:fragment="headerFragment" class="headerBox">
+	
+	  <header>
+
+            <div class="top-header-realtor">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-6 col-md-7 col-sm-12">
+                            <div class="header-address">
+                                <a href="#">
+                                    <i></i>
+                                    <span>중개인페이지~~~~~</span>
+                                </a>
+                                <a href="#">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-5 col-sm-12">
+                            <div class="header-social">
+                            	<i class="la la-arrow-circle-right"></i>
+                                <a href="/newzips"><span>사용자로 전환</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <a class="navbar-brand" href="/newzips/realtor">
+                                    <img src="/assets/images/newzips_logo_1.png" alt="">
+                                </a>
+                                <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+                                    <span class="icon-spar"></span>
+                                    <span class="icon-spar"></span>
+                                    <span class="icon-spar"></span>
+                                </button>
+
+                                <div class="navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="/newzips/itemList_user">
+                                                매물검색
+                                            </a>
+                                         
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                                방문예약
+                                            </a>
+                                            <div class="dropdown-menu animated">
+                                                <a class="dropdown-item" href="/newzips/reservationRequestRealtor">예약요청 확인하기</a>
+                                                <a class="dropdown-item" href="/newzips/reservationStateRealtor">예약현황 확인하기</a>
+                                            </div>
+                                           
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                               제안
+                                            </a>
+                                            <div class="dropdown-menu animated">
+                                                <a class="dropdown-item" href="/newzips/clientListRealtor">제안하기</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
+                                               뭐넣지..
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="d-inline my-2 my-lg-0">
+                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/newzips/realtor/login">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_login">로그인</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/realtor/joinTerm" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>회원가입</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/newzips/realtor/logout">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_logout">로그아웃</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/realtor/mypage" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>마이페이지</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="#" title="" class="close-menu"><i class="la la-close"></i></a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header><!--header end-->
+</div>

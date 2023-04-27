@@ -1,5 +1,6 @@
 package com.boot.newzips.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.boot.newzips.dto.RoomInfoDTO;
@@ -16,7 +17,7 @@ public interface ReservationUserService {
 			
 			public VisitorReservDTO selectReservationReservNo(String reservNo) throws Exception;
 			
-			public VisitorReservDTO selectReservationUserId(String userId) throws Exception;
+			public List<VisitorReservDTO> selectReservationUserId(String userId) throws Exception;
 			
 			public VisitorReservDTO selectReservationItemId(String itemId) throws Exception;
 

@@ -20,13 +20,15 @@ import com.boot.newzips.dto.WolseListingDTO;
 import com.fasterxml.jackson.databind.deser.impl.ExternalTypeHandler.Builder;
 
 import groovyjarjarantlr4.v4.parse.ANTLRParser.exceptionGroup_return;
+import javassist.compiler.ast.NewExpr;
 import lombok.RequiredArgsConstructor;
+import oracle.jdbc.proxy.annotation.GetProxy;
 
 
 @Controller
 @RequiredArgsConstructor
 public class SuggestRealtorController {
-
+	//ê³ ê°ì˜ ë§¤ë¬¼ ì¡°ê±´ì„ í™•ì¸
 	private final SuggestRealtorService suggestRealtorService;
 	ModelAndView mav = new ModelAndView();
 	
@@ -44,16 +46,15 @@ public class SuggestRealtorController {
 		
 	@GetMapping("/newzips/suggestListRealtor")
 	public ModelAndView suggestList(HttpServletRequest req) throws Exception{
-		
-		//°¡Áö°í µé¾î¿À´Â »ç¿ëÀÚÀÇ ÃÖ¼Ò Á¶°Ç
+		//ê³ ê° ì¡°ê±´ì— ë§ëŠ” ì œì•ˆ ê°€ëŠ¥í•œ ë§¤ë¬¼ë¦¬ìŠ¤íŠ¸
 		String userId = req.getParameter("userId");
 		String addrCity = req.getParameter("addrCity");
 		String addrGu = req.getParameter("addrGu");
 		
-		//°í°´À» ¼±ÅÃÇÏ°í ¸Å¹°¸®½ºÆ®°¡ ¶ß´Â ÆäÀÌÁö
 		SuggestionDTO suggest = suggestRealtorService.getSuggestInfo(userId);
 		List<ListingDTO> listing = suggestRealtorService.getSuggestItem(suggest.getAddrCity(), suggest.getAddrGu());
 		List<RealtorListDTO> realtorList = new ArrayList<RealtorListDTO>();
+		List<RealtorSuggestionDTO> realtorSuggestion = new ArrayList<RealtorSuggestionDTO>();
 		
 		Iterator<ListingDTO> it = listing.iterator();
 		
@@ -61,13 +62,12 @@ public class SuggestRealtorController {
 
 			ListingDTO dto=it.next();
 			RealtorListDTO realtor = new RealtorListDTO();
-
-			//»ç¿ëÀÚ°¡ º¸·Á´Â ¸Å¹° Áö¿ª°ú list¿¡ ÀÖ´Â ¸Å¹°ÀÇ Áö¿ª,Àü/¿ù¼¼°¡ °°À¸¸é
+			RealtorSuggestionDTO realtorSuggest = new RealtorSuggestionDTO();
+			
 			if(dto.getAddrCity().equals(suggest.getAddrCity())&&dto.getAddrGu().equals(suggest.getAddrGu())
 					&&dto.getYearly_monthly().equals(suggest.getYearly_monthly())) {
-				//±İ¾×°ú roomtype ºñ±³
-				//Á¶°ÇÀÌ ÀÏÄ¡ÇÏ¸é realtorSuggestion¿¡ userId¿Í itemId ´ã±â
-					if(suggest.getYearly_monthly().equals("Àü¼¼")) {
+
+				if(suggest.getYearly_monthly().equals("ì „ì„¸")) {
 						
 						int junsaeDeposit = (suggestRealtorService.getJunsaeInfo(dto.getItemId())).getYearlyFee();
 						
@@ -78,17 +78,18 @@ public class SuggestRealtorController {
 								RoomInfoDTO room = suggestRealtorService.getRoomInfo(dto.getItemId());
 								
 								realtor.setItemId(dto.getItemId());
-								realtor.setAddrCity(dto.getAddrCity());
-								realtor.setAddrGu(dto.getAddrGu());
+								realtor.setAddrDetail(dto.getAddrDetail());
 								realtor.setYearly_monthly(dto.getYearly_monthly());
 								realtor.setDeposit(junsae.getYearlyFee_web());
 								realtor.setMaintenanceCost(dto.getMaintenanceCost());
 								realtor.setArea(room.getArea());
 								realtor.setRoomType(room.getRoomType());
 								realtor.setRooms(room.getRooms());
+								realtorSuggest.setUserId(suggest.getUserId());
+								realtorSuggest.setItemId(dto.getItemId());
 						}
 						
-					} else if(suggest.getYearly_monthly().equals("¿ù¼¼")) {
+					} else if(suggest.getYearly_monthly().equals("ì›”ì„¸")) {
 
 						int monthlyFee = (suggestRealtorService.getWolseInfo(dto.getItemId())).getMonthlyFee();
 						
@@ -98,15 +99,17 @@ public class SuggestRealtorController {
 								WolseListingDTO wolse = suggestRealtorService.getWolseInfo(dto.getItemId());
 								RoomInfoDTO room = suggestRealtorService.getRoomInfo(dto.getItemId());
 								
+								
 								realtor.setItemId(dto.getItemId());
-								realtor.setAddrCity(dto.getAddrCity());
-								realtor.setAddrGu(dto.getAddrGu());
+								realtor.setAddrDetail(dto.getAddrDetail());
 								realtor.setYearly_monthly(dto.getYearly_monthly());
 								realtor.setMonthlyFee(wolse.getMonthlyFee_web());
 								realtor.setMaintenanceCost(dto.getMaintenanceCost());
 								realtor.setArea(room.getArea());
 								realtor.setRoomType(room.getRoomType());
 								realtor.setRooms(room.getRooms());
+								realtorSuggest.setUserId(suggest.getUserId());
+								realtorSuggest.setItemId(dto.getItemId());
 						}
 						
 					}
@@ -114,20 +117,92 @@ public class SuggestRealtorController {
 			}
 					
 					realtorList.add(realtor);
+					realtorSuggestion.add(realtorSuggest);
 		}
 			
 		}
-		
+
 		mav.addObject("suggest", suggest);
 		mav.addObject("realtorListDTO", realtorList);
+		mav.addObject("realtorSuggestion", realtorSuggestion);
+		
 		mav.setViewName("realtor/suggestListRealtor");
 		
 		return mav;
 		
 	}
 	
-
+		@GetMapping("/newzips/suggestListRealtor_ok")
+		public ModelAndView suggestList_ok() throws Exception{
+			
+			mav.setViewName("realtor/suggestListRealtor_ok");
+			
+			return mav;
+		}
 	
+		@GetMapping("/newzips/suggestedItemRealtor")
+		public ModelAndView SuggestedItem() throws Exception{
+			
+			String realtorId = "hyeon";
+			//ì¤‘ê°œì¸ ì•„ì´ë””, ì œì•ˆë°›ì€ ê³ ê°, ì œì•ˆí•œ ë§¤ë¬¼
+			List<RealtorSuggestionDTO> realtorSuggestion= suggestRealtorService.getRealtorSuggestion(realtorId);
+
+			//ì¤‘ê°œì¸ì´ ì œì•ˆí•œ ë§¤ë¬¼ë²ˆí˜¸ë¡œ ë¶ˆëŸ¬ì˜¨ RealtorListDTOì„ ëª¨ë‘ ì €ì¥
+			List<RealtorListDTO> realtorList = new ArrayList<RealtorListDTO>();
+			
+			Iterator<RealtorSuggestionDTO>  it = realtorSuggestion.iterator();
+			
+			while(it.hasNext()) {
+
+				RealtorSuggestionDTO suggested = it.next();
+				
+				RealtorListDTO item = new RealtorListDTO();
+				
+				ListingDTO list = suggestRealtorService.getItemInfo(suggested.getItemId());
+				JunsaeListingDTO junsae = suggestRealtorService.getJunsaeInfo(suggested.getItemId());
+				WolseListingDTO wolse = suggestRealtorService.getWolseInfo(suggested.getItemId());
+				RoomInfoDTO room = suggestRealtorService.getRoomInfo(suggested.getItemId());
+				
+				item.setUserId(suggested.getUserId());
+				
+				if(list.getYearly_monthly().equals("ì „ì„¸")) {
+					
+					item.setItemId(suggested.getItemId());
+					item.setAddrDetail(suggested.getItemId());
+					item.setYearly_monthly(list.getYearly_monthly());
+					item.setDeposit(junsae.getYearlyFee_web());					
+					item.setMaintenanceCost(list.getMaintenanceCost());
+					item.setArea(room.getArea());
+					item.setRoomType(room.getRoomType());
+					item.setRooms(room.getRooms());
+					
+					
+				} else if(list.getYearly_monthly().equals("ì›”ì„¸")) {
+
+					item.setItemId(suggested.getItemId());
+					item.setAddrDetail(suggested.getItemId());
+					item.setYearly_monthly(list.getYearly_monthly());
+					item.setDeposit(wolse.getDeposit_web());
+					item.setMonthlyFee(wolse.getMonthlyFee_web());
+					item.setMaintenanceCost(list.getMaintenanceCost());
+					item.setArea(room.getArea());
+					item.setRoomType(room.getRoomType());
+					item.setRooms(room.getRooms());
+					
+				}
+						
+				realtorList.add(item);
+			}
+			
+			mav.addObject("realtorId",realtorId);
+			mav.addObject("realtorSuggestion", realtorSuggestion);
+			mav.addObject("realtorList", realtorList);
+			
+			mav.setViewName("realtor/suggestedItemRealtor");
+			
+			return mav;
+		}
+		
 }
 
 

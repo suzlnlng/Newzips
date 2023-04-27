@@ -1,5 +1,6 @@
 package com.boot.newzips.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -10,27 +11,27 @@ import com.boot.newzips.dto.VisitorReservDTO;
 @Mapper
 public interface ReservationUserMapper {
 	
-		// ¹æ¹®ÀÚ ¿¹¾à
+		// ï¿½æ¹®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public void insertReservation(VisitorReservDTO dto) throws Exception;
 		
-		// ¿¹¾à °¡´ÉÇÑ ³¯Â¥ Á¶È¸
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ ï¿½ï¿½È¸
 		public String selectAvailableDate(Map<String, Object> map) throws Exception;
 		
-		// ¿¹¾à °¡´ÉÇÑ ½Ã°£ Á¶È¸
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½È¸
 		public String selectAvailableTime(Map<String, Object> map) throws Exception;
 		
-		// ¿¹¾à¹øÈ£·Î Á¶È¸
+		// ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½È¸
 		public VisitorReservDTO selectReservationReservNo(String reservNo) throws Exception;
 		
-		// À¯Àú¾ÆÀÌµð·Î Á¶È¸
-		public VisitorReservDTO selectReservationUserId(String userId) throws Exception;
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½È¸
+		public List<VisitorReservDTO> selectReservationUserId(String userId) throws Exception;
 	
-		//itemId·Î Á¶È¸
+		//itemIdï¿½ï¿½ ï¿½ï¿½È¸
 		public VisitorReservDTO selectReservationItemId(String itemId) throws Exception;
 		
-		//·ë Á¤º¸
+		//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public RoomInfoDTO getReservationRoomInfo(String itemId) throws Exception;
 		
-		// »èÁ¦
+		// ï¿½ï¿½ï¿½ï¿½
 		public void deleteReservation(String reservNo) throws Exception;
 }

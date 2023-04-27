@@ -30,8 +30,8 @@ public class SuggestRealtorServiceImpl implements SuggestRealtorService{
 	}
 
 	@Override
-	public List<RealtorSuggestionDTO> getRealtorSuggestion(String userId) throws Exception {
-		return suggestRealtorMapper.getRealtorSuggestion(userId);
+	public List<RealtorSuggestionDTO> getRealtorSuggestion(String realtorId) throws Exception {
+		return suggestRealtorMapper.getRealtorSuggestion(realtorId);
 	}
 	
 	@Override
@@ -59,6 +59,5 @@ public class SuggestRealtorServiceImpl implements SuggestRealtorService{
 		return suggestRealtorMapper.getRoomInfo(itemId);
 	}
 
-
-
+	
 }

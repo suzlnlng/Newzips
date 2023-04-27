@@ -527,7 +527,6 @@ header.pb .menu-button span {
 
 .banner {
   padding: 200px 0px;
-  background: url("https://via.placeholder.com/1920x674");
   background-size: cover;
   background-position: center;
   min-height: 674px;
@@ -2012,7 +2011,6 @@ header.pb .menu-button span {
 
 
 .pager-sec {
-  background-image: url(https://via.placeholder.com/1920x200);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 74px 0 72px 0;
@@ -4951,7 +4949,6 @@ header.pb .header .navbar-nav .submit-btn a:hover {
 /* ===================== DISCOVER PROPERTIES ==================== */
 
 .discover-propt {
-  background-image: url(https://via.placeholder.com/1920x491);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -5177,7 +5174,6 @@ header.pb .header .navbar-nav .submit-btn a:hover {
   opacity: 0.50;
 } 
 .main-banner-sec.hp6 {
-  background-image: url(https://via.placeholder.com/1920x610);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 184px 0 194px 0;
@@ -5552,7 +5548,6 @@ label.error {
   font-size: 14px;
 }
 .landing-banner {
-  background-image: url(https://via.placeholder.com/1920x950);
   padding: 330px 0 230px 0;
   background-size: cover;
   background-repeat: no-repeat;

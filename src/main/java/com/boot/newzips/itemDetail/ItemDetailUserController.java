@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,18 +26,17 @@ public class ItemDetailUserController {
 	@Resource
 	private ItemDetailService itemDetailService;
 	
-	@GetMapping("/newzips/itemDetail_user")
-	public ModelAndView itemDetail_user(HttpServletRequest request) throws Exception{
+	@GetMapping("/newzips/itemDetail_user/{itemId}")
+	public ModelAndView itemDetail_user(@PathVariable("itemId") String itemId) throws Exception{
 		
-		String itemId = request.getParameter("itemId");
-		itemId = "3428";
+		//String itemId = request.getParameter("itemId");
+		//itemId = "3428";
 				
 		ModelAndView mav = new ModelAndView();	
 		
 		if (itemDetailService == null) {
 			throw new Exception("itemDetailService is null");
 		}
-			
 		
 		BuildingInfoDTO dtoB = itemDetailService.getReadData_buildingInfo(itemId);
 		ListingDTO dtoL = itemDetailService.getReadData_listing(itemId);

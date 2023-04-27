@@ -40,7 +40,6 @@ public class ItemListUserController {
         params.put("end", 6);
 
         List<ListAllDTO> listing = itemListUserService.getreadDataAll(params);
-        mav.addObject("listing", listing); // 전체 데이터를 뷰에 전달
         
         System.out.println(listing.size());
         
@@ -58,18 +57,18 @@ public class ItemListUserController {
             }
         }
         
+        mav.addObject("listing", listing); // 전체 데이터를 뷰에 전달
         mav.addObject("wolse", wolseList); // 누적된 월세 데이터를 모델에 추가
         mav.addObject("junsae", junsaeList); // 누적된 전세 데이터를 모델에 추가
        
-
         mav.setViewName("user/itemlist_user");
 
         return mav;
     }
     
     @PostMapping(value = "/newzips/itemList_user")
-    public ModelAndView itemList_user(@RequestParam("start") int start, 
-    		@RequestParam("end") int end, Model model) throws Exception {
+    public ModelAndView itemList_user(Model model, @RequestParam("start") int start, 
+    		@RequestParam("end") int end) throws Exception {
 
         //String itemId = request.getParameter("itemId");
 
@@ -108,6 +107,8 @@ public class ItemListUserController {
         mav.addObject("listing", listing); // 전체 데이터를 뷰에 전달
         mav.addObject("wolse", wolseList); // 누적된 월세 데이터를 모델에 추가
         mav.addObject("junsae", junsaeList); // 누적된 전세 데이터를 모델에 추가
+        
+        mav.setViewName("user/listing_user");
 
         return mav;
         

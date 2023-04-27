@@ -1,5 +1,9 @@
 package com.boot.newzips.reservation;
 
+import java.security.Principal;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.View;
@@ -31,44 +35,60 @@ public class ReservationUserController {
 	@Resource
 	private ReservationUserService reservationUserService;
 	
-	
-	@GetMapping("/newzips/reservation_resident1")
-	public ModelAndView reservation_resident(ResidenceReservDTO residenceReservDTO, HttpServletRequest request) throws Exception {
-
-		//임의로 설정
-		String userId = request.getParameter("userId");
-		userId = "123";
-		
-		//유저아이디 기준으로 데이터 불러오기
-		ResidenceReservDTO dtoRR = residentService.selectResidenceReservUserId(userId);
+	@GetMapping("/newzips/reservation_resident")
+	public ModelAndView reservation_resident(ResidenceReservDTO residenceReservDTO, HttpServletRequest request, 
+			Principal principal) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
+		String userId = null;
+		
+		//로그인 정보 존재하면 관심목록띄우고 아니면 로그인 진행
+		try {
+			userId = principal.getName();
+			
+		} catch (Exception e) {
+			mav.setViewName("redirect:/newzips/login");
+			return mav;
+		}
+		
+		//유저아이디 기준으로 데이터 불러오기
+		List<ResidenceReservDTO> dtoRR = residentService.selectResidenceReservUserId(userId);
 		
 		mav.addObject("dtoRR",dtoRR);
 		
-		mav.setViewName("user/reservation_resident1");
+		mav.setViewName("user/reservation_resident");
 		
 		return mav;
 		
 	}
 	
-	@PostMapping("/newzips/reservation_resident1")
+	@PostMapping("/newzips/reservation_resident")
 	public ModelAndView reservation_resident_ok(ResidenceReservDTO residentReservDTO,
-												HttpServletRequest request) throws Exception{
-		
-		System.out.println("되긴 하는거니?");
+												HttpServletRequest request, Principal principal) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/reservation_resident");
 		
-		String date = request.getParameter("date");
-		String[] times = request.getParameterValues("time");
+		String date = request.getParameter("selectedDate");
+		String[] times = request.getParameterValues("selectedTimes[]");
 		
-		System.out.println("되긴 하는거니?");
-		System.out.println(date);
-		System.out.println(times);
-		
-		//리다이렉트시켜쥬기
-		
+		String userId = principal.getName();
+		String itemId = "14669020";
+
+		for (String time : times) {
+			
+			ResidenceReservDTO dto = new ResidenceReservDTO();
+			
+			dto.setUserId(userId);
+			dto.setItemId(itemId);
+			dto.setAvailableDate(date);
+			dto.setAvailableTime(time);
+			dto.setAvailable("T");
+			
+			residentService.insertResidentReserv(dto);
+			
+		}
+
 		return mav;
 		
 	}

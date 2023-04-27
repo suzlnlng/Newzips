@@ -1,0 +1,137 @@
+<!doctype html>
+<html layout:decorate="~{user/layout_user}">
+
+<meta charset="utf-8">
+
+<div layout:fragment="content">
+        
+	<link rel="stylesheet" type="text/css" href="/assets/css/reservation_user2.css">
+
+        <section class="pager-sec bfr">
+            <div class="container">
+                <div class="pager-sec-details">
+                    <h3>거주자 예약</h3>
+                    <ul>
+
+                    </ul>
+                </div><!--pager-sec-details end-->
+            </div>
+        </section>
+
+		
+        <section class="page-main-content section-padding">
+            <div class="container">
+                <div class="agent-profile-sec">
+                    <div class="row" style="flex-direction: column;">
+                        <div class="col-xl-8 col-lg-9 col-md-12 pl-0 pr-0">
+                            <div class="agent-profile5">                                                             
+                            </div><!--agent-profile end-->
+                        </div>
+                        
+                        <form method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+						                        
+                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0; padding-right: 0;">
+                            <div class="contact-agent" style="width: 130%; padding-left:0; margin-left: -15%;">
+                            
+                            <div style="margin-top: 40px"></div>
+                                <h3 style="margin-bottom: 15px; text-align: center;"></h3>
+                                
+                                <div style="display: flex; align-items: center;">
+                                <div id="datepicker" style="font-size: 2.3em;"></div>
+                               <div class="container" style="font-size: 40px; max-width:250px; margin-right: 0; margin-left: 100px;">
+								   <div class="time-slot">
+								    <span>9:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="9:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+								  </div>
+								  <div class="time-slot">
+								    <span>10:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="10:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+								  </div>
+								  <div class="time-slot">
+								    <span>11:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="11:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+								  </div>
+								  <div class="time-slot">
+								    <span>12:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="12:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+								  </div>
+								  <div class="time-slot">
+								    <span>13:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="13:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>14:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="14:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>15:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="15:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>16:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="16:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>17:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="17:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+							    <div class="time-slot">
+								    <span>18:00</span>
+								    <label class="toggle-switch">
+								      <input type="checkbox" value="18:00">
+								      <span class="toggle-slider"></span>
+								    </label>
+							    </div>
+						    </div>
+						    </div>
+
+                                <div style="margin-bottom: 5%;"></div>
+                               
+                                 <div style="width: 55%;">
+								    <div class="form-field5">
+								        <div style="margin-bottom: 30px;"></div>
+								        <button type="button" onclick="makeReservation()" class="btn2" style="width: 40%; margin-left: 100%;" id="submit-btn">저장</button>
+								    </div> 
+								</div>
+                            </div><!--contact-agent end-->
+                        </div>
+                       </form>
+                    </div>
+                </div><!--agent-profile-sec end-->
+            </div>
+        </section><!--page-main-content end-->
+        
+        
+</div><!--layout fragment end-->
+
+
+
+</html>    

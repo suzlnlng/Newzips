@@ -4,6 +4,95 @@ body{
 	color: #383E65;	
 }
 
+/* -----------reservationRequestRealtor css --------------*/
+
+
+#content_box{
+width: 80%;
+margin-top: 40px;
+margin-left: 200px;
+}
+
+#realtorId_area{
+	width: 350px;
+	font-size: 20px;
+	margin-left: 180px;
+	margin-bottom: 80px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #E3E3E3;
+}
+
+#content_area{
+width: 80%;
+height: auto;
+display: flex;
+align-items: center;
+margin: 30px 180px;
+}
+
+
+#item_image
+{
+width: 350px;
+height: 240px;
+align-content: center;
+overflow: hidden;
+vertical-align: middle;
+display: table-cell;
+border: 1px solid #E3E3E3;
+}
+
+.itemList_shortcut
+{
+width: 700px; 
+height: auto;
+border: 1px solid #E3E3E3;
+display: flex;
+padding: 10px;
+gap:20px;
+}
+
+.itemList_shortcut ul
+{
+	font-weight: bold;
+	font-size: 17px;
+	margin-right: 60px;
+	display: inline-block;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.itemList_shortcut ul li
+{
+	font-weight: normal;
+	font-size: 14px;
+	margin-top: 10px;
+	padding-bottom: 5px;
+}
+
+#confirm_btn_area{
+width: 120px;
+height:auto;
+display: inline-block;
+}
+
+#confirm_button{
+width: 100px;
+height: 50px;
+border: 1px solid #6A7BE7;
+color: #6A7BE7;
+border-radius: 30px;
+background-color: #ffffff;
+transition: background-color 1s ease;
+float: right;
+}
+
+.confirm_button:hover{
+	background-color: #6A7BE7;
+	color: #FFFFFF ;
+}
+
+
 #content_list{
 width: 100%;
 height: 30px;
@@ -16,69 +105,86 @@ justify-content: center;
 color: #383E65;
 }
 
-#content_area{
-width: 80%;
+
+/*-----------------reservationStateRealtor----------------*/
+
+
+.list_area{
+width: 60%;
 height: auto;
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 30px 180px;
-gap: 60px;
-
-}
-
-#content_box{
 margin-top: 80px;
+margin-left: 400px;
 }
 
-#item_image
-{
-width: 300px;
-height: 200px;
-align-content: center;
-margin-top: 30px;
-border: 1px solid black;
+#date_area{
+	width: 100%;
+	height: 50px;
+	border: 1px solid black;
+	padding-top: 12px;
 }
 
-.itemList_shortcut
-{
-width:780px; 
-height: 200px; 
-padding-top: 20px;
-border-bottom-color: #7F7F7F;
-justify-content: center;
-}
-
-.itemList_shortcut ul
-{
+#date_area ul{
+	font-size: 20px;
 	font-weight: bold;
-	font-size: 16px;
-	margin:auto;
-	margin-right: 60px;
-	display: inline-block;
+	vertical-align: middle;
 }
 
-.itemList_shortcut ul li
-{
+#confirmed_list_area{
+	width: 100%;
+	display: flex;
+}
+
+#confirmed_itemImg{
+	width: 350px;
+	height: 300px;
+	border: 1px solid black;
+}
+
+#reserv_item_area{
+	width: 700px;
+	height: auto;
+	border: 1px solid black;
+}
+
+#confirmed_reservInfo{
+	width: 550px;
+	height: auto;
+	border-bottom: 1px solid #e8e8e8;
+	padding-left: 25px;
+}
+
+#confirmed_reservInfo ul{
+	font-size: 17px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+#confirmed_reservInfo li{
+	font-size: 14px;
 	font-weight: normal;
-	font-size: 13px;
-	margin-top: 10px;
+	padding-top: 15px;
 }
 
-.confirm_button{
-width: 100px;
-height: 50px;
-border: 1px solid #6A7BE7;
-color: #6A7BE7;
-border-radius: 30px;
-background-color: #ffffff;
-transition: background-color 1s ease;
+#confirmed_itemInfo{
+	width: 500px;
+	height: auto;
+	margin-top: 20px;
+	padding-left: 25px;
 }
 
-.confirm_button:hover{
-	background-color: #6A7BE7;
-	color: #FFFFFF ;
+#confirmed_itemInfo ul{
+	font-size: 17px;
+	font-weight: bold;
+	padding-bottom: 10px;
 }
+
+#confirmed_itemInfo li{
+	font-size: 14px;
+	font-weight: normal;
+	padding-top: 15px;
+}
+
+
 
 
 

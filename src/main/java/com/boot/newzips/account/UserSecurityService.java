@@ -26,7 +26,6 @@ public class UserSecurityService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 		
-		
 		Optional<MemberDTO> _user = null;
 		
 		try {

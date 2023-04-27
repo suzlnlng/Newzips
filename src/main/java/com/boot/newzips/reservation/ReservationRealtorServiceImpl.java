@@ -22,9 +22,9 @@ public class ReservationRealtorServiceImpl implements ReservationRealtorService{
 	
 	
 	@Override
-	public List<ReservInfoDTO> getReserverInfo() throws Exception {
+	public List<ReservInfoDTO> getReserverInfo(String realtorId) throws Exception {
 
-		return reservationRealtorMapper.getReserverInfo();
+		return reservationRealtorMapper.getReserverInfo(realtorId);
 	}
 
 	@Override
@@ -45,6 +45,17 @@ public class ReservationRealtorServiceImpl implements ReservationRealtorService{
 	@Override
 	public MemberDTO getMemberInfo(String userId) throws Exception {
 		return reservationRealtorMapper.getMemberInfo(userId);
+	}
+
+	@Override
+	public void setConfirmed(String userId, String realtorId, String itemId) throws Exception {
+		reservationRealtorMapper.setConfirmed(userId, realtorId, itemId);
+
+	}
+
+	@Override
+	public ReservInfoDTO getConfirmedInfo(String userId, String realtorId, String itemId) throws Exception {
+		return reservationRealtorMapper.getConfirmedInfo(userId, realtorId,itemId);
 	}
 	
 	

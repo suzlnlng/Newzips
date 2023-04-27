@@ -20,7 +20,7 @@ public interface SuggestRealtorMapper {
 	public List<SuggestionDTO> getSuggestList() throws Exception;
 	
 	public SuggestionDTO getSuggestInfo(String userId) throws Exception;
-	public List<RealtorSuggestionDTO> getRealtorSuggestion(@Param("userId") String userId) throws Exception;
+	public List<RealtorSuggestionDTO> getRealtorSuggestion(@Param("realtorId") String userId) throws Exception;
 	
 	public ListingDTO getItemInfo(String itemId) throws Exception;
 	public List<ListingDTO> getSuggestItem(@Param("addrCity") String addrCity, @Param("addrGu") String addrGu) throws Exception;
