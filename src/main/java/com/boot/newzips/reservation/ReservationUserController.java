@@ -101,6 +101,7 @@ public class ReservationUserController {
 			HttpServletRequest request,
 			Model model) throws Exception {
 
+		
 		// 매물번호를 주소에서 받아오기
 		// 임의로 설정
 		String itemId = request.getParameter("itemId");
