@@ -2,6 +2,8 @@ package com.boot.newzips.itemList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListAllDTO;
 import com.boot.newzips.dto.ListingDTO;
@@ -19,4 +21,9 @@ public interface itemListUserService {
     public List<ListAllDTO> getreadDataAll(Map<String, Object> params) throws Exception;
     
     public List<ListAllDTO> getreadDatapage() throws Exception;
+    
+    public List<ListAllDTO> getsearchlist(Map<String, Object> params) throws Exception;
+    
+  
+
 }
