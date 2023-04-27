@@ -45,9 +45,8 @@ public class ReservationUserController {
 		String userId = "qwerty";
 		String itemId = "35325508";
 		
-		
-		//유저아이디 기준으로 데이터 불러오기
 		ResidenceReservDTO dtoRR = residentService.selectResidenceReservUserId(userId);
+		
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -174,24 +173,16 @@ public class ReservationUserController {
 	
 	
 	@GetMapping("/newzips/reservation_user_complete1")
-	public ModelAndView reservation_user_complete(HttpServletRequest request,
-												  @RequestParam("itemId") String itemId) throws Exception{
+	public ModelAndView reservation_user_complete(HttpServletRequest request) throws Exception{
 		
 		//주소에서 itemId 받아오기
 		//해당 id에 대한 데이터 불러오기
 		
 		//mav에 담기
 		
-		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
-		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
 				
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("dtoV",dtoV);
-		mav.addObject("dtoR",dtoR);
-		mav.addObject("itemId",itemId);
-		mav.addObject("visitDate",request.getParameter("visitDate"));
-		mav.addObject("visitTime",request.getParameter("visitTime"));
 		
 		mav.setViewName("user/reservation_user_complete1");
 		

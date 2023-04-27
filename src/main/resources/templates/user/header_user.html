@@ -4,93 +4,123 @@
 
 <div th:fragment="headerFragment" class="headerBox">
 	
-	<div class="header">
-	    <div class="container">
-	        <div class="row">
-	            <div class="col-xl-12">
-	                <nav class="navbar navbar-expand-lg navbar-light">
-	                    <a class="navbar-brand" href="01_Home.html">
-	                        <img src="/assets/images/newzips_logo.png" alt="">
-	                    </a>
-	                    <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
-	                        <span class="icon-spar"></span>
-	                        <span class="icon-spar"></span>
-	                        <span class="icon-spar"></span>
-	                    </button>
-	
-	                    <div class="navbar-collapse" id="navbarSupportedContent">
-	                        <ul class="navbar-nav mr-auto">
-	                            <li class="nav-item dropdown active">
-	                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-	                                    Home
-	                                </a>
-	                                <div class="dropdown-menu animated">
-	                                    <a class="dropdown-item" href="01_Home.html">White Menu with Center Search</a>
-	                                    <a class="dropdown-item active" href="02_Home.html">Image Menu with Center Search 2</a>
-	                                    <a class="dropdown-item" href="03_Home.html">Map with Center Search</a>
-	                                    <a class="dropdown-item" href="04_Home.html">Geo SVG Map</a>
-	                                    <a class="dropdown-item" href="05_Home.html">Slider Header</a>
-	                                    <a class="dropdown-item" href="06_Home.html">Image Header with Description</a>
-	                                    <a class="dropdown-item" href="07_Home_Categories_and_Advanced_Search.html">More Search Features</a>
-	                                </div>
-	                            </li>
-	                            <li class="nav-item dropdown">
-	                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-	                                    Features
-	                                </a>
-	                                <div class="dropdown-menu animated">
-	                                    <a class="dropdown-item" href="17_Features_Example_Alt_Titlebar.html">Features Example</a>
-	                                    <a class="dropdown-item" href="18_Half_Map.html">Half Map</a>
-	                                </div>
-	                            </li>
-	                            <li class="nav-item dropdown">
-	                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-	                                    Listing
-	                                </a>
-	                                <div class="dropdown-menu animated">
-	                                    <a class="dropdown-item" href="21_List_Layout_With_Map.html">List Layout with Map</a>
-	                                    <a class="dropdown-item" href="22_List_Layout_With_Sidebar.html">List Layout with Sidebar</a>
-	                                    <a class="dropdown-item" href="11_Agent_Profile.html">Agent Profile</a>
-	                                    <a class="dropdown-item" href="24_Property_Single.html">Property Single</a>
-	                                </div>
-	                            </li>
-	                            <li class="nav-item dropdown">
-	                                <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
-	                                    Pages
-	                                </a>
-	                                <div class="dropdown-menu animated">
-	                                    <a class="dropdown-item" href="12_Blog_Grid.html">Blog Grid</a>
-	                                    <a class="dropdown-item" href="13_Blog_Standart.html">Blog Standard</a>
-	                                    <a class="dropdown-item" href="14_Blog_Open.html">Blog Open</a>
-	                                    <a class="dropdown-item" href="10_About.html">About</a>
-	                                    <a class="dropdown-item" href="15_Contact.html">Contact</a>
-	                                    <a class="dropdown-item" href="09_404.html">404</a>
-	                                </div>
-	                            </li>
-	                        </ul>
-	                        <div class="d-inline my-2 my-lg-0">
-	                            <ul class="navbar-nav">
-	                                <li class="nav-item signin-btn">
-	                                    <a href="#" class="nav-link">
-	                                        <i class="la la-sign-in"></i>
-	                                        <span><b class="signin-op">로그인</b> or <b class="reg-op">회원가입</b></span>
-	                                    </a>
-	
-	                                </li>
-	                                <li class="nav-item submit-btn">
-	                                    <a href="#" class="my-2 my-sm-0 nav-link sbmt-btn">
-	                                        <i class="icon-plus"></i>
-	                                        <span>Submit Listing</span>
-	                                    </a>
-	                                </li>
-	                            </ul>
-	                        </div>
-	                        <a href="#" title="" class="close-menu"><i class="la la-close"></i></a>
-	                    </div>
-	                </nav>
-	            </div>
-	        </div>
-	    </div>
-	</div>
+	  <header>
 
-</div><!--header end-->
+            <div class="top-header">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-6 col-md-7 col-sm-12">
+                            <div class="header-address">
+                                <a href="#">
+                                    <i class="la la-phone-square"></i>
+                                    <span>02-6255-8002</span>
+                                </a>
+                                <a href="#">
+                                    <i class="la la-map-marker"></i>
+                                    <span>서울특별시 강남구 테헤란로 124</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-5 col-sm-12">
+                            <div class="header-social">
+                            	<i class="la la-arrow-circle-right"></i>
+                                <a href="/newzips/realtor"><span>중개인으로 전환</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <a class="navbar-brand" href="/newzips">
+                                    <img src="/assets/images/newzips_logo_1.png" alt="">
+                                </a>
+                                <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+                                    <span class="icon-spar"></span>
+                                    <span class="icon-spar"></span>
+                                    <span class="icon-spar"></span>
+                                </button>
+
+                                <div class="navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="/newzips/itemList_user">
+                                                매물검색
+                                            </a>
+                                         
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                                방문예약
+                                            </a>
+                                            <div class="dropdown-menu animated">
+                                            	<a class="dropdown-item" href="/newzips/reservation_user1">방문자 예약</a>
+                                                <a class="dropdown-item" href="/newzips/reservation_resident">거주자 예약</a>
+                                                <a class="dropdown-item" href="/newzips/reservation_status">예약현황 확인</a>
+                                            </div>
+                                           
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                               제안
+                                            </a>
+                                            <div class="dropdown-menu animated">
+                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">제안받기</a>
+                                                <a class="dropdown-item" href="22_List_Layout_With_Sidebar.html">제안받은 매물</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="/newzips/wish">
+                                               관심목록
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="d-inline my-2 my-lg-0">
+                                    	
+                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/newzips/login">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_login">로그인</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/joinTerm" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>회원가입</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/newzips/logout">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_logout">로그아웃</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/mypage" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>마이페이지</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        
+                                    </div>
+                                    <a href="#" title="" class="close-menu"><i class="la la-close"></i></a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header><!--header end-->
+</div>
