@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.newzips.like.LikeUserMapper">
+
+<insert id="insertWish" parameterType="map">
+	insert into wish (itemId,userId,wishDate) values (#{itemId},#{userId},sysdate)
+</insert>
+
+<select id="selectWish" parameterType="String" resultType="com.boot.newzips.dto.ListAllDTO">
+	SELECT ws.itemId, l.addrDetail, l.yearly_monthly, wl.deposit, wl.DEPOSIT_WEB, wl.MONTHLYFEE_WEB, wl.MONTHLYFEE, jl.YEARLYFEE, jl.yearlyFee_web, ri.roomType
+	from (select itemId, wishDate from wish where userId=#{userId} order by wishDate desc) ws
+	left join listing l on ws.itemId = l.itemId
+	LEFT JOIN WOLSELISTING wl ON l.itemId = wl.itemId
+	LEFT JOIN JUNSAELISTING jl ON l.itemId = jl.itemId
+	LEFT JOIN Roominfo ri ON l.itemid = ri.itemid
+</select>
+
+<delete id="deleteWish" parameterType="map">
+	delete wish where userId=#{userId} and itemId=#{itemId}
+</delete>
+
+
+
+</mapper>

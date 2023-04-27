@@ -14,6 +14,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
   VALUES (#{userId}, #{itemId}, #{availableDate, jdbcType=VARCHAR}, #{availableTime, jdbcType=VARCHAR})
 </insert>
 
+
 <!-- 유저 아이디로 조회 -->
 <select id="selectResidenceReservUserId" parameterType="String" resultType="com.boot.newzips.dto.ResidenceReservDTO">
   select distinct userId, itemId, availableDate, availableTime, available from RESIDENCERESERV where userId = #{userId}

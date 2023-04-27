@@ -43,7 +43,7 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	}
 
 	@Override
-	public VisitorReservDTO selectReservationUserId(String userId) throws Exception {
+	public List<VisitorReservDTO> selectReservationUserId(String userId) throws Exception {
 		return reservationUserMapper.selectReservationUserId(userId);
 	}
 	

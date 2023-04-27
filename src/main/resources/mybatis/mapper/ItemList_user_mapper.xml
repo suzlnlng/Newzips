@@ -31,12 +31,16 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 
 
 <!-- 같은 DTO에 있는 모든 데이터를 함께 조회하는 쿼리 -->
-<select id="getreadDataAll" resultType="com.boot.newzips.dto.ListAllDTO">
-  SELECT l.itemId, l.addrDetail, l.yearly_monthly, wl.deposit, wl.DEPOSIT_WEB, wl.MONTHLYFEE_WEB, wl.MONTHLYFEE, jl.YEARLYFEE, jl.yearlyFee_web, ri.roomType
+<select id="getreadDataAll" parameterType="map" resultType="com.boot.newzips.dto.ListAllDTO">
+  select * from (
+  select rownum rnum, data.* from (SELECT l.itemId, l.addrDetail, l.yearly_monthly, wl.deposit, wl.DEPOSIT_WEB, wl.MONTHLYFEE_WEB, wl.MONTHLYFEE, jl.YEARLYFEE, jl.yearlyFee_web, ri.roomType
   FROM listing l
   LEFT JOIN WOLSELISTING wl ON l.itemId = wl.itemId
   LEFT JOIN JUNSAELISTING jl ON l.itemId = jl.itemId
-  LEFT JOIN Roominfo ri ON l.itemid = ri.itemid
+  LEFT JOIN Roominfo ri ON l.itemid = ri.itemid) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>  
   
 </select>
 

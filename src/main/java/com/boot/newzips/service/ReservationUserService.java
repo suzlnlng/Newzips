@@ -19,7 +19,7 @@ public interface ReservationUserService {
 			
 			public VisitorReservDTO selectReservationReservNo(String reservNo) throws Exception;
 			
-			public VisitorReservDTO selectReservationUserId(String userId) throws Exception;
+			public List<VisitorReservDTO> selectReservationUserId(String userId) throws Exception;
 			
 			public VisitorReservDTO selectReservationItemId(String itemId) throws Exception;
 

@@ -13,26 +13,46 @@
     <link rel="stylesheet" href="/assets/js/lib/slick/slick.css">
     <link rel="stylesheet" href="/assets/js/lib/slick/slick-theme.css">
     <link rel="stylesheet" href="/assets/css/style2.css">
+    <link rel="stylesheet" href="/assets/css/itemDetail.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
+    <header>
 
+            <div class="top-header">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-6 col-md-7 col-sm-12">
+                            <div class="header-address">
+                                <a href="#">
+                                    <i class="la la-phone-square"></i>
+                                    <span>02-6255-8002</span>
+                                </a>
+                                <a href="#">
+                                    <i class="la la-map-marker"></i>
+                                    <span>서울특별시 강남구 테헤란로 124</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-5 col-sm-12">
+                            <div class="header-social">
+                            	<i class="la la-arrow-circle-right"></i>
+                                <a href="/newzips/realtor"><span>중개인으로 전환</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="wrapper">
-
-      	<header>
             <div class="header">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
-                                <a class="navbar-brand" href="01_Home.html">
-                                    <img src="/assets/images/logo.png" alt="">
+                                <a class="navbar-brand" href="/newzips">
+                                    <img src="/assets/images/newzips_logo_1.png" alt="">
                                 </a>
                                 <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
                                     <span class="icon-spar"></span>
@@ -43,69 +63,70 @@
                                 <div class="navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav mr-auto">
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                메인
+                                            <a class="nav-link dropdown-toggle" href="/newzips/itemList_user">
+                                                매물검색
                                             </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="01_Home.html">01_Home</a>
-                                                <a class="dropdown-item" href="02_Home.html">02_Home</a>
-                                                <a class="dropdown-item" href="03_Home.html">03_Home</a>
-                                                <a class="dropdown-item" href="04_Home.html">04_Home</a>
-                                                <a class="dropdown-item" href="05_Home.html">05_Home</a>
-                                                <a class="dropdown-item" href="06_Home.html">06_Home</a>
-                                                <a class="dropdown-item" href="07_Home_Categories_and_Advanced_Search.html">07_Home</a>
-                                            </div>
+                                         
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Features
+                                                방문예약
                                             </a>
                                             <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="17_Features_Example_Alt_Titlebar.html">Features Example</a>
-                                                <a class="dropdown-item" href="18_Half_Map.html">18_Half_Map </a>
+                                                <a class="dropdown-item" href="/newzips/reservation_resident">거주자 예약</a>
+                                                <a class="dropdown-item" href="22_List_Layout_With_Sidebar.html">예약현황 확인</a>
                                             </div>
+                                           
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Listing
+                                               제안
                                             </a>
                                             <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">List Layout with Map</a>
-                                                <a class="dropdown-item" href="22_List_Layout_With_Sidebar.html">List Layout with Sidebar</a>
-                                                <a class="dropdown-item" href="11_Agent_Profile.html">Agent Profile</a>
-                                                <a class="dropdown-item active" href="24_Property_Single.html">Property Single</a>
+                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">제안받기</a>
+                                                <a class="dropdown-item" href="22_List_Layout_With_Sidebar.html">제안받은 매물</a>
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
-                                                Pages
+                                            <a class="nav-link dropdown-toggle" href="/newzips/wish">
+                                               관심목록
                                             </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="12_Blog_Grid.html">Blog Grid</a>
-                                                <a class="dropdown-item" href="13_Blog_Standart.html">Blog Standard</a>
-                                                <a class="dropdown-item" href="14_Blog_Open.html">Blog Open</a>
-                                                <a class="dropdown-item" href="10_About.html">About</a>
-                                                <a class="dropdown-item" href="15_Contact.html">Contact</a>
-                                                <a class="dropdown-item" href="09_404.html">404</a>
-                                            </div>
                                         </li>
                                     </ul>
                                     <div class="d-inline my-2 my-lg-0">
-                                        <ul class="navbar-nav">
+                                    	
+                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
                                             <li class="nav-item signin-btn">
-                                                <a href="#" class="nav-link">
+                                                <a class="nav-link" href="/newzips/login">
                                                     <i class="la la-sign-in"></i>
-                                                    <span><b class="signin-op">로그인</b> or <b class="reg-op">회원가입</b></span>
+                                                    <span><b id="header_login">로그인</b></span>
                                                 </a>
-
+                                                
                                             </li>
+
                                             <li class="nav-item submit-btn">
-                                                <a href="#" class="my-2 my-sm-0 nav-link sbmt-btn">
-                                                    <i class="icon-plus"></i>
-                                                    <span>Submit Listing</span>
+                                                <a href="/newzips/joinTerm" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>회원가입</span>
                                                 </a>
                                             </li>
                                         </ul>
+                                        
+                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/newzips/logout">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_logout">로그아웃</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/mypage" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>마이페이지</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        
                                     </div>
                                     <a href="#" title="" class="close-menu"><i class="la la-close"></i></a>
                                 </div>
@@ -114,67 +135,8 @@
                     </div>
                 </div>
             </div>
-        </header><!--header end-->
 
-		<!-- 로그인 팝업 창 -->
-        <div class="popup" id="sign-popup">
-            <h3>Sign In to your Account</h3>
-            <div class="popup-form">
-                <form>
-                    <div class="form-field">
-                        <input type="text" name="username" placeholder="Username">
-                    </div>
-                    <div class="form-field">
-                        <input type="text" name="password" placeholder="Password">
-                    </div>
-                    <div class="form-cp">
-                        <div class="form-field">
-                            <div class="input-field">
-                                <input type="checkbox" name="ccc" id="cc1">
-                                <label for="cc1">
-                                    <span></span>
-                                    <small>Remember me</small>
-                                </label>
-                            </div>
-                        </div>
-                        <a href="#" title="">Forgot Password?</a>
-                    </div><!--form-cp end-->
-                    <button type="submit" class="btn2">Sign In</button>
-                </form>
-                <a href="#" title="" class="fb-btn"> <i class="fa fa-facebook"></i>Sign In With Facebook</a>
-            </div>
-        </div><!--popup end-->
-		
-		<!-- 회원가입 팝업 창 -->
-        <div class="popup" id="register-popup">
-            <h3>Register</h3>
-            <div class="popup-form">
-                <form>
-                    <div class="form-field">
-                        <input type="text" name="username" placeholder="Username">
-                    </div>
-                    <div class="form-field">
-                        <input type="text" name="email" placeholder="Email">
-                    </div>
-                    <div class="form-field">
-                        <input type="text" name="password" placeholder="Password">
-                    </div>
-                    <div class="form-cp">
-                        <div class="form-field">
-                            <div class="input-field">
-                                <input type="checkbox" name="ccc" id="cc2">
-                                <label for="cc2">
-                                    <span></span>
-                                    <small>I agree with terms</small>
-                                </label>
-                            </div>
-                        </div>
-                        <a href="#" title="" class="signin-op">Have an account?</a>
-                    </div><!--form-cp end-->
-                    <button type="submit" class="btn2">Register</button>
-                </form>
-            </div>
-        </div><!--popup end-->
+        </header><!--header end-->
 
 		<!-- 검색 필터 -->
         <section class="form_sec">
@@ -269,8 +231,8 @@
                         <div class="rate-info" style="margin-top: 15px;">                        	
                             <button type="button" class="btn4">♥</button>
                             <button class="btn3" onclick="location.href='http://localhost:8080/newzips/reservation_user_contract1'">계약하기</button>                            
-                        </div>
-                    </div>-->
+                        </div>-->
+                    </div>
                     <!--card end-->
                 </div><!---property-hd-sec end-->
                 <div class="property-single-page-content">
@@ -280,55 +242,31 @@
                                 <div class="property-imgs">
                                     <div class="property-main-img">
                                         <div class="property-img">
-                                            <img src="/assets/images/zzanggu1.jpg" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="/assets/images/zzanggu2.jpg" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="https://via.placeholder.com/770x515" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="https://via.placeholder.com/770x515" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="https://via.placeholder.com/770x515" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="https://via.placeholder.com/770x515" alt="">
-                                        </div><!--property-img end-->
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/1.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/2.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/3.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/4.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/5.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/6.png|}" alt="">
+									    </div>
                                     </div><!--property-main-img end-->
                                     <div class="property-thumb-imgs">
                                         <div class="row thumb-carous">
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4" th:each="i : ${#numbers.sequence(1,6)}">
                                                 <div class="property-img">
-                                                    <img src="/assets/images/zzanggu1.jpg" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="/assets/images/zzanggu2.jpg" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="https://via.placeholder.com/226x150" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="https://via.placeholder.com/226x150" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="https://via.placeholder.com/226x150" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="https://via.placeholder.com/226x150" alt="">
-                                                </div><!--property-img end-->
+								                    <img th:src="@{|/listing_images/${dtoR.itemId}/${i}.png|}" alt="">
+								                </div>
+
                                             </div>
                                         </div>
                                     </div><!--property-thumb-imgs end-->
@@ -436,12 +374,14 @@
                                 <div class="floorplan">
                                     <h3>평면도</h3>
                                     <!-- <img src="https://via.placeholder.com/427x268" alt=""> -->
-                                    <img src="/assets/images/suzi.jpg" alt="">
+                                    <!-- <img src="/assets/images/suzi.jpg" alt=""> -->
+                                    <img th:src="@{|/listing_images/${dtoR.itemId}/0.png|}" alt="">
                                 </div><!--floorplan end-->
                                 
                                 <div class="map-dv">
-                                    <h3>위치</h3>
-                                    <div id="map-container" class="fullwidth-home-map">
+                                    <h3 style="margin-bottom: 4px;">위치</h3>
+                                    <span>[[${dtoL.addrDetail}]]</span>
+                                    <div id="map-container" class="fullwidth-home-map">                                    	
                                         <div id="map" data-map-zoom="9"></div>
                                     </div>
                                 </div><!--map-dv end-->
@@ -659,54 +599,42 @@
             </div>
         </section><!--property-single-pg end-->
 
-        <a href="#" title="">    
-            <section class="cta section-padding">
+        <div th:fragment="footerFragment" class="footer">
+        
+                <a href="#" title="">    
+            <section class="cta st2 section-padding">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="cta-text">
-                                <h2>Discover a home you'll love to stay</h2>
+                                <h2></h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </a>
-
-     	<section class="bottom section-padding">
+           <section class="bottom section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4 col-sm-6 col-md-4">
                         <div class="bottom-logo">
-                            <img src="/assets/images/logo.png" alt="" class="img-fluid">
+                            <img src="/assets/images/newzips_logo_1.png" alt="" class="img-fluid">
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-md-3">
-                        <div class="bottom-list">
-                            <h3>Helpful Links</h3>
-                            <ul>
-                                <li>
-                                    <a href="18_Half_Map.html" title="">Half Map</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">Register</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">Pricing</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">Add Listing</a>
-                                </li>
-                            </ul>
-                        </div><!--bottom-list end-->
-                    </div>
-                    <div class="col-xl-5 col-sm-12 col-md-5 pl-0">
-                        <div class="bottom-desc">
-                            <h3>Aditional Information</h3>
-                            <p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.
-                            </p>
-                        </div>
-                    </div>
+                  	<div class="office2">
+						<div>(주)뉴집스</div>
+						<div>대표 : 이수진</div> 
+						<span>사업자 번호 : 137-22-1122</span>&nbsp;&nbsp;
+						<span>통신판매업신고번호 : 제2013-서울-강남-137호</span>
+						<div>주소 : 서울시 어쩌구 저쩌구</div>
+						<span>고객센터 : 02-1234-5678</span>
+						<span>┃</span>
+						<span>평일 10:00 ~ 18:30, 점심시간 12:00 ~ 13:00(토·일요일,공휴일 휴무)</span>
+						<div>팩스 : 02-123-1234</div>
+						<span>프로모션/사업 제휴문의 : aaa@aaaa.co.kr</span>
+					</div>
+
                 </div>
             </div>
         </section>
@@ -719,24 +647,11 @@
                             <div class="row justify-content-between">
                                 <div class="col-xl-6 col-md-6">
                                     <div class="copyright">
-                                        <p>&copy; Selio theme made in EU. All Rights Reserved.</p>
+                                        <p>&copy; Newzip's. All Rights Reserved.</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-md-6">
-                                    <div class="footer-social">
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -744,8 +659,9 @@
                 </div>
             </div>
         </footer>
+        </div><!--footer end-->
 
-    </div><!--wrapper end-->
+    
 
 
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
@@ -756,10 +672,62 @@
     <script src="/assets/js/scripts.js"></script>
 
     <!-- Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVwc4veKudU0qjYrLrrQXacCkDkcy3AeQ"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVwc4veKudU0qjYrLrrQXacCkDkcy3AeQ"></script>
     <script src="/assets/js/map-cluster/infobox.min.js"></script>
     <script src="/assets/js/map-cluster/markerclusterer.js"></script>
-    <script src="/assets/js/map-cluster/map2.js"></script>
+    <script src="/assets/js/map-cluster/map2.js"></script> -->
+    
+    <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a350cf3a083e1d8a21da1a30968a2b4a"></script> -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a350cf3a083e1d8a21da1a30968a2b4a&libraries=services"></script>
+	<script th:inline="javascript">
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = { 
+		        center: new kakao.maps.LatLng(127,37), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+		
+		/* var test = [[${dtoL.addrDetail}]];
+
+		$(document).ready(function() {
+
+		alert(test);
+
+		}); */
+				
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch([[${dtoL.addrDetail}]], function(result, status) {
+
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new kakao.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+
+		        /* // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new kakao.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+		        });
+		        infowindow.open(map, marker); */
+
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		    } 
+		});  
+		
+		
+	</script>
 
 
 

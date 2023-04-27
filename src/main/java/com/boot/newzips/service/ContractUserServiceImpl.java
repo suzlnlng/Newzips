@@ -11,16 +11,16 @@ import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
 import com.boot.newzips.dto.WolseListingDTO;
-import com.boot.newzips.mapper.contractUserMapper;
+import com.boot.newzips.mapper.ContractUserMapper;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class contractUserServiceImpl implements contractUSerService{
+public class ContractUserServiceImpl implements ContractUserService{
 	
 	@Autowired
-	public contractUserMapper contractUserMapper;
+	public ContractUserMapper contractUserMapper;
 
 	@Override
 	public List<ContractUserDTO> getContract(String userId) throws Exception {

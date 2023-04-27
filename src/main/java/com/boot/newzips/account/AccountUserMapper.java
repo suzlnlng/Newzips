@@ -21,5 +21,7 @@ public interface AccountUserMapper {
 	public Optional<MemberDTO> getUserByEmail(String userEmail) throws Exception;
 	
 	public String findId(Map<String, Object> params) throws Exception;
+	
+	public boolean checkId(String userId) throws Exception;
 
 }

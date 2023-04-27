@@ -11,7 +11,7 @@ import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
 import com.boot.newzips.dto.WolseListingDTO;
 
-public interface contractUSerService {
+public interface ContractUserService {
 	
 	public List<ContractUserDTO> getContract(String userId) throws Exception;
 

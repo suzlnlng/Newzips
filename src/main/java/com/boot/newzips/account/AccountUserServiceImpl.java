@@ -28,6 +28,7 @@ public class AccountUserServiceImpl implements AccountUserService {
 	public void createMember(MemberDTO memberDTO) throws Exception {
 
 		memberDTO.setUserPwd(passwordEncoder.encode(memberDTO.getUserPwd()));
+		memberDTO.setEmailReceive("T");
 		memberDTO.setUserRole("USER");
 
 		accountUserMapper.createMember(memberDTO);
@@ -55,7 +56,7 @@ public class AccountUserServiceImpl implements AccountUserService {
 		
 		Optional<MemberDTO> searchUser = accountUserMapper.getUserById(userId);
 		
-		if(!searchUser.isPresent()) {
+		if(searchUser.isPresent()) {
 			return searchUser;
 		}else {
 			System.out.println("유저 없음");
@@ -70,7 +71,7 @@ public class AccountUserServiceImpl implements AccountUserService {
 		
 		Optional<MemberDTO> searchUser = accountUserMapper.getUserByEmail(userEmail);
 		
-		if(!searchUser.isPresent()) {
+		if(searchUser.isPresent()) {
 			return searchUser;
 		}else {
 			System.out.println("유저 없음");
@@ -82,6 +83,18 @@ public class AccountUserServiceImpl implements AccountUserService {
 	@Override
 	public String findId(Map<String, Object> params) throws Exception {
 		return accountUserMapper.findId(params);
+	}
+
+	@Override
+	public boolean checkId(String userId) throws Exception {
+		
+		Optional<MemberDTO> searchUser = accountUserMapper.getUserById(userId);
+		
+		if (searchUser.isPresent()) 
+			return true;
+		else
+			return false;
+
 	}
 
 

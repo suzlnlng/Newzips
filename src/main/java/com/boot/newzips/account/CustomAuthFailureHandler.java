@@ -27,7 +27,7 @@ public class CustomAuthFailureHandler extends SimpleUrlAuthenticationFailureHand
 		String errorMessage;
 		
 		System.out.println("===============errorhandler");
-		System.out.println(request.getParameter("userPwd"));
+		System.out.println(request.getParameter("Pwd"));
 		
 		if (exception instanceof BadCredentialsException) {
 			errorMessage = "아이디 또는 비밀번호 오류";

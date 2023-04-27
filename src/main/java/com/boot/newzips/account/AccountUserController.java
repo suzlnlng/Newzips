@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,13 +29,25 @@ import lombok.RequiredArgsConstructor;
 public class AccountUserController {
 	
 	private final AccountUserService accountUserService;
+	
+	@GetMapping("/joinTerm")
+	public ModelAndView joinTerm() throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("user/joinTerm_user");
+		
+		return mav;
+		
+	}
+	
 
 	@GetMapping("/join")
 	public ModelAndView join(MemberDTO memberDTO) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("user/join_user2");
+		mav.setViewName("user/join_user");
 		
 		return mav;
 		
@@ -45,7 +58,7 @@ public class AccountUserController {
 
 		// validation을 통해 생기는 오류 join_user페이지로 넘기기
 		if(bindingResult.hasErrors()) {
-			return "user/join_user2";
+			return "user/join_user";
 		}
 		
 		//비밀번호 & 비밀번호 재확인 비교 
@@ -53,10 +66,15 @@ public class AccountUserController {
 			bindingResult.rejectValue("userPwd2", "passwordInCorrect",
 					"비밀번호가 일치하지 않습니다");
 			
-			return "user/join_user2";
+			return "user/join_user";
 			
 		}
 		
+		if(accountUserService.checkId(memberDTO.getUserId())) {
+			bindingResult.rejectValue("userId", "duplicateUserID", "이미 등록된 사용자입니다. 다른 아이디를 사용해주세요.");
+			return "user/join_user"; 
+		}
+
 		try {
 		
 			accountUserService.createMember(memberDTO);
@@ -68,7 +86,7 @@ public class AccountUserController {
 			
 			bindingResult.rejectValue("userId", "이미 등록된 사용자입니다. 다른 아이디를 사용해주세요.");
 			
-			return "user/join_user2";
+			return "user/join_user";
 			
 		} catch (Exception e) {
 		
@@ -76,7 +94,7 @@ public class AccountUserController {
 			
 			bindingResult.reject("signupFailed", e.getMessage());
 			
-			return "user/join_user2";
+			return "user/join_user";
 			
 		}
 
@@ -95,25 +113,37 @@ public class AccountUserController {
 		
 	}
 	
-	@PostMapping("/findID")
-	public String findId(@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone){
+	@PostMapping("/findId")
+	public ModelAndView findId(HttpServletRequest request) throws Exception{
 		
+		ModelAndView mav = new ModelAndView("jsonView");
+		
+		String userName = request.getParameter("userName");
+		String userPhone = request.getParameter("userPhone");
+		
+		System.out.println("==================================");
 		System.out.println("findId");
 		
-		ModelAndView mav = new ModelAndView();
+		System.out.println(userName);
+		System.out.println(userPhone);
+		
+		String userId = null;
 		
 		Map<String, Object> params= new HashMap<String, Object>();
 		params.put("userName", userName);
 		params.put("userPhone", userPhone);
 		
 		try {
-			String userId = accountUserService.findId(params);
+			userId = accountUserService.findId(params);
+			System.out.println("=================");
 			System.out.println(userId);
-			return userId;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		}
+		
+		mav.addObject("userId", userId);
+		
+		return mav;
 		
 	}
 	
