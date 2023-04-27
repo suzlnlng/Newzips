@@ -198,15 +198,19 @@ public class ReservationUserController {
 	}
 
 	@GetMapping("/newzips/reservation_status")
-	public ModelAndView reservation_status() throws Exception {
-
-		System.out.println();
-		System.out.println();
-		System.out.println("여기여기");
-
-		String userId = "";
+	public ModelAndView reservation_status(Principal principal) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
+		String userId = null;
+
+		// 로그인 정보 존재하면 관심목록띄우고 아니면 로그인 진행
+		try {
+			userId = principal.getName();
+
+		} catch (Exception e) {
+			mav.setViewName("redirect:/newzips/login");
+			return mav;
+		}
 
 		List<ReservationStatusDTO> reservationList = reservationUserService.getReservationList(userId);
 
