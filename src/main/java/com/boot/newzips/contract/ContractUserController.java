@@ -11,7 +11,7 @@ import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
 import com.boot.newzips.dto.WolseListingDTO;
-import com.boot.newzips.service.contractUSerService;
+import com.boot.newzips.service.ContractUserService;
 
 
 
@@ -19,7 +19,7 @@ import com.boot.newzips.service.contractUSerService;
 public class ContractUserController {
 	
 	@Resource
-	private contractUSerService contractUserService;
+	private ContractUserService contractUserService;
 	
 	@GetMapping("newzips/contract_user")
 	public ModelAndView contractUser(HttpServletRequest request) throws Exception {

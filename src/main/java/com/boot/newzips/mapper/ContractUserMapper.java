@@ -12,7 +12,7 @@ import com.boot.newzips.dto.MemberDTO;
 import com.boot.newzips.dto.WolseListingDTO;
 
 @Mapper
-public interface contractUserMapper {
+public interface ContractUserMapper {
 	
 	public List<ContractUserDTO> getContract(String userId) throws Exception;
 
