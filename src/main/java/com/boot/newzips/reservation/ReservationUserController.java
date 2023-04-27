@@ -203,7 +203,7 @@ public class ReservationUserController {
 		System.out.println();
 		System.out.println("여기여기");
 
-		String userId = "karina";
+		String userId = "";
 
 		ModelAndView mav = new ModelAndView();
 

@@ -28,7 +28,7 @@ import oracle.jdbc.proxy.annotation.GetProxy;
 @Controller
 @RequiredArgsConstructor
 public class SuggestRealtorController {
-	//고객의 매물 조건을 확인
+	//고객의 매물 조건을 확인 /이수진 바보
 	private final SuggestRealtorService suggestRealtorService;
 	ModelAndView mav = new ModelAndView();
 	

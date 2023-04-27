@@ -23,7 +23,6 @@ public class ReservationRealtorServiceImpl implements ReservationRealtorService{
 	
 	@Override
 	public List<ReservInfoDTO> getReserverInfo(String realtorId) throws Exception {
-
 		return reservationRealtorMapper.getReserverInfo(realtorId);
 	}
 

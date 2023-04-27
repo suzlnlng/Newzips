@@ -173,3 +173,15 @@ input:checked + .toggle-slider:before {
 #datepicker {
   padding: 10px;
 }
+
+.agent-profile5 {
+  float: left;
+  width: 200%;
+  padding-right: 5px;
+}
+
+.agent-img5 {
+  float: left;
+  width: 355px;
+  height: 250px;
+}

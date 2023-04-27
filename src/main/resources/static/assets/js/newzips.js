@@ -22,29 +22,6 @@ function findAddr(){
     }).open();
 }
 
-function findRealtorAddr(){
-	new daum.Postcode({
-        oncomplete: function(data) {
-        	
-        	console.log(data);
-        	
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var roadAddr = data.roadAddress; // 도로명 주소 변수
-            var jibunAddr = data.jibunAddress; // 지번 주소 변수
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('realtorZipCode').value = data.zonecode;
-            if(roadAddr !== ''){
-                document.getElementById("realtorAddr").value = roadAddr;
-            } 
-            else if(jibunAddr !== ''){
-                document.getElementById("realtorAddr").value = jibunAddr;
-            }
-        }
-    }).open();
-}
-
 function allCheck() {
 	
 	var obj = document.getElementsByName("check");
@@ -79,7 +56,6 @@ function itemCheck(){
 	}
 	
 }
-
 
 
 
@@ -205,36 +181,43 @@ $(window).on("load", function() {
     	})
     	
     });
+    
+    
+  var start = 1;
+var end = 5;
+var lastId = null;
 
-   $("#load-more-button").on("click", function() {
-      
-      var header = $("meta[name='_csrf_header']").attr('content');
-       var token = $("meta[name='_csrf']").attr('content');
-       
-      var start = 0;
-      var end = 12;
-           
-      $.ajax({
-         type: 'post',
-         url: '/newzips/itemList_user',
-         data: {
+$("#load-more-button").off("click").on("click", function() {
+    var header = $("meta[name='_csrf_header']").attr('content');
+    var token = $("meta[name='_csrf']").attr('content');
+    start = end+1;
+    end += 6;
+    
+    console.log(`start: ${start}, end: ${end}`);
+			  
+    $.ajax({
+        type: 'post',
+        url: '/newzips/itemList_user',
+        data: {
             start: start,
-            end: end
-         },
-         success: function(result) {
-            $(".listing-container").replaceWith(result);
-            if (result.length == 0) {
-               $('.load-more-button').hide();
-         }
-         },
-         beforeSend:function(xhr){
+            end: end,
+        },
+        success: function(result) {
+             $(".listing-container .row").append(result);
+            if (start >= 90 && end >= 95) {
+                $("#load-more-button").hide(); // 버튼 숨기기
+            } else {
+                lastId = $(result).last().data("id");
+            }
+        },
+        beforeSend:function(xhr){
             xhr.setRequestHeader(header, token);
-         }
-         
-      });
+        }
+    });
+});
 
-   });
-   
+
+	
 
 
 

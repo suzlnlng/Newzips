@@ -11,7 +11,6 @@
 
     <link rel="shortcut icon" href="/assets/images/favicon.png">
     <link rel="stylesheet" href="/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
        <link rel="stylesheet" href="/assets/css/style_test.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
@@ -39,48 +38,38 @@ body  {
 
     <div class="wrapper">
 
-      	<header>
-            <div class="top-header">
+       <header>
+
+            <div class="top-header-realtor">
                 <div class="container">
                     <div class="row justify-content-between">
                         <div class="col-xl-6 col-md-7 col-sm-12">
                             <div class="header-address">
                                 <a href="#">
-                                    <i class="la la-phone-square"></i>
-                                    <span>(647) 346-0855</span>
+                                    <i></i>
+                                    <span>중개인페이지~~~~~</span>
                                 </a>
                                 <a href="#">
-                                    <i class="la la-map-marker"></i>
-                                    <span>CF Fairview Mall, Toronto, ON</span>
                                 </a>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-5 col-sm-12">
                             <div class="header-social">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
+                            	<i class="la la-arrow-circle-right"></i>
+                                <a href="/newzips"><span>사용자로 전환</span></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="header">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
-                                <a class="navbar-brand" href="01_Home.html">
-                                    <img src="/assets/images/Newzips_logo1.png" alt="">
+                                <a class="navbar-brand" href="/newzips/realtor">
+                                    <img src="/assets/images/newzips_logo_1.png" alt="">
                                 </a>
                                 <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
                                     <span class="icon-spar"></span>
@@ -91,66 +80,64 @@ body  {
                                 <div class="navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav mr-auto">
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Home
+                                            <a class="nav-link dropdown-toggle" href="/newzips/itemList_user">
+                                                매물검색
                                             </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="01_Home.html">White Menu with Center Search</a>
-                                                <a class="dropdown-item" href="02_Home.html">Image Menu with Center Search 2</a>
-                                                <a class="dropdown-item" href="03_Home.html">Map with Center Search</a>
-                                                <a class="dropdown-item" href="04_Home.html">Geo SVG Map</a>
-                                                <a class="dropdown-item" href="05_Home.html">Slider Header</a>
-                                                <a class="dropdown-item" href="06_Home.html">Image Header with Description</a>
-                                                <a class="dropdown-item" href="07_Home_Categories_and_Advanced_Search.html">More Search Features</a>
-                                            </div>
+                                         
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Features
+                                                방문예약
                                             </a>
                                             <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="17_Features_Example_Alt_Titlebar.html">Features Example</a>
-                                                <a class="dropdown-item" href="18_Half_Map.html">Half Map</a>
+                                                <a class="dropdown-item" href="/newzips/reservationRequestRealtor">예약요청 확인하기</a>
+                                                <a class="dropdown-item" href="/newzips/reservationStateRealtor">예약현황 확인하기</a>
                                             </div>
+                                           
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Listing
+                                               제안
                                             </a>
                                             <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">List Layout with Map</a>
-                                                <a class="dropdown-item active" href="22_List_Layout_With_Sidebar.html">List Layout with Sidebar</a>
-                                                <a class="dropdown-item" href="11_Agent_Profile.html">Agent Profile</a>
-                                                <a class="dropdown-item" href="24_Property_Single.html">Property Single</a>
+                                                <a class="dropdown-item" href="/newzips/clientListRealtor">제안하기</a>
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
-                                                Pages
+                                               뭐넣지..
                                             </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="12_Blog_Grid.html">Blog Grid</a>
-                                                <a class="dropdown-item" href="13_Blog_Standart.html">Blog Standard</a>
-                                                <a class="dropdown-item" href="14_Blog_Open.html">Blog Open</a>
-                                                <a class="dropdown-item" href="10_About.html">About</a>
-                                                <a class="dropdown-item" href="15_Contact.html">Contact</a>
-                                                <a class="dropdown-item" href="09_404.html">404</a>
-                                            </div>
                                         </li>
                                     </ul>
                                     <div class="d-inline my-2 my-lg-0">
-                                        <ul class="navbar-nav">
+                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
                                             <li class="nav-item signin-btn">
-                                                <a href="#" class="nav-link">
+                                                <a class="nav-link" href="/newzips/realtor/login">
                                                     <i class="la la-sign-in"></i>
-                                                    <span><b class="signin-op">Sign in</b> or <b class="reg-op">Register</b></span>
+                                                    <span><b id="header_login">로그인</b></span>
                                                 </a>
-
+                                                
                                             </li>
+
                                             <li class="nav-item submit-btn">
-                                                <a href="#" class="my-2 my-sm-0 nav-link sbmt-btn">
-                                                    <i class="icon-plus"></i>
-                                                    <span>Submit Listing</span>
+                                                <a href="/newzips/realtor/joinTerm" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>회원가입</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/newzips/realtor/logout">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_logout">로그아웃</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/realtor/mypage" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>마이페이지</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -162,6 +149,7 @@ body  {
                     </div>
                 </div>
             </div>
+
         </header><!--header end-->
 
 <!-- ============================================================ -->

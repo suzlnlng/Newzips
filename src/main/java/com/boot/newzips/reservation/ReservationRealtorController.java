@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
+import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.ReservInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 import com.boot.newzips.dto.WolseListingDTO;
@@ -28,7 +30,7 @@ public class ReservationRealtorController {
 	ModelAndView mav = new ModelAndView();
 
 	@GetMapping("/newzips/reservationRequestRealtor")
-	public ModelAndView ReservList() throws Exception {
+	public ModelAndView ReservList(HttpServletRequest req) throws Exception {
 
 		/*
 		List<VisitorReservDTO> visitorReserv = reservationRealtorService.getReserverInfo();
@@ -57,7 +59,17 @@ public class ReservationRealtorController {
 		mav.addObject("VisitorReservDTO", visitorReserv);
 		*/
 		
-		String realtorId="hyeon";
+		HttpSession session = req.getSession();
+		
+        if (session == null) {
+        	System.out.println("세션없음!!!");;
+        }
+        
+        System.out.println(session.getId() + ", " + session.getAttribute("realtor"));
+		
+		RealtorDTO realtor = (RealtorDTO)session.getAttribute("realtor");
+		
+		String realtorId = realtor.getRealtorId();
 		List<ReservInfoDTO> reservInfo = reservationRealtorService.getReserverInfo(realtorId); 
 		
 		System.out.println("==============");
@@ -141,7 +153,17 @@ public class ReservationRealtorController {
 	@GetMapping("/newzips/reservationStateRealtor")
 	public ModelAndView reservationStateRealtor(HttpServletRequest req) throws Exception{
 
-		String realtorId = req.getParameter("realtorId");
+		HttpSession session = req.getSession();
+		
+        if (session == null) {
+        	System.out.println("세션없음!!!");;
+        }
+        
+        System.out.println(session.getId() + ", " + session.getAttribute("realtor"));
+		
+		RealtorDTO realtor = (RealtorDTO)session.getAttribute("realtor");
+		
+		String realtorId = realtor.getRealtorId();
 		
 		List<ReservInfoDTO> reserved = reservationRealtorService.getReserverInfo(realtorId);
 		

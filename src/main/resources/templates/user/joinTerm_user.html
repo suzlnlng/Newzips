@@ -98,26 +98,8 @@
 
 <script type="text/javascript">
 
+
 function sendJoin() {
-	
-	var ct = checkTerms();
-	
-	var sel1 = document.getElementById("select1").checked;
-	var sel2 = document.getElementById("select2").checked;
-	var sel3 = document.getElementById("select3").checked;
-	var sel4 = document.getElementById("select4").checked;
-	
-	//var emailReceive = document.getElementById("emailReceive");
-	//emailReceive.value = sel3;
-	
-	if(sel1 && sel2 && ct){
-		location.href = "http://localhost:8080/newzips/join"
-	}
-
-}
-
-
-function checkTerms(){
 	
 	var sel1 = document.getElementById("select1").checked;
 	var sel2 = document.getElementById("select2").checked;
@@ -128,8 +110,8 @@ function checkTerms(){
 		return false;
 	}
 	
-	return true;
-	
+	return location.href = "http://localhost:8080/newzips/join"
+
 }
 
 
