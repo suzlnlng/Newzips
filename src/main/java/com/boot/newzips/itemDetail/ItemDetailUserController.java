@@ -27,17 +27,6 @@ public class ItemDetailUserController {
 
 	@Resource
 	private ItemDetailService itemDetailService;
-<<<<<<< HEAD
-	
-	@GetMapping("/newzips/itemDetail_user/{itemId}")
-	public ModelAndView itemDetail_user(@PathVariable("itemId") String itemId) throws Exception{
-		
-		// String itemId = request.getParameter("itemId");
-		// itemId = "35352486";
-				
-		ModelAndView mav = new ModelAndView();	
-		
-=======
 
 	@GetMapping("/newzips/itemDetail_user/{itemId}")
 	public ModelAndView itemDetail_user(@PathVariable("itemId") String itemId) throws Exception {
@@ -47,7 +36,6 @@ public class ItemDetailUserController {
 
 		ModelAndView mav = new ModelAndView();
 
->>>>>>> b1044c2f37acb93140042a5e813df1a4cb09fc71
 		if (itemDetailService == null) {
 			throw new Exception("itemDetailService is null");
 		}
