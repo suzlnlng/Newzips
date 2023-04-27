@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.newzips.account.AccountRealtorMapper">
+
+<insert id="createMember" parameterType="com.boot.newzips.dto.RealtorDTO">
+	insert into realtor (realtorId,realtorPwd,realtorName,realtorPhone,realtorEmail,realtorCerti,realtorAddr)
+	values (#{realtorId},#{realtorPwd},#{realtorName},#{realtorPhone},#{realtorEmail},#{realtorCerti},#{realtorAddr})
+</insert>
+
+<update id="updateMember" parameterType="com.boot.newzips.dto.RealtorDTO">
+	update realtor set realtorPwd=#{realtorPwd},realtorPhone=#{realtorPhone},realtorAddr=#{userAddr},realtorEmail=#{realtorEmail}
+	where realtorId=#{realtorId}
+</update>
+
+<select id="getUserById" parameterType="String" resultType="com.boot.newzips.dto.RealtorDTO">
+	select realtorId,realtorPwd from realtor where realtorId=#{realtorId}
+</select>
+
+<select id="getUserByEmail" parameterType="String" resultType="com.boot.newzips.dto.RealtorDTO">
+	select realtorId,realtorPwd from realtor where realtorEmail=#{realtorEmail}
+</select>
+
+<select id="findId" parameterType="Map" resultType="String">
+	select realtorId from realtor where realtorName=#{realtorName} and realtorPhone=#{realtorPhone}
+</select>
+
+<!-- <select id="getMemberId" parameterType="map" resultType=""></select>
+
+<select id="getMemberPwd" parameterType="map" resultType=""></select> -->
+
+
+</mapper>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/header.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/footer.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/itemDetail.css}">
+
+
+</head>
+<body>
+
+<!-- header.html의 headerFragment 사용 -->
+<header th:replace="header :: headerFragment"></header>
+
+<!-- 현재 layout의 content사용이라는데 걍 변경되는 어쩌구인 듯 -->
+<th:block layout:fragment="content"></th:block>
+
+<br/>
+<!-- footer.html의 footerFragment 사용 -->
+<footer th:replace="footer :: footerFragment"></footer>
+
+</body>
+
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/lib/slick/slick.js"></script>
+    <script src="/assets/js/scripts.js"></script>
+
+    <!-- Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="/assets/js/map-cluster/infobox.min.js"></script>
+    <script src="/assets/js/map-cluster/markerclusterer.js"></script>
+    <script src="/assets/js/map-cluster/maps.js"></script>
+
+
+
+</html>

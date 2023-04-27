@@ -44,12 +44,13 @@
 }
 .agent-info8 {
   float: left;
-  width: 385px;
+  width: 400px;
   padding: 27px 29px 40px 30px;
   border:1px solid #dfe0e5;
   border-left: 0;
   line-height: 1;
-  height: 72px;
+  height: 85px;
+   border-bottom: none;
 }
 .agent-info9 {
   float: left;
@@ -59,6 +60,7 @@
   border-left: 0;
   line-height: 1;
   height: 150px;
+ 
 }
 
 .contact-agent5 {
@@ -69,11 +71,11 @@
 }
 
 .form-field5 {
-  float: left;
-  width: 40%;
+
+  width: 120%;
   margin-bottom: 15px;
-  margin-left: 30%;
 }
+
 
 .form-field input,
 .form-field textarea5 {
@@ -130,6 +132,120 @@
   overflow: hidden;
 }
 
-.time-select {
-	margin-right: 10px;	
+.am_pm {
+	display:inline-block;
+	margin-right: 10px;
+	margin-bottom:20px;
+	font-size:20px;
+	background: rgb(255,255,255);
+	border-radius: 5px;
+	width: 65px;
+	text-align: center;
+	padding: 5px;
+	
 }
+
+input {
+	display:inline-block;
+	margin-right: 20px;
+	margin-bottom:20px;
+	font-size:20px;
+	background: rgb(255,255,255);
+	border:1px solid rgb(106,123,231);
+	border-radius: 5px;
+	width: 65px;
+	text-align: center;
+	padding: 5px;
+	color: gray;
+}
+.active {
+	background: rgb(106,123,231);
+	color: #fff;
+}
+	
+	
+.middle_text {
+	font-size: 16px; 
+	font-weight: 500; 
+	margin-bottom: 15px; 
+	color: #242526;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.time-slot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+}
+
+.time-slot:last-child {
+  border-bottom: none;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: #5151e5;
+}
+
+input:focus + .toggle-slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.toggle-label {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+#datepicker {
+  padding: 10px;
+}
+

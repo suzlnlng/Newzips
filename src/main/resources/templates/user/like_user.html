@@ -1,0 +1,97 @@
+<!doctype html>
+<html layout:decorate="~{user/layout_user}">
+
+<meta charset="utf-8">
+
+<div layout:fragment="content">
+	<!-- 별도로 적용하는 css파일있으면 link해주기 -->
+
+	<!-- header, footer 제외 html쓰기 -->
+ 	<!-- 여기다가 -->
+ 
+        <section class="pager-sec bfr">
+            <div class="container">
+                <div class="pager-sec-details">
+                    <h3>관심목록</h3>
+                </div>
+            </div>
+        </section>
+        
+        <section class="popular-listing hp2 section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="section-heading">
+                            <h3>총 [[${lists.size()}]]개의 관심목록이 있습니다.</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="listing-container">
+                <div class="row">
+                    <div th:each="item: ${lists}" class="col-lg-4 col-md-6"> <!-- 템플릿 반복문 -->
+                        <div class="card">
+                            <a th:href="@{|/newzips/itemDetail_user/${item.itemId}|}" title="">
+                                <div class="img-block">
+                                    <div class="overlay"></div>
+                                    <img src="https://blog.kakaocdn.net/dn/RQity/btqE8yKKPS4/XbEVLjZGEEKtzKjxGrrY3K/img.jpg" alt="" class="img-fluid">
+                                    <div class="rate-info">
+                                       
+                                    <span th:each="yearly_monthly : ${item.yearly_monthly}">
+   									<span th:text="${yearly_monthly}"></span>
+  									</span>
+                                    </div>
+                                </div>
+                            </a>
+							<div class="card-body">
+								<a href="@{|/newzips/itemDetail_user/${item.itemId}|}" title="">
+									<h3 th:if="${item.yearly_monthly == '전세'}">
+										전세 <span th:text="${item.yearlyFee_web}"></span>
+									</h3>
+
+									<h3 th:if="${item.yearly_monthly == '월세'}">월세
+										<span th:text="${item.deposit_web}"></span>/<span
+											th:text="${item.monthlyFee_web}"></span>
+									</h3>
+								</a>
+								<ul>
+									<li th:each="addrDetail : ${item.addrDetail}"
+										th:text="${addrDetail}"></li>
+								</ul>
+							</div>
+
+							<div class="card-footer">
+								<input type="hidden" id="itemId" th:value="${item.itemId}">
+								<a class="pull-left"> 
+								<i class="la la-trash-o"></i>
+								<input class="hiddenItemId" type="hidden" name="itemId" id="itemId" th:value="${item.itemId}"/>
+								</a> 
+								<a href="#" class="pull-right"> <span
+									th:each="roomType : ${item.roomType}"
+									th:text="${roomType}"></span>
+								</a></a>
+							</div>
+							<a title="" class="ext-link"></a>
+                        </div>
+                    </div>
+                    </div>
+                            <div class="alert alert-success" role="alert">
+            <strong>관심목록에서 삭제했습니다.</strong>
+            <a href="#" title="" class="close-alert"><i class="la la-close"></i></a>
+        </div>
+                   
+                    <div class="col-lg-12">
+                        <div class="load-more-posts">
+                            <a id="load-more-button" class="btn2">Load More</a>
+                        </div><!--load-more end-->
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+ 
+ 
+</div><!--layout fragment end-->
+
+
+</html>

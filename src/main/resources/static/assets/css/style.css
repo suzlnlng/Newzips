@@ -3005,6 +3005,7 @@ header.pb .menu-button span {
 .form-field input {
   height: 48px;
   padding: 0 17px;
+
 }
 .form-field textarea {
   height: 105px;
@@ -3013,7 +3014,7 @@ header.pb .menu-button span {
 .form-field input,
 .form-field textarea {
   width: 100%;
-  font-size: 12px;
+  font-size: 16px;
   color: #67686c;
   border:1px solid #dfe0e5;
   background-color: #fff;

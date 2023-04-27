@@ -27,7 +27,6 @@ public class NewzipsApplication {
       
       sessionFactory.setDataSource(dataSource);
       
-      //xml파일 모두 읽어올것임
       sessionFactory.setMapperLocations(
             applicationContext.getResources("classpath:mybatis/mapper/*.xml"));
       

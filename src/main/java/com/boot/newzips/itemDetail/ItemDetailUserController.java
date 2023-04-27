@@ -17,14 +17,17 @@ import com.boot.newzips.dto.WolseListingDTO;
 @RestController
 public class ItemDetailUserController {
 
-/*	@GetMapping("newzips/itemDetail_user")
-	public String itemD() {
-		
-		return "/user/itemDetail_user";
-	}*/
-	
+	/*
+	 * @GetMapping("newzips/itemDetail_user")
+	 * public String itemD() {
+	 * 
+	 * return "/user/itemDetail_user";
+	 * }
+	 */
+
 	@Resource
 	private ItemDetailService itemDetailService;
+<<<<<<< HEAD
 	
 	@GetMapping("/newzips/itemDetail_user/{itemId}")
 	public ModelAndView itemDetail_user(@PathVariable("itemId") String itemId) throws Exception{
@@ -34,26 +37,37 @@ public class ItemDetailUserController {
 				
 		ModelAndView mav = new ModelAndView();	
 		
+=======
+
+	@GetMapping("/newzips/itemDetail_user/{itemId}")
+	public ModelAndView itemDetail_user(@PathVariable("itemId") String itemId) throws Exception {
+
+		// String itemId = request.getParameter("itemId");
+		// itemId = "34918222";
+
+		ModelAndView mav = new ModelAndView();
+
+>>>>>>> b1044c2f37acb93140042a5e813df1a4cb09fc71
 		if (itemDetailService == null) {
 			throw new Exception("itemDetailService is null");
 		}
-			
-		
+
 		BuildingInfoDTO dtoB = itemDetailService.getReadData_buildingInfo(itemId);
 		ListingDTO dtoL = itemDetailService.getReadData_listing(itemId);
 		RoomInfoDTO dtoR = itemDetailService.getReadData_roomInfo(itemId);
 		WolseListingDTO dtoW = itemDetailService.getReadData_wol(itemId);
 		JunsaeListingDTO dtoJ = itemDetailService.getReadData_jun(itemId);
-		
-		mav.addObject("dtoL",dtoL);
-		mav.addObject("dtoB",dtoB);
-		mav.addObject("dtoR",dtoR);
-		mav.addObject("dtoW",dtoW);
-		mav.addObject("dtoJ",dtoJ);
-		
-		mav.setViewName("user/itemDetail_user");		
-				
+
+		mav.addObject("dtoL", dtoL);
+		mav.addObject("dtoB", dtoB);
+		mav.addObject("dtoR", dtoR);
+		mav.addObject("dtoW", dtoW);
+		mav.addObject("dtoJ", dtoJ);
+
+		mav.setViewName("user/itemDetail_user");
+
 		return mav;
+
 	}
-	
+
 }

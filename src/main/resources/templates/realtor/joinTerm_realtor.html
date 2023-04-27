@@ -1,0 +1,141 @@
+<!doctype html>
+<html layout:decorate="~{realtor/layout_realtor}">
+
+<meta charset="utf-8">
+
+<div layout:fragment="content">
+	<!-- 별도로 적용하는 css파일있으면 link해주기 -->
+    <link rel="stylesheet" href="/assets/css/login.css">
+
+ <section class="pager-sec bfr">
+            <div class="container">
+                <div class="pager-sec-details">
+                    <h3>중개인 회원가입</h3>
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+		<!-- 회원가입 정보 입력 -->
+		<section class="page-main-content section-padding">
+		  <div class="container">
+		    <div class="login">
+		      <div style="margin-top: 40px"></div>
+		      
+		      <div class="login-form-field">
+		      <img src="/assets/images/newzips_logo_1.png" alt="logo">
+
+		      
+		      	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+		        
+		        <div style="margin-bottom: 10px"></div>
+		        
+		        <h1 style="font-size: 20pt; font-weight: bold; text-align: left; margin-left: 60px">회원가입</h1>
+		        
+		        <div style="margin-top: 20px"></div>
+		        
+		        <h1 style="font-size: 15pt; text-align: left; margin-left: 60px">환영합니다! 뉴집스 서비스 이용약관에 동의해주세요</h1>
+		        
+		        <div style="margin-top: 40px"></div>
+		        
+		        <div class="login-check-field">
+		        <input  type="checkbox"
+		        	id="selectall"
+			       name="check" 
+			       onclick="allCheck()"/><label for="selectall"></label> <b style="font-weight: bold;'">&nbsp;&nbsp;모두 동의합니다</b>
+			
+			<div style="margin-top: 20px"></div>
+			
+				<hr/>
+				
+		        <div style="margin-top: 20px"></div>
+		        
+		       <input type= "checkbox" id="select1" name="check" onclick="itemCheck()"/>
+		       <label for="select1" ></label>  &nbsp;&nbsp;[필수] 뉴집스 서비스 이용약관 동의<br/>
+		       <div style="margin-bottom: 20px"></div>
+		       
+		       <input type="checkbox" id="select2" name="check" onclick="itemCheck()"/>
+				<label for="select2"></label>  &nbsp;&nbsp;[필수] 개인정보 수집 및 이용동의<br/>
+		       <div style="margin-bottom: 20px"></div>
+		       
+				<input type="checkbox" id="select3" name="check" onclick="itemCheck()"/>
+				<label for="select3"></label>  &nbsp;&nbsp;[필수] 매물 관리 규정에 대한 동의<br/>
+				<div style="margin-bottom: 20px"></div>
+				
+				<input type="checkbox" id="select4" name="check" onclick="itemCheck()"/>
+				<label for="select4"></label>  &nbsp;&nbsp;[선택] 마케팅 정보 수신에 대한 동의<br/>
+				<div style="margin-bottom: 20px"></div>
+				<input type="hidden"/>
+		        
+		        <p id="userTermCheckError" class="input-error"></p>
+				</div>
+				<!-- login-check-field 끝 -->
+				
+		      <div style="margin-top: 20px"></div>
+			
+			<div style="margin-top: 10px"></div>
+		    
+		    <!-- 진행 버튼 -->                                                                                                                
+		      <div class="login-form-field">
+		        <button type="button" class="btn2" onclick="sendJoin()">동의하고 진행하기</button>
+		      </div>
+		      		      </div>
+
+		    
+		    <div style="margin-top: 20px"></div>
+		   
+		    
+		    <div style="margin-top: 10px"></div>
+		    
+
+		  </div>
+		  
+		</div>
+		</section>
+ 
+ 
+<script type="text/javascript">
+
+function sendJoin() {
+	
+	var ct = checkTerms();
+	
+	var sel1 = document.getElementById("select1").checked;
+	var sel2 = document.getElementById("select2").checked;
+	var sel3 = document.getElementById("select3").checked;
+	var sel4 = document.getElementById("select4").checked;
+	
+	//var emailReceive = document.getElementById("emailReceive");
+	//emailReceive.value = sel3;
+	
+	if(sel1 && sel2 && ct){
+		location.href = "http://localhost:8080/newzips/realtor/join"
+	}
+
+}
+
+
+function checkTerms(){
+	
+	var f = document.joinForm;
+	var sel1 = document.getElementById("select1").checked;
+	var sel2 = document.getElementById("select2").checked;
+	var sel3 = document.getElementById("select3").checked;
+	
+	if(!(sel1 && sel2 && sel3)){
+		$("#userTermCheckError").html("이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.");
+		return false;
+	}
+	
+	return true;
+	
+}
+
+
+</script>
+
+</div><!--layout fragment end-->
+
+</html>

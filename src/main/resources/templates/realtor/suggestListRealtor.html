@@ -1,0 +1,397 @@
+<!doctype html>
+<html class="no-js" lang="kr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Newzip's</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="shortcut icon" href="/assets/images/favicon.png">
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+       <link rel="stylesheet" href="/assets/css/style_test.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/suggestList.css">
+	<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+
+<style type="text/css">
+body  {
+   font-family: 'Pretendard'; 
+   margin: auto;
+   align-content: center;
+   }
+</style>
+
+</head>
+<html class="no-js" lang="en">
+
+<form action="/suggested_ok" method="get">
+<body>
+<!-- <script th:inline="javascript">
+	$(function(){
+		
+		var itemId[];
+		
+		$("input[name='checkbox']:checked").each(function() {
+			  itemId.push($(this).val());
+			  alert(itemId);
+			});
+		
+		
+		$('#complete_button').on('click',function() {
+			
+			var url = "/suggestListRealtor_ok?userId="+[[${suggest.userId}]]+"&itemId="+itemId;
+			alert(url)
+			//window.location.href = url;
+			
+		})
+	
+	
+	})
+	</script> -->
+
+<script type="text/javascript">
+
+	function btnActive() {
+	    var selectBtns = document.getElementsByName('selectBtn');
+	    for (var i = 0; i < selectBtns.length; i++) {
+	      var selectBtn = selectBtns[i];
+	      selectBtn.addEventListener('click', function() {
+	        this.disabled = !this.disabled;
+	        if (this.disabled) {
+	          this.classList.add('disabled');
+	        } else {
+	          this.classList.remove('disabled');
+	        }
+	      });
+	      // 초기에 비활성화된 버튼에 대해서도 클래스 추가
+	      if (selectBtn.disabled) {
+	        selectBtn.classList.add('disabled');
+	      }
+	    }
+	  }
+</script>
+    <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+
+    <div class="wrapper">
+
+       <header>
+
+            <div class="top-header">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-6 col-md-7 col-sm-12">
+                            <div class="header-address">
+                                <a href="#">
+                                    <i></i>
+                                    <span>중개인</span>
+                                </a>
+                                <a href="#">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-5 col-sm-12">
+                            <div class="header-social">
+                               <i class="la la-arrow-circle-right"></i>
+                                <a href="/newzips"><span>사용자로 전환</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <a class="navbar-brand" href="/newzips/realtor">
+                                    <img src="/assets/images/newzips_logo_1.png" alt="">
+                                </a>
+                                <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+                                    <span class="icon-spar"></span>
+                                    <span class="icon-spar"></span>
+                                    <span class="icon-spar"></span>
+                                </button>
+
+                                <div class="navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="/newzips/itemList_user">
+                                                매물검색
+                                            </a>
+                                         
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                                방문예약
+                                            </a>
+                                            <div class="dropdown-menu animated">
+                                                <a class="dropdown-item" href="/newzips/reservationRequestRealtor">예약요청 확인하기</a>
+                                                <a class="dropdown-item" href="/newzips/reservationStateRealtor">예약현황 확인하기</a>
+                                            </div>
+                                           
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                               제안
+                                            </a>
+                                            <div class="dropdown-menu animated">
+                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">제안하기</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
+                                               뭐넣지..
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="d-inline my-2 my-lg-0">
+                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/neazips/realtor/login">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_login">로그인</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/realtor/join" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>회원가입</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/newzips/realtor/logout">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_logout">로그아웃</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/realtor/mypage" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>마이페이지</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="#" title="" class="close-menu"><i class="la la-close"></i></a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header><!--header end-->
+
+<!-- ============================================================ -->
+
+        <section class="pager-sec bfr">
+            <div class="container">
+                <div class="pager-sec-details">
+                    <h3>매물 제안</h3>
+                    <ul>
+                        <li><a href="#" title="">Home</a></li>
+                        <li><span>List Layout</span></li>
+                    </ul>
+                </div><!--pager-sec-details end-->
+            </div>
+        </section>
+
+
+<!-- ============================================================ -->
+
+
+
+
+<section>
+<div id="content_list" style="justify-content: center;">
+	보유한 매물 리스트
+	<hr style="margin-left: 0px; width: 90%;"/>
+</div>
+</section>
+
+
+<!-- ================================================================ -->
+
+<section>
+	
+	<div class="container_suggest">
+		<div class="userInfo_area" th:if="${suggest!= null}">
+			<div id="suggest_username">
+                <p style="font-size: 30px; font-weight: bold">[[${suggest.userId}]]</p>
+                <p style="font-size: 25px;">님께 제안 가능한 매물이에요!</p>
+            </div>	
+			 <div class="suggestList_itemList_shortcut" >
+               		<ul>* 고객 매물 조건
+               			<li th:text="'아이디 ㅣ '+${suggest.userId}"></li>
+               			<li th:text="'지역ㅣ '+${suggest.addrCity} + ${suggest.addrGu}"></li>
+               			<li th:text="'전월세 ㅣ '+${suggest.yearly_monthly}"></li>
+               			 <li th:if="${suggest.yearly_monthly=='전세'}" th:text="'금액 ㅣ ' + ${suggest.deposit}"></li>
+						<li th:if="${suggest.yearly_monthly=='월세'}" 
+						th:text="'금액 ㅣ ' + ${suggest.deposit} + ${suggest.monthlyFee}"></li>
+               			<li th:text="'방 개수 ㅣ '+${suggest.rooms} + '개'"></li>
+               		</ul>
+               	</div>
+        </div>
+       <div class="suggestList_area" th:if=${realtorListDTO!=null} th:each="realtor:${realtorListDTO}">
+       		<div id="suggest_itemImage">
+                <img id="suggest_item_img" th:if="suggest" 
+                alt="매물사진" src="/listing_images/35802035/1.png">
+            </div>
+   			<div class="suggestList_content">
+           	 <ul>* 제안 가능한 매물
+                 <li>매물번호 l &nbsp;&nbsp;&nbsp;[[${realtor.itemId}]]</li>
+                 <li>지역 l &nbsp;&nbsp;&nbsp;[[${realtor.addrDetail}]]</li>
+                 <li>전월세 l &nbsp;&nbsp;&nbsp;[[${realtor.yearly_monthly}]]</li>
+                 <li th:if="${realtor.yearly_monthly=='전세'}">금액 l &nbsp;&nbsp;&nbsp;[[${realtor.deposit}]]만원</li>
+				<li th:if="${realtor.yearly_monthly=='월세'}">금액 l &nbsp;&nbsp;&nbsp;[[${realtor.deposit}]]만원 / [[${realtor.monthlyFee}]]만원</li>
+				<li>관리비 l &nbsp;&nbsp;&nbsp;[[${realtor.maintenanceCost}]]원</li>
+                 <li>매물 종류 l &nbsp;&nbsp;&nbsp;[[${realtor.roomType}]]</li>
+                 <li>평 수 l &nbsp;&nbsp;&nbsp;[[${realtor.area}/3.305785]]평</li>
+                 <li>방 수 l &nbsp;&nbsp;&nbsp;[[${realtor.rooms}]]개</li>
+             </ul>
+             </div>
+             <div class="select_btn_area">
+				<input type="checkbox" name="checkbox"  th:value="${realtor.itemId}"/>
+	        </div>          
+       </div> 
+		<div class="complete_btn_area">
+                <button id="complete_button" type="button"><a href="suggestListRealtor_ok">완료</a></button>
+                
+	    </div>  
+	
+	
+	</div>
+   
+</section>
+
+	
+
+
+
+<!-- ================================================================================================ -->
+
+
+<!-- 
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true"><i class="la la-arrow-right"></i></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav><!--pagination end-->
+                                
+          
+      
+ 
+<!-- ================================================================================================ -->
+
+
+  
+         <a href="#" title="">    
+            <section class="cta st2 section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="cta-text">
+                                <h2></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </a>
+           <section class="bottom section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-sm-6 col-md-4">
+                        <div class="bottom-logo">
+                            <img src="/assets/images/newzips_logo_1.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                     <div class="office2">
+                  <div>(주)뉴집스</div>
+                  <div>대표 : 이수진</div> 
+                  <span>사업자 번호 : 137-22-1122</span>&nbsp;&nbsp;
+                  <span>통신판매업신고번호 : 제2013-서울-강남-137호</span>
+                  <div>주소 : 서울시 어쩌구 저쩌구</div>
+                  <span>고객센터 : 02-1234-5678</span>
+                  <span>┃</span>
+                  <span>평일 10:00 ~ 18:30, 점심시간 12:00 ~ 13:00(토·일요일,공휴일 휴무)</span>
+                  <div>팩스 : 02-123-1234</div>
+                  <span>프로모션/사업 제휴문의 : aaa@aaaa.co.kr</span>
+               </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="footer-content">
+                            <div class="row justify-content-between">
+                                <div class="col-xl-6 col-md-6">
+                                    <div class="copyright">
+                                        <p>&copy; Newzip's. All Rights Reserved.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+<!-- ================================================================================================ -->
+
+
+    </div><!--wrapper end-->
+
+
+    
+
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/html5lightbox.js"></script>
+    <script src="/assets/js/scripts.js"></script>
+
+    <!-- Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="/assets/js/map-cluster/infobox.min.js"></script>
+    <script src="/assets/js/map-cluster/markerclusterer.js"></script>
+    <script src="/assets/js/map-cluster/maps.js"></script>
+
+
+	<!-- btn js -->
+	
+
+
+</body>
+</form>
+</html>

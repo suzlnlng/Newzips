@@ -355,6 +355,17 @@ header.pb {
   line-height: 55px;
   border-bottom: 1px solid #0f1649;
 }
+<<<<<<< HEAD
+=======
+
+.top-header-realtor {
+  background: #04354F;
+  height: 53px;
+  line-height: 55px;
+  border-bottom: 1px solid #04354F;
+}
+
+>>>>>>> b1044c2f37acb93140042a5e813df1a4cb09fc71
 .header-address a {
   display: inline-block;
   color: #d6d8e0; 
