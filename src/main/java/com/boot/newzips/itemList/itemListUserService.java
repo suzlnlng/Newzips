@@ -22,7 +22,7 @@ public interface itemListUserService {
     
     public List<ListAllDTO> getreadDatapage() throws Exception;
     
-    public List<ListAllDTO> getsearchlist(Map<String, Object> params) throws Exception;
+    public List<ListAllDTO> getSearchData(Map<String, Object> params) throws Exception;
     
   
 

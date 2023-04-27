@@ -43,8 +43,8 @@ public class ItemListUserServiceImpl implements itemListUserService {
 	}
 	
 	@Override
-	public List<ListAllDTO> getsearchlist(Map<String, Object> params) throws Exception {
-		return itemListUserMapper.getsearchlist(params);
+	public List<ListAllDTO> getSearchData(Map<String, Object> params) throws Exception {
+		return itemListUserMapper.getSearchData(params);
 	}
 	
 	
