@@ -13,3 +13,17 @@
   display: block;
   margin: 0 auto;
 }
+
+.suggest_itemImage{
+	width: 350px;
+	height: 300px;
+	margin-right: 100px;
+	size: auto;
+	overflow: hidden;
+	vertical-align: middle;
+	display: table-cell;
+}
+.overlay_image{
+	width: 350px;
+	
+}

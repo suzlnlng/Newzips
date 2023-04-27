@@ -167,7 +167,8 @@ $(window).on("load", function() {
     $(".popular-listing .card .card-footer a .la-heart-o").on("click", function(){
         $(".alert-success").addClass("active");
         return false;
-    });
+    });    
+    
     $(".popular-listing .card .card-footer a .la-heart-o, .alert-success").on("click", function(e){
         e.stopPropagation();
     });

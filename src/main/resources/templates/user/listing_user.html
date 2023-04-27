@@ -1,0 +1,66 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/assets/css/itemlist.css">
+
+<meta charset="utf-8">
+ 
+</head>
+
+<body>
+<div th:fragment="listingFragment" class="headerBox">
+	
+	    <div class="listing-container">
+                <div class="ow">
+                    <div th:each="item: ${listing}" class="col-lg-4 col-md-6"> <!-- 템플릿 반복문 -->
+                        <div class="card">
+                            <a th:href="@{|/newzips/itemDetail_user/${item.itemId}|}" title="">
+                                 <div class="img-block">
+                                    <div class="overlay_image"></div>
+                                 <img th:src="${item.itemImagePath}" alt="" class="suggest_itemImage">
+                                    <div class="rate-info">
+                                       
+                                    <span th:each="yearly_monthly : ${item.yearly_monthly}">
+   									<span th:text="${yearly_monthly}"></span>
+  									</span>
+                                    </div>
+                                </div>
+                            </a>
+							<div class="card-body">
+								<a href="@{|/newzips/itemDetail_user/${item.itemId}|}" title="">
+									<h3 th:if="${item.yearly_monthly == '전세'}">
+										전세 <span th:text="${item.yearlyFee_web}"></span>
+									</h3>
+
+									<h3 th:if="${item.yearly_monthly == '월세'}">월세
+										<span th:text="${item.deposit_web}"></span>/<span
+											th:text="${item.monthlyFee_web}"></span>
+									</h3>
+								</a>
+								<ul>
+									<li th:each="addrDetail : ${item.addrDetail}"
+										th:text="${addrDetail}"></li>
+								</ul>
+							</div>
+
+							<div class="card-footer">
+								<a class="pull-left"> 
+								<i class="la la-heart-o" ></i>
+								<input class="hiddenItemId" type="hidden" name="itemId" id="itemId" th:value="${item.itemId}"/>
+								</a> <a href="#" class="pull-right"> <span
+									th:each="roomType : ${item.roomType}"
+									th:text="${roomType}"></span>
+								</a></a>
+							</div>
+							<a th:href="@{|/newzips/itemDetail_user/${item.itemId}|}" title="" class="ext-link"></a>
+                        </div>
+                    </div>
+                    </div>
+                    
+                    
+                </div>
+                    
+                  
+                </div>
+	 
+</div>
+</body>
