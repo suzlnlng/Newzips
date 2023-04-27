@@ -23,7 +23,7 @@ public class ItemDetailRealtorController {
 	public ModelAndView itemDetail_user(HttpServletRequest request) throws Exception{
 		
 		String itemId = request.getParameter("itemId");
-		itemId = "34918222";
+		itemId = "35418130";
 				
 		ModelAndView mav = new ModelAndView();	
 				

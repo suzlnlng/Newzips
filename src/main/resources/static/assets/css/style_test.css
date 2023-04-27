@@ -253,6 +253,7 @@ a,
 .social_links li a,
 .btn-default,
 .card .card-footer a .la-heart-o,
+.card .card-footer a .la-trash-o,
 .partner-logo > a img,
 .signin-btn b:before,
 .model-item .title,
@@ -404,7 +405,6 @@ header.pb {
 
 .header .dropdown-toggle::after {
   font-family: FontAwesome;
-  content: "\f107";
   border: 0px;
   vertical-align: top;
   font-size: 14px;
@@ -520,6 +520,7 @@ header.pb .menu-button span {
     line-height: 48px;
     color: #6a7be7 !important; }
     .header .navbar-nav .submit-btn a i {
+      cursor: pointer;
       font-size: 16px;
       margin-right: 10px;
       position: relative;
@@ -527,7 +528,6 @@ header.pb .menu-button span {
 
 .banner {
   padding: 200px 0px;
-  background: url("https://via.placeholder.com/1920x674");
   background-size: cover;
   background-position: center;
   min-height: 674px;
@@ -1046,7 +1046,27 @@ header.pb .menu-button span {
         padding-left: 3px;
         z-index: 99;
 }
+
+ .card .card-footer a .la-trash-o {
+        background: #f3f4f7;
+        color: #242526;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 50px;
+        position: relative;
+        top: 1px; 
+        padding-left: 3px;
+        z-index: 99;
+}
 .card .card-footer a .la-heart-o:hover {
+  color: #fff;
+}
+
+.card .card-footer a .la-trash-o:hover {
   color: #fff;
 }
     .card .card-footer a .fa-calendar {
@@ -2012,7 +2032,6 @@ header.pb .menu-button span {
 
 
 .pager-sec {
-  background-image: url(https://via.placeholder.com/1920x200);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 74px 0 72px 0;
@@ -2371,16 +2390,6 @@ header.pb .menu-button span {
   color: #67686c;
 }
 .cm-reply {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 500;
-  position: absolute;
-  top: 7px;
-  right: 90px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.cm-reply_date {
   display: inline-block;
   font-size: 12px;
   font-weight: 500;
@@ -3015,6 +3024,7 @@ header.pb .menu-button span {
 .form-field input {
   height: 48px;
   padding: 0 17px;
+
 }
 .form-field textarea {
   height: 105px;
@@ -3023,7 +3033,7 @@ header.pb .menu-button span {
 .form-field input,
 .form-field textarea {
   width: 100%;
-  font-size: 12px;
+  font-size: 16px;
   color: #67686c;
   border:1px solid #dfe0e5;
   background-color: #fff;
@@ -4358,46 +4368,6 @@ header.fix {
 .btn2:hover {
   color: #fff;
 }
-
-.btn3 {
-  background-color: #6a7be7;
-  /* float: left; */
-  width: 25%;
-  color: #ffffff;
-  font-size: 14px;
-  height: 51px;
-  line-height: 51px;
-  border-radius: 30px;
-  text-align: center;
-  border:0;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-.btn3:hover {
-  color: #fff;
-}
-
-.btn4 {
-  background-color: #fff;
-  /* float: left; */
-  width: 10%;
-  color: #ff80c0;
-  font-size: 14px;
-  height: 51px;
-  line-height: 51px;
-  border-radius: 30px;
-  text-align: center;
-  border:1px solid #ff80c0;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-.btn4:hover {
-  color: #fff;
-}
 .property-single-page-content .sidebar.layout2 .widget-posts {
   margin-top: 0;
 }
@@ -4951,7 +4921,6 @@ header.pb .header .navbar-nav .submit-btn a:hover {
 /* ===================== DISCOVER PROPERTIES ==================== */
 
 .discover-propt {
-  background-image: url(https://via.placeholder.com/1920x491);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -5177,7 +5146,6 @@ header.pb .header .navbar-nav .submit-btn a:hover {
   opacity: 0.50;
 } 
 .main-banner-sec.hp6 {
-  background-image: url(https://via.placeholder.com/1920x610);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 184px 0 194px 0;
@@ -5552,7 +5520,6 @@ label.error {
   font-size: 14px;
 }
 .landing-banner {
-  background-image: url(https://via.placeholder.com/1920x950);
   padding: 330px 0 230px 0;
   background-size: cover;
   background-repeat: no-repeat;
@@ -5684,11 +5651,10 @@ label.error {
 
 
 .property-main-img {
-  margin: 0 auto;
-  width: 95%;
+  float: left;
+  width: 100%;
 }
 .slick-slide {
   outline: none;
   cursor: pointer;
 }
-
