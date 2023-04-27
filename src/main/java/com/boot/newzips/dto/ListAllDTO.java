@@ -17,6 +17,7 @@ public class ListAllDTO {
 	private String monthlyFee_web;
 	private String deposit_web;
 	private String roomType;
+	private String itemImagePath;
 
 }
 

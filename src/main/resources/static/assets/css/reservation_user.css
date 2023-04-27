@@ -44,12 +44,13 @@
 }
 .agent-info8 {
   float: left;
-  width: 385px;
+  width: 400px;
   padding: 27px 29px 40px 30px;
   border:1px solid #dfe0e5;
   border-left: 0;
   line-height: 1;
-  height: 72px;
+  height: 85px;
+   border-bottom: none;
 }
 .agent-info9 {
   float: left;
@@ -59,6 +60,7 @@
   border-left: 0;
   line-height: 1;
   height: 150px;
+ 
 }
 
 .contact-agent5 {
@@ -246,3 +248,4 @@ input:checked + .toggle-slider:before {
 #datepicker {
   padding: 10px;
 }
+

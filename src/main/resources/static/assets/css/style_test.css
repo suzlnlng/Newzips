@@ -355,6 +355,7 @@ header.pb {
   line-height: 55px;
   border-bottom: 1px solid #0f1649;
 }
+<<<<<<< HEAD
 
 .top-header-realtor {
   background: #04354F;
@@ -363,6 +364,8 @@ header.pb {
   border-bottom: 1px solid #04354F;
 }
 
+=======
+>>>>>>> a498c2006b1e1f57b31fbb18d1ed25b7dc1d7012
 .header-address a {
   display: inline-block;
   color: #d6d8e0; 

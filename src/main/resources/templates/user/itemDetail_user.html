@@ -108,57 +108,34 @@
                             <div class="property-pg-left">
                                 <div class="property-imgs">
                                     <div class="property-main-img">
-                                        <div class="property-img">
-                                            <img src="/assets/images/3428_main.png" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="/assets/images/3428_main2.png" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="https://via.placeholder.com/770x515" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="https://via.placeholder.com/770x515" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="https://via.placeholder.com/770x515" alt="">
-                                        </div><!--property-img end-->
-                                        <div class="property-img">
-                                            <img src="https://via.placeholder.com/770x515" alt="">
-                                        </div><!--property-img end-->
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/1.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/2.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/3.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/4.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/5.png|}" alt="">
+									    </div>
+                                    	<div class="property-img">
+									        <img th:src="@{|/listing_images/${dtoR.itemId}/6.png|}" alt="">
+									    </div>
                                     </div><!--property-main-img end-->
                                     <div class="property-thumb-imgs">
                                         <div class="row thumb-carous">
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4" th:each="i : ${#numbers.sequence(1,6)}">
                                                 <div class="property-img">
-                                                    <img src="/assets/images/3428_main.png" alt="">
-                                                </div><!--property-img end-->
+								                    <img th:src="@{|/listing_images/${dtoR.itemId}/${i}.png|}" alt="">
+								                </div>
+
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="/assets/images/3428_main2.png" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="https://via.placeholder.com/226x150" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="https://via.placeholder.com/226x150" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="https://via.placeholder.com/226x150" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                                <div class="property-img">
-                                                    <img src="https://via.placeholder.com/226x150" alt="">
-                                                </div><!--property-img end-->
-                                            </div>
+                                            
                                         </div>
                                     </div><!--property-thumb-imgs end-->
                                 </div><!--property-imgs end-->
@@ -265,7 +242,8 @@
                                 <div class="floorplan">
                                     <h3>평면도</h3>
                                     <!-- <img src="https://via.placeholder.com/427x268" alt=""> -->
-                                    <img src="/assets/images/suzi.jpg" alt="">
+                                    <!-- <img src="/assets/images/suzi.jpg" alt=""> -->
+                                    <img th:src="@{|/listing_images/${dtoR.itemId}/0.png|}" alt="">
                                 </div><!--floorplan end-->
                                 
                                 <div class="map-dv">

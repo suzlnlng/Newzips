@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.boot.newzips.dto.RealtorDTO;
+import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 import com.boot.newzips.mapper.ReservationUserMapper;
@@ -61,9 +63,22 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 		
 	}
 
-	
+	@Override
+	public List<RealtorDTO> getRealtorInfoByRealtorId() throws Exception {
+		return reservationUserMapper.getRealtorInfoByRealtorId();
+	}
 
-	
+	@Override
+	public RealtorDTO getRealtorInfo(String realtorId) throws Exception {
+		return reservationUserMapper.getRealtorInfo(realtorId);
+	}
+
+	@Override
+	public List<ReservationStatusDTO> getReservationList(String userId) throws Exception {
+		return reservationUserMapper.getReservationList(userId);
+	}
+
+
 
 	
 	

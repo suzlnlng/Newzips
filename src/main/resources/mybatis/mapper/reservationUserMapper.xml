@@ -56,8 +56,14 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- roomInfo -->
 	<select id="getReservationRoomInfo" parameterType="String" resultType="com.boot.newzips.dto.RoomInfoDTO">
-		select itemId, roomType, roomFloor, area, supplyArea, roomDirection, heating, availableDate
+		select itemId, roomType, roomFloor, area, supplyArea, roomDirection, heating, availableDate, rooms, bathrooms
 		from ROOMINFO where itemId = #{itemId}
+	</select>
+	
+	<!-- realtorInfo -->
+	<select id="getRealtorInfo" parameterType="String" resultType="com.boot.newzips.dto.RealtorDTO">
+		select realtorId, realtorName, realtorPhone 
+		from REALTOR where realtorId=#{realtorId}
 	</select>
 	
 	
@@ -65,6 +71,25 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteReservation" parameterType="String">
 		delete from VISITORRESERV where reservNo = #{reservNo}
 	</delete>
+	
+	<!-- itemId가 겹치는거 -->
+  	<select id="getRealtorInfoByRealtorId" resultType="com.boot.newzips.dto.RealtorDTO">
+	  SELECT r.realtorName, r.realtorPhone
+	  FROM REALTOR r
+	  JOIN VISITORRESERV v ON r.realtorId = v.realtorId
+	  WHERE v.itemId = #{itemId} AND r.realtorId = #{realtorId}
+	</select>
+	
+	<!-- 이게 진짜 예약현황 리스트 -->
+	<select id="getReservationList" parameterType="String" resultType="com.boot.newzips.dto.ReservationStatusDTO">
+	  SELECT i.addrDetail, u.visitDate, u.visitTime, r.realtorName, r.realtorPhone
+	  FROM VISITORRESERV u
+	  JOIN Listing i ON u.itemId = i.itemId
+	  JOIN REALTOR r ON u.realtorId = r.realtorId
+	  WHERE u.userId = #{userId}
+	  ORDER BY u.visitDate DESC, u.visitTime DESC
+
+	</select>
 
 
 </mapper>

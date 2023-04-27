@@ -446,6 +446,7 @@
     <script src="/assets/js/map-cluster/markerclusterer.js"></script>
     <script src="/assets/js/map-cluster/maps.js"></script>
 
+<<<<<<< HEAD:src/main/resources/templates/user/reservation_resident2.html
 <script>
 
 $(function() {
@@ -454,6 +455,43 @@ $(function() {
       dateFormat: "yy-mm-dd",
       defaultDate: new Date(),
       minDate: 0,
+=======
+<script type="text/javascript">
+    
+    const timeSlots = document.querySelectorAll('.time-slot');
+
+    timeSlots.forEach((timeSlot) => {
+      const toggleSwitch = timeSlot.querySelector('.toggle-switch input');
+      const toggleLabel = timeSlot.querySelector('.toggle-label');
+      
+      toggleSwitch.addEventListener('change', () => {
+        if (toggleLabel !== null) {
+          toggleLabel.textContent = toggleSwitch.checked ? 'on' : 'off';
+        }
+        const time = toggleSwitch.closest('.time-slot').querySelector('span').textContent;
+        if (toggleSwitch.checked) {
+          selectedTimes.push(time);
+        } else {
+          const index = selectedTimes.indexOf(time);
+          if (index !== -1) {
+            selectedTimes.splice(index, 1);
+          }
+        }
+      });
+    });
+    
+    $(function() {
+      $("#datepicker").datepicker({
+    	  minDate:0,
+        onSelect: function(dateText) {
+          const dateObject = $(this).datepicker('getDate');
+          const year = dateObject.getFullYear();
+          const month = ("0" + (dateObject.getMonth() + 1)).slice(-2);
+          const day = ("0" + dateObject.getDate()).slice(-2);
+          selectedDate = year + '-' + month + '-' + day;
+        }
+      });
+>>>>>>> a498c2006b1e1f57b31fbb18d1ed25b7dc1d7012:src/main/resources/templates/user/reservation_resident1.html
     });
 
     const availableDateElement = $("#datepicker");

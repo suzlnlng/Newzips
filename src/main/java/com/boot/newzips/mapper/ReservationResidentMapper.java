@@ -16,4 +16,6 @@ public interface ReservationResidentMapper {
 	public List<ResidenceReservDTO> selectResidenceReservUserId(String userId) throws Exception;
 	
 	public void deleteResidentReserv(ResidenceReservDTO dto) throws Exception;
+	
+	public void updateResidentReserv(ResidenceReservDTO dto) throws Exception;
 }

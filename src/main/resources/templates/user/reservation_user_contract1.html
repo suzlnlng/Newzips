@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     
     <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
+    
+    <link rel="stylesheet" type="text/css" href="/assets/css/style_test.css">
 </head>
 
 <body>
@@ -25,7 +27,9 @@
 
     <div class="wrapper">
 
-        <header>
+        <div th:fragment="headerFragment" class="headerBox">
+	
+	  <header>
 
             <div class="top-header">
                 <div class="container">
@@ -34,28 +38,18 @@
                             <div class="header-address">
                                 <a href="#">
                                     <i class="la la-phone-square"></i>
-                                    <span>(647) 346-0855</span>
+                                    <span>02-6255-8002</span>
                                 </a>
                                 <a href="#">
                                     <i class="la la-map-marker"></i>
-                                    <span>CF Fairview Mall, Toronto, ON</span>
+                                    <span>서울특별시 강남구 테헤란로 124</span>
                                 </a>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-5 col-sm-12">
                             <div class="header-social">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
+                            	<i class="la la-arrow-circle-right"></i>
+                                <a href="/newzips/realtor"><span>중개인으로 전환</span></a>
                             </div>
                         </div>
                     </div>
@@ -67,8 +61,8 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
-                                <a class="navbar-brand" href="01_Home.html">
-                                    <img src="/assets/images/logo.png" alt="">
+                                <a class="navbar-brand" href="/newzips">
+                                    <img src="/assets/images/newzips_logo_1.png" alt="">
                                 </a>
                                 <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
                                     <span class="icon-spar"></span>
@@ -79,69 +73,70 @@
                                 <div class="navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav mr-auto">
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Home
+                                            <a class="nav-link dropdown-toggle" href="/newzips/itemList_user">
+                                                매물검색
                                             </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="01_Home.html">White Menu with Center Search</a>
-                                                <a class="dropdown-item" href="02_Home.html">Image Menu with Center Search 2</a>
-                                                <a class="dropdown-item" href="03_Home.html">Map with Center Search</a>
-                                                <a class="dropdown-item" href="04_Home.html">Geo SVG Map</a>
-                                                <a class="dropdown-item" href="05_Home.html">Slider Header</a>
-                                                <a class="dropdown-item" href="06_Home.html">Image Header with Description</a>
-                                                <a class="dropdown-item" href="07_Home_Categories_and_Advanced_Search.html">More Search Features</a>
-                                            </div>
+                                         
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Features
+                                                방문예약
                                             </a>
                                             <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="17_Features_Example_Alt_Titlebar.html">Features Example</a>
-                                                <a class="dropdown-item" href="18_Half_Map.html">Half Map</a>
+                                                <a class="dropdown-item" href="/newzips/reservation_resident">거주자 예약</a>
+                                                <a class="dropdown-item" href="22_List_Layout_With_Sidebar.html">예약현황 확인</a>
                                             </div>
+                                           
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Listing
+                                               제안
                                             </a>
                                             <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">List Layout with Map</a>
-                                                <a class="dropdown-item" href="22_List_Layout_With_Sidebar.html">List Layout with Sidebar</a>
-                                                <a class="dropdown-item active" href="11_Agent_Profile.html">Agent Profile</a>
-                                                <a class="dropdown-item" href="24_Property_Single.html">Property Single</a>
+                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">제안받기</a>
+                                                <a class="dropdown-item" href="22_List_Layout_With_Sidebar.html">제안받은 매물</a>
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
-                                                Pages
+                                            <a class="nav-link dropdown-toggle" href="/newzips/wish">
+                                               관심목록
                                             </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="12_Blog_Grid.html">Blog Grid</a>
-                                                <a class="dropdown-item" href="13_Blog_Standart.html">Blog Standard</a>
-                                                <a class="dropdown-item" href="14_Blog_Open.html">Blog Open</a>
-                                                <a class="dropdown-item" href="10_About.html">About</a>
-                                                <a class="dropdown-item" href="15_Contact.html">Contact</a>
-                                                <a class="dropdown-item" href="09_404.html">404</a>
-                                            </div>
                                         </li>
                                     </ul>
                                     <div class="d-inline my-2 my-lg-0">
-                                        <ul class="navbar-nav">
+                                    	
+                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
                                             <li class="nav-item signin-btn">
-                                                <a href="#" class="nav-link">
+                                                <a class="nav-link" href="/newzips/login">
                                                     <i class="la la-sign-in"></i>
-                                                    <span><b class="signin-op">Sign in</b> or <b class="reg-op">Register</b></span>
+                                                    <span><b id="header_login">로그인</b></span>
                                                 </a>
-
+                                                
                                             </li>
+
                                             <li class="nav-item submit-btn">
-                                                <a href="#" class="my-2 my-sm-0 nav-link sbmt-btn">
-                                                    <i class="icon-plus"></i>
-                                                    <span>Submit Listing</span>
+                                                <a href="/newzips/joinTerm" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>회원가입</span>
                                                 </a>
                                             </li>
                                         </ul>
+                                        
+                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/newzips/logout">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_logout">로그아웃</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/mypage" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>마이페이지</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        
                                     </div>
                                     <a href="#" title="" class="close-menu"><i class="la la-close"></i></a>
                                 </div>
@@ -152,6 +147,7 @@
             </div>
 
         </header><!--header end-->
+</div>
 
         <div class="popup" id="sign-popup">
             <h3>Sign In to your Account</h3>
@@ -235,13 +231,20 @@
                                 <div class="agent-img5" style="margin-right: 60px;">
                                     <img src="https://via.placeholder.com/355x250" alt="">
                                 </div><!--agent-img end-->
-                                <div class="agent-info5">
+                                <div class="agent-info5" style="padding: 15px 29px 20px 15px;">
 	                                <div class="agent-info7">
-	                                    <h3>매물정보</h3>
-	                                    <p>보증금, 전월세, 중개비 등등</p>                                                                
+	                                    <h3 class="la la-map-marker">[[${listing.addrDetail}]]</h3><br/><br/>
+	                                    <h3 th:if="${listing.yearly_monthly}=='전세'" style="margin-bottom: 5px;">전세&nbsp; : &nbsp;[[${junsae.yearlyFee}]]></h3>                                                        
+	                                    <h3 th:if="${listing.yearly_monthly}=='전세'" style="margin-bottom: 5px;">계약기간&nbsp; : &nbsp;[[${junsae.contractPeriod}]]</h3>                                                        
+	                                    <h3 th:if="${listing.yearly_monthly}=='월세'" style="margin-bottom: 5px;">보증금&nbsp; : &nbsp;[[${wolse.deposit}]]원</h3> 
+	                                    <h3 th:if="${listing.yearly_monthly}=='월세'" style="margin-bottom: 5px;">월세&nbsp; : &nbsp;[[${wolse.monthlyFee}]]원</h3> 
+	                                    <h3 th:if="${listing.yearly_monthly}=='월세'" style="margin-bottom: 5px;">계약기간&nbsp; : &nbsp;[[${wolse.contractPeriod}]]년</h3> 
+	                                    <h3>중개비 등등</h3>                                                                
 	                                </div><!--agent-info end-->
 	                                <div class="agent-info8">
-	                                    <h3>세대수, 입주가능일, 주차 등등</h3>                                                                
+	                                    <h3></h3>                                                                
+	                                    <h3 th:if="${listing.parking}=='T'">주차 가능 : [[${listing.parkingCost}]]원</h3>                                                                
+	                                    <h3 th:if="${listing.parking}=='F'">주차 불가</h3>                                                                
 	                                </div>
                                 </div>
                             </div>
@@ -253,7 +256,13 @@
                                  <div style="margin-bottom: 10px"></div>
                                  <form>                                                    
                                     <div class="form-field">
-                                        <textarea name="message" placeholder="기본정보" style="resize: none; width: 108%" disabled="disabled"></textarea>
+                                        <div style="border: 1px solid #dfe0e5; width: 108%; height: 100px;">
+                                       		<ul style="margin-top: 20px; margin-left: 20px;">
+                                       			<h1>이름&nbsp; :&nbsp;</h1>
+                                       			<h1>핸드폰 &nbsp;:&nbsp;</h1>
+                                       			<h1>이메일&nbsp; :&nbsp; </h1>
+                                       		</ul>
+                                       </div>
                                     </div><!--form-field end-->
                                 </form>
                             </div><!--contact-agent end-->
@@ -262,8 +271,14 @@
                                  <h2>임차인 정보</h2>
                                  <div style="margin-bottom: 10px"></div>
                                  <form>                                                    
-                                    <div class="form-field">
-                                        <textarea name="message" placeholder="기본정보" style="resize: none; width: 108%" disabled="disabled"></textarea>
+                                    <div class="form-field" >
+                                       <div style="border: 1px solid #dfe0e5; width: 108%; height: 100px;">
+                                       		<ul style="margin-top: 20px; margin-left: 20px;">
+                                       			<h1>이름&nbsp; :&nbsp; [[${member.userName}]]</h1>
+                                       			<h1>핸드폰 &nbsp;:&nbsp; [[${member.userPhone}]]</h1>
+                                       			<h1>이메일&nbsp; :&nbsp; [[${member.userEmail}]]</h1>
+                                       		</ul>
+                                       </div>
                                     </div>
                                 </form>
                             </div>
@@ -282,7 +297,7 @@
                        		
                        			<!-- 계약 버튼 -->                            
                                  <form>                                                                                      
-                                    <div class="form-field5">
+                                    <div class="form-field5" style="width: 50%; margin-left: 30%;" >
                                         <button type="submit" class="btn2">계약하기</button>
                                     </div>
                                 </form>
@@ -294,54 +309,42 @@
         </section>
         
 
-        <a href="#" title="">    
+             <div th:fragment="footerFragment" class="footer">
+        
+                <a href="#" title="">    
             <section class="cta st2 section-padding">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="cta-text">
-                                <h2>Discover a home you'll love to stay</h2>
+                                <h2></h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </a>
-
-        <section class="bottom section-padding">
+           <section class="bottom section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4 col-sm-6 col-md-4">
                         <div class="bottom-logo">
-                            <img src="/assets/images/logo.png" alt="" class="img-fluid">
+                            <img src="/assets/images/newzips_logo_1.png" alt="" class="img-fluid">
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-md-3">
-                        <div class="bottom-list">
-                            <h3>Helpful Links</h3>
-                            <ul>
-                                <li>
-                                    <a href="18_Half_Map.html" title="">Half Map</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">Register</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">Pricing</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">Add Listing</a>
-                                </li>
-                            </ul>
-                        </div><!--bottom-list end-->
-                    </div>
-                    <div class="col-xl-5 col-sm-12 col-md-5 pl-0">
-                        <div class="bottom-desc">
-                            <h3>Aditional Information</h3>
-                            <p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.
-                            </p>
-                        </div>
-                    </div>
+                  	<div class="office2">
+						<div>(주)뉴집스</div>
+						<div>대표 : 이수진</div> 
+						<span>사업자 번호 : 137-22-1122</span>&nbsp;&nbsp;
+						<span>통신판매업신고번호 : 제2013-서울-강남-137호</span>
+						<div>주소 : 서울시 어쩌구 저쩌구</div>
+						<span>고객센터 : 02-1234-5678</span>
+						<span>┃</span>
+						<span>평일 10:00 ~ 18:30, 점심시간 12:00 ~ 13:00(토·일요일,공휴일 휴무)</span>
+						<div>팩스 : 02-123-1234</div>
+						<span>프로모션/사업 제휴문의 : aaa@aaaa.co.kr</span>
+					</div>
+
                 </div>
             </div>
         </section>
@@ -354,24 +357,11 @@
                             <div class="row justify-content-between">
                                 <div class="col-xl-6 col-md-6">
                                     <div class="copyright">
-                                        <p>&copy; Selio theme made in EU. All Rights Reserved.</p>
+                                        <p>&copy; Newzip's. All Rights Reserved.</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-md-6">
-                                    <div class="footer-social">
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -379,6 +369,7 @@
                 </div>
             </div>
         </footer>
+        </div><!--footer end-->
 
     </div><!--wrapper end-->
 
