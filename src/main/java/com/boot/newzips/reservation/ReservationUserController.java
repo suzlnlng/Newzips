@@ -257,7 +257,7 @@ public class ReservationUserController {
 	}
 
 	@GetMapping("/newzips/reservation_status")
-	public ModelAndView reservation_status(Principal principal) throws Exception {
+	public ModelAndView reservation_status(Principal principal,HttpServletRequest request) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		String userId = null;
@@ -275,10 +275,16 @@ public class ReservationUserController {
 		
 		
 		mav.addObject("reservationList", reservationList);
-		
-		
 		System.out.println("============================");
-		System.out.println(reservationList);
+		
+	
+
+		for(ReservationStatusDTO reservation : reservationList) {
+			System.out.println(reservation.getVisitDate());
+			System.out.println(reservation.getUserId());
+		}
+		
+	
 
 		// VisitorReservDTO dtoV =
 		// reservationUserService.selectReservationUserId(userId);

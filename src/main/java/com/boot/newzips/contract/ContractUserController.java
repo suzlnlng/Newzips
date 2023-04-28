@@ -50,9 +50,7 @@ public class ContractUserController {
 		ListingDTO listing = contractUserService.getListing(itemId);
 		WolseListingDTO wolse = contractUserService.getWolse(itemId);
 		JunsaeListingDTO junsae = contractUserService.getJunsae(itemId);
-		
-		String city = "서울";
-		RealtorDTO realtor = contractUserService.getRealtor(city);
+		RealtorDTO realtor = contractUserService.getRealtor("서울");
 		
 		mav.addObject("member",member);
 		mav.addObject("listing",listing);
@@ -61,6 +59,8 @@ public class ContractUserController {
 		mav.addObject("realtor",realtor);
 		
 		System.out.println(member);
+		
+		System.out.println(realtor.getRealtorName());
 		
 		System.out.println("출력해라");
 		

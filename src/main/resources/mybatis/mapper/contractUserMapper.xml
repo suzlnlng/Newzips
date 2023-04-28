@@ -29,7 +29,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="getListing" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO">
-	select addrDetail,yearly_monthly,parking,parkingCost
+	select itemId,addrDetail,yearly_monthly,parking,parkingCost
 	from listing
 	where itemId = #{itemId}
 </select>
@@ -50,8 +50,8 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getRealtor" parameterType="String" resultType="com.boot.newzips.dto.RealtorDTO">
 		select realtorname,realtorphone,realtoraddr 
 		from realtor
-		where realtoraddr like '%서울%'
-		order by DBMS_RANDOM.VALUE
+		where realtoraddr like '%'|| #{city} ||'%'
+		ORDER BY DBMS_RANDOM.VALUE
 	</select>
 
 
