@@ -85,6 +85,7 @@ function readyToggle(availableData){
 function makeReservation() {
 
     let selectedTimes = [];
+    let unselectedTimes = [];
     
     		var header = $("meta[name='_csrf_header']").attr('content');
     	var token = $("meta[name='_csrf']").attr('content');
@@ -106,7 +107,14 @@ function makeReservation() {
 	    const time = timeSlot.querySelector('span').textContent;
 	    console.log(time); // 9:00 (또는 필요한 처리를 수행)
 	    selectedTimes.push(time)
+	  }else if (toggleSwitch.checked) {
+	    const time = timeSlot.querySelector('span').textContent;
+	    console.log(time); // 9:00 (또는 필요한 처리를 수행)
+	    unselectedTimes.push(time)
 	  }
+	  
+	  
+	  
 	});
     
     	
@@ -114,11 +122,7 @@ function makeReservation() {
         alert('날짜를 선택해주세요.');
         return;
       }
-      
-      if(selectedTimes.length === 0){
-    	  alert("시간을 선택해주세요.");
-    	  return;
-      }
+
   											  //join(', ')..?여러개 선택하면 ,로 구분해주는거야..
       const confirmMsg = `날짜: ${selectedDate}\n시간: ${selectedTimes.join(', ')}\n\n맞으면 확인눌러`;
       alert(confirmMsg)
@@ -129,7 +133,8 @@ function makeReservation() {
 			url: '/newzips/reservation_resident',
 			data: {
 				selectedDate: selectedDate,
-				selectedTimes: selectedTimes
+				selectedTimes: selectedTimes,
+				unselectedTimes: unselectedTimes
 			},
 			success: function(result) {
 				$(".alert-success").find("strong").text("저장되었습니다.");

@@ -28,10 +28,13 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 수정 -->
 <update id="updateResidentReserv" parameterType="com.boot.newzips.dto.ResidenceReservDTO">
-	update RESIDENCERESERV 
-	set availableDate = #{availableDate, jdbcType=VARCHAR},
-		availableTime = #{availableTime, jdbcType=VARCHAR}
-	where userId = #{userId}		
+	update RESIDENCERESERV
+	set available = #{available}
+	where userId = #{userId}
+	and itemId = #{itemId}
+	and availableDate = #{availableDate}
+	and	availableTime = #{availableTime}
+		
 </update>
 
 <!-- 예약날짜 기준으로 예약시간 조회 -->
