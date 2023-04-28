@@ -6,11 +6,11 @@ searchInput.addEventListener("input", () => {
   console.log("Selected option: " + searchvalue1);
 });
 
-
 let searchvalue2 = ""; // 선택된 값을 저장할 변수
 
 function selectJW(option) {
     searchvalue2 = option; // 선택된 값을 변수에 저장
+    document.getElementById("searchvalue2").value = searchvalue2; // hidden input에 선택된 값을 설정
     console.log("Selected option: " + searchvalue2);
 }
 
@@ -18,51 +18,36 @@ let searchvalue3 = ""; // 선택된 값을 저장할 변수
 
 function selectbuilding(option) {
     searchvalue3 = option; // 선택된 값을 변수에 저장
+      document.getElementById("searchvalue3").value = searchvalue3;
     console.log("Selected option: " + searchvalue3);
 }
 
+$("#searchBtn").off("click").on("click", function() {
+    const searchvalue1 = document.getElementById("searchInput").value;
+    const searchvalue2 = document.getElementById("searchvalue2").value;
+    const searchvalue3 = document.getElementById("searchvalue3").value;
+    var start = 1;
+    var end = 5;
 
-const searchInput = document.getElementById("searchInput");
-const jwSelect = document.getElementById("jwSelect");
-const buildingSelect = document.getElementById("buildingSelect");
-const submitBtn = document.getElementById("submitBtn");
-
-
-let searchValue1 = "";
-let searchValue2 = "";
-let searchValue3 = "";
-
-
-searchInput.addEventListener("input", () => {
-  searchValue1 = searchInput.value;
+    $.ajax({
+        type: 'GET',
+        url: "/newzips/itemList_search",
+        data: {
+            searchvalue1: searchvalue1,
+            searchvalue2: searchvalue2,
+            searchvalue3: searchvalue3,
+            start: start,
+            end: end
+        },
+        success: function(data) {
+            $(".listing-container .row").empty();
+            // 이후의 코드들은 여기에 작성하시면 됩니다.
+        }
+    });
 });
 
-
-jwSelect.addEventListener("change", () => {
-  searchValue2 = jwSelect.value;
-});
-
-
-buildingSelect.addEventListener("change", () => {
-  searchValue3 = buildingSelect.value;
-});
-
-
-submitBtn.addEventListener("click", () => {
-  // AJAX 호출 등으로 검색 데이터를 가져오는 코드 작성
-  const start = 0; // 시작 rownum
-  const end = 10; // 종료 rownum
-  
-  $.ajax({
-    url: "/search",
-    type: "POST",
-    data: {
-      searchValue1,
-      searchValue2,
-      searchValue3,
-      start,
-      end
-    },
     
-    success: search(data) => {
+    
+
+
     
