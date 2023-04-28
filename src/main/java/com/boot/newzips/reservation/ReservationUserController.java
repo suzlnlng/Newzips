@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,12 +38,15 @@ public class ReservationUserController {
 
 	@Resource
 	private ResidentService residentService;
+	
+	@Resource 
+	private ItemDetailService itemDetailService;
 
 	@Resource
 	private ReservationUserService reservationUserService;
 
 	@GetMapping("/newzips/reservation_resident")
-	public ModelAndView reservation_resident(ResidenceReservDTO residenceReservDTO, HttpServletRequest request,
+	public ModelAndView reservation_resident(HttpServletRequest request,
 			Principal principal) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -57,15 +61,39 @@ public class ReservationUserController {
 			return mav;
 		}
 
-		// 유저아이디 기준으로 데이터 불러오기
-		List<ResidenceReservDTO> dtoRR = residentService.selectResidenceReservUserId(userId);
-
-		mav.addObject("dtoRR", dtoRR);
-
 		mav.setViewName("user/reservation_resident");
 
 		return mav;
 
+	}
+	
+	@GetMapping("/newzips/reservation_resident_data")
+	public ModelAndView reservation_resident_data(HttpServletRequest request,
+			Principal principal) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("jsonView");
+		String userId = principal.getName();
+		String selectedDate = request.getParameter("selectedDate");
+	
+		// 유저아이디 기준으로 데이터 불러오기
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("userId", userId);
+		params.put("availableDate", selectedDate);
+		
+		System.out.println("=====================컨트롤러");
+		System.out.println(params.get("availableDate"));
+		
+		List<ResidenceReservDTO> dtoRR = residentService.selectAvailableTimes(params);
+	
+		System.out.println();
+		System.out.println("===============");
+		System.out.println(dtoRR.size());
+		System.out.println();
+
+		mav.addObject("dtoRR", dtoRR);
+
+		return mav;
+		
 	}
 
 	@PostMapping("/newzips/reservation_resident")
@@ -79,6 +107,7 @@ public class ReservationUserController {
 		String[] times = request.getParameterValues("selectedTimes[]");
 
 		String userId = principal.getName();
+		System.out.println(userId);
 		String itemId = "14669020";
 
 		for (String time : times) {
@@ -99,21 +128,19 @@ public class ReservationUserController {
 
 	}
 
-	@Resource ItemDetailService itemDetailService;
-	// 방문자~~~
-	@GetMapping("/newzips/reservation_user1")
-	public ModelAndView reservation_user(VisitorReservDTO visitorReservDTO,
-			HttpServletRequest request,
-			Model model) throws Exception {
 
-		
-		// 매물번호를 주소에서 받아오기
-		// 임의로 설정
-		String itemId = request.getParameter("itemId");
-		itemId = "32906223";
+	// 방문자~~~
+	@GetMapping("/newzips/reservation_user/{itemId}")
+	public ModelAndView reservation_user(
+			VisitorReservDTO visitorReservDTO,
+			HttpServletRequest request,
+			Model model,
+			@PathVariable("itemId") String itemId) throws Exception {
 
 		// 매물번호 기준으로 데이터 불러오기
-
+		
+		//String itemId = request.getParameter("itemId");
+		
 		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
 		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
 		ListingDTO dtoL = itemDetailService.getReadData_listing(itemId);
@@ -130,16 +157,17 @@ public class ReservationUserController {
 		mav.addObject("dtoW",dtoW);
 		mav.addObject("dtoJ",dtoJ);
 
-		mav.setViewName("user/reservation_user1");
+		mav.setViewName("user/reservation_user");
 
 		return mav;
 
 	}
 
-	@PostMapping("/newzips/reservation_user1")
-	public ModelAndView reservation_user_ok(VisitorReservDTO visitorReservDTO, HttpServletRequest request,
-			Model model) throws Exception {
+	@PostMapping("/newzips/reservation_user/")
+	public ModelAndView reservation_user_ok(VisitorReservDTO visitorReservDTO, HttpServletRequest request) throws Exception {
 
+		String itemId = request.getParameter("itemId");
+		
 		ModelAndView mav = new ModelAndView();
 
 		String visitDate = request.getParameter("visitDate");
@@ -186,7 +214,7 @@ public class ReservationUserController {
 
 	}
 
-	@GetMapping("/newzips/reservation_user_complete1")
+	@GetMapping("/newzips/reservation_user_complete")
 	public ModelAndView reservation_user_complete(HttpServletRequest request,
 			@RequestParam("itemId") String itemId) throws Exception {
 
@@ -212,15 +240,19 @@ public class ReservationUserController {
 	}
 
 	@GetMapping("/newzips/reservation_status")
-	public ModelAndView reservation_status() throws Exception {
-
-		System.out.println();
-		System.out.println();
-		System.out.println("여기여기");
-
-		String userId = "";
+	public ModelAndView reservation_status(Principal principal) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
+		String userId = null;
+
+		// 로그인 정보 존재하면 관심목록띄우고 아니면 로그인 진행
+		try {
+			userId = principal.getName();
+
+		} catch (Exception e) {
+			mav.setViewName("redirect:/newzips/login");
+			return mav;
+		}
 
 		List<ReservationStatusDTO> reservationList = reservationUserService.getReservationList(userId);
 

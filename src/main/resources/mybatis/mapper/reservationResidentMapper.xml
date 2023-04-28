@@ -10,8 +10,8 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 
 
 <insert id="insertResidentReserv" parameterType="com.boot.newzips.dto.ResidenceReservDTO">
-  INSERT INTO RESIDENCERESERV (userId, itemId, availableDate, availableTime)
-  VALUES (#{userId}, #{itemId}, #{availableDate, jdbcType=VARCHAR}, #{availableTime, jdbcType=VARCHAR})
+  INSERT INTO RESIDENCERESERV (userId, itemId, availableDate, availableTime, available)
+  VALUES (#{userId}, #{itemId}, #{availableDate}, #{availableTime}, #{available})
 </insert>
 
 
@@ -33,6 +33,14 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 		availableTime = #{availableTime, jdbcType=VARCHAR}
 	where userId = #{userId}		
 </update>
+
+<!-- 예약날짜 기준으로 예약시간 조회 -->
+<select id="selectAvailableTimes" parameterType="map" resultType="com.boot.newzips.dto.ResidenceReservDTO">
+	SELECT userId,availableDate,availableTime,available 
+	FROM RESIDENCERESERV
+	WHERE userId = #{userId}
+	AND availableDate = #{availableDate}
+</select>
 
 
 </mapper>

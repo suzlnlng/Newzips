@@ -1,0 +1,111 @@
+<!doctype html>
+<html layout:decorate="~{user/layout_user}">
+
+<meta charset="utf-8">
+
+<div layout:fragment="content">
+    
+    <link rel="stylesheet" type="text/css" href="/assets/css/reservation_user.css">
+
+        <section class="pager-sec bfr">
+            <div class="container">
+                <div class="pager-sec-details">
+                    <h3>사용자 계약</h3>
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+		<!-- 매물 이미지 및 정보 -->
+        <section class="page-main-content section-padding">
+            <div class="container">
+                <div class="agent-profile-sec">
+                    <div class="row" style="flex-direction: column;">
+                        <div class="col-xl-8 col-lg-9 col-md-12 pl-0 pr-0">
+                            <div class="agent-profile5">
+                                <div class="agent-img5" style="margin-right: 60px;">
+                                    <img src="https://via.placeholder.com/355x250" alt="">
+                                </div><!--agent-img end-->
+                                <div class="agent-info5" style="padding: 15px 29px 20px 15px;">
+	                                <div class="agent-info7">
+	                                    <h3 class="la la-map-marker">[[${listing.addrDetail}]]</h3><br/><br/>
+	                                    <h3 th:if="${listing.yearly_monthly}=='전세'" style="margin-bottom: 5px;">전세&nbsp; : &nbsp;[[${junsae.yearlyFee}]]></h3>                                                        
+	                                    <h3 th:if="${listing.yearly_monthly}=='전세'" style="margin-bottom: 5px;">계약기간&nbsp; : &nbsp;[[${junsae.contractPeriod}]]</h3>                                                        
+	                                    <h3 th:if="${listing.yearly_monthly}=='월세'" style="margin-bottom: 5px;">보증금&nbsp; : &nbsp;[[${wolse.deposit}]]원</h3> 
+	                                    <h3 th:if="${listing.yearly_monthly}=='월세'" style="margin-bottom: 5px;">월세&nbsp; : &nbsp;[[${wolse.monthlyFee}]]원</h3> 
+	                                    <h3 th:if="${listing.yearly_monthly}=='월세'" style="margin-bottom: 5px;">계약기간&nbsp; : &nbsp;[[${wolse.contractPeriod}]]년</h3> 
+	                                    <h3>중개비 등등</h3>                                                                
+	                                </div><!--agent-info end-->
+	                                <div class="agent-info8">
+	                                    <h3></h3>                                                                
+	                                    <h3 th:if="${listing.parking}=='T'">주차 가능 : [[${listing.parkingCost}]]원</h3>                                                                
+	                                    <h3 th:if="${listing.parking}=='F'">주차 불가</h3>                                                                
+	                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
+                            <div class="contact-agent5">
+                            <div style="margin-top: 40px"></div>
+                                 <h2>임대인 정보</h2>
+                                 <div style="margin-bottom: 10px"></div>
+                                 <form>                                                    
+                                    <div class="form-field">
+                                        <div style="border: 1px solid #dfe0e5; width: 108%; height: 100px;">
+                                       		<ul style="margin-top: 20px; margin-left: 20px;">
+                                       			<h1>이름&nbsp; :&nbsp;</h1>
+                                       			<h1>핸드폰 &nbsp;:&nbsp;</h1>
+                                       			<h1>이메일&nbsp; :&nbsp; </h1>
+                                       		</ul>
+                                       </div>
+                                    </div><!--form-field end-->
+                                </form>
+                            </div><!--contact-agent end-->
+                            
+                            <div style="margin-top: 40px"></div>
+                                 <h2>임차인 정보</h2>
+                                 <div style="margin-bottom: 10px"></div>
+                                 <form>                                                    
+                                    <div class="form-field" >
+                                       <div style="border: 1px solid #dfe0e5; width: 108%; height: 100px;">
+                                       		<ul style="margin-top: 20px; margin-left: 20px;">
+                                       			<h1>이름&nbsp; :&nbsp; [[${member.userName}]]</h1>
+                                       			<h1>핸드폰 &nbsp;:&nbsp; [[${member.userPhone}]]</h1>
+                                       			<h1>이메일&nbsp; :&nbsp; [[${member.userEmail}]]</h1>
+                                       		</ul>
+                                       </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- 중개인 이미지 및 정보 -->
+                            <div class="col-xl-8 col-lg-9 col-md-12 pl-0 pr-0">
+                            <div class="agent-profile5">
+                                <div class="agent-img6" style="margin-right: 100px;">
+                                    <img src="https://via.placeholder.com/355x250" alt="" style="width: 200px; height: 150px;">
+                                </div><!--agent-img end-->
+                                <div class="agent-info9">
+                                    <h3>중개사 및 중개인 정보</h3>                                                             
+                                </div>
+                            </div>
+                       		</div> 
+                       		
+                       			<!-- 계약 버튼 -->                            
+                                 <form>                                                                                      
+                                    <div class="form-field5" style="width: 50%; margin-left: 30%;" >
+                                        <button type="submit" class="btn2">계약하기</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+</div><!--layout fragment end-->
+
+
+
+</html>
