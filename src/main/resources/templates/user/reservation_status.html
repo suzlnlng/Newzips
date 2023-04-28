@@ -58,7 +58,8 @@
                                                      <div class="card-body">
                                                      <div class="card-body">
                                                         
-                                                            <h3>매칭완료</h3><br/><br/><br/>
+                                                            <h3 th:if="${reservation.CONFIRM}==T">매칭완료</h3><br/><br/><br/>
+                                                            <h3 th:if="${reservation.CONFIRM}==F">매칭중</h3><br/><br/><br/>
                                                            
                                                         <ul style="border-bottom: none;">
                                                             <h2 th:text="${reservation.realtorName}"></h2><br/>
