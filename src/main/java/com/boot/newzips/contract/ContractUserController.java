@@ -1,10 +1,13 @@
 package com.boot.newzips.contract;
 
+import java.security.Principal;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.newzips.dto.JunsaeListingDTO;
@@ -21,17 +24,21 @@ public class ContractUserController {
 	@Resource
 	private ContractUserService contractUserService;
 	
-	@GetMapping("newzips/contract_user")
-	public ModelAndView contractUser(HttpServletRequest request) throws Exception {
-		
-		
-		String userId = request.getParameter("userId");
-		userId = "suzi";
-		
-		String itemId = request.getParameter("itemId");
-		itemId = "2396640";
+	@GetMapping("newzips/contract_user/{itemId}")
+	public ModelAndView contractUser(HttpServletRequest request, @PathVariable("itemId") String itemId, 
+			Principal principal) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
+		String userId = null;
+		
+		// 로그인 정보 존재하면 관심목록띄우고 아니면 로그인 진행
+		try {
+			userId = principal.getName();
+
+		} catch (Exception e) {
+			mav.setViewName("redirect:/newzips/login");
+			return mav;
+		}
 
 		MemberDTO member = contractUserService.getUser(userId);
 		ListingDTO listing = contractUserService.getListing(itemId);
@@ -47,7 +54,7 @@ public class ContractUserController {
 		
 		System.out.println("출력해라");
 		
-		mav.setViewName("/user/reservation_user_contract1");
+		mav.setViewName("/user/reservation_user_contract");
 		
 		return mav;
 		

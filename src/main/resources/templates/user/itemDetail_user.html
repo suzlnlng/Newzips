@@ -229,9 +229,11 @@
                             <span>유형</span>
                         </div>rate-info end -->
                         <div class="rate-info" style="margin-top: 15px;">                        	
-                            <button type="button" class="btn4">♥</button>
-                            <button class="btn3" onclick="location.href='http://localhost:8080/newzips/reservation_user'">방문예약</button>                            
-                            <button class="btn3" onclick="location.href='http://localhost:8080/newzips/contract_user'">매물계약</button>                            
+                            <button type="button" class="btn4">♥</button>                            							
+							<button class="btn3" th:onclick="|location.href='@{/newzips/reservation_user/__${dtoR.itemId}__}'|">방문예약</button>                     
+							<button class="btn3" th:onclick="|location.href='@{/newzips/contract_user/__${dtoR.itemId}__}'|">매물계약</button>                     
+                            
+                                                        
                         </div>
                     </div><!--card end-->
                 </div><!---property-hd-sec end-->
@@ -242,29 +244,29 @@
                                 <div class="property-imgs">
                                     <div class="property-main-img">
                                     	<div class="property-img">
-									        <img th:src="@{|/listing_images/${dtoR.itemId}/1.png|}" alt="">
+									        <img th:src="@{|/assets/listing_images/${dtoR.itemId}/1.png|}" alt="">
 									    </div>
                                     	<div class="property-img">
-									        <img th:src="@{|/listing_images/${dtoR.itemId}/2.png|}" alt="">
+									        <img th:src="@{|/assets/listing_images/${dtoR.itemId}/2.png|}" alt="">
 									    </div>
                                     	<div class="property-img">
-									        <img th:src="@{|/listing_images/${dtoR.itemId}/3.png|}" alt="">
+									        <img th:src="@{|/assets/listing_images/${dtoR.itemId}/3.png|}" alt="">
 									    </div>
                                     	<div class="property-img">
-									        <img th:src="@{|/listing_images/${dtoR.itemId}/4.png|}" alt="">
+									        <img th:src="@{|/assets/listing_images/${dtoR.itemId}/4.png|}" alt="">
 									    </div>
                                     	<div class="property-img">
-									        <img th:src="@{|/listing_images/${dtoR.itemId}/5.png|}" alt="">
+									        <img th:src="@{|/assets/listing_images/${dtoR.itemId}/5.png|}" alt="">
 									    </div>
                                     	<div class="property-img">
-									        <img th:src="@{|/listing_images/${dtoR.itemId}/6.png|}" alt="">
+									        <img th:src="@{|/assets/listing_images/${dtoR.itemId}/6.png|}" alt="">
 									    </div>
                                     </div><!--property-main-img end-->
                                     <div class="property-thumb-imgs">
                                         <div class="row thumb-carous">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4" th:each="i : ${#numbers.sequence(1,6)}">
                                                 <div class="property-img">
-								                    <img th:src="@{|/listing_images/${dtoR.itemId}/${i}.png|}" alt="">
+								                    <img th:src="@{|/assets/listing_images/${dtoR.itemId}/${i}.png|}" alt="">
 								                </div>
 
                                             </div>
@@ -376,7 +378,7 @@
                                     <h3>평면도</h3>
                                     <!-- <img src="https://via.placeholder.com/427x268" alt=""> -->
                                     <!-- <img src="/assets/images/suzi.jpg" alt=""> -->
-                                    <img th:src="@{|/listing_images/${dtoR.itemId}/0.png|}" alt="">
+                                    <img th:src="@{|/assets/listing_images/${dtoR.itemId}/0.png|}" alt="">
                                 </div><!--floorplan end-->
                                 
                                 <div class="map-dv">

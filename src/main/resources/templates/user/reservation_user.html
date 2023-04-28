@@ -19,20 +19,25 @@
 
         <section class="page-main-content section-padding">
             <div class="container">
-<<<<<<< HEAD
-                <div class="agent-profile-sec" style="margin: 0 10%">
-=======
-                <div class="agent-profile-sec" style="margin: 0 15%">
->>>>>>> b66d9fe993c488ca43ccebae9d2a53c68387058c
+                <div class="agent-profile-sec" style="margin: 0 10% 0 18%">
                     <div class="row" style="flex-direction: column;">
                         <div class="col-xl-8 col-lg-9 col-md-12 pl-0 pr-0">
                             <div class="agent-profile5">
                                 <div class="agent-img5" style="margin-right: 60px;">
-                                    <img src="https://via.placeholder.com/355x250" alt="">
+                                    <img th:src="@{|/assets/listing_images/${dtoL.itemId}/1.png|}" alt="" style="width: 355px; height: 250px;" >
                                 </div><!--agent-img end-->
-                                <div class="agent-info5">
-                                    <h3>매물정보</h3>
-                                    <p>보증금, 전월세, 중개비 등등</p>                                                                
+                                <div class="agent-info5" style="border-left: 1px solid #dfe0e5; padding: 0px 20px 0px 0px;">
+                                <div class="agent-info7">
+                                    <h3 class="la la-map-marker" style="font-size: 20px; color:#6A7BE7; ">[[${dtoL.addrDetail}]]</h3><br/><br/><br/>
+                                    <h1 class="bang-font" th:if="${dtoL.yearly_monthly}==전세">ㆍ전세 &nbsp;[[${dtoJ.yearlyFee_web}]]만원</h1><br/>                                                            
+                                    <h1 th:if="${dtoL.yearly_monthly}==월세">ㆍ월세</h1><br/>                                                                
+                                    <h1 th:if="${dtoL.yearly_monthly}==월세">ㆍ보증금 : [[${dtoW.deposit}]] / 월 : [[${dtoW.monthlyFee}]]만원</h1><br/>                                                                
+                                    </div> 
+                                    <div class="agent-info8" style="border-right: none; width: 105%; padding: 20px 10px 10px 25px;">
+                                    <h1 style="font-size: 17px;">ㆍ[[${dtoR.roomType}]]&nbsp;&nbsp;&nbsp;  방 : [[${dtoR.rooms}]] &nbsp;/&nbsp; 화장실 : [[${dtoR.bathrooms}]]&nbsp;&nbsp;&nbsp;</h1><br/>
+                                    <h1 style="font-size: 17px;" th:if="${dtoL.parking}==T">ㆍ주차&nbsp;<span style="color: red;">O</span>&nbsp;/&nbsp; / 월[[${dtoL.parkingCost}]]원</h1>                                                             
+                                    <h1 style="font-size: 17px;" th:if="${dtoL.parking}==F">ㆍ주차&nbsp;<span style="color: red;">X</span></h1>                                                             
+                                    </div>                          
                                 </div><!--agent-info end-->
                             </div><!--agent-profile end-->
                         </div>

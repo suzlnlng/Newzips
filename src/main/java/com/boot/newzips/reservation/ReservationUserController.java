@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,9 @@ public class ReservationUserController {
 
 	@Resource
 	private ResidentService residentService;
+	
+	@Resource 
+	private ItemDetailService itemDetailService;
 
 	@Resource
 	private ReservationUserService reservationUserService;
@@ -124,21 +128,19 @@ public class ReservationUserController {
 
 	}
 
-	@Resource ItemDetailService itemDetailService;
-	// 방문자~~~
-	@GetMapping("/newzips/reservation_user1")
-	public ModelAndView reservation_user(VisitorReservDTO visitorReservDTO,
-			HttpServletRequest request,
-			Model model) throws Exception {
 
-		
-		// 매물번호를 주소에서 받아오기
-		// 임의로 설정
-		String itemId = request.getParameter("itemId");
-		itemId = "32906223";
+	// 방문자~~~
+	@GetMapping("/newzips/reservation_user/{itemId}")
+	public ModelAndView reservation_user(
+			VisitorReservDTO visitorReservDTO,
+			HttpServletRequest request,
+			Model model,
+			@PathVariable("itemId") String itemId) throws Exception {
 
 		// 매물번호 기준으로 데이터 불러오기
-
+		
+		//String itemId = request.getParameter("itemId");
+		
 		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
 		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
 		ListingDTO dtoL = itemDetailService.getReadData_listing(itemId);
@@ -155,16 +157,17 @@ public class ReservationUserController {
 		mav.addObject("dtoW",dtoW);
 		mav.addObject("dtoJ",dtoJ);
 
-		mav.setViewName("user/reservation_user1");
+		mav.setViewName("user/reservation_user");
 
 		return mav;
 
 	}
 
-	@PostMapping("/newzips/reservation_user1")
-	public ModelAndView reservation_user_ok(VisitorReservDTO visitorReservDTO, HttpServletRequest request,
-			Model model) throws Exception {
+	@PostMapping("/newzips/reservation_user/")
+	public ModelAndView reservation_user_ok(VisitorReservDTO visitorReservDTO, HttpServletRequest request) throws Exception {
 
+		String itemId = request.getParameter("itemId");
+		
 		ModelAndView mav = new ModelAndView();
 
 		String visitDate = request.getParameter("visitDate");
@@ -211,7 +214,7 @@ public class ReservationUserController {
 
 	}
 
-	@GetMapping("/newzips/reservation_user_complete1")
+	@GetMapping("/newzips/reservation_user_complete")
 	public ModelAndView reservation_user_complete(HttpServletRequest request,
 			@RequestParam("itemId") String itemId) throws Exception {
 
