@@ -9,6 +9,7 @@ import com.boot.newzips.dto.ContractUserDTO;
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
+import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.WolseListingDTO;
 
 public interface ContractUserService {
@@ -24,4 +25,6 @@ public interface ContractUserService {
 	public WolseListingDTO getWolse(String itemId) throws Exception;
 	
 	public JunsaeListingDTO getJunsae (String itemId) throws Exception;
+	
+	public RealtorDTO getRealtor(String city);
 }

@@ -272,8 +272,11 @@ public class ReservationUserController {
 		}
 
 		List<ReservationStatusDTO> reservationList = reservationUserService.getReservationList(userId);
-
+		
+		
 		mav.addObject("reservationList", reservationList);
+		
+		
 		System.out.println("============================");
 		System.out.println(reservationList);
 

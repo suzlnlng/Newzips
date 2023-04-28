@@ -60,15 +60,15 @@
                                  <h2>임대인 정보</h2>
                                  <div style="margin-bottom: 10px"></div>
                                  <form>                                                    
-                                    <div class="form-field">
-                                        <div style="border: 1px solid #dfe0e5; width: 108%; height: 100px;">
-                                       		<ul style="margin-top: 20px; margin-left: 20px;">
-                                       			<h1>이름&nbsp; :&nbsp;</h1>
-                                       			<h1>핸드폰 &nbsp;:&nbsp;</h1>
-                                       			<h1>이메일&nbsp; :&nbsp; </h1>
+                                    <div class="form-field" >
+                                       <div style="border: 1px solid #dfe0e5; width: 108%; height: 100px;">
+                                       		<ul style="margin-top: 15px; margin-left: 20px;">
+                                       			<h1>이름&nbsp; :&nbsp; [[${member.userName}]]</h1><br/>
+                                       			<h1>핸드폰 &nbsp;:&nbsp; [[${member.userPhone}]]</h1><br/>
+                                       			<h1>이메일&nbsp; :&nbsp; [[${member.userEmail}]]</h1>
                                        		</ul>
                                        </div>
-                                    </div><!--form-field end-->
+                                    </div>
                                 </form>
                             </div><!--contact-agent end-->
                             
@@ -78,7 +78,7 @@
                                  <form>                                                    
                                     <div class="form-field" >
                                        <div style="border: 1px solid #dfe0e5; width: 108%; height: 100px;">
-                                       		<ul style="margin-top: 20px; margin-left: 20px;">
+                                       		<ul style="margin-top: 15px; margin-left: 20px;">
                                        			<h1>이름&nbsp; :&nbsp; [[${member.userName}]]</h1>
                                        			<h1>핸드폰 &nbsp;:&nbsp; [[${member.userPhone}]]</h1>
                                        			<h1>이메일&nbsp; :&nbsp; [[${member.userEmail}]]</h1>
@@ -95,7 +95,7 @@
                                     <img src="https://via.placeholder.com/355x250" alt="" style="width: 200px; height: 150px;">
                                 </div><!--agent-img end-->
                                 <div class="agent-info9" style=" border-left: 1px solid #dfe0e5">
-                                    <h3>중개사 및 중개인 정보</h3>                                                             
+                                    <h3>[[${realtor.realtorname}]]</h3>                                                             
                                 </div>
                             </div>
                        		</div> 

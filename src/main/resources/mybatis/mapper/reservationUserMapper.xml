@@ -74,7 +74,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- itemId가 겹치는거 -->
   	<select id="getRealtorInfoByRealtorId" resultType="com.boot.newzips.dto.RealtorDTO">
-	  SELECT r.realtorName, r.realtorPhone
+	  SELECT r.realtorName, r.realtorPhone, r.realtoraddr
 	  FROM REALTOR r
 	  JOIN VISITORRESERV v ON r.realtorId = v.realtorId
 	  WHERE v.itemId = #{itemId} AND r.realtorId = #{realtorId}
@@ -90,6 +90,9 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	  ORDER BY u.visitDate DESC, u.visitTime DESC
 
 	</select>
+	
+	
+	
 
 
 </mapper>

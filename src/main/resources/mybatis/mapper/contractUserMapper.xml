@@ -46,7 +46,13 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	where itemId = #{itemId}
 </select>
 
-
+<!-- 중개사 지역별로 랜덤 배치 -->
+	<select id="getRealtor" parameterType="String" resultType="com.boot.newzips.dto.RealtorDTO">
+		select realtorname,realtorphone,realtoraddr 
+		from realtor
+		where realtoraddr like '%서울%'
+		order by DBMS_RANDOM.VALUE
+	</select>
 
 
 </mapper>
