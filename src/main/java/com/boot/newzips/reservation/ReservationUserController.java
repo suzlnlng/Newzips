@@ -19,11 +19,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.boot.newzips.dto.JunsaeListingDTO;
+import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.ResidenceReservDTO;
 import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
+import com.boot.newzips.dto.WolseListingDTO;
+import com.boot.newzips.itemDetail.ItemDetailService;
 import com.boot.newzips.mapper.ReservationUserMapper;
 import com.boot.newzips.service.ReservationUserService;
 import com.boot.newzips.service.ResidentService;
@@ -95,6 +99,7 @@ public class ReservationUserController {
 
 	}
 
+	@Resource ItemDetailService itemDetailService;
 	// 방문자~~~
 	@GetMapping("/newzips/reservation_user1")
 	public ModelAndView reservation_user(VisitorReservDTO visitorReservDTO,
@@ -111,12 +116,19 @@ public class ReservationUserController {
 
 		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
 		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
+		ListingDTO dtoL = itemDetailService.getReadData_listing(itemId);
+		WolseListingDTO dtoW = itemDetailService.getReadData_wol(itemId);
+		JunsaeListingDTO dtoJ = itemDetailService.getReadData_jun(itemId);
+		
 
 		ModelAndView mav = new ModelAndView();
 
 		// mav에 데이터 담기
 		mav.addObject("dtoV", dtoV);
 		mav.addObject("dtoR", dtoR);
+		mav.addObject("dtoL",dtoL);
+		mav.addObject("dtoW",dtoW);
+		mav.addObject("dtoJ",dtoJ);
 
 		mav.setViewName("user/reservation_user1");
 
@@ -138,6 +150,8 @@ public class ReservationUserController {
 
 		System.out.println("post 방식!!");
 		System.out.println("=====================");
+		
+		
 		// reservation_user메소드랑 동일하게 작성하는데,
 		// reservation_user1페이지에서 넘어온 날짜와 시간을 포함한
 		// 예약 정보를 데이터베이스에 넣는과정을 추가해서 작성!!
