@@ -1,7 +1,10 @@
 package com.boot.newzips.service;
 
+import java.util.List;
 import java.util.Map;
 
+import com.boot.newzips.dto.RealtorDTO;
+import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 
@@ -16,12 +19,18 @@ public interface ReservationUserService {
 			
 			public VisitorReservDTO selectReservationReservNo(String reservNo) throws Exception;
 			
-			public VisitorReservDTO selectReservationUserId(String userId) throws Exception;
+			public List<VisitorReservDTO> selectReservationUserId(String userId) throws Exception;
 			
 			public VisitorReservDTO selectReservationItemId(String itemId) throws Exception;
 
 			public RoomInfoDTO getReservationRoomInfo(String itemId) throws Exception;
 			
+			public RealtorDTO getRealtorInfo(String realtorId) throws Exception;
+			
 			public void deleteReservation(String reservNo) throws Exception;
+			
+			public List<RealtorDTO> getRealtorInfoByRealtorId() throws Exception;
+			
+			public List<ReservationStatusDTO> getReservationList(String userId) throws Exception;
 
 }

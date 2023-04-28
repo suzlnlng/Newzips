@@ -1,36 +1,38 @@
 package com.boot.newzips.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.boot.newzips.dto.RealtorDTO;
+import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 
 @Mapper
 public interface ReservationUserMapper {
-	
-		// ¹æ¹®ÀÚ ¿¹¾à
-		public void insertReservation(VisitorReservDTO dto) throws Exception;
-		
-		// ¿¹¾à °¡´ÉÇÑ ³¯Â¥ Á¶È¸
-		public String selectAvailableDate(Map<String, Object> map) throws Exception;
-		
-		// ¿¹¾à °¡´ÉÇÑ ½Ã°£ Á¶È¸
-		public String selectAvailableTime(Map<String, Object> map) throws Exception;
-		
-		// ¿¹¾à¹øÈ£·Î Á¶È¸
-		public VisitorReservDTO selectReservationReservNo(String reservNo) throws Exception;
-		
-		// À¯Àú¾ÆÀÌµð·Î Á¶È¸
-		public VisitorReservDTO selectReservationUserId(String userId) throws Exception;
-	
-		//itemId·Î Á¶È¸
-		public VisitorReservDTO selectReservationItemId(String itemId) throws Exception;
-		
-		//·ë Á¤º¸
-		public RoomInfoDTO getReservationRoomInfo(String itemId) throws Exception;
-		
-		// »èÁ¦
-		public void deleteReservation(String reservNo) throws Exception;
+
+	public void insertReservation(VisitorReservDTO dto) throws Exception;
+
+	public String selectAvailableDate(Map<String, Object> map) throws Exception;
+
+	public String selectAvailableTime(Map<String, Object> map) throws Exception;
+
+	public VisitorReservDTO selectReservationReservNo(String reservNo) throws Exception;
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½È¸
+	public List<VisitorReservDTO> selectReservationUserId(String userId) throws Exception;
+
+	public VisitorReservDTO selectReservationItemId(String itemId) throws Exception;
+
+	public RoomInfoDTO getReservationRoomInfo(String itemId) throws Exception;
+
+	public RealtorDTO getRealtorInfo(String realtorId) throws Exception;
+
+	public void deleteReservation(String reservNo) throws Exception;
+
+	public List<RealtorDTO> getRealtorInfoByRealtorId() throws Exception;
+
+	public List<ReservationStatusDTO> getReservationList(String userId) throws Exception;
 }

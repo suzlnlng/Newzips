@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class SuggestionDTO {
 	
+	//사용자에게 받은 제안 조건 DTO
 	private String userId;
 	private String userPhone;
 	private String addrCity;

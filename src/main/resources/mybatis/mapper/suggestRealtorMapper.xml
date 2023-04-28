@@ -14,7 +14,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="getRealtorSuggestion" parameterType="String" resultType="com.boot.newzips.dto.RealtorSuggestionDTO">
-	select * from realtorSuggestion where userId=#{userId}
+	select * from realtorSuggestion where realtorId=#{realtorId}
 </select>
 
 <select id="getItemInfo" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO">

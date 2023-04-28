@@ -3,6 +3,7 @@ package com.boot.newzips.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.boot.newzips.account.BaseCustomOAuth2UserService;
@@ -47,16 +49,18 @@ public class SecurityConfig {
 			.failureHandler(customFailureHandler)
 		.and()
 		.logout()
-			.logoutUrl("/logout")
+			.logoutRequestMatcher(new AntPathRequestMatcher("/newzips/logout"))
 			.logoutSuccessUrl("/newzips")
-			.deleteCookies("JSESSIONID").
-			invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID")
+			.invalidateHttpSession(true)
 		.and()
 		.oauth2Login()
 			.loginPage("/newzips/login")
 			.defaultSuccessUrl("/newzips")
 			.userInfoEndpoint()
 			.userService(baseCustomOAuth2UserService)
+
+
 		;
 
 		return http.build();

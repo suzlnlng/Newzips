@@ -29,13 +29,25 @@ import lombok.RequiredArgsConstructor;
 public class AccountUserController {
 	
 	private final AccountUserService accountUserService;
+	
+	@GetMapping("/joinTerm")
+	public ModelAndView joinTerm() throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("user/joinTerm_user");
+		
+		return mav;
+		
+	}
+	
 
 	@GetMapping("/join")
 	public ModelAndView join(MemberDTO memberDTO) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("user/join_user2");
+		mav.setViewName("user/join_user");
 		
 		return mav;
 		
@@ -46,7 +58,7 @@ public class AccountUserController {
 
 		// validation을 통해 생기는 오류 join_user페이지로 넘기기
 		if(bindingResult.hasErrors()) {
-			return "user/join_user2";
+			return "user/join_user";
 		}
 		
 		//비밀번호 & 비밀번호 재확인 비교 
@@ -54,10 +66,15 @@ public class AccountUserController {
 			bindingResult.rejectValue("userPwd2", "passwordInCorrect",
 					"비밀번호가 일치하지 않습니다");
 			
-			return "user/join_user2";
+			return "user/join_user";
 			
 		}
 		
+		if(accountUserService.checkId(memberDTO.getUserId())) {
+			bindingResult.rejectValue("userId", "duplicateUserID", "이미 등록된 사용자입니다. 다른 아이디를 사용해주세요.");
+			return "user/join_user"; 
+		}
+
 		try {
 		
 			accountUserService.createMember(memberDTO);
@@ -69,7 +86,7 @@ public class AccountUserController {
 			
 			bindingResult.rejectValue("userId", "이미 등록된 사용자입니다. 다른 아이디를 사용해주세요.");
 			
-			return "user/join_user2";
+			return "user/join_user";
 			
 		} catch (Exception e) {
 		
@@ -77,7 +94,7 @@ public class AccountUserController {
 			
 			bindingResult.reject("signupFailed", e.getMessage());
 			
-			return "user/join_user2";
+			return "user/join_user";
 			
 		}
 

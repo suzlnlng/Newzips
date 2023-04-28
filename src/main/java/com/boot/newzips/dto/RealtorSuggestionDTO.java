@@ -11,6 +11,8 @@ public class RealtorSuggestionDTO {
 	String userId;
 	String itemId;
 	String created;
+
+	public RealtorSuggestionDTO() {}
 	
 	public RealtorSuggestionDTO(String userId,String itemId) {
 		this.userId = userId;

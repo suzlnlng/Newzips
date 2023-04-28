@@ -10,6 +10,7 @@ public class ReservInfoDTO {
 	private String reservNo;
 	private String userId;
 	private String itemId;
+	private String realtorId;
 	private String visitDate;
 	private String visitTime;
 	private String confirm;
@@ -19,11 +20,11 @@ public class ReservInfoDTO {
 	private String yearly_monthly;
 	
 	//junsaeTab
-	private int yearlyFee;
+	private String yearlyFee;
 	
 	//wolseTab
-	private int deposit;
-	private int monthlyFee;	
+	private String deposit;
+	private String monthlyFee;	
 	
 	//memberTab
 	private String userName;

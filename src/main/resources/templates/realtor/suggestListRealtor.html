@@ -12,13 +12,19 @@
     <link rel="shortcut icon" href="/assets/images/favicon.png">
     <link rel="stylesheet" href="/assets/css/animate.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+       <link rel="stylesheet" href="/assets/css/style_test.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/suggestList.css">
-    
-    <style type="text/css">
+	<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 
-
+<style type="text/css">
+body  {
+   font-family: 'Pretendard'; 
+   margin: auto;
+   align-content: center;
+   }
 </style>
 
 </head>
@@ -26,28 +32,49 @@
 
 <form action="/suggested_ok" method="get">
 <body>
-
+<!-- <script th:inline="javascript">
+	$(function(){
+		
+		var itemId[];
+		
+		$("input[name='checkbox']:checked").each(function() {
+			  itemId.push($(this).val());
+			  alert(itemId);
+			});
+		
+		
+		$('#complete_button').on('click',function() {
+			
+			var url = "/suggestListRealtor_ok?userId="+[[${suggest.userId}]]+"&itemId="+itemId;
+			alert(url)
+			//window.location.href = url;
+			
+		})
+	
+	
+	})
+	</script> -->
 
 <script type="text/javascript">
 
-	function btnActive(){
-
-		var selectBtn = document.getElementById('selectBtn');
-		
-		//클릭 이벤트 처리 함수
-		selectBtn.addEventListener("click", function() {
-		// 버튼 활성화/비활성화
-		selectBtn.disabled = !selectBtn.disabled;
-		});
-		
-		 if (selectBtn.disabled) {
-			    selectBtn.disabled = false;
-			    selectBtn.classList.remove('disabled');
-			  } else {
-			    selectBtn.disabled = true;
-			    selectBtn.classList.add('disabled');
-			  }
-	}
+	function btnActive() {
+	    var selectBtns = document.getElementsByName('selectBtn');
+	    for (var i = 0; i < selectBtns.length; i++) {
+	      var selectBtn = selectBtns[i];
+	      selectBtn.addEventListener('click', function() {
+	        this.disabled = !this.disabled;
+	        if (this.disabled) {
+	          this.classList.add('disabled');
+	        } else {
+	          this.classList.remove('disabled');
+	        }
+	      });
+	      // 초기에 비활성화된 버튼에 대해서도 클래스 추가
+	      if (selectBtn.disabled) {
+	        selectBtn.classList.add('disabled');
+	      }
+	    }
+	  }
 </script>
     <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -56,48 +83,38 @@
 
     <div class="wrapper">
 
-      	<header>
+       <header>
+
             <div class="top-header">
                 <div class="container">
                     <div class="row justify-content-between">
                         <div class="col-xl-6 col-md-7 col-sm-12">
                             <div class="header-address">
                                 <a href="#">
-                                    <i class="la la-phone-square"></i>
-                                    <span>(647) 346-0855</span>
+                                    <i></i>
+                                    <span>중개인</span>
                                 </a>
                                 <a href="#">
-                                    <i class="la la-map-marker"></i>
-                                    <span>CF Fairview Mall, Toronto, ON</span>
                                 </a>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-5 col-sm-12">
                             <div class="header-social">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
+                               <i class="la la-arrow-circle-right"></i>
+                                <a href="/newzips"><span>사용자로 전환</span></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="header">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
-                                <a class="navbar-brand" href="01_Home.html">
-                                    <img src="/assets/images/Newzips_logo1.png" alt="">
+                                <a class="navbar-brand" href="/newzips/realtor">
+                                    <img src="/assets/images/newzips_logo_1.png" alt="">
                                 </a>
                                 <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
                                     <span class="icon-spar"></span>
@@ -108,66 +125,64 @@
                                 <div class="navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav mr-auto">
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Home
+                                            <a class="nav-link dropdown-toggle" href="/newzips/itemList_user">
+                                                매물검색
                                             </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="01_Home.html">White Menu with Center Search</a>
-                                                <a class="dropdown-item" href="02_Home.html">Image Menu with Center Search 2</a>
-                                                <a class="dropdown-item" href="03_Home.html">Map with Center Search</a>
-                                                <a class="dropdown-item" href="04_Home.html">Geo SVG Map</a>
-                                                <a class="dropdown-item" href="05_Home.html">Slider Header</a>
-                                                <a class="dropdown-item" href="06_Home.html">Image Header with Description</a>
-                                                <a class="dropdown-item" href="07_Home_Categories_and_Advanced_Search.html">More Search Features</a>
-                                            </div>
+                                         
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Features
+                                                방문예약
                                             </a>
                                             <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="17_Features_Example_Alt_Titlebar.html">Features Example</a>
-                                                <a class="dropdown-item" href="18_Half_Map.html">Half Map</a>
+                                                <a class="dropdown-item" href="/newzips/reservationRequestRealtor">예약요청 확인하기</a>
+                                                <a class="dropdown-item" href="/newzips/reservationStateRealtor">예약현황 확인하기</a>
                                             </div>
+                                           
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                Listing
+                                               제안
                                             </a>
                                             <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">List Layout with Map</a>
-                                                <a class="dropdown-item active" href="22_List_Layout_With_Sidebar.html">List Layout with Sidebar</a>
-                                                <a class="dropdown-item" href="11_Agent_Profile.html">Agent Profile</a>
-                                                <a class="dropdown-item" href="24_Property_Single.html">Property Single</a>
+                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">제안하기</a>
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
-                                                Pages
+                                               뭐넣지..
                                             </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="12_Blog_Grid.html">Blog Grid</a>
-                                                <a class="dropdown-item" href="13_Blog_Standart.html">Blog Standard</a>
-                                                <a class="dropdown-item" href="14_Blog_Open.html">Blog Open</a>
-                                                <a class="dropdown-item" href="10_About.html">About</a>
-                                                <a class="dropdown-item" href="15_Contact.html">Contact</a>
-                                                <a class="dropdown-item" href="09_404.html">404</a>
-                                            </div>
                                         </li>
                                     </ul>
                                     <div class="d-inline my-2 my-lg-0">
-                                        <ul class="navbar-nav">
+                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
                                             <li class="nav-item signin-btn">
-                                                <a href="#" class="nav-link">
+                                                <a class="nav-link" href="/neazips/realtor/login">
                                                     <i class="la la-sign-in"></i>
-                                                    <span><b class="signin-op">Sign in</b> or <b class="reg-op">Register</b></span>
+                                                    <span><b id="header_login">로그인</b></span>
                                                 </a>
-
+                                                
                                             </li>
+
                                             <li class="nav-item submit-btn">
-                                                <a href="#" class="my-2 my-sm-0 nav-link sbmt-btn">
-                                                    <i class="icon-plus"></i>
-                                                    <span>Submit Listing</span>
+                                                <a href="/newzips/realtor/join" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>회원가입</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                            <li class="nav-item signin-btn">
+                                                <a class="nav-link" href="/newzips/realtor/logout">
+                                                    <i class="la la-sign-in"></i>
+                                                    <span><b id="header_logout">로그아웃</b></span>
+                                                </a>
+                                                
+                                            </li>
+
+                                            <li class="nav-item submit-btn">
+                                                <a href="/newzips/realtor/mypage" class="my-2 my-sm-0 nav-link sbmt-btn">
+                                                    <span>마이페이지</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -179,6 +194,7 @@
                     </div>
                 </div>
             </div>
+
         </header><!--header end-->
 
 <!-- ============================================================ -->
@@ -186,7 +202,7 @@
         <section class="pager-sec bfr">
             <div class="container">
                 <div class="pager-sec-details">
-                    <h3>List Layout</h3>
+                    <h3>매물 제안</h3>
                     <ul>
                         <li><a href="#" title="">Home</a></li>
                         <li><span>List Layout</span></li>
@@ -216,7 +232,8 @@
 	<div class="container_suggest">
 		<div class="userInfo_area" th:if="${suggest!= null}">
 			<div id="suggest_username">
-                <p style="font-size: 50px;">[[${suggest.userId}]]</p>
+                <p style="font-size: 30px; font-weight: bold">[[${suggest.userId}]]</p>
+                <p style="font-size: 25px;">님께 제안 가능한 매물이에요!</p>
             </div>	
 			 <div class="suggestList_itemList_shortcut" >
                		<ul>* 고객 매물 조건
@@ -226,7 +243,7 @@
                			 <li th:if="${suggest.yearly_monthly=='전세'}" th:text="'금액 ㅣ ' + ${suggest.deposit}"></li>
 						<li th:if="${suggest.yearly_monthly=='월세'}" 
 						th:text="'금액 ㅣ ' + ${suggest.deposit} + ${suggest.monthlyFee}"></li>
-               			<li th:text="'방 개수 ㅣ '+${suggest.rooms}"></li>
+               			<li th:text="'방 개수 ㅣ '+${suggest.rooms} + '개'"></li>
                		</ul>
                	</div>
         </div>
@@ -238,22 +255,23 @@
    			<div class="suggestList_content">
            	 <ul>* 제안 가능한 매물
                  <li>매물번호 l &nbsp;&nbsp;&nbsp;[[${realtor.itemId}]]</li>
-                 <li>지역 l &nbsp;&nbsp;&nbsp;[[${realtor.addrCity}]] [[${realtor.addrGu}]]</li>
+                 <li>지역 l &nbsp;&nbsp;&nbsp;[[${realtor.addrDetail}]]</li>
                  <li>전월세 l &nbsp;&nbsp;&nbsp;[[${realtor.yearly_monthly}]]</li>
                  <li th:if="${realtor.yearly_monthly=='전세'}">금액 l &nbsp;&nbsp;&nbsp;[[${realtor.deposit}]]만원</li>
 				<li th:if="${realtor.yearly_monthly=='월세'}">금액 l &nbsp;&nbsp;&nbsp;[[${realtor.deposit}]]만원 / [[${realtor.monthlyFee}]]만원</li>
-				<li>관리비 l &nbsp;&nbsp;&nbsp;[[${realtor.maintenanceCost}]]만원</li>
+				<li>관리비 l &nbsp;&nbsp;&nbsp;[[${realtor.maintenanceCost}]]원</li>
                  <li>매물 종류 l &nbsp;&nbsp;&nbsp;[[${realtor.roomType}]]</li>
                  <li>평 수 l &nbsp;&nbsp;&nbsp;[[${realtor.area}/3.305785]]평</li>
                  <li>방 수 l &nbsp;&nbsp;&nbsp;[[${realtor.rooms}]]개</li>
              </ul>
              </div>
              <div class="select_btn_area">
-                <input type="button" id="selectBtn" class="" value="선택" onclick="btnActive();"/>
+				<input type="checkbox" name="checkbox"  th:value="${realtor.itemId}"/>
 	        </div>          
        </div> 
 		<div class="complete_btn_area">
-                <button id="complete_button" type="submit" ><a href="suggestListRealtor">완료</a></button>
+                <button id="complete_button" type="button"><a href="suggestListRealtor_ok">완료</a></button>
+                
 	    </div>  
 	
 	
@@ -289,59 +307,40 @@
 
 
   
-        <a href="#" title="">    
-            <section class="cta section-padding">
+         <a href="#" title="">    
+            <section class="cta st2 section-padding">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="cta-text">
-                                <h2>Discover a home you'll love to stay</h2>
+                                <h2></h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </a>
-
-
-
-<!-- ================================================================================================ -->
-
-
-     	<section class="bottom section-padding">
+           <section class="bottom section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4 col-sm-6 col-md-4">
                         <div class="bottom-logo">
-                            <img src="/assets/images/logo.png" alt="" class="img-fluid">
+                            <img src="/assets/images/newzips_logo_1.png" alt="" class="img-fluid">
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-md-3">
-                        <div class="bottom-list">
-                            <h3>Helpful Links</h3>
-                            <ul>
-                                <li>
-                                    <a href="18_Half_Map.html" title="">Half Map</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">Register</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">Pricing</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">Add Listing</a>
-                                </li>
-                            </ul>
-                        </div><!--bottom-list end-->
-                    </div>
-                    <div class="col-xl-5 col-sm-12 col-md-5 pl-0">
-                        <div class="bottom-desc">
-                            <h3>Aditional Information</h3>
-                            <p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.
-                            </p>
-                        </div>
-                    </div>
+                     <div class="office2">
+                  <div>(주)뉴집스</div>
+                  <div>대표 : 이수진</div> 
+                  <span>사업자 번호 : 137-22-1122</span>&nbsp;&nbsp;
+                  <span>통신판매업신고번호 : 제2013-서울-강남-137호</span>
+                  <div>주소 : 서울시 어쩌구 저쩌구</div>
+                  <span>고객센터 : 02-1234-5678</span>
+                  <span>┃</span>
+                  <span>평일 10:00 ~ 18:30, 점심시간 12:00 ~ 13:00(토·일요일,공휴일 휴무)</span>
+                  <div>팩스 : 02-123-1234</div>
+                  <span>프로모션/사업 제휴문의 : aaa@aaaa.co.kr</span>
+               </div>
+
                 </div>
             </div>
         </section>
@@ -354,24 +353,11 @@
                             <div class="row justify-content-between">
                                 <div class="col-xl-6 col-md-6">
                                     <div class="copyright">
-                                        <p>&copy; Selio theme made in EU. All Rights Reserved.</p>
+                                        <p>&copy; Newzip's. All Rights Reserved.</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-md-6">
-                                    <div class="footer-social">
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -401,6 +387,9 @@
     <script src="/assets/js/map-cluster/markerclusterer.js"></script>
     <script src="/assets/js/map-cluster/maps.js"></script>
 
+
+	<!-- btn js -->
+	
 
 
 </body>

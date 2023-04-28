@@ -22,6 +22,9 @@ $(window).on("load", function() {
 function makeReservation() {
 
     let selectedTimes = [];
+    
+    		var header = $("meta[name='_csrf_header']").attr('content');
+    	var token = $("meta[name='_csrf']").attr('content');
 
 	  const dateObject = $("#datepicker").datepicker('getDate');
 	  const year = dateObject.getFullYear();
@@ -61,12 +64,10 @@ function makeReservation() {
       alert(confirmMsg)
       //const confirmed = confirm(confirmMsg)
       
-      
-      location.href = "http://localhost:8080/newzips/realtor/join"
-      
       	$.ajax({
 			method: 'post',
-			url: '/newzips/reservation_resident_ok',
+			url: '/newzips/reservation_resident',
+			dataType: 'json',
 			data: {
 				selectedDate: selectedDate,
 				selectedTimes: selectedTimes
@@ -76,18 +77,13 @@ function makeReservation() {
 			},
 			beforeSend:function(xhr){
 				xhr.setRequestHeader(header, token);
-				alert("보내기전")
+				alert(selectedTimes)
 			},
 			error:function(){
 				alert("에러")
 			}
 			
 	});
-	
-	alert("왜안되니")
       
-
-      
-   
 
     }

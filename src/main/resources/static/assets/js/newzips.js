@@ -57,40 +57,6 @@ function itemCheck(){
 	
 }
 
-function sendIt() {
-	
-	var f = document.joinForm;
-	
-	var ct = checkTerms();
-	
-	var sel1 = document.getElementById("select1").checked;
-	var sel2 = document.getElementById("select2").checked;
-	var sel3 = document.getElementById("select3").checked;
-	
-	var emailReceive = document.getElementById("emailReceive");
-	emailReceive.value = sel3;
-	
-	if(sel1 && sel2 && ct){
-		f.submit();
-	}
-
-}
-
-
-function checkTerms(){
-	
-	var f = document.joinForm;
-	var sel1 = document.getElementById("select1").checked;
-	var sel2 = document.getElementById("select2").checked;
-	
-	if(!(sel1 && sel2)){
-		$("#userTermCheckError").html("이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.");
-		return false;
-	}
-	
-	return true;
-	
-}
 
 
  function findId() {
@@ -103,7 +69,7 @@ function checkTerms(){
     	var userName = $("#userName").val();
     	var userPhone = $("#userPhone").val();
 
-    	var params = "userName=" + userName + "&userPhone=" + userPhone;
+    	//var params = "userName=" + userName + "&userPhone=" + userPhone;
     	
 		$.ajax({
 				
@@ -111,7 +77,20 @@ function checkTerms(){
 			type:"post",
 			data:{userName:userName, userPhone:userPhone}, 
 			success:function(mav){
-				alert(mav.userId);
+			
+				replaceHTML = "<div class='popup-form'><div style='margin-top: 40px'></div>";
+				
+				if ((mav.userId) != null) {
+					replaceHTML += "<h3>아이디는 <span style='font-size:14pt; font-weight: bold;'>" + mav.userId + "</span>입니다.</h3>";
+				} else {
+					replaceHTML += "<h3>아이디를 찾을 수 없습니다.</h3>";
+				}
+				
+				replaceHTML += "<div style='margin-bottom: 40px'></div><button type='button' class='btn2' id='popUp-Close-Button' ";
+				replaceHTML += "onclick=\"location.href='http://localhost:8080/newzips/login';\">닫기</button></div>";
+				
+				$(".popup-form").replaceWith(replaceHTML);
+				
 				},
 			beforeSend:function(xhr){
 		        xhr.setRequestHeader(header, token);
@@ -203,10 +182,9 @@ $(window).on("load", function() {
     	
     });
     
-
-
+    
   var start = 1;
-var end = 6;
+var end = 5;
 var lastId = null;
 
 $("#load-more-button").off("click").on("click", function() {
@@ -237,10 +215,6 @@ $("#load-more-button").off("click").on("click", function() {
         }
     });
 });
-
-
-
-
 
 
 	
