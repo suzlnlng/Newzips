@@ -3,83 +3,20 @@ $(window).on("load", function() {
     let selectedDate = '';
     let selectedTimes = [];
 
-	//중복되는 아작스 정리해야됨
-	
     $(function() {
-      	$("#datepicker").datepicker({
-    	  	minDate:0,
-    	  	onSelect: function(dateText) {
-    	  	
-    	  	$.ajax({
-			method: 'get',
-			url: '/newzips/reservation_resident_data',
-			data: {
-				selectedDate: getDate()
-			},
-			success: function(result) {
-				readyToggle(result.dtoRR)
-			},
-			error:function(request,status,error){
-				alert("code:"+request.status+"\n"+"error:"+error);
-			}
-			
-		});
-    	  	
-
+      $("#datepicker").datepicker({
+    	  minDate:0,
+        onSelect: function(dateText) {
+          const dateObject = $(this).datepicker('getDate');
+          const year = dateObject.getFullYear();
+          const month = ("0" + (dateObject.getMonth() + 1)).slice(-2);
+          const day = ("0" + dateObject.getDate()).slice(-2);
+          selectedDate = year + '-' + month + '-' + day;
         }
-		})
-	})
-	
-	$.ajax({
-			method: 'get',
-			url: '/newzips/reservation_resident_data',
-			data: {
-				selectedDate: getDate()
-			},
-			success: function(result) {
-				readyToggle(result.dtoRR)
-			},
-			error:function(request,status,error){
-				alert("code:"+request.status+"\n"+"error:"+error);
-			}
-			
-		});
-	
+      });
+    });
 
 });
-
-
-function getDate(){
-
-	const dateObject = $("#datepicker").datepicker('getDate');
-	const year = dateObject.getFullYear();
-	const month = ("0" + (dateObject.getMonth() + 1)).slice(-2);
-	const day = ("0" + dateObject.getDate()).slice(-2);
-	selectedDate = year + '-' + month + '-' + day;
-
-	return selectedDate;
-	
-}
-
-
-function readyToggle(availableData){
-
-	const timeSlots = document.querySelectorAll('.time-slot');
-	
-	timeSlots.forEach(timeSlot => {
-		const toggleSwitch = timeSlot.querySelector('.toggle-switch input[type="checkbox"]');
-		toggleSwitch.checked = false;
-	})
-
-	for (i in availableData) {
-		if (availableData[i].available == 'T') {
-			var checkbox = document.getElementById(availableData[i].availableTime);
-			checkbox.checked = true;
-		}
-	}
-	
-
-} 
 
 
 function makeReservation() {
@@ -89,8 +26,11 @@ function makeReservation() {
     		var header = $("meta[name='_csrf_header']").attr('content');
     	var token = $("meta[name='_csrf']").attr('content');
 
-	selectedDate = getDate();
-	 
+	  const dateObject = $("#datepicker").datepicker('getDate');
+	  const year = dateObject.getFullYear();
+	  const month = ("0" + (dateObject.getMonth() + 1)).slice(-2);
+	  const day = ("0" + dateObject.getDate()).slice(-2);
+	  selectedDate = year + '-' + month + '-' + day;
     
 	     // time-slot 클래스를 가진 모든 요소를 선택
 	const timeSlots = document.querySelectorAll('.time-slot');
@@ -127,16 +67,17 @@ function makeReservation() {
       	$.ajax({
 			method: 'post',
 			url: '/newzips/reservation_resident',
+			dataType: 'json',
 			data: {
 				selectedDate: selectedDate,
 				selectedTimes: selectedTimes
 			},
 			success: function(result) {
-				$(".alert-success").find("strong").text("저장되었습니다.");
-	    		$(".alert-success").addClass("active");
+				alert("성공..")
 			},
 			beforeSend:function(xhr){
 				xhr.setRequestHeader(header, token);
+				alert(selectedTimes)
 			},
 			error:function(request,status,error){
 				alert("code:"+request.status+"\n"+"error:"+error);

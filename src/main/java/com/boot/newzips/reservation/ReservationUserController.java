@@ -38,7 +38,7 @@ public class ReservationUserController {
 	private ReservationUserService reservationUserService;
 
 	@GetMapping("/newzips/reservation_resident")
-	public ModelAndView reservation_resident(ResidenceReservDTO residenceReservDTO, HttpServletRequest request,
+	public ModelAndView reservation_resident(HttpServletRequest request,
 			Principal principal) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -53,15 +53,39 @@ public class ReservationUserController {
 			return mav;
 		}
 
-		// 유저아이디 기준으로 데이터 불러오기
-		List<ResidenceReservDTO> dtoRR = residentService.selectResidenceReservUserId(userId);
-
-		mav.addObject("dtoRR", dtoRR);
-
 		mav.setViewName("user/reservation_resident");
 
 		return mav;
 
+	}
+	
+	@GetMapping("/newzips/reservation_resident_data")
+	public ModelAndView reservation_resident_data(HttpServletRequest request,
+			Principal principal) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("jsonView");
+		String userId = principal.getName();
+		String selectedDate = request.getParameter("selectedDate");
+	
+		// 유저아이디 기준으로 데이터 불러오기
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("userId", userId);
+		params.put("availableDate", selectedDate);
+		
+		System.out.println("=====================컨트롤러");
+		System.out.println(params.get("availableDate"));
+		
+		List<ResidenceReservDTO> dtoRR = residentService.selectAvailableTimes(params);
+	
+		System.out.println();
+		System.out.println("===============");
+		System.out.println(dtoRR.size());
+		System.out.println();
+
+		mav.addObject("dtoRR", dtoRR);
+
+		return mav;
+		
 	}
 
 	@PostMapping("/newzips/reservation_resident")
@@ -75,6 +99,7 @@ public class ReservationUserController {
 		String[] times = request.getParameterValues("selectedTimes[]");
 
 		String userId = principal.getName();
+		System.out.println(userId);
 		String itemId = "14669020";
 
 		for (String time : times) {
