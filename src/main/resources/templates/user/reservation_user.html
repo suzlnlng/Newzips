@@ -29,9 +29,9 @@
                                 <div class="agent-info5" style="border-left: 1px solid #dfe0e5; padding: 0px 20px 0px 0px;">
                                 <div class="agent-info7">
                                     <h3 class="la la-map-marker" style="font-size: 20px; color:#6A7BE7; ">[[${dtoL.addrDetail}]]</h3><br/><br/><br/>
-                                    <h1 class="bang-font" th:if="${dtoL.yearly_monthly}==전세">ㆍ전세 &nbsp;[[${dtoJ.yearlyFee_web}]]만원</h1><br/>                                                            
+                                    <h1 class="bang-font" th:if="${dtoL.yearly_monthly}==전세">ㆍ전세 &nbsp;[[${dtoJ.yearlyFee_web}]]</h1><br/>                                                            
                                     <h1 th:if="${dtoL.yearly_monthly}==월세">ㆍ월세</h1><br/>                                                                
-                                    <h1 th:if="${dtoL.yearly_monthly}==월세">ㆍ보증금 : [[${dtoW.deposit}]] / 월 : [[${dtoW.monthlyFee}]]만원</h1><br/>                                                                
+                                    <h1 th:if="${dtoL.yearly_monthly}==월세">ㆍ보증금 : [[${dtoW.deposit_web}]]만원 / 월 : [[${dtoW.monthlyFee_web}]]만원</h1><br/>                                                                
                                     </div> 
                                     <div class="agent-info8" style="border-right: none; width: 105%; padding: 20px 10px 10px 25px;">
                                     <h1 style="font-size: 17px;">ㆍ[[${dtoR.roomType}]]&nbsp;&nbsp;&nbsp;  방 : [[${dtoR.rooms}]] &nbsp;/&nbsp; 화장실 : [[${dtoR.bathrooms}]]&nbsp;&nbsp;&nbsp;</h1><br/>

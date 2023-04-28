@@ -104,13 +104,14 @@ public class ReservationUserController {
 		mav.setViewName("user/reservation_resident");
 
 		String date = request.getParameter("selectedDate");
-		String[] times = request.getParameterValues("selectedTimes[]");
-
+		String[] selectedTimes = request.getParameterValues("selectedTimes[]");
+		String[] unselectedTimes = request.getParameterValues("unselectedTimes[]");
+		
 		String userId = principal.getName();
 		System.out.println(userId);
 		String itemId = "14669020";
 
-		for (String time : times) {
+		for (String time : selectedTimes) {
 
 			ResidenceReservDTO dto = new ResidenceReservDTO();
 
@@ -123,10 +124,26 @@ public class ReservationUserController {
 			residentService.insertResidentReserv(dto);
 
 		}
+		
+		for (String time : unselectedTimes) {
+			
+			ResidenceReservDTO dto = new ResidenceReservDTO();
+
+			dto.setUserId(userId);
+			dto.setItemId(itemId);
+			dto.setAvailableDate(date);
+			dto.setAvailableTime(time);
+			dto.setAvailable("F");
+
+			residentService.updateResidentReserv(dto);
+			
+		}
+		
 
 		return mav;
 
 	}
+
 
 
 	// 방문자~~~
