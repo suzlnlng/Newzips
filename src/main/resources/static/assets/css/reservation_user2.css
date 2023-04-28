@@ -20,7 +20,7 @@
   float: left;
   width: 415px;
   border:1px solid #dfe0e5;
-  padding: 27px 29px 40px 30px;
+  padding: 27px 20px 40px 30px;
   border-left: 0;
   line-height: 1;
   height: 250px;
@@ -241,5 +241,9 @@ input:checked + .toggle-slider:before {
 
 #datepicker {
   padding: 10px;
+}
+
+.bang-font {
+	font-size: 18px;
 }
 
