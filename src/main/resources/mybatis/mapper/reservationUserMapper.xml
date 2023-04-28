@@ -90,6 +90,11 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	  ORDER BY u.visitDate DESC, u.visitTime DESC
 
 	</select>
+	
+	<select id="getItemIdByUserId" parameterType="String" resultType="String">
+		select itemId from listing 
+		where addrDetail = (select userAddr from member where userId=#{userId})
+	</select>
 
 
 </mapper>

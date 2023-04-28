@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Optional;
 import java.security.Principal;
 
 import javax.annotation.Resource;
@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.boot.newzips.account.AccountUserService;
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListingDTO;
+import com.boot.newzips.dto.MemberDTO;
 import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.ResidenceReservDTO;
@@ -44,6 +46,9 @@ public class ReservationUserController {
 
 	@Resource
 	private ReservationUserService reservationUserService;
+	
+	@Resource
+	private AccountUserService accountUserService;
 
 	@GetMapping("/newzips/reservation_resident")
 	public ModelAndView reservation_resident(HttpServletRequest request,
@@ -51,16 +56,31 @@ public class ReservationUserController {
 
 		ModelAndView mav = new ModelAndView();
 		String userId = null;
+		List<ResidenceReservDTO> dtoRR = null;
 
 		// 로그인 정보 존재하면 관심목록띄우고 아니면 로그인 진행
 		try {
 			userId = principal.getName();
+			System.out.println("======reservation에서 받은 principal.getName()=========");
+			System.out.println(userId);
 
 		} catch (Exception e) {
 			mav.setViewName("redirect:/newzips/login");
 			return mav;
 		}
-
+		
+		dtoRR = residentService.selectResidenceReservUserId(userId);
+		
+		if (dtoRR.size() == 0) {
+			Optional<MemberDTO> _user = accountUserService.getUserById(userId);
+			MemberDTO user = _user.get();
+			System.out.println("=========================");
+			System.out.println(user.getUserId());
+			mav.addObject("user", user);
+			mav.setViewName("user/reservation_resident_error");
+			return mav;
+		}
+	
 		mav.setViewName("user/reservation_resident");
 
 		return mav;
@@ -71,7 +91,7 @@ public class ReservationUserController {
 	public ModelAndView reservation_resident_data(HttpServletRequest request,
 			Principal principal) throws Exception {
 		
-		ModelAndView mav = new ModelAndView("jsonView");
+
 		String userId = principal.getName();
 		String selectedDate = request.getParameter("selectedDate");
 	
@@ -84,12 +104,18 @@ public class ReservationUserController {
 		System.out.println(params.get("availableDate"));
 		
 		List<ResidenceReservDTO> dtoRR = residentService.selectAvailableTimes(params);
+		
+		if(dtoRR.size() == 0) {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("user/reservation_resident_error");
+		}
 	
 		System.out.println();
 		System.out.println("===============");
 		System.out.println(dtoRR.size());
 		System.out.println();
 
+		ModelAndView mav = new ModelAndView("jsonView");
 		mav.addObject("dtoRR", dtoRR);
 
 		return mav;
@@ -139,24 +165,26 @@ public class ReservationUserController {
 			
 		}
 		
-
 		return mav;
 
 	}
 
-
-
-	// 방문자~~~
-	@GetMapping("/newzips/reservation_user/{itemId}")
-	public ModelAndView reservation_user(
-			VisitorReservDTO visitorReservDTO,
-			HttpServletRequest request,
-			Model model,
-			@PathVariable("itemId") String itemId) throws Exception {
-
-		// 매물번호 기준으로 데이터 불러오기
+	
+	//집 내놓기
+	@GetMapping("/newzips/register_listing")
+	public ModelAndView register_listing(Principal principal) throws Exception{
 		
-		//String itemId = request.getParameter("itemId");
+		ModelAndView mav = new ModelAndView();
+		
+		//userId 받아오기
+		String userId = principal.getName();
+		
+		System.out.println("=====register에서 받은 userId");
+		System.out.println(userId);
+		
+		String itemId = reservationUserService.getItemIdByUserId(userId);
+		System.out.println("================");
+		System.out.println(itemId);
 		
 		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
 		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
@@ -165,7 +193,49 @@ public class ReservationUserController {
 		JunsaeListingDTO dtoJ = itemDetailService.getReadData_jun(itemId);
 		
 
+		// mav에 데이터 담기
+		mav.addObject("dtoV", dtoV);
+		mav.addObject("dtoR", dtoR);
+		mav.addObject("dtoL",dtoL);
+		mav.addObject("dtoW",dtoW);
+		mav.addObject("dtoJ",dtoJ);
+		
+		
+		mav.setViewName("/user/register_listing");
+		
+		return mav;
+		
+	}
+
+
+	// 방문자~~~
+	@GetMapping("/newzips/reservation_user/{itemId}")
+	public ModelAndView reservation_user(
+			VisitorReservDTO visitorReservDTO,
+			HttpServletRequest request,
+			Model model,
+			@PathVariable("itemId") String itemId,
+			Principal principal) throws Exception {
+
 		ModelAndView mav = new ModelAndView();
+		String userId = null;
+
+		// 로그인 정보 존재하면 관심목록띄우고 아니면 로그인 진행
+		try {
+			
+			userId = principal.getName();
+
+		} catch (Exception e) {
+			mav.setViewName("redirect:/newzips/login");
+			return mav;
+		}
+		
+		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
+		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
+		ListingDTO dtoL = itemDetailService.getReadData_listing(itemId);
+		WolseListingDTO dtoW = itemDetailService.getReadData_wol(itemId);
+		JunsaeListingDTO dtoJ = itemDetailService.getReadData_jun(itemId);
+		
 
 		// mav에 데이터 담기
 		mav.addObject("dtoV", dtoV);
