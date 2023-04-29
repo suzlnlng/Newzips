@@ -10,6 +10,7 @@ import com.boot.newzips.dto.ContractUserDTO;
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
+import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.WolseListingDTO;
 import com.boot.newzips.mapper.ContractUserMapper;
 
@@ -45,6 +46,11 @@ public class ContractUserServiceImpl implements ContractUserService{
 	@Override
 	public JunsaeListingDTO getJunsae(String itemId) throws Exception {
 		return contractUserMapper.getJunsae(itemId);
+	}
+
+	@Override
+	public RealtorDTO getRealtor(String city) {
+		return contractUserMapper.getRealtor(city);
 	}
 
 	
