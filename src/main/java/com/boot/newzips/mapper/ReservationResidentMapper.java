@@ -1,6 +1,7 @@
 package com.boot.newzips.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,5 +17,7 @@ public interface ReservationResidentMapper {
 	public List<ResidenceReservDTO> selectResidenceReservUserId(String userId) throws Exception;
 	
 	public void deleteResidentReserv(ResidenceReservDTO dto) throws Exception;
+	
+	public List<ResidenceReservDTO> selectAvailableTimes(Map<String, Object> params) throws Exception;
 
 }

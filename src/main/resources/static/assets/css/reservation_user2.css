@@ -20,7 +20,7 @@
   float: left;
   width: 415px;
   border:1px solid #dfe0e5;
-  padding: 27px 29px 40px 30px;
+  padding: 27px 20px 40px 30px;
   border-left: 0;
   line-height: 1;
   height: 250px;
@@ -243,3 +243,25 @@ input:checked + .toggle-slider:before {
   padding: 10px;
 }
 
+.bang-font {
+	font-size: 18px;
+}
+
+.btn-side{
+	  float: left;
+  width: 100%;
+  color: #ffffff;
+  font-size: 14px;
+  height: 51px;
+  line-height: 51px;
+  border-radius: 30px;
+  text-align: center;
+  border:0;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+	display: inline-block;
+	width: 40%;
+	margin: 15px 5%;
+}

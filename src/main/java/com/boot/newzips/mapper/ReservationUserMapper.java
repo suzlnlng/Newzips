@@ -21,7 +21,6 @@ public interface ReservationUserMapper {
 
 	public VisitorReservDTO selectReservationReservNo(String reservNo) throws Exception;
 
-	// �������̵�� ��ȸ
 	public List<VisitorReservDTO> selectReservationUserId(String userId) throws Exception;
 
 	public VisitorReservDTO selectReservationItemId(String itemId) throws Exception;
@@ -35,4 +34,7 @@ public interface ReservationUserMapper {
 	public List<RealtorDTO> getRealtorInfoByRealtorId() throws Exception;
 
 	public List<ReservationStatusDTO> getReservationList(String userId) throws Exception;
+	
+	public String getItemIdByUserId(String userId) throws Exception;
+
 }

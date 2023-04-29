@@ -1,6 +1,7 @@
 package com.boot.newzips.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,13 @@ public class ResidentServiceImpl implements ResidentService {
 	public void deleteResidentReserv(ResidenceReservDTO dto) throws Exception {
 		reservationResidentMapper.deleteResidentReserv(dto);
 
+	}
+
+	@Override
+	public List<ResidenceReservDTO> selectAvailableTimes(Map<String, Object> params) throws Exception {
+		System.out.println("========================");
+		System.out.println(params.get("availableDate"));
+		return reservationResidentMapper.selectAvailableTimes(params);
 	}
 
 }
