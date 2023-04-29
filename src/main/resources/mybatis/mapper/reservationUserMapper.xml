@@ -95,6 +95,10 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 		select itemId from listing 
 		where addrDetail = (select userAddr from member where userId=#{userId})
 	</select>
+	
+	<select id="maxNum" resultType="int">
+		select nvl(max(reservNo),1) from visitorReserv
+	</select>
 
 
 </mapper>

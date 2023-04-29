@@ -83,12 +83,10 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 		return reservationUserMapper.getItemIdByUserId(userId);
 	}
 
-
-
-	
-	
-	
-	
+	@Override
+	public int maxNum() throws Exception {
+		return reservationUserMapper.maxNum();
+	}
 
 	
 

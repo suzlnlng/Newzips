@@ -38,4 +38,6 @@ public interface ReservationUserMapper {
 	
 	public String getItemIdByUserId(String userId) throws Exception;
 	
+	public int maxNum() throws Exception;
+	
 }
