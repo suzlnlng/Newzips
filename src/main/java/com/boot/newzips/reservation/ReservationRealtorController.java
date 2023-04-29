@@ -1,7 +1,10 @@
 package com.boot.newzips.reservation;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,18 +25,13 @@ public class ReservationRealtorController {
 
 	private final ReservationRealtorService reservationRealtorService;
 	
-	
-	
-	//¸Å¹° ¹æ¹® ¿¹¾à¿äÃ» ¸®½ºÆ®
+	ModelAndView mav = new ModelAndView();
+
 	@GetMapping("/newzips/reservationRequestRealtor")
 	public ModelAndView ReservList() throws Exception {
-		
-		ModelAndView mav = new ModelAndView();
-		
-		/*VisitorReserv¿¡ ´Ù¸¥ Å×ÀÌºíÀ» Dto·Î ³Ö¾î³ùÀ» ¶§ »ç¿ë °¡´ÉÇÑ ÄÚµå
-		//¿¹¾àÀÚ Á¤º¸ ºÒ·¯¿À±â
-		List<VisitorReservDTO> visitorReserv = 
-				reservationRealtorService.getReserverInfo();
+
+		/*
+		List<VisitorReservDTO> visitorReserv = reservationRealtorService.getReserverInfo();
 		
 		Iterator<VisitorReservDTO> it = visitorReserv.iterator();
 		
@@ -59,34 +57,35 @@ public class ReservationRealtorController {
 		mav.addObject("VisitorReservDTO", visitorReserv);
 		*/
 		
+		String realtorId="hyeon";
+		List<ReservInfoDTO> reservInfo = reservationRealtorService.getReserverInfo(realtorId); 
 		
-		//»Ì¾Æ¿Â µ¥ÀÌÅÍ¸¦ »õ·Î¿î DTO¿¡ ´Ù ´ã¾Æ¼­ ÅëÂ°·Î ³Ñ±æ ¶§ »ç¿ëÇÏ´Â ÄÚµå
-		//¿¹¾àÀÚ Á¤º¸ ºÒ·¯¿Í¼­ list¿¡ ´ã±â
-		List<ReservInfoDTO> reservInfo = reservationRealtorService.getReserverInfo(); 
+		List<ReservInfoDTO> notConfirmed = new ArrayList<ReservInfoDTO>();
 		
 		Iterator<ReservInfoDTO> it = reservInfo.iterator();
 		
 		while(it.hasNext()) {
 			ReservInfoDTO dto = it.next();
+			
 			ListingDTO listingDTO  = reservationRealtorService.getItemInfo(dto.getItemId());
 			
-			if(listingDTO!=null) {
+				if(listingDTO!=null) {
 				
-				dto.setAddrDetail(listingDTO.getAddrDetail());
-				dto.setYearly_monthly(listingDTO.getYearly_monthly());
-			
-				if(dto.getYearly_monthly().equals("Àü¼¼")) {
-					
-					JunsaeListingDTO junsaeDTO = reservationRealtorService.getJunsaeInfo(dto.getItemId());
-					dto.setYearlyFee(junsaeDTO.getYearlyFee());
-				}
-				else if(dto.getYearly_monthly().equals("¿ù¼¼")) {
-					WolseListingDTO wolseDTO = reservationRealtorService.getWolseInfo(dto.getItemId());
-					dto.setDeposit(wolseDTO.getDeposit());
-					dto.setMonthlyFee(wolseDTO.getMonthlyFee());
-				}
+					if(dto.getConfirm().equals("F")) {
+						
+					dto.setAddrDetail(listingDTO.getAddrDetail());
+					dto.setYearly_monthly(listingDTO.getYearly_monthly());
 				
-			}
+						if(dto.getYearly_monthly().equals("ì „ì„¸")) {
+							
+							JunsaeListingDTO junsaeDTO = reservationRealtorService.getJunsaeInfo(dto.getItemId());
+							dto.setYearlyFee(junsaeDTO.getYearlyFee_web());
+						}
+						else if(dto.getYearly_monthly().equals("ì›”ì„¸")) {
+							WolseListingDTO wolseDTO = reservationRealtorService.getWolseInfo(dto.getItemId());
+							dto.setDeposit(wolseDTO.getDeposit_web());
+							dto.setMonthlyFee(wolseDTO.getMonthlyFee_web());
+						}
 			
 			MemberDTO memberDTO = reservationRealtorService.getMemberInfo(dto.getUserId());
 			
@@ -94,23 +93,107 @@ public class ReservationRealtorController {
 			dto.setUserBirth(memberDTO.getUserBirth());
 			dto.setUserPhone(memberDTO.getUserPhone());
 			
+			notConfirmed.add(dto);
+			
+					}				
+				}
+				
 		}
-
-		mav.addObject("reservInfoDTO", reservInfo);
+	
+		mav.addObject("realtorId",realtorId);
+		mav.addObject("reservInfoDTO", notConfirmed);
 		mav.setViewName("realtor/reservationRequestRealtor");	
 		
 		return mav;
 	}
 
-	//¹æ¹® ¿¹¾à ÇöÈ²-Áß°³ÀÎ
-	@GetMapping("/newzips/reservationStateRealtor")
-	public String reservationStateRealtor(){
-		
-//		ModelAndView mav = new ModelAndView();
-		
 	
+	@GetMapping("/newzips/reservationConfirmedRealtor")
+	public ModelAndView reservationConfirmedRealtor(HttpServletRequest req) throws Exception {
 		
-		return "realtor/reservationStateRealtor";
+		String userId = req.getParameter("userId");
+		String realtorId = req.getParameter("realtorId");
+		String itemId = req.getParameter("itemId");
+
+		ReservInfoDTO one = reservationRealtorService.getConfirmedInfo(userId, realtorId,itemId);
+		
+		if(one.getConfirm().equals("F")) {
+		reservationRealtorService.setConfirmed(userId, realtorId,itemId);
+		
+		mav.addObject("reservInfo", one);
+		
+		mav.setViewName("realtor/reservationConfirmedRealtor");
+		
+		} else if(one.getConfirm().equals("T")){
+			
+		mav.addObject("realtorId", realtorId);	
+			
+		mav.setViewName("realtor/alreadyConfirmedRealtor");
+		
+		}
+		
+		return mav;
+	}
+
+	@GetMapping("/newzips/reservationStateRealtor")
+	public ModelAndView reservationStateRealtor(HttpServletRequest req) throws Exception{
+
+		String realtorId = req.getParameter("realtorId");
+		
+		List<ReservInfoDTO> reserved = reservationRealtorService.getReserverInfo(realtorId);
+		
+		Iterator<ReservInfoDTO> it = reserved.iterator();
+		
+		while(it.hasNext()) {
+			
+			ReservInfoDTO confirmed = it.next();
+			ListingDTO listing = reservationRealtorService.getItemInfo(confirmed.getItemId());
+			JunsaeListingDTO junsae = reservationRealtorService.getJunsaeInfo(confirmed.getItemId());
+			WolseListingDTO wolse = reservationRealtorService.getWolseInfo(confirmed.getItemId());
+			MemberDTO member = reservationRealtorService.getMemberInfo(confirmed.getUserId());
+			if(confirmed.getConfirm().equals("T")) {
+				
+				if(listing.getYearly_monthly().equals("ì „ì„¸")) {
+
+					confirmed.setAddrDetail(listing.getAddrDetail());
+					confirmed.setConfirm(confirmed.getConfirm());
+					confirmed.setDeposit(junsae.getYearlyFee_web());
+					confirmed.setItemId(confirmed.getItemId());
+					confirmed.setRealtorId(confirmed.getRealtorId());
+					confirmed.setReservNo(confirmed.getReservNo());
+					confirmed.setUserName(member.getUserName());
+					confirmed.setUserPhone(member.getUserPhone());
+					confirmed.setVisitDate(confirmed.getVisitDate());
+					confirmed.setVisitTime(confirmed.getVisitTime());
+					confirmed.setYearly_monthly(listing.getYearly_monthly());
+					
+				}
+			} else if(listing.getYearly_monthly().equals("ì›”ì„¸")) {
+
+				confirmed.setAddrDetail(listing.getAddrDetail());
+				confirmed.setConfirm(confirmed.getConfirm());
+				confirmed.setDeposit(wolse.getDeposit_web());
+				confirmed.setMonthlyFee(wolse.getMonthlyFee_web());
+				confirmed.setItemId(confirmed.getItemId());
+				confirmed.setRealtorId(confirmed.getRealtorId());
+				confirmed.setReservNo(confirmed.getReservNo());
+				confirmed.setUserName(member.getUserName());
+				confirmed.setUserPhone(member.getUserPhone());
+				confirmed.setVisitDate(confirmed.getVisitDate());
+				confirmed.setVisitTime(confirmed.getVisitTime());
+				confirmed.setYearly_monthly(listing.getYearly_monthly());
+				
+			}
+			
+			
+		}
+
+		mav.addObject("realtorId", realtorId);
+		mav.addObject("reserved", reserved);
+		
+		mav.setViewName("realtor/reservationStateRealtor");
+		
+		return mav;
 	}
 
 }

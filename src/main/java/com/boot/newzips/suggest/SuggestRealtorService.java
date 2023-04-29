@@ -17,7 +17,7 @@ public interface SuggestRealtorService {
 	public List<SuggestionDTO> getSuggestList() throws Exception;
 	
 	public SuggestionDTO getSuggestInfo(String userId) throws Exception;
-	public List<RealtorSuggestionDTO> getRealtorSuggestion(String userId) throws Exception;
+	public List<RealtorSuggestionDTO> getRealtorSuggestion(String realtorId) throws Exception;
 	
 	public ListingDTO getItemInfo(String itemId) throws Exception;
 	public List<ListingDTO> getSuggestItem(@Param("addrCity") String addrCity, @Param("addrGu") String addrGu) throws Exception;
@@ -26,4 +26,6 @@ public interface SuggestRealtorService {
 	public WolseListingDTO getWolseInfo(String itemId) throws Exception;
 	
 	public RoomInfoDTO getRoomInfo(String itemId) throws Exception;
+	
+	
 }

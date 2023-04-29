@@ -6,25 +6,34 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.boot.newzips.reservation.ReservationRealtorMapper">
 
 
-<select id="getReserverInfo" resultType="com.boot.newzips.dto.ReservInfoDTO">
-	select reservNo,userId,itemId,visitDate,visitTime,confirm from visitorreserv order by visitdate asc, visittime asc
+<select id="getReserverInfo" parameterType="String" resultType="com.boot.newzips.dto.ReservInfoDTO">
+	select * from visitorReserv where realtorId=#{realtorId} order by visitDate asc, visitTime asc
+</select>
+
+<select id="getConfirmedInfo" parameterType="map" resultType="com.boot.newzips.dto.ReservInfoDTO">
+	select * from visitorReserv where realtorId=#{realtorId} and userId=#{userId} and itemId=#{itemId}
 </select>
 
 <select id="getItemInfo" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO">
-	select * from listing where itemid=#{itemid}
+	select * from listing where itemId=#{itemId}
 </select>
 
 <select id="getJunsaeInfo" parameterType="String" resultType="com.boot.newzips.dto.JunsaeListingDTO">
-	select * from junsaelisting where itemid=#{itemid}
+	select * from junsaeListing where itemId=#{itemId}
 </select>
 
 <select id="getWolseInfo" parameterType="String" resultType="com.boot.newzips.dto.WolseListingDTO">
-	select * from wolselisting where itemid=#{itemid}
+	select * from wolselisting where itemId=#{itemId}
 </select>
 
 <select id="getMemberInfo" parameterType="String" resultType="com.boot.newzips.dto.MemberDTO">
-	select * from member where userid=#{userid}
+	select * from member where userId=#{userId}
 </select>
+
+
+<update id="setConfirmed" parameterType="map">
+	update visitorReserv set confirm ='T' where userId=#{userId} and realtorId=#{realtorId} and itemId=#{itemId}
+</update>
 
 
 </mapper>

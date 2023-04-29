@@ -1,5 +1,7 @@
 package com.boot.newzips.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,9 +9,9 @@ import lombok.Setter;
 @Setter
 public class RealtorListDTO {
 
+	//중개인 매물 리스트 DTO
 	String itemId;
-	String addrCity;
-	String addrGu;
+	String addrDetail;
 	String yearly_monthly;
 	String deposit;
 	String monthlyFee;
@@ -17,4 +19,6 @@ public class RealtorListDTO {
 	String area;
 	String roomType;
 	int rooms;
+	
+	String userId;
 }

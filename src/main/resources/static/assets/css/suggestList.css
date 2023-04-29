@@ -1,90 +1,171 @@
 @charset "UTF-8";
 
 
-/*------------clientListRealtor css --------------- */
-
 body{
 	color: #383E65;	
 }
 
-#content_list{
-width: 100%;
-height: 30px;
-font-size: 30px;
-font-weight: bold;
-padding-top: 50px;
-padding-left: 180px;
-border-bottom-color: #7F7F7F;
-justify-content: center;
-color: #383E65;
-}
-
-#content_area{
-width: 80%;
+/*-------insertOptionUser--------------------*/
+.option_container{
+width: 40%;
 height: auto;
-display: flex;
 justify-content: center;
-align-items: center;
-margin: 30px 180px;
+margin: 50px 600px;
 }
 
-#introduce_msg{
-width:80%;
-color: #6A7BE7;
-font-size: 20px;
-padding-top: 20px;
-margin-bottom: 5px;
-margin-left:200px;
-display: flex;
+#userInfo_area{
+width: 100%;
+padding-bottom: 5px;
+border-bottom: 1px solid #e8e8e8;
+margin-bottom: 30px;
 }
 
-#user_name{
+#userInfo_area ul{
+font-size: 16px;
+font-weight: bold;
+}
+
+#user_data li{
 width: 200px;
-font-weight: bold;	
-color: #6A7BE7;
+height: 40px;
+font-size: 15px;
+margin-top: 10px;
+padding-left:10px;
+font-weight: normal;
 }
 
-#content_box{
-margin-top: 80px;
-margin-bottom: 150px;
+#option_area{
+width: 100%;
 }
 
-#item_image
-{
-width: 300px;
-border: 1px solid black;
-float: left;
-text-align: center;
+#option_title{
+width: 100%;
+padding-bottom: 15px;
+margin-bottom: 15px;
 }
 
-.itemList_shortcut
-{
-width:550px; 
-padding-top: 20px;
-border-bottom-color: #7F7F7F;
-justify-content: center;
-display: inline-block;
-margin-left: 50px;
+#option_title label{
+font-size: 16px;
+font-weight: bold;
+padding-bottom: 10px;
 }
 
-.itemList_shortcut ul
-{
-	font-weight: bold;
-	font-size: 16px;
-	margin:auto;
-	margin-right: 60px;
-	display: inline-block;
+#input_box{
+width: 600px;
+height: 40px;	
+font-size:15px;
+padding-left:10px;
+border: 1px solid #b5b5b5;
 }
 
-.itemList_shortcut li
-{
-	font-weight: normal;
-	font-size: 16px;
-	margin-top: 5px;
+#btn_area{
+width: 100%;
+display: flex;
+margin-left: 160px;
+gap: 120px;
+margin-top: 50px;
+}
+
+#cancel_btn{
+	width: 80px;
+	height: 40px;
+	background-color: #ffffff;
+	border-color: 1px solid #6A7BE7;
+	color: #6A7BE7;
+}
+
+#complete_btnn{
+	width: 80px;
+	height: 40px;
+	background-color: #ffffff;
+	border-color: 1px solid #6A7BE7;
+	color: #6A7BE7;
+}
+
+/* insertCompletedUser----------------- */
+.insert_container{
+	width: 80%;
+	margin-left: 200px;
+	margin-top: 60px;
+	text-align: center;
+}
+
+#insert_completed_area{
+	font-size: 40px;
+	padding-top: 20px;
+	padding-bottom: 160px;
 	
 }
 
-.confirm_button{
+#insert_completedBtn_area{
+	text-align: center;
+	padding-bottom: 80px;
+}
+
+#insert_completed_btn{
+	width: 80px;
+	height: 40px;
+	background-color: #ffffff;
+	border-color: 1px solid #6A7BE7;
+	color: #6A7BE7;
+}
+/*----clientListRealtor css --------------- */
+
+.content_container_area{
+	width: 50%;
+	height: auto;
+	margin-top: 50px;
+	margin-bottom: 80px;
+	margin-left: 500px;
+}
+
+#introduce_msg{
+	font-size: 22px;
+	font-weight: bold;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+#item_option_area{
+	width: 100%;
+	height: auto;
+	border: 1px solid #e8e8e8;
+	padding-left: 20px;
+	padding-top: 18px;
+	padding-bottom: 18px;
+	margin-bottom: 50px;
+}
+
+#client_user_name{
+	font-weight: bold;
+	padding-bottom: 10px;
+	color: #000000;
+}
+
+#itemList_btn_area{
+display: flex;
+}
+
+#itemList_clientList{
+	width: 400px;
+	height: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-right: 250px;
+}
+
+#itemList_clientList  li{
+	padding-bottom: 5px;
+	color: #000000;
+}
+
+#clientList_btn_area{
+width: 100px;
+padding-top: 60px;
+display: inline-block;
+}
+
+#clientList_confirm_button{
 width: 100px;
 height: 50px;
 border: 1px solid #6A7BE7;
@@ -92,56 +173,54 @@ color: #6A7BE7;
 border-radius: 30px;
 background-color: #ffffff;
 transition: background-color 1s ease;
-justify-content: center;
+vertical-align: middle;
 }
 
-.confirm_button:hover{
+#clientList_confirm_button:hover{
 	background-color: #6A7BE7;
 	color: #FFFFFF ;
 }
 
-
-
 /*------------suggestListRealtor css --------------- */
 
 .container_suggest{
-  width: 80%;
+  width: 70%;
+  height: auto;
   justify-content: center;
   align-items: center;
   display: block;
-  margin-top: 100px;
-  margin-left: 200px;
-  border: 1px solid black;
-  padding-top: 50px;
+  margin-top: 50px;
+  margin-left: 300px;
+  padding-top: 10px;
+}
+
+.userInfo_area{
+width: 100%;
+display: inline-block;
+justify-content: center;
+margin-bottom: 100px;
+border-bottom: 1px solid #C3C3C3;
+padding-bottom: 50px;
 }
 
 #suggest_username{
-width: 150px;
-font-weight: bold;	
-color: #6A7BE7;
-border: 1px solid black;
+width: 100%;
+height: auto;
+text-align: center;
+display: flex;
+color: #64A3FF;
+padding-top: 20px;
 margin-right: 60px;
 justify-content: center;
 vertical-align: middle;
 }
 
-.userInfo_area{
-width: 100%;
-display: flex;
-float: left;
-justify-content: center;
-margin-bottom: 100px;
-border-bottom: 1px solid #7F7F7F;
-padding-bottom: 30px;
-}
-
 .suggestList_itemList_shortcut{
-width:550px; 
-padding-top: 20px;
+width:50%; 
+padding-top: 40px;
 border-bottom-color: #7F7F7F;
-justify-content: center;
-display: inline-block;
-margin-left: 50px;
+margin: auto;
+padding-left: 300px;
 }
 
 .suggestList_itemList_shortcut ul
@@ -161,6 +240,15 @@ margin-left: 50px;
 	
 }
 
+.suggestList_area{
+width: 100%;
+display: flex;
+float: left;
+padding-left : 200px;
+padding-bottom: 80px;
+justify-content: center;
+}
+
 #suggest_itemImage{
 width: 350px;
 height: 250px;
@@ -176,14 +264,7 @@ width: 350px;
 height: 250px;
 }
 
-.suggestList_area{
-width: 100%;
-display: flex;
-border: 1px solid black;
-float: left;
-padding: 30px 30px 100px 170px;
-justify-content: center;
-}
+
 
 .suggestList_content{
 width: 450px;
@@ -201,6 +282,7 @@ height: auto;
 
 .suggestList_content li
 {
+	padding-top: 5px;
 	font-weight: normal;
 	font-size: 15px;
 	margin-top: 5px;
@@ -250,11 +332,157 @@ border: 1px solid #6A7BE7;
 color: #6A7BE7;
 border-radius: 30px;
 background-color: #ffffff;
-transition: background-color 1s ease;
+transition: background-color 0.3s ease;
 margin: auto;
 }
 
 #complete_button:hover{
 	background-color: #6A7BE7;
 	color: #ffffff ;
+}
+
+
+
+/*------------suggestListRealtor_ok css --------------- */
+
+.suggested_container{
+width: 80%;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin-left: 200px;
+  padding-top: 100px;
+}
+
+#suggested_ok{
+font-size: 36px;
+height: auto;
+text-align: center;
+padding-bottom: 150px;
+}
+
+#logo_img{
+	width: 100px;
+	height: auto;
+	margin-bottom: 80px;
+}
+
+#suggestList_btn_area{
+	width: 100%;
+	height: 50px;
+	justify-content: center;
+	display: flex;
+	gap: 200px;
+	margin-bottom: 200px;
+}
+
+#complete_btn{
+	width: 80px;
+	height: 40px;
+	background-color: #ffffff;
+	border-color: 1px solid #6A7BE7;
+	color: #6A7BE7;
+	margin-left: 40px;
+}
+
+#suggestok_list_btn{
+	width: 160px;
+	height: 40px;
+	background-color: #ffffff;
+	border-color: 1px solid #6A7BE7;
+	color: #6A7BE7;
+}
+
+
+/*------------suggestedItemtRealtor css --------------- */
+#content_box{
+width: 70%;
+margin-top: 50px;
+margin-left: 450px;
+margin-bottom: 100px;
+}
+
+#realtorId_area{
+	width: 80%;
+	font-size: 20px;
+	margin-bottom: 50px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #E3E3E3;
+}
+
+#content_area{
+width: 80%;
+height: auto;
+display: flex;
+padding: 15px;
+border: 1px solid #e8e8e8;
+}
+
+#content_info{
+width: 700px; 
+height: auto;
+margin-left: 15px;
+gap: 30px;
+}
+
+#suggestItem_image{
+width: 450px;
+height: 320px;
+align-content: center;
+overflow: hidden;
+vertical-align: middle;
+display: table-cell;
+border: 1px solid #E3E3E3;
+}
+
+#suggested_content{
+width: 100%; 
+height: 230px;
+margin: auto;
+display: flex;
+padding-left: 20px;
+}
+
+#suggested_content ul
+{
+	width:150px;
+	font-weight: bold;
+	font-size: 17px;
+	display: inline-block;
+	gap: 40px;
+}
+
+#suggested_content ul li
+{
+	font-weight: normal;
+	font-size: 14px;
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+
+#reserver_info{
+width:600px;
+display: flex;
+border-bottom: 1px dashed #7F7F7F;
+padding-bottom: 15px;
+margin-bottom: 15px;
+}
+
+
+#reserver_info ul
+{
+	font-weight: bold;
+	font-size: 17px;
+	margin-right: 60px;
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: 20px;
+}
+
+#reserver_info ul li
+{
+	font-weight: normal;
+	font-size: 14px;
+	margin-top: 10px;
+	padding-bottom: 5px;
 }

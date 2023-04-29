@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.newzips.suggest.SuggestUserMapper">
+
+<select id="getUserPhone" parameterType="String" resultType="String">
+	select userPhone from member where userId=#{userId}
+</select>
+
+<insert id="setSuggestionInfo" parameterType="map">
+	insert into suggestion values (#{userId},#{userPhone},#{addrCity},#{addrGu},#{yearly_monthly},#{deposit},#{monthlyFee},#{rooms},#{area},#{maintenanceCost})
+</insert>
+
+<select id="getUserInfo" parameterType="map" resultType="com.boot.newzips.dto.SuggestionDTO">
+	select * from suggestion where userId=#{userId}
+</select>
+
+<update id="updateOption" parameterType="map">
+	update suggestion set addrCity=#{addrCity},addrGu=#{addrGu},yearly_monthly=#{yearly_monthly},deposit=#{deposit},monthlyFee=#{monthlyFee},
+	rooms=#{rooms},area=#{area},maintenanceCost=#{maintenanceCost} where userId=#{userId}
+</update>
+</mapper>
