@@ -33,24 +33,37 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 <!-- 같은 DTO에 있는 모든 데이터를 함께 조회하는 쿼리 -->
 <select id="getreadDataAll" parameterType="map" resultType="com.boot.newzips.dto.ListAllDTO">
   select * from (
-  select rownum rnum, data.* from (SELECT l.itemId, l.addrDetail, l.yearly_monthly, wl.deposit, wl.DEPOSIT_WEB, wl.MONTHLYFEE_WEB, wl.MONTHLYFEE, jl.YEARLYFEE, jl.yearlyFee_web, ri.roomType
+  select rownum rnum, data.* from (SELECT l.itemId, l.addrDetail, l.yearly_monthly, wl.deposit, wl.DEPOSIT_WEB, wl.MONTHLYFEE_WEB, wl.MONTHLYFEE, jl.YEARLYFEE, jl.yearlyFee_web, ri.roomType,
+  '/assets/listing_images/' || l.itemId || '/1.png' AS itemImagePath
   FROM listing l
   LEFT JOIN WOLSELISTING wl ON l.itemId = wl.itemId
   LEFT JOIN JUNSAELISTING jl ON l.itemId = jl.itemId
   LEFT JOIN Roominfo ri ON l.itemid = ri.itemid) data)
 <![CDATA[
-	where rnum>=#{start} and rnum<=#{end}
+  where rnum>=#{start} and rnum<=#{end}
 ]]>  
-  
 </select>
 
-<select id="getreadDatapage" resultType="com.boot.newzips.dto.ListAllDTO">
-SELECT ROWNUM rnum l.itemId, l.addrDetail, l.yearly_monthly, wl.deposit, wl.DEPOSIT_WEB, wl.MONTHLYFEE_WEB, wl.MONTHLYFEE, jl.YEARLYFEE, jl.yearlyFee_web, ri.roomType
-FROM listing l
-LEFT JOIN WOLSELISTING wl ON l.itemId = wl.itemId
-LEFT JOIN JUNSAELISTING jl ON l.itemId = jl.itemId
-LEFT JOIN Roominfo ri ON l.itemid = ri.itemid
-LIMIT 10 OFFSET 0
+
+
+
+<select id="getSearchData" parameterType="map" resultType="com.boot.newzips.dto.ListAllDTO">
+  SELECT *
+  FROM (
+    SELECT rownum rnum, data.*
+    FROM (
+      SELECT l.itemId, l.addrDetail, l.yearly_monthly, wl.deposit, wl.DEPOSIT_WEB, wl.MONTHLYFEE_WEB, wl.MONTHLYFEE, jl.YEARLYFEE, jl.yearlyFee_web, ri.roomType,
+        '/assets/listing_images/' || l.itemId || '/1.png' AS itemImagePath
+      FROM listing l
+      LEFT JOIN WOLSELISTING wl ON l.itemId = wl.itemId
+      LEFT JOIN JUNSAELISTING jl ON l.itemId = jl.itemId
+      LEFT JOIN Roominfo ri ON l.itemid = ri.itemid
+      WHERE l.addrDetail LIKE '%' || #{searchvalue1} || '%'  
+        AND ri.roomType LIKE #{searchvalue2}  
+        AND l.yearly_monthly LIKE #{searchvalue3} 
+    ) data
+    WHERE rownum BETWEEN #{start} AND #{end}
+  );
 </select>
 
 

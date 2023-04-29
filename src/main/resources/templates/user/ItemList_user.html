@@ -16,9 +16,10 @@
                             <h1>원하는 조건을 검색하세요</h1>
                         </div>
                         <form action="#" class="row banner-search">
-                            <div class="form_field addres">
-                                <input type="text" class="form-control" placeholder="지역을 입력하세요">
-                            </div>
+                        <div class="form_field addres">
+ 						<input type="text" class="form-control" id="searchInput" placeholder="지역을 입력하세요">
+								</div>
+
                             <div class="form_field tpmax">
                                 <div class="form-group">
                                     <div class="drop-menu">
@@ -26,14 +27,15 @@
                                             <span>전/월세</span>
                                             <i class="fa fa-angle-down"></i>
                                         </div>
-                                        <input type="hidden" name="gender">
+                                        <input type="hidden" name="searchvalue2" id= "searchvalue2">
                                         <ul class="dropeddown">
-                                            <li>전세</li>
-                                            <li>월세</li>
+                                            <li onclick="selectJW('전세')">전세</li>
+                                            <li onclick="selectJW('월세')">월세</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="form_field tpmax">
                                 <div class="form-group">
                                     <div class="drop-menu">
@@ -41,12 +43,12 @@
                                             <span>건물 종류</span>
                                             <i class="fa fa-angle-down"></i>
                                         </div>
-                                        <input type="hidden" name="gender">
+                                        <input type="hidden" name="gender" id= "searchvalue3">
                                         <ul class="dropeddown">
-                                            <li>원룸</li>
-                                            <li>투룸</li>
-                                            <li>쓰리룸</li>
-                                            <li>오피스텔</li>  
+                                            <li onclick="selectbuilding('원룸')">원룸</li>
+                                         	<li onclick="selectbuilding('투룸')">투룸</li>
+                                            <li onclick="selectbuilding('쓰리룸')">쓰리룸</li>
+                                           <li onclick="selectbuilding('오피스텔')">오피스텔</li>  
                                         </ul>
                                     </div>
                                 </div>
@@ -69,13 +71,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form_field srch-btn">
-                                <a href="#" class="btn btn-outline-primary " id="searchBtn">
-                                    <i class="la la-search"></i>
-                                    <span>검색</span>
-                                </a>
-                            </div>
-                        </form>
+							<div class="form_field srch-btn">
+								<button type="button" class="btn btn-outline-primary"
+									id="searchBtn">
+									<i class="la la-search"></i> <span>검색</span>
+								</button>
+							</div>
+						</form>
                     </div>
                 </div>
             </div>

@@ -176,8 +176,8 @@ $("#load-more-button").off("click").on("click", function() {
         type: 'post',
         url: '/newzips/itemList_user',
         data: {
-            start: start,
-            end: end,
+            start: start+1,
+            end: end+1,
         },
         success: function(result) {
              $(".listing-container .row").append(result);

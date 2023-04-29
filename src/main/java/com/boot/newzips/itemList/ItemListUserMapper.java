@@ -26,7 +26,7 @@ public interface ItemListUserMapper {
     
     public List<ListAllDTO> getreadlist();
 
-	public List<ListAllDTO> getsearchlist(Map<String, Object> params) throws Exception;
+	public List<ListAllDTO> getSearchData(Map<String, Object> params) throws Exception;
 }
 	
 	
