@@ -144,12 +144,13 @@ function findAddr(){
             var jibunAddr = data.jibunAddress; // 지번 주소 변수
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('userZipCode').value = data.zonecode;
-            if(roadAddr !== ''){
-                document.getElementById("userAddr").value = roadAddr;
-            } 
-            else if(jibunAddr !== ''){
+            if(jibunAddr !== ''){
                 document.getElementById("userAddr").value = jibunAddr;
             }
+            else if(roadAddr !== ''){
+                document.getElementById("userAddr").value = roadAddr;
+            } 
+
         }
     }).open();
 }

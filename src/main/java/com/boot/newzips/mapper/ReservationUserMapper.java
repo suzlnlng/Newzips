@@ -35,4 +35,6 @@ public interface ReservationUserMapper {
 
 	public List<ReservationStatusDTO> getReservationList(String userId) throws Exception;
 	
+	public String getItemIdByUserId(String userId) throws Exception;
+
 }

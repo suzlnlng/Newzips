@@ -247,3 +247,21 @@ input:checked + .toggle-slider:before {
 	font-size: 18px;
 }
 
+.btn-side{
+	  float: left;
+  width: 100%;
+  color: #ffffff;
+  font-size: 14px;
+  height: 51px;
+  line-height: 51px;
+  border-radius: 30px;
+  text-align: center;
+  border:0;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+	display: inline-block;
+	width: 40%;
+	margin: 15px 5%;
+}

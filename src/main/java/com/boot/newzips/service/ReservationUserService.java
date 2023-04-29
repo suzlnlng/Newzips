@@ -32,6 +32,7 @@ public interface ReservationUserService {
 			public List<RealtorDTO> getRealtorInfoByRealtorId() throws Exception;
 			
 			public List<ReservationStatusDTO> getReservationList(String userId) throws Exception;
-			
-			
+
+			public String getItemIdByUserId(String userId) throws Exception;
+
 }

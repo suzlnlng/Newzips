@@ -78,6 +78,11 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 		return reservationUserMapper.getReservationList(userId);
 	}
 
+	@Override
+	public String getItemIdByUserId(String userId) throws Exception {
+		return reservationUserMapper.getItemIdByUserId(userId);
+	}
+
 
 
 

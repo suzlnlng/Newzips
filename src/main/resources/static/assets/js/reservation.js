@@ -16,7 +16,7 @@ $(window).on("load", function() {
 			data: {
 				selectedDate: getDate()
 			},
-			success: function(result) {
+			success: function(result) {s
 				readyToggle(result.dtoRR)
 			},
 			error:function(request,status,error){
