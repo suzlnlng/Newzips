@@ -35,13 +35,13 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="getWolse" parameterType="String" resultType="com.boot.newzips.dto.WolseListingDTO">
-	select deposit,monthlyFee,contractPeriod
+	select deposit,monthlyFee,contractPeriod,monthlyFee_web
 	from WOLSELISTING
 	where itemId = #{itemId}
 </select>
 
 <select id="getJunsae" parameterType="String" resultType="com.boot.newzips.dto.JunsaeListingDTO">
-	select yearlyFee,contractPeriod
+	select yearlyFee,contractPeriod,yearlyFee_web
 	from JUNSAELISTING
 	where itemId = #{itemId}
 </select>

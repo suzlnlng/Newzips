@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.newzips.account.AccountUserService;
+import com.boot.newzips.contract.ContractUserService;
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
@@ -48,6 +49,9 @@ public class ReservationUserController {
 	
 	@Resource
 	private AccountUserService accountUserService;
+	
+	@Resource
+	private ContractUserService contractUserService;
 
 	@GetMapping("/newzips/reservation_resident")
 	public ModelAndView reservation_resident(HttpServletRequest request,
@@ -303,11 +307,14 @@ public class ReservationUserController {
 		// 주소에서 itemId 받아오기
 		// 해당 id에 대한 데이터 불러오기 
 
-		// mav에 담기
+		// mav에 담기  
 
 		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
 		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
-
+		ListingDTO dtoL = contractUserService.getListing(itemId);
+		WolseListingDTO dtoW = contractUserService.getWolse(itemId);
+		JunsaeListingDTO dtoJ = contractUserService.getJunsae(itemId);
+		
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("dtoV", dtoV);
@@ -315,10 +322,14 @@ public class ReservationUserController {
 		mav.addObject("itemId", itemId);
 		mav.addObject("visitDate", request.getParameter("visitDate"));
 		mav.addObject("visitTime", request.getParameter("visitTime"));
-
+		mav.addObject("dtoL",dtoL);
+		mav.addObject("dtoW",dtoW);
+		mav.addObject("dtoJ",dtoJ);
 		mav.setViewName("user/reservation_user_complete");
 
+		
 		return mav;
+		
 		
 	}
 
@@ -342,19 +353,20 @@ public class ReservationUserController {
 		
 		List<ReservationStatusDTO> reservationList = reservationUserService.getReservationList(userId);
 		
-		System.out.println(reservationList.get(0).getConfirm());
+		//System.out.println(reservationList.get(0).getConfirm());
 		
 		
 		mav.addObject("reservationList", reservationList);
+		mav.addObject("userId",userId);
 		System.out.println("============================");
 		System.out.println(reservationList);
 		
-	
+		System.out.println(userId);
 
-		for(ReservationStatusDTO reservation : reservationList) {
-			System.out.println(reservation.getVisitDate());
-			System.out.println(reservation.getUserId());
-		}
+//		for(ReservationStatusDTO reservation : reservationList) {
+//			System.out.println(reservation.getVisitDate());
+//			System.out.println(reservation.getUserId());
+//		}
 		
 	
 

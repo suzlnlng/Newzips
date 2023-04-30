@@ -20,55 +20,56 @@
         <section class="page-main-content section-padding">
             <div class="container">
                 <div class="agent-profile-sec">
-                    <div class="row" style="flex-direction: column;">
+                    <div class="row" style="flex-direction: column; align-content: center;">
                         <div class="col-xl-8 col-lg-9 col-md-12 pl-0 pr-0">
                             <div class="agent-profile5">
                                 <div class="agent-img5" style="margin-right: 60px;">
-                                    <img src="https://via.placeholder.com/355x250" alt="">
+                                    <img th:src="@{|/assets/listing_images/${dtoR.itemId}/1.png|}"  alt="" style="width: 355px;" height="250px;">
                                 </div><!--agent-img end-->
                                 
                                 
                                 <div class="agent-info5">
-                                    <h3>매물정보</h3>
-                                    <p>보증금, 전월세, 중개비 등등</p>                                                                
+                                    <h3 class="la la-map-marker" style="font-size: 20px; color:#6A7BE7; ">[[${dtoL.addrDetail}]]</h3><br/><br/><br/>
+                                   <h3 th:if="${dtoL.yearly_monthly}=='전세'" class="reservation_size">전세&nbsp;:&nbsp;[[${dtoJ.yearlyFee_web}]]</h3>
+                                    <h3 th:if="${dtoL.yearly_monthly}=='월세'" class="reservation_size">월세&nbsp;:&nbsp;[[${dtoW.monthlyFee_web}]]</h3>
+                                    
+                                    <h3 class="reservation_size">방 : [[${dtoR.rooms}]]</h3>
+                                    <h3 class="reservation_size">화장실 : [[${dtoR.bathrooms}]]</h3>
+                                    <h3 th:if="${dtoL.parking}=='T'"class="reservation_size">주차&nbsp;<span style="color: red;">O</span>&nbsp;/&nbsp; / 월 [[${dtoL.parkingCost}]]원</h3>
+                                     <h3 th:if="${dtoL.parking}=='F'"class="reservation_size">주차&nbsp;<span style="color: red;">X</span></h3> 
                                 </div><!--agent-info end-->
                             </div><!--agent-profile end-->
                         </div>
                         
-                         <div style="margin-bottom: 20px;"></div>
+                         <div style="margin-bottom: 60px;"></div>
                        
                         <div>
 							<dl>
-								<h3>날짜:</h3>
+								<h3 style="font-size: 18px;">선택하신 날짜 : [[${dtoV.visitDate}]]</h3>
+								<span></span> <br/>
 								<dd></dd>
-								<h1>시간:</h1>
+								<h1 style="font-size: 18px;">선택하신 시간 : [[${dtoV.visitTime}]]</h1>
 								<dd></dd>			
 							</dl>		
 						</div>
                         
                         
-                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0" style="padding-left: 0">
+                        <div class="col-xl-4 col-lg-3 col-md-12 pr-0">
                             <div class="contact-agent5">
-                            <div style="margin-top: 40px"></div>
+                            <div style="margin-top: 60px"></div>
 
-                                 <h2>요청사항</h2>
-                                 <div style="margin-bottom: 10px"></div>
-                            <form>                                                    
-                                  <div class="form-field">
-                                      <textarea name="message" placeholder="요청사항" style="resize: none; width: 108%" disabled="disabled"></textarea>
-                                  </div><!--form-field end-->                                
-                            </form>
                             
                             <form>
-                            <div class="form-field" >
-                                <h2 style="margin-left: 18%;">중개인이 매칭될 예정입니다. 매칭된 중개인은 마이페이지 > 방문예약에서 확인하실 수 있습니다.</h2>
+                            <div class="form-field" style="width: 160%; margin-left: 40%;">
+                                <h2 style="font-size: 17px; margin-bottom: 10px; margin-left: 20%">중개인이 매칭될 예정입니다.</h2> 
+                                <h2 style="font-size: 17px;">매칭된 중개인은 마이페이지 > 방문예약에서 확인하실 수 있습니다.</h2>
                             </div><!--form-field end-->  
                             </form>
                             
 
                                     <div class="form-field5">
-                                    <div style="margin-bottom: 20%;"></div>
-                                        <button type="submit" class="btn2" style="width: 40%; margin-left: 25%;">확인</button>
+                                    <div style="margin-bottom: 35%;"></div>
+                                        <button type="submit" class="btn2" style="width: 40%; margin-left: 60%;">확인</button>
                                     </div><!--form-field end-->
                                 </form>
                             </div><!--contact-agent end-->
