@@ -22,4 +22,9 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	update suggestion set addrCity=#{addrCity},addrGu=#{addrGu},yearly_monthly=#{yearly_monthly},deposit=#{deposit},monthlyFee=#{monthlyFee},
 	rooms=#{rooms},area=#{area},maintenanceCost=#{maintenanceCost} where userId=#{userId}
 </update>
+
+<select id="getSuggestionList" parameterType="String" resultType="com.boot.newzips.dto.RealtorSuggestionDTO">
+	SELECT itemId, realtorId from realtorSuggestion where userId=#{userId}
+</select>
+
 </mapper>

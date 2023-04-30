@@ -27,6 +27,8 @@ public class AccountRealtorController {
 	
 	private final AccountRealtorService accountRealtorService;
 	
+	private final HttpSession httpSession;
+	
 	@GetMapping("/realtor/joinTerm")
 	public ModelAndView joinTerm() throws Exception{
 		
@@ -131,11 +133,27 @@ public class AccountRealtorController {
 			
 			System.out.println("일치일치..");
 		
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("realtor", realtorUser);
+			httpSession.setAttribute("realtorId", realtorUser.getRealtorId());
 		
 		}
+		
+		mav.setViewName("redirect:/newzips/realtor");
+
+		return mav;
+		
+	}
+	
+	@GetMapping("/realtor/logout")
+	public ModelAndView logout(HttpServletRequest request) throws Exception{
+		
+		String realtorId = (String)httpSession.getAttribute("realtorId");
+		
+		System.out.println("=============");
+		System.out.println(realtorId);
+		
+		httpSession.invalidate();
+		
+		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("redirect:/newzips/realtor");
 

@@ -82,6 +82,7 @@ public class MainUserController {
         }
 
         mav.addObject("listing", listing); // 전체 데이터를 뷰에 전달
+        mav.addObject("listing2", listing); // 전체 데이터를 뷰에 전달
         mav.addObject("wolse", wolseList); // 누적된 월세 데이터를 모델에 추가
         mav.addObject("junsae", junsaeList); // 누적된 전세 데이터를 모델에 추가
 		mav.addObject("user", user);

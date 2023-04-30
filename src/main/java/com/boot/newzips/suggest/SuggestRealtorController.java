@@ -1,13 +1,17 @@
 package com.boot.newzips.suggest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.newzips.dto.JunsaeListingDTO;
@@ -30,10 +34,21 @@ import oracle.jdbc.proxy.annotation.GetProxy;
 public class SuggestRealtorController {
 	//고객의 매물 조건을 확인
 	private final SuggestRealtorService suggestRealtorService;
+	
+	private final HttpSession httpSession;	
+	
 	ModelAndView mav = new ModelAndView();
 	
 	@GetMapping("/newzips/clientListRealtor")
 	public ModelAndView clientList() throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		String realtorId = (String)httpSession.getAttribute("realtorId");
+		
+		if(realtorId == null) {
+			mav.setViewName("redirect:/newzips/realtor/login");
+			return mav;
+		}
 		
 		List<SuggestionDTO> suggestion = suggestRealtorService.getSuggestList();
 		
@@ -132,18 +147,58 @@ public class SuggestRealtorController {
 		
 	}
 	
-		@GetMapping("/newzips/suggestListRealtor_ok")
-		public ModelAndView suggestList_ok() throws Exception{
+		@PostMapping("/newzips/suggestListRealtor")
+		public ModelAndView suggestList_post(HttpServletRequest request) throws Exception{
 			
-			mav.setViewName("realtor/suggestListRealtor_ok");
+			ModelAndView mav = new ModelAndView();
+			
+			String[] suggestItems = request.getParameterValues("checkedValues[]");
+			String userId = request.getParameter("userId");
+			
+			System.out.println(Arrays.toString(suggestItems));
+			
+			for (String itemId : suggestItems) {
+				RealtorSuggestionDTO dto = new RealtorSuggestionDTO();
+				dto.setRealtorId("hyeon");
+				dto.setUserId(userId);
+				dto.setItemId(itemId);
+				suggestRealtorService.insertSuggestion(dto);
+			}
+			
+			mav.addObject("userId", userId);
+			
+			mav.setViewName("/realtor/suggestListRealtor_ok");
 			
 			return mav;
+			
 		}
+		
+		
+		@GetMapping("/newzips/suggestListRealtor_ok/{userId}")
+		public ModelAndView suggestList_ok(@PathVariable("userId") String userId, 
+				HttpServletRequest request) throws Exception{
+			
+			ModelAndView mav = new ModelAndView();
+			
+			mav.addObject("userId", userId);
+			mav.setViewName("/realtor/suggestListRealtor_ok");
+			
+			return mav;
+			
+		}
+		
 	
 		@GetMapping("/newzips/suggestedItemRealtor")
 		public ModelAndView SuggestedItem() throws Exception{
 			
-			String realtorId = "hyeon";
+			ModelAndView mav = new ModelAndView();
+			String realtorId = (String)httpSession.getAttribute("realtorId");
+			
+			if(realtorId == null) {
+				mav.setViewName("redirect:/newzips/realtor/login");
+				return mav;
+			}
+			
 			//중개인 아이디, 제안받은 고객, 제안한 매물
 			List<RealtorSuggestionDTO> realtorSuggestion= suggestRealtorService.getRealtorSuggestion(realtorId);
 

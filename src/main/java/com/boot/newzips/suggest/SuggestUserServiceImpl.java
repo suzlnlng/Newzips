@@ -1,7 +1,11 @@
 package com.boot.newzips.suggest;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.boot.newzips.dto.RealtorSuggestionDTO;
+import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.SuggestionDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -36,6 +40,11 @@ public class SuggestUserServiceImpl implements SuggestUserService{
 	public void updateOption(SuggestionDTO suggestion) throws Exception {
 		suggestUserMapper.updateOption(suggestion);
 		
+	}
+
+	@Override
+	public List<RealtorSuggestionDTO> getSuggestionList(String userId) throws Exception {
+		return suggestUserMapper.getSuggestionList(userId);
 	}
 
 }

@@ -27,5 +27,6 @@ public interface SuggestRealtorService {
 	
 	public RoomInfoDTO getRoomInfo(String itemId) throws Exception;
 	
+	public void insertSuggestion(RealtorSuggestionDTO dto) throws Exception;
 	
 }

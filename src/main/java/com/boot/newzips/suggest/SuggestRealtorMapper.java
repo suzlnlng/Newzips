@@ -29,4 +29,7 @@ public interface SuggestRealtorMapper {
 	public WolseListingDTO getWolseInfo(String itemId) throws Exception;
 	
 	public RoomInfoDTO getRoomInfo(String itemId) throws Exception;
+	
+	public void insertSuggestion(RealtorSuggestionDTO dto) throws Exception;
+	
 }

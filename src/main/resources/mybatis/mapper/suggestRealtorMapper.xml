@@ -37,4 +37,9 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	select * from roomInfo where itemId=#{itemId}
 </select>
 
+<insert id="insertSuggestion" parameterType="com.boot.newzips.dto.RealtorSuggestionDTO">
+	insert into realtorSuggestion(realtorId,userId,itemId,created)
+	values (#{realtorId},#{userId},#{itemId},sysdate)
+</insert>
+
 </mapper>

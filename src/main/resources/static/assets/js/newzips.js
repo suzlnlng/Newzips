@@ -151,7 +151,9 @@ $("#load-more-button").off("click").on("click", function() {
         beforeSend:function(xhr){
             xhr.setRequestHeader(header, token);
         }
+        
     });
+    
 });
 
 

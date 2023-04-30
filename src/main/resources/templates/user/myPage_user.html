@@ -29,11 +29,11 @@
                         <div class="col-lg-4">
                             <div class="sidebar">
 
-                                <div class="widget widget-catgs">
+                                <div class="widget widget-catgs" style="width: 30%;">
                                     <h3 class="widget-title">마이페이지</h3>
                                     <ul>
                                         <li>
-                                            <a href="/newzips/myPage/myInfo" title=""><i class="la la-angle-right"></i><span>회원정보</span></a>
+                                            <a href="#" title="" onclick="editMyInfo();"><i class="la la-angle-right"></i><span>회원정보</span></a>
                                         </li>
                                         <li>
                                             <a href="#" title=""><i class="la la-angle-right"></i><span>예약확인</span></a>
@@ -46,12 +46,67 @@
                                         </li>
                                     </ul>
                                 </div><!--widget-catgs end-->
-
+                                
+								
+                         	   
                             </div><!--sidebar end-->
                             
-                            
-                            
                         </div>
+                        
+                         <form th:object="${memberDTO}" th:action="@{/newzips/join}" name="joinForm" method="post" style="width: 60%;">
+		      
+		      				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        
+                        	<div id="editInfo" style="text-align: center;"> <!-- display:none 추가? -->
+	                            	<h3 style="font-size: 20px; margin-bottom: 30px;">회원 정보 수정</h3>
+	                            	<form action="">
+	                            		<div class="login-form-field">
+								        <p class="input-description"><strong>&nbsp;&nbsp;&nbsp;이름</strong></p>
+								          <input type="text" name="name">
+								        </div>
+								        
+								        <div style="margin-bottom: 20px"></div>
+	                            		<div class="login-form-field">
+								        <p class="input-description"><strong>&nbsp;&nbsp;이메일</strong></p>
+								          <input type="email" name="email">
+								        </div>
+								        
+								        <div style="margin-bottom: 20px"></div>
+	                            		<div class="login-form-field">
+								        <p class="input-description"><strong>&nbsp;&nbsp;핸드폰 번호</strong></p>
+								          <input type="tel" id="tel" name="tel">
+								        </div>
+								        
+	                            		<div style="margin-bottom: 20px"></div>
+								        <div class="login-form-field">
+								        <p class="input-description" for="password"><strong>&nbsp;&nbsp;비밀번호</strong></p>
+								          <input type="password" name="password" placeholder="비밀번호">
+								        </div>
+								        
+								         <div style="margin-bottom: 20px"></div>
+								        <div class="login-form-field">
+				        		        <p class="input-description"><strong>&nbsp;&nbsp;주소</strong></p>
+								          <input type="text" placeholder="우편번호" readonly onclick="findAddr()">
+								        </div>
+						
+								        <div class="login-form-field">
+								          <input type="text" placeholder="주소" readonly>
+								        </div>
+						
+								        <div class="login-form-field">
+								          <input type="text" placeholder="상세주소">
+								        </div>
+														        
+								        
+										<div style="margin-bottom: 5%;"></div>								        
+	                            		<div class="login-form-field">
+									        <button type="submit" class="btn2" style="margin-left: 16%;">수정 완료</button>
+								      </div>
+	                            	</form>
+                         	   </div>
+                         	   
+							</form>
+                        
                     </div>
                 </div><!--blog-single-details end-->
             </div>
@@ -64,6 +119,34 @@
 
 <script type="text/javascript">
 	//별도로 사용하는 스크립트 있으면 여기다 쓰기
+	function editMyInfo() {
+		var edit = document.getElementById("editInfo");
+		edit.style.display = "block";
+	}
+	
+	function findAddr(){
+		new daum.Postcode({
+	        oncomplete: function(data) {
+	        	
+	        	console.log(data);
+	        	
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	            var roadAddr = data.roadAddress; // 도로명 주소 변수
+	            var jibunAddr = data.jibunAddress; // 지번 주소 변수
+	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	            document.getElementById('userZipCode').value = data.zonecode;
+	            if(jibunAddr !== ''){
+	                document.getElementById("userAddr").value = jibunAddr;
+	            }
+	            else if(roadAddr !== ''){
+	                document.getElementById("userAddr").value = roadAddr;
+	            } 
+
+	        }
+	    }).open();
+	}
 
 </script>
 

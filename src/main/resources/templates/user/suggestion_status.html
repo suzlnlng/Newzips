@@ -1,0 +1,55 @@
+<!doctype html>
+<html layout:decorate="~{user/layout_user}">
+
+<meta charset="utf-8">
+
+<div layout:fragment="content">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/suggestList.css">
+    
+        <section class="pager-sec bfr">
+            <div class="container">
+                <div class="pager-sec-details">
+                    <h3>제안받은 매물 확인</h3>
+                    <ul>
+                    </ul>
+                </div><!--pager-sec-details end-->
+            </div>
+        </section>
+
+      <section>
+    <div id="content_box" >
+    	<div id="realtorId_area">
+    		* <span style="font-weight: bold; color: #64A3FF;">[[${userId}]]</span>님에게 들어온 제안
+    	</div>
+        <div id="content_area"  th:if="${suggestionList!=null}"  th:each="dto: ${suggestionList}">
+            <div id="item_image"  th:if="${dto.itemId!=null}" >
+                <img alt="매물사진" src="/listing_images/${dto.itemId}/1.png">
+            </div>
+            <div class="reservation_itemList_shortcut"  th:if="${reservInfoDTO!=null}">
+
+                <ul>제안 매물 정보
+                    <li>매물 번호 ㅣ<br/> [[${dto.itemId}]]</li>
+                    <li>주소지 ㅣ<br/> [[${dto.addrDetail}]]</li>
+                    <li>전월세 ㅣ<br/> [[${dto.yearly_monthly}]]</li>
+                    <li th:if="${dto.yearly_monthly=='전세'}">금액 ㅣ<br/> [[${dto.yearlyFee}]]만원</li>
+                    <li th:if="${dto.yearly_monthly=='월세'}">금액 ㅣ<br/> 보증금 [[${dto.deposit}]] / [[${dto.yearlyFee}]]만원</li>
+                </ul>
+                <ul>중개인 정보
+                    <li>성함ㅣ<br/> [[${dto.userName}]]</li>
+                    <li>연락처 ㅣ<br/> [[${dto.userPhone}]]</li>
+                </ul>
+               </div>
+
+        </div>
+    </div>
+</section>
+
+
+<script src="/assets/js/reservation.js"></script>
+
+</div><!--layout fragment end-->
+
+
+
+</html>

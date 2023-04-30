@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +24,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ReservationRealtorController {
 
-	private final ReservationRealtorService reservationRealtorService;
+	private final HttpSession httpSession;
 	
-	ModelAndView mav = new ModelAndView();
+	private final ReservationRealtorService reservationRealtorService;
 
 	@GetMapping("/newzips/reservationRequestRealtor")
 	public ModelAndView ReservList() throws Exception {
@@ -57,7 +58,14 @@ public class ReservationRealtorController {
 		mav.addObject("VisitorReservDTO", visitorReserv);
 		*/
 		
-		String realtorId="hyeon";
+		ModelAndView mav = new ModelAndView();
+		String realtorId = (String)httpSession.getAttribute("realtorId");
+		
+		if(realtorId == null) {
+			mav.setViewName("redirect:/newzips/realtor/login");
+			return mav;
+		}
+		
 		List<ReservInfoDTO> reservInfo = reservationRealtorService.getReserverInfo(realtorId); 
 		
 		List<ReservInfoDTO> notConfirmed = new ArrayList<ReservInfoDTO>();
@@ -110,9 +118,16 @@ public class ReservationRealtorController {
 	
 	@GetMapping("/newzips/reservationConfirmedRealtor")
 	public ModelAndView reservationConfirmedRealtor(HttpServletRequest req) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		String realtorId = (String)httpSession.getAttribute("realtorId");
+		
+		if(realtorId == null) {
+			mav.setViewName("redirect:/newzips/realtor/login");
+			return mav;
+		}
 		
 		String userId = req.getParameter("userId");
-		String realtorId = req.getParameter("realtorId");
 		String itemId = req.getParameter("itemId");
 
 		ReservInfoDTO one = reservationRealtorService.getConfirmedInfo(userId, realtorId,itemId);
@@ -138,9 +153,16 @@ public class ReservationRealtorController {
 	@GetMapping("/newzips/reservationStateRealtor")
 	public ModelAndView reservationStateRealtor(HttpServletRequest req) throws Exception{
 
-		String realtorId = req.getParameter("realtorId");
+		ModelAndView mav = new ModelAndView();
+		String realtorId = (String)httpSession.getAttribute("realtorId");
+		
+		if(realtorId == null) {
+			mav.setViewName("redirect:/newzips/realtor/login");
+			return mav;
+		}
 		
 		List<ReservInfoDTO> reserved = reservationRealtorService.getReserverInfo(realtorId);
+		List<ReservInfoDTO> confirmedList = new ArrayList<ReservInfoDTO>();
 		
 		Iterator<ReservInfoDTO> it = reserved.iterator();
 		
@@ -151,6 +173,7 @@ public class ReservationRealtorController {
 			JunsaeListingDTO junsae = reservationRealtorService.getJunsaeInfo(confirmed.getItemId());
 			WolseListingDTO wolse = reservationRealtorService.getWolseInfo(confirmed.getItemId());
 			MemberDTO member = reservationRealtorService.getMemberInfo(confirmed.getUserId());
+			
 			if(confirmed.getConfirm().equals("T")) {
 				
 				if(listing.getYearly_monthly().equals("전세")) {
@@ -167,29 +190,31 @@ public class ReservationRealtorController {
 					confirmed.setVisitTime(confirmed.getVisitTime());
 					confirmed.setYearly_monthly(listing.getYearly_monthly());
 					
-				}
-			} else if(listing.getYearly_monthly().equals("월세")) {
+				}else if(listing.getYearly_monthly().equals("월세")) {
 
-				confirmed.setAddrDetail(listing.getAddrDetail());
-				confirmed.setConfirm(confirmed.getConfirm());
-				confirmed.setDeposit(wolse.getDeposit_web());
-				confirmed.setMonthlyFee(wolse.getMonthlyFee_web());
-				confirmed.setItemId(confirmed.getItemId());
-				confirmed.setRealtorId(confirmed.getRealtorId());
-				confirmed.setReservNo(confirmed.getReservNo());
-				confirmed.setUserName(member.getUserName());
-				confirmed.setUserPhone(member.getUserPhone());
-				confirmed.setVisitDate(confirmed.getVisitDate());
-				confirmed.setVisitTime(confirmed.getVisitTime());
-				confirmed.setYearly_monthly(listing.getYearly_monthly());
+					confirmed.setAddrDetail(listing.getAddrDetail());
+					confirmed.setConfirm(confirmed.getConfirm());
+					confirmed.setDeposit(wolse.getDeposit_web());
+					confirmed.setMonthlyFee(wolse.getMonthlyFee_web());
+					confirmed.setItemId(confirmed.getItemId());
+					confirmed.setRealtorId(confirmed.getRealtorId());
+					confirmed.setReservNo(confirmed.getReservNo());
+					confirmed.setUserName(member.getUserName());
+					confirmed.setUserPhone(member.getUserPhone());
+					confirmed.setVisitDate(confirmed.getVisitDate());
+					confirmed.setVisitTime(confirmed.getVisitTime());
+					confirmed.setYearly_monthly(listing.getYearly_monthly());
+					
+				}
+
+				confirmedList.add(confirmed);
 				
-			}
-			
-			
+		}
 		}
 
 		mav.addObject("realtorId", realtorId);
 		mav.addObject("reserved", reserved);
+		mav.addObject("confirmedList", confirmedList);
 		
 		mav.setViewName("realtor/reservationStateRealtor");
 		

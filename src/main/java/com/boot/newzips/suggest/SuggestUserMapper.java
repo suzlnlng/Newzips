@@ -1,8 +1,12 @@
 package com.boot.newzips.suggest;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.boot.newzips.dto.RealtorSuggestionDTO;
+import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.SuggestionDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 
@@ -20,8 +24,7 @@ public interface SuggestUserMapper {
 	
 	public void updateOption(SuggestionDTO suggestion) throws Exception;
 	
-	
-	
+	public List<RealtorSuggestionDTO> getSuggestionList(String userId) throws Exception;
 	
 	}
 	

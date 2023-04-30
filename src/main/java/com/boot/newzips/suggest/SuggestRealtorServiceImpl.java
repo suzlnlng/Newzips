@@ -59,5 +59,10 @@ public class SuggestRealtorServiceImpl implements SuggestRealtorService{
 		return suggestRealtorMapper.getRoomInfo(itemId);
 	}
 
+	@Override
+	public void insertSuggestion(RealtorSuggestionDTO dto) throws Exception {
+		suggestRealtorMapper.insertSuggestion(dto);
+	}
+
 	
 }

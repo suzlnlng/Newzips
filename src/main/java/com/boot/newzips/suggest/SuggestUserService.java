@@ -1,5 +1,9 @@
 package com.boot.newzips.suggest;
 
+import java.util.List;
+
+import com.boot.newzips.dto.RealtorSuggestionDTO;
+import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.SuggestionDTO;
 
 public interface SuggestUserService {
@@ -14,6 +18,6 @@ public interface SuggestUserService {
 	
 	public void updateOption(SuggestionDTO suggestion) throws Exception;
 	
-	
+	public List<RealtorSuggestionDTO> getSuggestionList(String userId) throws Exception;
 	
 }

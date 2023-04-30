@@ -13,7 +13,7 @@
                             <div class="header-address">
                                 <a href="#">
                                     <i></i>
-                                    <span>중개인페이지~~~~~</span>
+                                    <span>중개인전용 뉴집스</span>
                                 </a>
                                 <a href="#">
                                 </a>
@@ -46,7 +46,7 @@
                                 <div class="navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav mr-auto">
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="/newzips/itemList_user">
+                                            <a class="nav-link dropdown-toggle" href="/newzips/realtor/itemList">
                                                 매물검색
                                             </a>
                                          
@@ -67,16 +67,12 @@
                                             </a>
                                             <div class="dropdown-menu animated">
                                                 <a class="dropdown-item" href="/newzips/clientListRealtor">제안하기</a>
+                                                <a class="dropdown-item" href="/newzips/suggestedItemRealtor">제안매물 확인</a>
                                             </div>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
-                                               뭐넣지..
-                                            </a>
                                         </li>
                                     </ul>
                                     <div class="d-inline my-2 my-lg-0">
-                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                                        <ul class="navbar-nav" th:if="${session.realtorId == null}">
                                             <li class="nav-item signin-btn">
                                                 <a class="nav-link" href="/newzips/realtor/login">
                                                     <i class="la la-sign-in"></i>
@@ -92,7 +88,7 @@
                                             </li>
                                         </ul>
                                         
-                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                        <ul class="navbar-nav" th:if="${session.realtorId != null}">
                                             <li class="nav-item signin-btn">
                                                 <a class="nav-link" href="/newzips/realtor/logout">
                                                     <i class="la la-sign-in"></i>
