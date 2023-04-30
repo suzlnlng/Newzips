@@ -12,7 +12,7 @@ import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.WolseListingDTO;
 
 @Service
-public class ItemListUserServiceImpl implements itemListUserService {
+public class ItemListUserServiceImpl implements ItemListUserService {
 
     @Autowired
     private ItemListUserMapper itemListUserMapper;

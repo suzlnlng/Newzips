@@ -26,7 +26,7 @@ import com.boot.newzips.dto.WolseListingDTO;
 public class ItemListUserController {
 
     @Resource
-    private itemListUserService itemListUserService;
+    private ItemListUserService itemListUserService;
 
     @GetMapping(value = "/newzips/itemList_user")
     public ModelAndView itemList_user(Model model) throws Exception {

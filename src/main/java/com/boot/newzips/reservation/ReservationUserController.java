@@ -347,6 +347,7 @@ public class ReservationUserController {
 		
 		mav.addObject("reservationList", reservationList);
 		System.out.println("============================");
+		System.out.println(reservationList);
 		
 	
 

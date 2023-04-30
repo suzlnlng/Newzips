@@ -33,6 +33,10 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	select userId from member where userName=#{userName} and userPhone=#{userPhone}
 </select>
 
+<select id="findPwd" parameterType="Map" resultType="String">
+	select userPwd from member where userId=#{userId} and userName=#{userName} and userPhone=#{userPhone}
+</select>
+
 <!-- <select id="getMemberId" parameterType="map" resultType=""></select>
 
 <select id="getMemberPwd" parameterType="map" resultType=""></select> -->

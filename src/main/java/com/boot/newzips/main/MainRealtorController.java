@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListAllDTO;
 import com.boot.newzips.dto.WolseListingDTO;
-import com.boot.newzips.itemList.itemListUserService;
+import com.boot.newzips.itemList.ItemListUserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 public class MainRealtorController {
 
 	@Resource
-	private itemListUserService itemListUserService;
+	private ItemListUserService itemListUserService;
 
 	@GetMapping("/newzips/realtor")
 	public ModelAndView itemList_user(HttpServletRequest request) throws Exception {

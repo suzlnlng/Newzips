@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -18,19 +19,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.boot.newzips.account.AccountUserService;
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListAllDTO;
+import com.boot.newzips.dto.MemberDTO;
 import com.boot.newzips.dto.WolseListingDTO;
-import com.boot.newzips.itemList.itemListUserService;
+import com.boot.newzips.itemList.ItemListUserService;
 
 @RestController
 public class MainUserController {
 
 	@Resource
-	private itemListUserService itemListUserService;
+	private ItemListUserService itemListUserService;
+	
+	@Resource
+	private AccountUserService accountUserService;
 
 	@GetMapping("/newzips")
 	public ModelAndView itemList_user(Model model, Principal principal) throws Exception {
+		
+		MemberDTO user = null;
+		
+		try {
+			String userId = principal.getName();
+			Optional<MemberDTO> _user = accountUserService.getUserById(userId);
+			user = _user.get();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 
         // String itemId = request.getParameter("itemId");
 
@@ -67,6 +84,7 @@ public class MainUserController {
         mav.addObject("listing", listing); // 전체 데이터를 뷰에 전달
         mav.addObject("wolse", wolseList); // 누적된 월세 데이터를 모델에 추가
         mav.addObject("junsae", junsaeList); // 누적된 전세 데이터를 모델에 추가
+		mav.addObject("user", user);
 
         mav.setViewName("user/main_user");
 

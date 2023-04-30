@@ -37,47 +37,7 @@ function itemCheck(){
 
 
 
- function findId() {
-    	
-    	var url = "/newzips/findId";
-    	
-    	var header = $("meta[name='_csrf_header']").attr('content');
-    	var token = $("meta[name='_csrf']").attr('content');
-    	
-    	var userName = $("#userName").val();
-    	var userPhone = $("#userPhone").val();
-
-    	//var params = "userName=" + userName + "&userPhone=" + userPhone;
-    	
-		$.ajax({
-				
-			url:url,
-			type:"post",
-			data:{userName:userName, userPhone:userPhone}, 
-			success:function(mav){
-			
-				replaceHTML = "<div class='popup-form'><div style='margin-top: 40px'></div>";
-				
-				if ((mav.userId) != null) {
-					replaceHTML += "<h3>아이디는 <span style='font-size:14pt; font-weight: bold;'>" + mav.userId + "</span>입니다.</h3>";
-				} else {
-					replaceHTML += "<h3>아이디를 찾을 수 없습니다.</h3>";
-				}
-				
-				replaceHTML += "<div style='margin-bottom: 40px'></div><button type='button' class='btn2' id='popUp-Close-Button' ";
-				replaceHTML += "onclick=\"location.href='http://localhost:8080/newzips/login';\">닫기</button></div>";
-				
-				$(".popup-form").replaceWith(replaceHTML);
-				
-				},
-			beforeSend:function(xhr){
-		        xhr.setRequestHeader(header, token);
-		    }
-				
-		})
-
-    }
-
+ 
 
 function addWish(itemId){
 
@@ -119,7 +79,6 @@ $(window).on("load", function() {
     	var itemId = $(this).next('.hiddenItemId').val();
     	//var itemId = $(this).next('input').val();
     	var url = '/newzips/addWish/'+itemId;
-    	alert(url);
     	
     	$.ajax({
     		
@@ -127,6 +86,10 @@ $(window).on("load", function() {
     		type:"get",
     		success:function(mav){
     			$(".alert-success").find("strong").text(mav.msg);
+    			if (mav.msg == '로그인 후 이용하실 수 있어요.'){
+    				$(".alert-success").find("a").text('로그인하기');
+    				$(".alert-success").find("a").attr("href","http://localhost:8080/newzips/login");
+    			}
     			//strong_val = mav.msg;
     			$(".alert-success").addClass("active");
         		return false;
@@ -150,9 +113,7 @@ $(window).on("load", function() {
     		url:url,
     		type:"get",
     		success:function(mav){
-	    		$(".alert-success").find("strong").text(mav.msg);
-	    		$(".alert-success").addClass("active");
-        		return false;
+				location.href = "http://localhost:8080/newzips/wish"
     		}
     		
     	})

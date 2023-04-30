@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.myPage .navbar-nav .submit-btn {
+  margin-right: 0px;
+  margin-top: 0; }
+  .myPage .navbar-nav .submit-btn a {
+    border: 1px solid;
+    border-radius: 30px;
+    padding: 0 25px;
+    height: 51px;
+    line-height: 48px;
+    color: #6a7be7 !important; }
+    .myPage .navbar-nav .submit-btn a i {
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 10px;
+      position: relative;
+      top: 2px; }

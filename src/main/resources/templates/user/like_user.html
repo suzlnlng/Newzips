@@ -5,7 +5,7 @@
 
 <div layout:fragment="content">
 	<!-- 별도로 적용하는 css파일있으면 link해주기 -->
-
+	<link rel="stylesheet" type="text/css" href="/assets/css/itemlist.css">
 	<!-- header, footer 제외 html쓰기 -->
  	<!-- 여기다가 -->
  
@@ -19,22 +19,19 @@
         
         <section class="popular-listing hp2 section-padding">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <div class="section-heading">
-                            <h3>총 [[${lists.size()}]]개의 관심목록이 있습니다.</h3>
-                        </div>
-                    </div>
-                </div>
                 
+                <div class="section-heading">
+                    <h3>총 <a style="color: #6A7BE7; ">[[${listing.size()}]]</a> 개의 관심목록이 있습니다.</h3>
+                </div>
+                 
                 <div class="listing-container">
                 <div class="row">
-                    <div th:each="item: ${lists}" class="col-lg-4 col-md-6"> <!-- 템플릿 반복문 -->
+                    <div th:each="item: ${listing}" class="col-lg-4 col-md-6"> <!-- 템플릿 반복문 -->
                         <div class="card">
                             <a th:href="@{|/newzips/itemDetail_user/${item.itemId}|}" title="">
-                                <div class="img-block">
-                                    <div class="overlay"></div>
-                                    <img src="https://blog.kakaocdn.net/dn/RQity/btqE8yKKPS4/XbEVLjZGEEKtzKjxGrrY3K/img.jpg" alt="" class="img-fluid">
+                                 <div class="img-block">
+                                    <div class="overlay_image"></div>
+                                 <img th:src="${item.itemImagePath}" alt="" class="suggest_itemImage">
                                     <div class="rate-info">
                                        
                                     <span th:each="yearly_monthly : ${item.yearly_monthly}">
@@ -61,24 +58,19 @@
 							</div>
 
 							<div class="card-footer">
-								<input type="hidden" id="itemId" th:value="${item.itemId}">
 								<a class="pull-left"> 
-								<i class="la la-trash-o"></i>
+								<i class="la la-trash-o" ></i>
 								<input class="hiddenItemId" type="hidden" name="itemId" id="itemId" th:value="${item.itemId}"/>
-								</a> 
-								<a href="#" class="pull-right"> <span
+								</a> <a href="#" class="pull-right"> <span
 									th:each="roomType : ${item.roomType}"
 									th:text="${roomType}"></span>
 								</a></a>
 							</div>
-							<a title="" class="ext-link"></a>
+							<a th:href="@{|/newzips/itemDetail_user/${item.itemId}|}" title="" class="ext-link"></a>
                         </div>
                     </div>
                     </div>
-                            <div class="alert alert-success" role="alert">
-            <strong>관심목록에서 삭제했습니다.</strong>
-            <a href="#" title="" class="close-alert"><i class="la la-close"></i></a>
-        </div>
+
                    
                     <div class="col-lg-12">
                         <div class="load-more-posts">
@@ -88,7 +80,10 @@
                 </div>
             </div>
         </section>
- 
+                     <div class="alert alert-success" role="alert">
+			            <strong>관심목록에서 삭제했습니다.</strong>
+			            <a href="#" title="" class="close-alert"><i class="la la-close"></i></a>
+			        </div>
  
  
 </div><!--layout fragment end-->

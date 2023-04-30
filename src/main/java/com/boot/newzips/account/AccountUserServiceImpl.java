@@ -97,6 +97,11 @@ public class AccountUserServiceImpl implements AccountUserService {
 
 	}
 
+	@Override
+	public String findPwd(Map<String, Object> params) throws Exception {
+		return accountUserMapper.findPwd(params);
+	}
+
 
 
 

@@ -38,7 +38,7 @@
 	                                </div><!--agent-info end-->
 	                                <div class="agent-info8" style="border-right: none; font-size: 18px; padding-left: 5px;">
 	                                    <h3></h3>                                                                
-	                                    <h3 th:if="${listing.parking}=='T'">ㆍ주차&nbsp;<span style="color: red;">O</span>&nbsp;/&nbsp; / 월[[${dtoL.parkingCost}]]원</h3>                                                                
+	                                    <h3 th:if="${listing.parking}=='T'">ㆍ주차&nbsp;<span style="color: red;">O</span>&nbsp;/&nbsp; / 월[[${listing.parkingCost}]]원</h3>                                                                
 	                                    <h3 th:if="${listing.parking}=='F'">ㆍ주차&nbsp;<span style="color: red;">X</span></h3>                                                                
 	                                </div>
                                 </div>

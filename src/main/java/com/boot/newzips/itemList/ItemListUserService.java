@@ -10,7 +10,7 @@ import com.boot.newzips.dto.ListingDTO;
 
 import com.boot.newzips.dto.WolseListingDTO;
 
-public interface itemListUserService {
+public interface ItemListUserService {
 
     public List<ListingDTO> YMListingDTO(String itemId) throws Exception;
 

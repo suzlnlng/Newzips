@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListAllDTO;
 import com.boot.newzips.dto.WishDTO;
+import com.boot.newzips.dto.WolseListingDTO;
+import com.boot.newzips.itemList.ItemListUserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +27,8 @@ import lombok.RequiredArgsConstructor;
 public class LikeUserController {
 	
 	private final LikeUserService likeUserService;
+	
+	private final ItemListUserService itemListUserService;
 	
 	//관심목록 페이지
 	@GetMapping("/wish")
@@ -48,12 +53,35 @@ public class LikeUserController {
 			
 		}
 		
-		List<ListAllDTO> lists = likeUserService.selectWish(userId);
+		List<ListAllDTO> listing = likeUserService.selectWish(userId);
 		
-		mav.setViewName("user/like_user");
-		mav.addObject("lists", lists);
-	
-		return mav;
+        for (ListAllDTO item : listing) {
+            String itemImagePath = "/assets/listing_images/" + item.getItemId() + "/2.png";
+            item.setItemImagePath(itemImagePath); // 해당 아이템의 이미지 경로를 DTO의 새로운 속성에 저장
+        }
+        
+
+        List<WolseListingDTO> wolseList = new ArrayList<>(); // 누적할 월세 리스트
+        List<JunsaeListingDTO> junsaeList = new ArrayList<>(); // 누적할 전세 리스트
+
+        for (ListAllDTO dto : listing) {
+            System.out.println(dto);
+            if ("월세".equals(dto.getYearly_monthly())) {
+                List<WolseListingDTO> wolse = itemListUserService.getread_wolse(dto.getItemId());
+                wolseList.addAll(wolse); // 월세 데이터를 누적하여 리스트에 추가
+            } else if ("전세".equals(dto.getYearly_monthly())) {
+                List<JunsaeListingDTO> junsae = itemListUserService.getread_junsae(dto.getItemId());
+                junsaeList.addAll(junsae); // 전세 데이터를 누적하여 리스트에 추가
+            }
+        }
+
+        mav.addObject("listing", listing);
+        mav.addObject("wolse", wolseList); // 누적된 월세 데이터를 모델에 추가
+        mav.addObject("junsae", junsaeList); // 누적된 전세 데이터를 모델에 추가
+
+        mav.setViewName("user/like_user");
+
+        return mav;
 		
 	}
 	
@@ -61,12 +89,24 @@ public class LikeUserController {
 	@GetMapping("/addWish/{itemId}")
 	public ModelAndView addWish(@PathVariable("itemId") String itemId,
 			Principal principal) throws Exception{
+
+		ModelAndView mav = new ModelAndView("jsonView");
+		
+		try {
+			
+			String userId = principal.getName();
+			System.out.println(userId);
+			
+		} catch (Exception e) {
+			mav.addObject("msg", "로그인 후 이용하실 수 있어요.");
+			System.out.println("흠");
+			return mav;
+			
+		}
 		
 		System.out.println(itemId);
 		System.out.println(principal.getName());
-		
-		ModelAndView mav = new ModelAndView("jsonView");
-		
+
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("itemId", itemId);
 		params.put("userId", principal.getName());

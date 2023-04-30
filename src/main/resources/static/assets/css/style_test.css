@@ -254,6 +254,7 @@ a,
 .btn-default,
 .card .card-footer a .la-heart-o,
 .card .card-footer a .la-trash-o,
+.card .card-footer a .la-heart,
 .partner-logo > a img,
 .signin-btn b:before,
 .model-item .title,
@@ -277,7 +278,7 @@ a,
 }
 
 .section-heading {
- 	text-align: center;
+ 	text-align: left;
  	float: left;
  	width: 100%;
 }
@@ -1070,6 +1071,23 @@ header.pb .menu-button span {
         padding-left: 3px;
         z-index: 99;
 }
+
+    .card .card-footer a .la-heart {
+        background: #f3f4f7;
+        color: #6A7BE7;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 50px;
+        position: relative;
+        top: 1px; 
+        padding-left: 3px;
+        z-index: 99;
+}
+
 .card .card-footer a .la-heart-o:hover {
   color: #fff;
 }
@@ -2033,6 +2051,7 @@ header.pb .menu-button span {
 	right: 25px;
 	color: #155724;
 	font-size: 20px;
+	cursor: pointer;
 }
 
 /* ========================= BLOG OPEN PAGE =========================== */

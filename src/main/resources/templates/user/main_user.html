@@ -81,7 +81,7 @@
             </div>
         </section>
 
-<section class="popular-listing hp2 section-padding">
+	<section class="popular-listing hp2 section-padding">
         
                             <div class="container"style="text-align: center; margin-top: -4%;">
 			<a href="https://khug.or.kr/hug/web/cs/no/csno000001.jsp?mode=S&articleId=31458&currentPage=1">
@@ -89,14 +89,12 @@
 			</a>
 		</div>
 			<div style="margin-top: 30px;"></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <div class="section-heading">
-                            <h3>ㅇㅇㅇ님을 위한 추천매물</h3>
-                        </div>
-                    </div>
+            <div class="container"  th:if="${user.userName != null}">
+            
+				<div class="section-heading" >
+                     <h3 style="padding-top: 2%;"><a style="font-size: 20pt; color: #6A7BE7; ">[[${user.userName}]]</a> 님을 위한 추천매물</h3>
                 </div>
+                
                 <div style="margin-top: -1.5%;"></div>
                 <div class="listing-container">
                 <div class="row">
@@ -162,14 +160,11 @@
         <section class="popular-listing hp2 section-padding" style="margin-top: -10%;">
 
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <div class="section-heading">
-                            <h3>인기 매물</h3>
-                        </div>
-                    </div>
-                </div>
-                
+               
+              <div class="section-heading">
+                  <h3>인기 매물</h3>
+              </div>
+                   
                 <div class="listing-container">
                 <div class="row">
                     <div th:each="item: ${listing}" class="col-lg-4 col-md-6"> <!-- 템플릿 반복문 -->
