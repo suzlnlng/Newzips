@@ -5,10 +5,11 @@
 
 <div layout:fragment="content">
 
+
         <section class="pager-sec bfr">
             <div class="container">
                 <div class="pager-sec-details">
-                    <h3>방문예약 현황</h3>
+                    <h3>[[${userId}]] 님의 방문 예약 일정입니다.</h3>
                     <ul>
                     </ul>
                 </div><!--pager-sec-details end-->
@@ -17,7 +18,6 @@
 
         <section class="listing-main-sec section-padding2">
             <div class="container">
-            	<h1>예약현황</h1>
                 <div class="listing-main-sec-details">
                     <div class="row">
                         <div class="col-lg-8" style="max-width: 200%; flex: 0 0 70%;">
@@ -37,12 +37,8 @@
                                                     <div class="card-body">
                                                         <a th:href="@{|/newzips/itemDetail_user/${reservation.itemId}|}" title="">
                                                            
-                                                            <h3><i class="la la-map-marker" th:text="${reservation.addrDetail}"></i></h3>
-                                                        </a><br/><br/><br/>
-                                                        <ul style="border-bottom: none;">
-                                                           <!-- <li>방 : <span th:text="${reservation.rooms}" ></span> </li >       -->   
-                                                           <!-- <li>화장실 : <span th:text="${reservation.bathrooms}"></span> </li>  --> 
-                                                        </ul>
+                                                            <h3><i class="la la-map-marker" th:text="${reservation.addrDetail}" style="margin-bottom: 60px; font-size: 18px; font-weight: bold;"></i></h3>
+                                                        </a><br/>
                                                     </div>
                                                     <div class="card-footer">
                                                         <div class="crd-links">
@@ -54,17 +50,16 @@
                                                         </div><!--crd-links end-->
                                                     </div>
                                                 </div><!--card_bod_full end-->
-                                                <div class="card_bod_full" style="border: none; width: 30%;margin-left: 10%; float: right: ;">
+                                                <div class="card_bod_full" style="border: none; width: 40%;margin-left: 0; padding-left: 10%;">
                                                     <div class="card-body">
                       
-                                                        
-                                                            <h3 th:if="${reservation.confirm}==T"><span style="font-size:25pt; color:#6A7BE7;">매칭완료</span></h3><br/><br/><br/>
-                                                            <h3 th:if="${reservation.confirm}==F">매칭중..</h3><br/><br/><br/>
+                                                            <h3 th:if="${reservation.confirm}==T" style="border: 2px solid #6A7BE7; border-radius: 10px; padding: 10px; width: 46%; margin-bottom: 40px;"><span style="font-size:25pt; color:#6A7BE7;">매칭완료</span></h3>
+                                                            <h3 th:if="${reservation.confirm}==F" style="border: 2px solid gray; border-radius: 10px; padding: 10px; width: 46%; margin-bottom: 40px;"><span style="font-size:25pt; color:gray;">매칭중..</span></h3>
                                                            
-                                                        <ul style="border-bottom: none;">
-                                                        	<h2 style="font-size: 14pt;">중개인 정보</h2><br/>
-                                                            <h2><i class="la la-user"></i>&nbsp;<span th:text="${reservation.realtorName}"></span></h2><br/>
-                                                            <h2><i class="la la-phone-square"></i>&nbsp;<span th:text="${reservation.realtorPhone}"></span></h2>
+                                                        <ul style="border-bottom: none; margin-left: 10px;">
+                                                        	<h2 th:if="${reservation.confirm}==T" style="font-size: 14pt;">중개인 정보</h2><br/>
+                                                            <h2 th:if="${reservation.confirm}==T"><i class="la la-user"></i>&nbsp;<span th:text="${reservation.realtorName}"></span></h2><br/>
+                                                            <h2 th:if="${reservation.confirm}==T"><i class="la la-phone-square"></i>&nbsp;<span th:text="${reservation.realtorPhone}"></span></h2>
                                                         </ul>
                                                     </div>
                                                     <div class="card-footer">

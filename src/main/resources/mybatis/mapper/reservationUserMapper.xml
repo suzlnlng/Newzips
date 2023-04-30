@@ -99,6 +99,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	<select id="maxNum" resultType="int">
 		select nvl(max(reservNo),1) from visitorReserv
 	</select>
+	
 
 
 </mapper>
