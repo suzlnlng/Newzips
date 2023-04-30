@@ -13,6 +13,7 @@ public class ReservationStatusDTO {
 	private String realtorId;
 	private String visitDate;
 	private String visitTime;
+	private String confirm;
 	private String area;
 	private int rooms;
 	private int bathrooms;

@@ -103,10 +103,22 @@ public class AccountUserController {
 	}
 	
 	@GetMapping("/login")
-	public ModelAndView login(MemberDTO memberDTO) throws Exception{
+	public ModelAndView login(HttpServletRequest request, MemberDTO memberDTO) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
+		try {
+			if(request.getParameter("error").equals("true")) {
+				String errorMsg = request.getParameter("exception");
+				if(errorMsg.equals("badcredential")) {
+					mav.addObject("error", "아이디 또는 비밀번호를 확인해주세요.");	
+				}
+				
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+				
 		mav.setViewName("user/login_user");
 
 		return mav;

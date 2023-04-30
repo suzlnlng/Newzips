@@ -13,6 +13,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,13 +25,15 @@ public class CustomAuthFailureHandler extends SimpleUrlAuthenticationFailureHand
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
 		
+		ModelAndView mav = new ModelAndView();
+		
 		String errorMessage;
 		
 		System.out.println("===============errorhandler");
 		System.out.println(request.getParameter("Pwd"));
 		
 		if (exception instanceof BadCredentialsException) {
-			errorMessage = "아이디 또는 비밀번호 오류";
+			errorMessage = "badcredential";
 		}else if (exception instanceof InternalAuthenticationServiceException) {
 			errorMessage = "내부적 시스템 문제";
 		}else if (exception instanceof UsernameNotFoundException) {
@@ -43,8 +46,7 @@ public class CustomAuthFailureHandler extends SimpleUrlAuthenticationFailureHand
 		
 		setDefaultFailureUrl("/newzips/login?error=true&exception="+errorMessage);
 				
-
-	super.onAuthenticationFailure(request, response, exception);
+		super.onAuthenticationFailure(request, response, exception);
 		
 	}
 

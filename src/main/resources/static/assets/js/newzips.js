@@ -90,7 +90,6 @@ function addWish(itemId){
 }
     
 
-
 $(window).on("load", function() {
    
 	$("#header_login").on('click', function(){

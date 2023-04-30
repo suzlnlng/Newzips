@@ -107,7 +107,7 @@ function makeReservation() {
 	    const time = timeSlot.querySelector('span').textContent;
 	    console.log(time); // 9:00 (또는 필요한 처리를 수행)
 	    selectedTimes.push(time)
-	  }else if (toggleSwitch.checked) {
+	  }else if (!toggleSwitch.checked) {
 	    const time = timeSlot.querySelector('span').textContent;
 	    console.log(time); // 9:00 (또는 필요한 처리를 수행)
 	    unselectedTimes.push(time)

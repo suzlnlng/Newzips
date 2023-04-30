@@ -404,7 +404,6 @@ header.pb {
 
 .header .dropdown-toggle::after {
   font-family: FontAwesome;
-  content: "\f107";
   border: 0px;
   vertical-align: top;
   font-size: 14px;

@@ -16,8 +16,7 @@ import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
 import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.WolseListingDTO;
-import com.boot.newzips.service.ContractUserService;
-import com.boot.newzips.service.ReservationUserService;
+import com.boot.newzips.reservation.ReservationUserService;
 
 
 

@@ -1,17 +1,14 @@
-package com.boot.newzips.mapper;
+package com.boot.newzips.reservation;
 
 import java.util.List;
 import java.util.Map;
-
-import org.apache.ibatis.annotations.Mapper;
 
 import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 
-@Mapper
-public interface ReservationUserMapper {
+public interface ReservationUserService {
 
 	public void insertReservation(VisitorReservDTO dto) throws Exception;
 
@@ -34,5 +31,9 @@ public interface ReservationUserMapper {
 	public List<RealtorDTO> getRealtorInfoByRealtorId() throws Exception;
 
 	public List<ReservationStatusDTO> getReservationList(String userId) throws Exception;
-	
+
+	public String getItemIdByUserId(String userId) throws Exception;
+
+	public int maxNum() throws Exception;
+
 }

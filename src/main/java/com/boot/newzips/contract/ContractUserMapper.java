@@ -1,4 +1,4 @@
-package com.boot.newzips.mapper;
+package com.boot.newzips.contract;
 
 import java.util.List;
 

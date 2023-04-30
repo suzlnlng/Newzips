@@ -4,7 +4,7 @@
 PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.boot.newzips.mapper.ReservationUserMapper">
+<mapper namespace="com.boot.newzips.reservation.ReservationUserMapper">
 
 <!-- 방문자 예약 -->
 
@@ -91,8 +91,14 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
+	<select id="getItemIdByUserId" parameterType="String" resultType="String">
+		select itemId from listing 
+		where addrDetail = (select userAddr from member where userId=#{userId})
+	</select>
 	
-	
+	<select id="maxNum" resultType="int">
+		select nvl(max(reservNo),1) from visitorReserv
+	</select>
 
 
 </mapper>

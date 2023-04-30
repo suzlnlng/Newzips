@@ -4,7 +4,7 @@
 PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.boot.newzips.mapper.ContractUserMapper">
+<mapper namespace="com.boot.newzips.contract.ContractUserMapper">
 
 <select id="getContract" parameterType="String" resultType="com.boot.newzips.dto.ContractUserDTO">
 	select r.realtorName,r.realtorPhone,r.realtorEmail, 

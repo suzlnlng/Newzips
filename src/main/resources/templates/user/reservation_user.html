@@ -10,7 +10,7 @@
         <section class="pager-sec bfr">
             <div class="container">
                 <div class="pager-sec-details">
-                    <h3>사용자 예약</h3>
+                    <h3>방문 예약</h3>
                     <ul>
                     </ul>
                 </div><!--pager-sec-details end-->
@@ -44,7 +44,7 @@
                         
                         <!-- 방문 날짜 -->
 
-                        <form th:object="${visitorReservDTO}" th:action="@{/newzips/reservation_user1}" name="reservationForm" method="post" >
+                        <form th:object="${visitorReservDTO}" th:action="@{|/newzips/reservation_user/__${dtoR.itemId}__|}" name="reservationForm" method="post" >
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                         <input type="hidden" th:field="*{visitDate}"/>
                         <input type="hidden" th:field="*{visitTime}"/>
@@ -162,6 +162,7 @@
        }
 	</script>
 	
+	<script src="/assets/js/reservation.js"></script>
 
 </div><!--layout fragment end-->
 

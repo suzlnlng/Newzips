@@ -1,4 +1,4 @@
-package com.boot.newzips.service;
+package com.boot.newzips.reservation;
 
 import java.util.List;
 import java.util.Map;
@@ -10,21 +10,19 @@ import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
-import com.boot.newzips.mapper.ReservationUserMapper;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class ReservationUserServiceImpl implements ReservationUserService{
-	
-	
+public class ReservationUserServiceImpl implements ReservationUserService {
+
 	@Autowired
-	public ReservationUserMapper reservationUserMapper;
+	public final ReservationUserMapper reservationUserMapper;
 
 	@Override
 	public void insertReservation(VisitorReservDTO dto) throws Exception {
-		reservationUserMapper.insertReservation(dto);	
+		reservationUserMapper.insertReservation(dto);
 	}
 
 	@Override
@@ -46,7 +44,7 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	public List<VisitorReservDTO> selectReservationUserId(String userId) throws Exception {
 		return reservationUserMapper.selectReservationUserId(userId);
 	}
-	
+
 	@Override
 	public VisitorReservDTO selectReservationItemId(String itemId) throws Exception {
 		return reservationUserMapper.selectReservationItemId(itemId);
@@ -60,7 +58,7 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 	@Override
 	public void deleteReservation(String reservNo) throws Exception {
 		reservationUserMapper.deleteReservation(reservNo);
-		
+
 	}
 
 	@Override
@@ -78,15 +76,14 @@ public class ReservationUserServiceImpl implements ReservationUserService{
 		return reservationUserMapper.getReservationList(userId);
 	}
 
+	@Override
+	public String getItemIdByUserId(String userId) throws Exception {
+		return reservationUserMapper.getItemIdByUserId(userId);
+	}
 
-
-
-
-	
-	
-	
-	
-
-	
+	@Override
+	public int maxNum() throws Exception {
+		return reservationUserMapper.maxNum();
+	}
 
 }

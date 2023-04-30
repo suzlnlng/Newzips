@@ -1,4 +1,4 @@
-package com.boot.newzips.service;
+package com.boot.newzips.contract;
 
 import java.util.List;
 
@@ -12,7 +12,6 @@ import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
 import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.WolseListingDTO;
-import com.boot.newzips.mapper.ContractUserMapper;
 
 import lombok.RequiredArgsConstructor;
 

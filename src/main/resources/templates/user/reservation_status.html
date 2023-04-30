@@ -17,6 +17,7 @@
 
         <section class="listing-main-sec section-padding2">
             <div class="container">
+            	<h1>예약현황</h1>
                 <div class="listing-main-sec-details">
                     <div class="row">
                         <div class="col-lg-8" style="max-width: 200%; flex: 0 0 70%;">
@@ -28,7 +29,7 @@
                                                 <a th:href="@{|/newzips/itemDetail_user/${reservation.itemId}|}" title="">
                                                     <div class="img-block">
                                                         <div class="overlay"></div>
-                                                        <img src="https://via.placeholder.com/370x295" alt="" class="img-fluid">
+                                                        <img th:src="@{|/assets/listing_images/${reservation.itemId}/1.png|}" alt="" class="img-fluid">
                                                        
                                                     </div>
                                                 </a>
@@ -46,8 +47,8 @@
                                                     <div class="card-footer">
                                                         <div class="crd-links">
                                                             	<ul>
-                                                                	<h1>방문 날짜 :&nbsp; <span th:text="${reservation.visitDate}"></span></h1> <br/>
-                                                                	<h1>방문 시간 :&nbsp;<span th:text="${reservation.visitTime}"></span> </h1>
+                                                                	<h1>방문 날짜 &nbsp; <span th:text="${reservation.visitDate}" style="font-size: 15pt;"></span></h1> <br/>
+                                                                	<h1>방문 시간 &nbsp;<span th:text="${reservation.visitTime}" style="font-size: 15pt;"></span> </h1>
                                                                 </ul>
                                                             </a>
                                                         </div><!--crd-links end-->
@@ -55,22 +56,21 @@
                                                 </div><!--card_bod_full end-->
                                                 <div class="card_bod_full" style="border: none; width: 30%;margin-left: 10%; float: right: ;">
                                                     <div class="card-body">
-                                                     <div class="card-body">
-                                                     <div class="card-body">
+                      
                                                         
-                                                            <h3 th:if="${reservation.CONFIRM}==T">매칭완료</h3><br/><br/><br/>
-                                                            <h3 th:if="${reservation.CONFIRM}==F">매칭중</h3><br/><br/><br/>
+                                                            <h3 th:if="${reservation.confirm}==T"><span style="font-size:25pt; color:#6A7BE7;">매칭완료</span></h3><br/><br/><br/>
+                                                            <h3 th:if="${reservation.confirm}==F">매칭중</h3><br/><br/><br/>
                                                            
                                                         <ul style="border-bottom: none;">
-                                                            <h2 th:text="${reservation.realtorName}"></h2><br/>
-                                                            <h2 th:text="${reservation.realtorPhone}"></h2>
+                                                        	<h2 style="font-size: 14pt;">중개인 정보</h2><br/>
+                                                            <h2><i class="la la-user"></i>&nbsp;<span th:text="${reservation.realtorName}"></span></h2><br/>
+                                                            <h2><i class="la la-phone-square"></i>&nbsp;<span th:text="${reservation.realtorPhone}"></span></h2>
                                                         </ul>
                                                     </div>
                                                     <div class="card-footer">
                                                         <div class="crd-links">
                                                         </div><!--crd-links end-->
-                                                    </div>
-                                                    </div>
+
                                                     </div>
                                                 </div><!--card_bod_full end-->
                                                 
@@ -85,18 +85,7 @@
                                     </div>
                                 </div><!--tab-content end-->
                                 
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                       <!--   <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true"><i class="la la-arrow-right"></i></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav><!--pagination end-->
+
                             </div><!--listing-directs end-->
                         </div>
                         
@@ -105,6 +94,7 @@
             </div>    
         </section><!--listing-main-sec end-->
 
+<script src="/assets/js/reservation.js"></script>
 
 </div><!--layout fragment end-->
 

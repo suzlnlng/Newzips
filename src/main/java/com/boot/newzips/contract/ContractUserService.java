@@ -1,4 +1,4 @@
-package com.boot.newzips.service;
+package com.boot.newzips.contract;
 
 import java.util.List;
 
