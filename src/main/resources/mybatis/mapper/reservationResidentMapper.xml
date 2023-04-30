@@ -4,7 +4,7 @@
 PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.boot.newzips.mapper.ReservationResidentMapper">
+<mapper namespace="com.boot.newzips.reservation.ReservationResidentMapper">
 
 <!-- 거주자 예약 -->
 

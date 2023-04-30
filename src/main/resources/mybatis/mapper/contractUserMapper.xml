@@ -4,7 +4,7 @@
 PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.boot.newzips.mapper.ContractUserMapper">
+<mapper namespace="com.boot.newzips.contract.ContractUserMapper">
 
 <select id="getContract" parameterType="String" resultType="com.boot.newzips.dto.ContractUserDTO">
 	select r.realtorName,r.realtorPhone,r.realtorEmail, 
@@ -29,7 +29,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="getListing" parameterType="String" resultType="com.boot.newzips.dto.ListingDTO">
-	select addrDetail,yearly_monthly,parking,parkingCost
+	select itemId,addrDetail,yearly_monthly,parking,parkingCost
 	from listing
 	where itemId = #{itemId}
 </select>
@@ -45,6 +45,14 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 	from JUNSAELISTING
 	where itemId = #{itemId}
 </select>
+
+<!-- 중개사 지역별로 랜덤 배치 -->
+	<select id="getRealtor" parameterType="String" resultType="com.boot.newzips.dto.RealtorDTO">
+		select realtorname,realtorphone,realtoraddr 
+		from realtor
+		where realtoraddr like '%'|| #{city} ||'%'
+		ORDER BY DBMS_RANDOM.VALUE
+	</select>
 
 
 </mapper>

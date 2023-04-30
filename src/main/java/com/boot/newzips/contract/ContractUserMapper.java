@@ -1,17 +1,19 @@
-package com.boot.newzips.service;
+package com.boot.newzips.contract;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.boot.newzips.dto.ContractDTO;
 import com.boot.newzips.dto.ContractUserDTO;
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
+import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.WolseListingDTO;
 
-public interface ContractUserService {
+@Mapper
+public interface ContractUserMapper {
 	
 	public List<ContractUserDTO> getContract(String userId) throws Exception;
 
@@ -24,4 +26,6 @@ public interface ContractUserService {
 	public WolseListingDTO getWolse(String itemId) throws Exception;
 	
 	public JunsaeListingDTO getJunsae (String itemId) throws Exception;
+	
+	public RealtorDTO getRealtor(String city);
 }

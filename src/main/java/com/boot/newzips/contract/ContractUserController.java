@@ -1,6 +1,7 @@
 package com.boot.newzips.contract;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,13 +14,17 @@ import org.springframework.web.servlet.ModelAndView;
 import com.boot.newzips.dto.JunsaeListingDTO;
 import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
+import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.WolseListingDTO;
-import com.boot.newzips.service.ContractUserService;
+import com.boot.newzips.reservation.ReservationUserService;
 
 
 
 @Controller
 public class ContractUserController {
+	
+	@Resource
+	private ReservationUserService reservationUserService;
 	
 	@Resource
 	private ContractUserService contractUserService;
@@ -44,13 +49,17 @@ public class ContractUserController {
 		ListingDTO listing = contractUserService.getListing(itemId);
 		WolseListingDTO wolse = contractUserService.getWolse(itemId);
 		JunsaeListingDTO junsae = contractUserService.getJunsae(itemId);
+		RealtorDTO realtor = contractUserService.getRealtor("서울");
 		
 		mav.addObject("member",member);
 		mav.addObject("listing",listing);
 		mav.addObject("wolse",wolse);
 		mav.addObject("junsae",junsae);
+		mav.addObject("realtor",realtor);
 		
 		System.out.println(member);
+		
+		System.out.println(realtor.getRealtorName());
 		
 		System.out.println("출력해라");
 		

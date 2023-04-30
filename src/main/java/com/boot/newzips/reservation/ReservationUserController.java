@@ -33,9 +33,6 @@ import com.boot.newzips.dto.RoomInfoDTO;
 import com.boot.newzips.dto.VisitorReservDTO;
 import com.boot.newzips.dto.WolseListingDTO;
 import com.boot.newzips.itemDetail.ItemDetailService;
-import com.boot.newzips.mapper.ReservationUserMapper;
-import com.boot.newzips.service.ReservationUserService;
-import com.boot.newzips.service.ResidentService;
 
 @RestController
 public class ReservationUserController {
@@ -327,7 +324,7 @@ public class ReservationUserController {
 
 	
 	@GetMapping("/newzips/reservation_status")
-	public ModelAndView reservation_status(Principal principal) throws Exception {
+	public ModelAndView reservation_status(Principal principal,HttpServletRequest request) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		String userId = null;
@@ -341,11 +338,24 @@ public class ReservationUserController {
 			return mav;
 		}
 
+		
+		
 		List<ReservationStatusDTO> reservationList = reservationUserService.getReservationList(userId);
-
+		
+		System.out.println(reservationList.get(0).getConfirm());
+		
+		
 		mav.addObject("reservationList", reservationList);
 		System.out.println("============================");
-		System.out.println(reservationList);
+		
+	
+
+		for(ReservationStatusDTO reservation : reservationList) {
+			System.out.println(reservation.getVisitDate());
+			System.out.println(reservation.getUserId());
+		}
+		
+	
 
 		// VisitorReservDTO dtoV =
 		// reservationUserService.selectReservationUserId(userId);

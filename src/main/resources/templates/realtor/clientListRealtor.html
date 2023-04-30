@@ -11,19 +11,11 @@
 
     <link rel="shortcut icon" href="/assets/images/favicon.png">
     <link rel="stylesheet" href="/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-       <link rel="stylesheet" href="/assets/css/style_test.css">
+    <link rel="stylesheet" href="/assets/css/style_test.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/suggestList.css">
     
-<style type="text/css">
-body  {
-   font-family: 'Pretendard'; 
-   margin: auto;
-   align-content: center;
-   }
-</style>
 
 
 </head>
@@ -157,7 +149,7 @@ body  {
         <section class="pager-sec bfr">
             <div class="container">
                 <div class="pager-sec-details">
-                    <h3>매물 제안</h3>
+                    <h3>매물 제안요청</h3>
                     <ul>
                         <li><a href="#" title="">Home</a></li>
                         <li><span>List Layout</span></li>
@@ -174,32 +166,31 @@ body  {
 
 
 <section>
-    <div id="content_box">
+    <div class="content_container_area">
     <div id="introduce_msg">
     	<span>#고객들이 매물을 찾고 있어요!</span>
     </div>
-        <div id="content_area"  th:if=${suggestionDTO!=null} th:each="dto : ${suggestionDTO}">
-            <div id="user_name">
-                <p style="font-size: 50px;">[[${dto.userId}]]</p>
+        <div id="item_option_area"  th:if=${suggestionDTO!=null} th:each="dto : ${suggestionDTO}">
+            <div id="client_user_name">
+                <p style="font-size: 16px; ">[[${dto.userId}]]님 매물 조건</p>
             </div>
-               <div class="itemList_shortcut">
+            <div id="itemList_btn_area">
+               <div id="itemList_clientList">
               	 <ul>
                     <li>지역 ㅣ [[${dto.addrCity}]] [[${dto.addrGu}]]</li>
                     <li>전월세 ㅣ [[${dto.yearly_monthly}]]</li>
-                    <li th:if="${dto.monthlyFee==null}">금액 ㅣ [[${dto.deposit}]]만원</li>
-					<li th:if="${dto.monthlyFee!=null}">금액 ㅣ [[${dto.deposit}]]만원 / [[${dto.monthlyFee}]]만원</li>
+                    <li th:if="${dto.monthlyFee==null}">금액 ㅣ [[${dto.deposit}]]원</li>
+					<li th:if="${dto.monthlyFee!=null}">금액 ㅣ [[${dto.deposit}]]원 / [[${dto.monthlyFee}]]원</li>
                     <li>방 수 ㅣ [[${dto.rooms}]]개</li>
                     <li>평 수 ㅣ [[${dto.area}]]평</li>
-                    <li>관리비 ㅣ [[${dto.maintenanceCost}]]만원</li>
+                    <li>관리비 ㅣ [[${dto.maintenanceCost}]]원</li>
                 </ul>
             </div>
-            <div>
-                <button class="confirm_button" >
+            <div id="clientList_btn_area">
+                <button id="clientList_confirm_button" >
                 <a th:href="|suggestListRealtor?userId=${dto.userId}&addrCity=${dto.addrCity}&addrGu=${dto.addrGu}|">
                 제안</button>
             </div>
-            <div>
-				<hr/>            
             </div>
         </div>
     </div>

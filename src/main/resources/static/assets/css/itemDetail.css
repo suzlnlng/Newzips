@@ -100,6 +100,252 @@
   color: #fff;
 }
 
+/* ==================== property-single-page-content ================== */
+
+
+.property-single-page-content {
+  float: left;
+  width: 100%;
+  margin-top: 25px;
+}
+.property-single-page-content .sidebar {
+  margin-top: -7px;
+}
+.property-single-page-content .row {
+  margin: 0;
+}
+.property-pg-left {
+  float: left;
+  width: 100%;
+  padding-right: 10px;
+}
+.property-imgs {
+  float: left;
+  width: 100%;
+  margin-bottom: 35px;
+  overflow: hidden;
+}
+.property-img {
+  float: left;
+  width: 100%;
+}
+.property-img > img {
+  width: 100%;
+  float: left;
+}
+.property-thumb-imgs {
+  float: left;
+  width: 100%;
+  border:1px solid #dfe0e5;
+  /* border-top: 0; */
+  padding: 34px 38px 34px 37px;
+}
+.property-thumb-imgs .col-lg-4 {
+  padding: 0 8px;
+}
+
+/* ================ descp-text =============== */
+
+.descp-text {
+  float: left;
+  width: 100%;
+  border:1px solid #e0e1e6;
+  padding: 23px 30px 20px 30px;
+  margin-bottom: 35px;
+}
+.property-pg-left h3 {
+  color: #242526;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+.descp-text > p {
+  color: #67686c;
+  font-size: 14px;
+  line-height: 30px;
+  margin-top: -2px;
+}
+
+/* ================= details-info ================ */
+
+.details-info {
+  float: left;
+  width: 100%;
+  padding: 23px 30px 23px 30px;
+  background-color: #f5f6fa;
+  border:1px solid #dfe0e5;
+  margin-bottom: 35px;
+}
+.details-info ul {
+  float: left;
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: -14px;
+}
+.details-info ul li {
+  float: left;
+  width: 33%;
+  margin-bottom: 15px;
+}
+.details-info ul li h4 {
+  color: #242526;
+  font-size: 14px;
+  display: inline-block;
+}
+.details-info ul li span {
+  display: inline-block;
+  color: #67686c;
+  font-size: 14px;
+  padding-left: 1px;
+}
+
+
+/* =============== features-dv ============= */
+
+.features-dv {
+  float: left;
+  width: 100%;
+  border:1px solid #e1e2e7;
+  padding: 23px 30px 32px 30px;
+  margin-bottom: 35px;
+}
+.features-dv > form {
+  float: left;
+  width: 100%;
+}
+.features-dv form ul {
+  float: left;
+  width: 100%;
+  margin-top: 7px;
+  margin-bottom: -14px;
+}
+.features-dv form ul li {
+  float: left;
+  width: 33.33%;
+  margin-bottom: 12px;
+}
+.features-dv form ul li input[type="checkbox"] {
+  display: none;
+  cursor: text;
+}
+.features-dv .input-field input[type="checkbox"] + label span {
+  border-color: transparent;
+  cursor: inherit;
+}
+
+
+/* ================= floorplan =================== */
+
+.floorplan {
+  float: left;
+  width: 100%;
+  padding: 23px 30px 24px 30px;
+  border:1px solid #dfe0e5;
+  text-align: center;
+  margin-bottom: 35px;
+}
+.floorplan h3 {
+  text-align: left;
+}
+.floorplan > img {
+  max-width: 100%;
+  margin-top: 7px;
+}
+
+.map-dv {
+  float: left;
+  width: 100%;
+  border:1px solid #dfe0e5;
+  padding: 23px 30px 30px 30px;
+  margin-bottom: 35px;
+}
+.map-dv #map-container {
+  height: 347px;
+}
+.map-dv h3 {
+  margin-bottom: 23px;
+}
+.nearby-locts {
+  float: left;
+  width: 100%;
+  border:1px solid #dfe0e5;
+  padding: 23px 30px 30px 30px;
+  margin-bottom: 35px;
+  display: none;
+}
+.nearby-locts > h3 {
+  margin-bottom: 23px;
+}
+.property-pg-left .ps-info > h3 {
+  font-size: 16px;
+  margin: 0;
+  text-transform: capitalize;
+  letter-spacing: 0;
+  margin-bottom: 5px;
+}
+.property-pg-left .ps-info {
+  vertical-align: top;
+  padding: 20px 20px 0;
+  width: 100%;
+}
+.nearby-locts > h3 {
+  float: left;
+  width: auto;
+}
+.nearby-locts > span {
+  float: right;
+  color: #67686c;
+  font-size: 12px;
+  margin-top: -5px;
+}
+.nearby-locts > span img {
+  display: inline-block;
+  padding-left: 6px;
+  position: relative;
+  top: 4px;
+}
+.nearby-locts .wd-posts {
+  width: 65%;
+}
+
+.star-rating {
+  float: right;
+  margin-top: 35px;
+}
+.widget-posts .star-rating li {
+  display: inline-block;
+  float: none;
+  width: auto;
+  margin-right: -2px;
+}
+.star-rating li span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #be2418;
+  text-align-last: center;
+  color: #ffffff;
+  line-height: 20px;
+  border-bottom: 1px solid #ca7872;
+  font-size: 16px;
+}
+.nearby-locts .widget-posts {
+  float: left;
+  width: 100%;
+}
+.nearby-locts .ps-img > img {
+  float: left;
+}
+.nearby-locts .widget-posts > ul li {
+  margin-bottom: 20px;
+}
+.nearby-locts .widget-posts > ul li:last-child {
+  margin-bottom: 0;
+}
+
+
 /* ================ COMMENTS SECT ================= */
 
 

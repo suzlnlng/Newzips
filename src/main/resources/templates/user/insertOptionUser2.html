@@ -11,11 +11,13 @@
 
     <link rel="shortcut icon" href="/assets/images/favicon.png">
     <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
        <link rel="stylesheet" href="/assets/css/style_test.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/suggestList.css">
+    
 	<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 
 <style type="text/css">
@@ -26,55 +28,12 @@ body  {
    }
 </style>
 
+
 </head>
 <html class="no-js" lang="en">
 
-<form action="/suggested_ok" method="get">
 <body>
-<!-- <script th:inline="javascript">
-	$(function(){
-		
-		var itemId[];
-		
-		$("input[name='checkbox']:checked").each(function() {
-			  itemId.push($(this).val());
-			  alert(itemId);
-			});
-		
-		
-		$('#complete_button').on('click',function() {
-			
-			var url = "/suggestListRealtor_ok?userId="+[[${suggest.userId}]]+"&itemId="+itemId;
-			alert(url)
-			//window.location.href = url;
-			
-		})
-	
-	
-	})
-	</script> -->
 
-<script type="text/javascript">
-
-	function btnActive() {
-	    var selectBtns = document.getElementsByName('selectBtn');
-	    for (var i = 0; i < selectBtns.length; i++) {
-	      var selectBtn = selectBtns[i];
-	      selectBtn.addEventListener('click', function() {
-	        this.disabled = !this.disabled;
-	        if (this.disabled) {
-	          this.classList.add('disabled');
-	        } else {
-	          this.classList.remove('disabled');
-	        }
-	      });
-	      // 초기에 비활성화된 버튼에 대해서도 클래스 추가
-	      if (selectBtn.disabled) {
-	        selectBtn.classList.add('disabled');
-	      }
-	    }
-	  }
-</script>
     <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
@@ -82,7 +41,7 @@ body  {
 
     <div class="wrapper">
 
-       <header>
+     <header>
 
             <div class="top-header">
                 <div class="container">
@@ -201,7 +160,7 @@ body  {
         <section class="pager-sec bfr">
             <div class="container">
                 <div class="pager-sec-details">
-                    <h3>매물 제안</h3>
+                    <h3>매물 제안 요청</h3>
                     <ul>
                         <li><a href="#" title="">Home</a></li>
                         <li><span>List Layout</span></li>
@@ -215,76 +174,87 @@ body  {
 
 
 <section>
-	
-	<div class="container_suggest">
-		<div class="userInfo_area" th:if="${suggest!= null}">
-			<div id="suggest_username">
-                <p style="font-size: 25px; font-weight: bold">[[${suggest.userId}]]</p>
-                <p style="font-size: 22px; color: #000000;">님께 제안 가능한 매물</p>
-            </div>	
-			 <div class="suggestList_itemList_shortcut" >
-               		<ul>* 고객 매물 조건
-               			<li th:text="'아이디 ㅣ '+${suggest.userId}"></li>
-               			<li th:text="'지역ㅣ '+${suggest.addrCity} + ${suggest.addrGu}"></li>
-               			<li th:text="'전월세 ㅣ '+${suggest.yearly_monthly}"></li>
-               			 <li th:if="${suggest.yearly_monthly=='전세'}" th:text="'금액 ㅣ ' + ${suggest.deposit}"></li>
-						<li th:if="${suggest.yearly_monthly=='월세'}" 
-						th:text="'금액 ㅣ '+ ${suggest.deposit} + ' / ' + ${suggest.monthlyFee}"></li>
-               			<li th:text="'방 개수 ㅣ '+${suggest.rooms} + '개'"></li>
-               		</ul>
-               	</div>
-        </div>
-       <div class="suggestList_area" th:if=${realtorListDTO!=null} th:each="realtor:${realtorListDTO}">
-       		<div id="suggest_itemImage">
-                <img id="suggest_item_img" th:if="suggest" 
-                alt="매물사진" src="/listing_images/35802035/1.png">
-            </div>
-   			<div class="suggestList_content" >
-           	 <ul>* 제안 가능한 매물
-                 <li>매물번호 l &nbsp;&nbsp;&nbsp;[[${realtor.itemId}]]</li>
-                 <li>지역 l &nbsp;&nbsp;&nbsp;[[${realtor.addrDetail}]]</li>
-                 <li>전월세 l &nbsp;&nbsp;&nbsp;[[${realtor.yearly_monthly}]]</li>
-                 <li th:if="${realtor.yearly_monthly=='전세'}">금액 l &nbsp;&nbsp;&nbsp;[[${realtor.deposit}]]만원</li>
-				<li th:if="${realtor.yearly_monthly=='월세'}">금액 l &nbsp;&nbsp;&nbsp;[[${realtor.deposit}]]만원 / [[${realtor.monthlyFee}]]만원</li>
-				<li>관리비 l &nbsp;&nbsp;&nbsp;[[${realtor.maintenanceCost}]]원</li>
-                 <li>매물 종류 l &nbsp;&nbsp;&nbsp;[[${realtor.roomType}]]</li>
-                 <li>평 수 l &nbsp;&nbsp;&nbsp;[[${realtor.area}]]평</li>
-                 <li>방 수 l &nbsp;&nbsp;&nbsp;[[${realtor.rooms}]]개</li>
-             </ul>
-             </div>
-             <div class="select_btn_area">
-				<input type="checkbox" name="checkbox"  th:value="${realtor.itemId}"/>
-	        </div>          
-       </div> 
-		<div class="complete_btn_area">
-<!--                 <button id="complete_button" type="button"><a href="suggestListRealtor_ok">완료</a></button> -->
-                <button id="complete_button" type="button" onclick="check_ok()">완료</button>
-                
-	    </div>  
-	
-	
+
+<form th:object="${suggestionDTO}" th:action="@{/newzips/insertCompletedUser}" method="post">
+	<div class="option_container">
+		<div id=userInfo_area th:if="suggestion!=null">
+		<ul style="font-size: 20px; font-weight: bold; padding-bottom: 15px;">사용자 정보</ul>
+			<ul id="user_data">아이디
+				<li>[[${suggestion.userId}]]
+				<input type="hidden" name="userId" th:value="${suggestion.userId}">
+				</li>
+			</ul>
+			<ul id="user_data">연락처
+				<li>[[${suggestion.userPhone}]]
+				<input type="hidden" name="userPhone" th:value="${suggestion.userPhone}">
+				</li>
+			</ul>
+		</div>
+		<div id="option_area">
+			<div id="option_title">
+				<label>도/특별시 선택</label><br/>
+					<select id="addrCity" onchange="updateSelect()" name="addrCity">
+							<option value="서울특별시">서울특별시</option>
+							<option value="경기도">경기도</option>
+							<option value="인천광역시">인천광역시</option>
+							<option value="부산광역시">부산광역시</option>
+							<option value="대전광역시">대전광역시</option>
+							<option value="대구광역시">대구광역시</option>
+							<option value="광주광역시">광주광역시</option>
+							<option value="울산광역시">울산광역시</option>
+							<option value="충청북도">충청북도</option>
+							<option value="충청남도">충청남도</option>
+							<option value="전라북도">전라북도</option>
+							<option value="전라남도">전라남도</option>
+							<option value="경상북도">경상북도</option>
+							<option value="경상남도">경상남도</option>
+							<option value="강원도">강원도</option>
+							<option value="제주도">제주도</option>
+					</select>
+					<select id="addrGu" name="addrGu">
+						<option value="강남구">강남</option>
+					</select>
+			</div>
+			<div id="option_title">
+				<label>전/월세</label><br/>
+						<input type="text" size="35" name="yearly_monthly" maxlength="20"  id="input_box"
+						color= "#e3e3e3" placeholder="ex: 전세"/>
+			</div>
+			<div id="option_title">
+				<label>전세금/보증금</label><br/>
+						<input type="text" size="35" name="deposit" maxlength="20"  id="input_box"
+						placeholder="ex: 100000000"/>
+			</div>
+			<div id="option_title">
+				<label>금액 (월세만 입력)</label><br/>
+						<input type="text" size="35" name="monthlyFee" maxlength="20"  id="input_box"
+						placeholder="ex: 600000"/>
+			</div>
+			<div id="option_title">
+				<label>방 수</label><br/>
+						<input type="text" size="35" name="rooms" maxlength="20"  id="input_box" 
+						placeholder="ex: 1"/>
+			</div>
+			<div id="option_title">
+				<label>평수</label><br/>
+						<input type="text" size="35" name="area" maxlength="20"  id="input_box"
+						placeholder="ex: 10"/>
+			</div>
+			<div id="option_title">
+				<label>관리비</label><br/>
+						<input type="text" size="35" name="maintenanceCost" maxlength="20"  id="input_box"
+						placeholder="ex: 100000"/>
+			</div>
+			<div id="btn_area">
+				<button id="cancel_btn"><a href="/newzips">취소</a></button>
+				<button id="complete_btnn" type="submit">
+				완료</button>
+			</div>
+		</div>
 	</div>
-   
+	</form>
 </section>
 
-	
-<script type="text/javascript">
-function check_ok(){
-	
-	const checkboxes = document.querySelectorAll('input[name="checkbox"]:checked');
-	
-	const checkedValues = [];
-	
-	checkboxes.forEach(function(checkbox) {
-		  checkedValues.push(checkbox.value);
-		});
-	
-	window.location.href = "suggestListRealtor_ok?itemId=" + checkedValues
-	
-}
-
-
-</script>
 
 
 <!-- ================================================================================================ -->
@@ -311,7 +281,7 @@ function check_ok(){
 
 
   
-         <a href="#" title="">    
+ <a href="#" title="">    
             <section class="cta st2 section-padding">
                 <div class="container">
                     <div class="row">
@@ -391,11 +361,198 @@ function check_ok(){
     <script src="/assets/js/map-cluster/markerclusterer.js"></script>
     <script src="/assets/js/map-cluster/maps.js"></script>
 
+	<script>
+		function updateSelect() {
+			var addrCity = document.getElementById("addrCity").value;
+			var addrGu = document.getElementById("addrGu").options;
+			
+			if(addrCity == "서울특별시"){
+				addrGu[0].value = "강남구";
+				addrGu[1].value = "강동구";
+				addrGu[2].value = "강북구";
+				addrGu[3].value = "강서구";
+				addrGu[4].value = "관악구";
+				addrGu[5].value = "광진구";
+				addrGu[6].value = "구로구";
+				addrGu[7].value = "금천구";
+				addrGu[8].value = "노원구";
+				addrGu[9].value = "도봉구";
+				addrGu[10].value = "동대문구";
+				addrGu[12].value = "동작구";
+				addrGu[13].value = "마포구";
+				addrGu[14].value = "서대문구";
+				addrGu[15].value = "서초구";
+				addrGu[16].value = "성동구";
+				addrGu[17].value = "성북구";
+				addrGu[18].value = "송파구";
+				addrGu[19].value = "양천구";
+				addrGu[20].value = "영등포구";
+				addrGu[21].value = "용산구";
+				addrGu[22].value = "은평구";
+				addrGu[23].value = "종로구";
+				addrGu[24].value = "중구";
+				addrGu[25].value = "중랑구";
+			
+			} else if (addrCity == "경기도") {
+				
+				addrGu[0].value = "수원시 장안구";
+				addrGu[0].value = "수원시 팔달구";
+				addrGu[0].value = "수원시 영통구";
+				addrGu[0].value = "수원시 권선구";
+				addrGu[1].value = "용인시 수지구";
+				addrGu[1].value = "용인시 기흥구";
+				addrGu[1].value = "용인시 처인구";
+				addrGu[2].value = "성남시 수정구";
+				addrGu[2].value = "성남시 중원구";
+				addrGu[2].value = "성남시 분당구";
+				addrGu[3].value = "부천시 오정구";
+				addrGu[3].value = "부천시 원미구";
+				addrGu[3].value = "부천시 소사구";
+				addrGu[5].value = "안산시 단원구";
+				addrGu[5].value = "안산시 상록구";
+				addrGu[6].value = "안양시 만안구";
+				addrGu[6].value = "안양시 동안구";
+				addrGu[12].value = "광명시";
+				addrGu[14].value = "하남시";
+				addrGu[20].value = "과천시";
+				addrGu[21].value = "고양시";
+				addrGu[22].value = "남양주시";
+				addrGu[23].value = "파주시";
+				addrGu[24].value = "의정부시";
+				
+			} else if (addrCity == "인천광역시"){
+				addrGu[0].value = "계양구";
+				addrGu[1].value = "남동구";
+				addrGu[2].value = "동구";
+				addrGu[3].value = "미추홀구";
+				addrGu[4].value = "부평구";
+				addrGu[5].value = "서구";
+				addrGu[6].value = "연수구";
+				addrGu[7].value = "중구";
+		
+			} else if (addrCity == "부산광역시"){
+				addrGu[0].value = "강서구";
+				addrGu[1].value = "금정구";
+				addrGu[2].value = "남구";
+				addrGu[3].value = "동구";
+				addrGu[4].value = "동래구";
+				addrGu[5].value = "북구";
+				addrGu[6].value = "부산진구";
+				addrGu[7].value = "사상구";
+				addrGu[8].value = "사하구";
+				addrGu[9].value = "서구";
+				addrGu[10].value = "수영구";
+				addrGu[12].value = "연제구";
+				addrGu[13].value = "영동구";
+				addrGu[14].value = "중구";
+				addrGu[15].value = "해운대구";
+			
+			} else if (addrCity == "대전광역시"){
+				addrGu[0].value = "대덕구";
+				addrGu[1].value = "동구";
+				addrGu[2].value = "서구";
+				addrGu[3].value = "유성구";
+				addrGu[4].value = "중구";
+				
+		} else if (addrCity == "대구광역시"){
+			addrGu[0].value = "남구";
+			addrGu[1].value = "달서구";
+			addrGu[2].value = "달성구";
+			addrGu[3].value = "동구";
+			addrGu[4].value = "북구";
+			addrGu[5].value = "수성구";
+			addrGu[6].value = "서구";
+			addrGu[7].value = "중구";
+			
+	} else if (addrCity == "광주광역시"){
+		addrGu[0].value = "광산구";
+		addrGu[1].value = "남구";
+		addrGu[2].value = "동구";
+		addrGu[3].value = "북구";
+		addrGu[4].value = "서구";
+	
+	} else if (addrCity == "울산광역시"){
+		addrGu[0].value = "남구";
+		addrGu[1].value = "동구";
+		addrGu[2].value = "북구";
+		addrGu[3].value = "울주군";
+		addrGu[4].value = "중구";
+	
+	} else if (addrCity == "충청북도"){
+		addrGu[0].value = "청주시 상당구";
+		addrGu[1].value = "청주시 서원구";
+		addrGu[2].value = "청주시 흥덕구";
+		addrGu[3].value = "청주시 청원구";
+		addrGu[4].value = "충주시";	
+		addrGu[5].value = "제천시";	
+		
+	} else if (addrCity == "충청남도"){
+		addrGu[0].value = "천안시";
+		addrGu[1].value = "공주시";
+		addrGu[2].value = "보령시";
+		addrGu[3].value = "아산시";
+		addrGu[4].value = "서산시";	
+		addrGu[5].value = "논산시";	
+		addrGu[6].value = "계룡시";
+		addrGu[7].value = "당진시";
+		
+	} else if (addrCity == "전라북도"){
+		addrGu[0].value = "전주시";
+		addrGu[1].value = "군산시";
+		addrGu[2].value = "익산시";
+		addrGu[3].value = "정읍시";
+		addrGu[4].value = "남원시";	
+		addrGu[5].value = "김제시";	
+		
+	} else if (addrCity == "전라남도"){
+		addrGu[0].value = "목포시";
+		addrGu[1].value = "여수시";
+		addrGu[2].value = "순천시";
+		addrGu[3].value = "나주시";
+		addrGu[4].value = "광양시";	
+		
+	} else if (addrCity == "경상북도"){
+		addrGu[0].value = "안동시";
+		addrGu[1].value = "상주시";
+		addrGu[2].value = "문경시";
+		addrGu[3].value = "김천시";
+		addrGu[4].value = "구미시";	
+		addrGu[5].value = "영천시";	
+		addrGu[6].value = "경주시";
+		addrGu[7].value = "포항시";
+		
+	} else if (addrCity == "경상남도"){
+		addrGu[0].value = "창원시";
+		addrGu[1].value = "진주시";
+		addrGu[2].value = "밀양시";
+		addrGu[3].value = "사천시";
+		addrGu[4].value = "거제시";	
+		addrGu[5].value = "영천시";	
+		addrGu[6].value = "경주시";
+		addrGu[7].value = "포항시";
+	
+	} else if (addrCity == "강원도"){
+		addrGu[0].value = "춘천시";
+		addrGu[1].value = "원주시";
+		addrGu[2].value = "강릉시";
+		addrGu[3].value = "동해시";
+		addrGu[4].value = "태백시";	
+		addrGu[5].value = "속초시";	
+		addrGu[6].value = "삼척시";
+		
+	} else if (addrCity == "제주도"){
+		addrGu[0].value = "제주시";
+		addrGu[1].value = "서귀포시";
+
+	}
+			
+		}
+		
+		</script>
 
 	<!-- btn js -->
 	
 
 
 </body>
-</form>
 </html>

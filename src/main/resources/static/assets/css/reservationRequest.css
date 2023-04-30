@@ -1,8 +1,10 @@
 @charset "UTF-8";
 
-body{
-	color: #383E65;	
-}
+body  {
+   font-family: 'Pretendard'; 
+   margin: auto;
+   align-content: center;
+   }
 
 /* -----------reservationRequestRealtor css --------------*/
 
@@ -11,14 +13,15 @@ body{
 width: 80%;
 margin-top: 40px;
 margin-left: 200px;
+color: #000000;
 }
 
 #realtorId_area{
-	width: 350px;
+	width: 80%;
 	font-size: 20px;
 	margin-left: 180px;
-	margin-bottom: 80px;
-	padding-bottom: 5px;
+	margin-bottom: 50px;
+	padding-bottom: 10px;
 	border-bottom: 1px solid #E3E3E3;
 }
 
@@ -28,6 +31,8 @@ height: auto;
 display: flex;
 align-items: center;
 margin: 30px 180px;
+border: 1px solid #e8e8e8;
+padding: 15px;
 }
 
 
@@ -42,17 +47,16 @@ display: table-cell;
 border: 1px solid #E3E3E3;
 }
 
-.itemList_shortcut
+.reservation_itemList_shortcut
 {
 width: 700px; 
 height: auto;
-border: 1px solid #E3E3E3;
 display: flex;
 padding: 10px;
 gap:20px;
 }
 
-.itemList_shortcut ul
+.reservation_itemList_shortcut ul
 {
 	font-weight: bold;
 	font-size: 17px;
@@ -62,7 +66,7 @@ gap:20px;
 	margin-left: 20px;
 }
 
-.itemList_shortcut ul li
+.reservation_itemList_shortcut ul li
 {
 	font-weight: normal;
 	font-size: 14px;
@@ -74,6 +78,7 @@ gap:20px;
 width: 120px;
 height:auto;
 display: inline-block;
+margin-left: 10px;
 }
 
 #confirm_button{
@@ -114,17 +119,20 @@ width: 60%;
 height: auto;
 margin-top: 80px;
 margin-left: 400px;
+color: #000000;
+margin-bottom: 80px;
+border: 1px solid #e8e8e8;
+padding: 15px;
 }
 
 #date_area{
 	width: 100%;
-	height: 50px;
-	border: 1px solid black;
-	padding-top: 12px;
+	height: 40px;
+	border-bottom: 1px solid #e8e8e8;
 }
 
 #date_area ul{
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: bold;
 	vertical-align: middle;
 }
@@ -135,7 +143,7 @@ margin-left: 400px;
 }
 
 #confirmed_itemImg{
-	width: 350px;
+	width: 400px;
 	height: 300px;
 	border: 1px solid black;
 }
@@ -143,14 +151,14 @@ margin-left: 400px;
 #reserv_item_area{
 	width: 700px;
 	height: auto;
-	border: 1px solid black;
 }
 
 #confirmed_reservInfo{
 	width: 550px;
 	height: auto;
 	border-bottom: 1px solid #e8e8e8;
-	padding-left: 25px;
+	padding-top: 20px;
+	margin-left: 30px;
 }
 
 #confirmed_reservInfo ul{
@@ -169,7 +177,7 @@ margin-left: 400px;
 	width: 500px;
 	height: auto;
 	margin-top: 20px;
-	padding-left: 25px;
+	margin-left: 30px;
 }
 
 #confirmed_itemInfo ul{
