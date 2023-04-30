@@ -17,9 +17,9 @@
                         <div class="banner-content">
                             <h1>원하는 조건을 검색하세요</h1>
                         </div>
-                        <form action="#" class="row banner-search">
+                        <form th:action="@{/newzips/itemList_search}" class="row banner-search">
                             <div class="form_field addres">
-                                <input type="text" class="form-control" placeholder="지역을 입력하세요">
+                                <input type="text" class="form-control" placeholder="지역을 입력하세요" name="search1">
                             </div>
                             <div class="form_field tpmax">
                                 <div class="form-group">
@@ -28,7 +28,7 @@
                                             <span>전/월세</span>
                                             <i class="fa fa-angle-down"></i>
                                         </div>
-                                        <input type="hidden" name="gender">
+                                        <input type="hidden" name="search3">
                                         <ul class="dropeddown">
                                             <li>전세</li>
                                             <li>월세</li>
@@ -43,7 +43,7 @@
                                             <span>건물 종류</span>
                                             <i class="fa fa-angle-down"></i>
                                         </div>
-                                        <input type="hidden" name="gender">
+                                        <input type="hidden" name="search2">
                                         <ul class="dropeddown">
                                             <li>원룸</li>
                                             <li>투룸</li>
@@ -54,25 +54,10 @@
                                 </div>
                             </div>
                             <div class="form_field tpmax">
-                                <div class="form-group">
-                                    <div class="drop-menu">
-                                        <div class="select">
-                                            <span>최대 가격</span>
-                                            <i class="fa fa-angle-down"></i>
-                                        </div>
-                                        <input type="hidden" name="gender">
-                                        <ul class="dropeddown">
-                                            <li>2000</li>
-                                            <li>3000</li>
-                                            <li>4000</li>
-                                            <li>5000</li>
-                                            <li>6000</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="form_field srch-btn">
-                                <a href="#" class="btn btn-outline-primary " id="searchBtn">
+                                <a href="" class="btn btn-outline-primary " id="searchBtn">
                                     <i class="la la-search"></i>
                                     <span>검색</span>
                                 </a>
