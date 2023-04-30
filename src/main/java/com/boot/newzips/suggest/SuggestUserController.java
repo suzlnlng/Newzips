@@ -1,7 +1,10 @@
 package com.boot.newzips.suggest;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -11,10 +14,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.boot.newzips.account.AccountRealtorService;
+import com.boot.newzips.account.AccountUserService;
+import com.boot.newzips.dto.JunsaeListingDTO;
+import com.boot.newzips.dto.ListingDTO;
 import com.boot.newzips.dto.MemberDTO;
+import com.boot.newzips.dto.RealtorDTO;
 import com.boot.newzips.dto.RealtorSuggestionDTO;
+import com.boot.newzips.dto.ReservInfoDTO;
 import com.boot.newzips.dto.ReservationStatusDTO;
 import com.boot.newzips.dto.SuggestionDTO;
+import com.boot.newzips.dto.WolseListingDTO;
+import com.boot.newzips.reservation.ReservationRealtorService;
 import com.boot.newzips.reservation.ReservationUserService;
 
 import lombok.RequiredArgsConstructor;
@@ -27,10 +38,16 @@ public class SuggestUserController {
 	
 	private final ReservationUserService reservationUserService;
 	
+	private final ReservationRealtorService reservationRealtorService;
+	
+	private final AccountRealtorService accountRealtorService;
+	
+	private final AccountUserService accountUserService;
+	
 	ModelAndView mav = new ModelAndView();
 	
 	@GetMapping("/newzips/insertOptionUser")
-	public ModelAndView  getInsertForm(HttpServletRequest req, Principal principal) throws Exception{
+	public ModelAndView  getInsertForm(SuggestionDTO suggestionDTO, HttpServletRequest req, Principal principal) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		String userId = null;
@@ -40,6 +57,16 @@ public class SuggestUserController {
 
 		} catch (Exception e) {
 			mav.setViewName("redirect:/newzips/login");
+			return mav;
+		}
+		
+		SuggestionDTO getAll = suggestUserService.getUserInfo(userId);
+		
+		if(getAll != null) {
+			Optional<MemberDTO> _user = accountUserService.getUserById(userId);
+			MemberDTO user = _user.get();
+			mav.addObject("user", user);
+			mav.setViewName("user/suggestion_error");
 			return mav;
 		}
 		
@@ -116,19 +143,57 @@ public class SuggestUserController {
 		}
 
 	
-		List<RealtorSuggestionDTO> suggestionList = suggestUserService.getSuggestionList(userId);
+		List<RealtorSuggestionDTO> suggestListing = suggestUserService.getSuggestionList(userId);
 		
-		//System.out.println(reservationList.get(0).getConfirm());
+		List<ReservInfoDTO> suggestionList = new ArrayList<ReservInfoDTO>();
+		
+		for (RealtorSuggestionDTO dto : suggestListing) {
+			
+			ReservInfoDTO suggestDTO = new ReservInfoDTO();
+			
+			ListingDTO listingDTO  = reservationRealtorService.getItemInfo(dto.getItemId());
+			
+			if(listingDTO!=null) {
+					
+				suggestDTO.setAddrDetail(listingDTO.getAddrDetail());
+				suggestDTO.setYearly_monthly(listingDTO.getYearly_monthly());
+			
+				if(listingDTO.getYearly_monthly().equals("전세")) {
+						
+					JunsaeListingDTO junsaeDTO = reservationRealtorService.getJunsaeInfo(dto.getItemId());
+					suggestDTO.setYearlyFee(junsaeDTO.getYearlyFee_web());
+					
+				}else if(listingDTO.getYearly_monthly().equals("월세")) {
+					
+					WolseListingDTO wolseDTO = reservationRealtorService.getWolseInfo(dto.getItemId());
+					suggestDTO.setDeposit(wolseDTO.getDeposit_web());
+					suggestDTO.setMonthlyFee(wolseDTO.getMonthlyFee_web());	
+					
+				}
+				
+			}
+			
+			Optional<RealtorDTO> realtorDTO = accountRealtorService.getUserById(dto.getRealtorId());
+			
+			if(realtorDTO.isPresent()) {
+				RealtorDTO realtor = realtorDTO.get();
+				suggestDTO.setUserId(realtor.getRealtorId());
+				suggestDTO.setUserName(realtor.getRealtorName());
+				System.out.println(realtor.getRealtorName());
+				suggestDTO.setUserPhone(realtor.getRealtorPhone());
+			}
+			
+			suggestDTO.setItemId(dto.getItemId());
+		
+			suggestionList.add(suggestDTO);
+		
+		}
 		
 		
 		mav.addObject("suggestionList", suggestionList);
 		mav.addObject("userId",userId);
-		System.out.println("============================");
-		System.out.println(suggestionList);
-		
-		System.out.println(userId);
 
-		mav.setViewName("user/reservation_status");
+		mav.setViewName("user/suggestion_status");
 		
 		return mav;
 

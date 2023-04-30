@@ -39,19 +39,20 @@ public class MainUserController {
 	public ModelAndView itemList_user(Model model, Principal principal) throws Exception {
 		
 		MemberDTO user = null;
+        ModelAndView mav = new ModelAndView();
 		
 		try {
 			String userId = principal.getName();
 			Optional<MemberDTO> _user = accountUserService.getUserById(userId);
 			user = _user.get();
+	        mav.setViewName("user/main_user_login");
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
+	        mav.setViewName("user/main_user");
 		}
 
         // String itemId = request.getParameter("itemId");
-
-        ModelAndView mav = new ModelAndView();
 
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("start", 0);
@@ -86,8 +87,6 @@ public class MainUserController {
         mav.addObject("wolse", wolseList); // 누적된 월세 데이터를 모델에 추가
         mav.addObject("junsae", junsaeList); // 누적된 전세 데이터를 모델에 추가
 		mav.addObject("user", user);
-
-        mav.setViewName("user/main_user");
 
         return mav;
     }

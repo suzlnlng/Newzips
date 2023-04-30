@@ -327,10 +327,8 @@ public class ReservationUserController {
 		mav.addObject("dtoJ",dtoJ);
 		mav.setViewName("user/reservation_user_complete");
 
-		
 		return mav;
-		
-		
+			
 	}
 
 	
@@ -349,9 +347,7 @@ public class ReservationUserController {
 			return mav;
 		}
 
-		
-		
-		List<ReservationStatusDTO> reservationList = reservationUserService.getReservationList(userId);
+		List<ReservationStatusDTO> reservationList = reservationUserService.getReservationList(userId);		
 		
 		//System.out.println(reservationList.get(0).getConfirm());
 		

@@ -17,7 +17,7 @@ PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
 </update>
 
 <select id="getUserById" parameterType="String" resultType="com.boot.newzips.dto.RealtorDTO">
-	select realtorId,realtorPwd from realtor where realtorId=#{realtorId}
+	select realtorId,realtorPwd,realtorName,realtorPhone from realtor where realtorId=#{realtorId}
 </select>
 
 <select id="getUserByEmail" parameterType="String" resultType="com.boot.newzips.dto.RealtorDTO">
