@@ -238,7 +238,7 @@ public class ReservationUserController {
 		// 주소에서 itemId 받아오기
 		// 해당 id에 대한 데이터 불러오기
 
-		// mav에 담기
+		// mav에 담기  
 
 		VisitorReservDTO dtoV = reservationUserService.selectReservationItemId(itemId);
 		RoomInfoDTO dtoR = reservationUserService.getReservationRoomInfo(itemId);
