@@ -30,7 +30,7 @@
     	</div>
         <div id="content_area"  th:if="${reservInfoDTO!=null}"  th:each="dto: ${reservInfoDTO}">
             <div id="item_image"  th:if="${dto.itemId!=null}" >
-                <img alt="매물사진" src="/listing_images/${dto.itemId}/1.png">
+                <img alt="매물사진" th:src="@{|/assets/listing_images/${dto.itemId}/1.png|}" class="img-fluid">
             </div>
             <div class="reservation_itemList_shortcut"  th:if="${reservInfoDTO!=null}">
                 <ul>예약 일정
@@ -42,15 +42,12 @@
                     <li>주소지 ㅣ<br/> [[${dto.addrDetail}]]</li>
                     <li>전월세 ㅣ<br/> [[${dto.yearly_monthly}]]</li>
                     <li th:if="${dto.yearly_monthly=='전세'}">금액 ㅣ<br/> [[${dto.yearlyFee}]]만원</li>
-                    <li th:if="${dto.yearly_monthly=='월세'}">금액 ㅣ<br/> 보증금 [[${dto.deposit}]] / [[${dto.yearlyFee}]]만원</li>
+                    <li th:if="${dto.yearly_monthly=='월세'}">금액 ㅣ<br/> 보증금 [[${dto.deposit}]]만원 / [[${dto.monthlyFee}]]만원</li>
                 </ul>
                 <ul>예약자 정보
                     <li>아이디ㅣ<br/> [[${dto.userId}]]</li>
                     <li>성함ㅣ<br/> [[${dto.userName}]]</li>
                     <li>연락처 ㅣ<br/> [[${dto.userPhone}]]</li>
-                    <li th:if="${dto.yearly_monthly=='전세'}">금액 ㅣ<br/> [[${dto.yearlyFee}]]만원</li>
-                    <li th:if="${dto.yearly_monthly=='월세'}">금액 ㅣ<br/> 보증금 [[${dto.deposit}]] / [[${dto.yearlyFee}]]만원</li>
-                </ul>
                </div>
             <div id="confirm_btn_area">
                 <button id="confirm_button"><a th:href="@{/newzips/reservationConfirmedRealtor(userId=${dto.userId},realtorId=${dto.realtorId},itemId=${dto.itemId})}">확정</a></button>

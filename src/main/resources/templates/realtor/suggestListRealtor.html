@@ -48,7 +48,7 @@
        <div class="suggestList_area" th:if=${realtorListDTO!=null} th:each="realtor:${realtorListDTO}">
        		<div id="suggest_itemImage">
                 <img id="suggest_item_img" th:if="suggest" 
-                alt="매물사진" src="/listing_images/35802035/1.png">
+                alt="매물사진" th:src="@{|/assets/listing_images/${realtor.itemId}/1.png|}" class="img-fluid">
             </div>
    			<div class="suggestList_content" >
            	 <ul>* 제안 가능한 매물
@@ -85,7 +85,6 @@ function check_ok(){
 	var header = $("meta[name='_csrf_header']").attr('content');
 	var token = $("meta[name='_csrf']").attr('content');
 	var userId = document.getElementById("userId").innerHTML;
-	alert(userId);
 	
 	const checkboxes = document.querySelectorAll('input[name="checkbox"]:checked');
 	
@@ -104,7 +103,6 @@ function check_ok(){
 			userId:userId
 		},
 		success:function(mav){
-			alert("성공")
 			location.href = "http://localhost:8080/newzips/suggestListRealtor_ok/" + userId;
 		},
 		beforeSend:function(xhr){

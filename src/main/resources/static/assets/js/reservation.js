@@ -125,7 +125,6 @@ function makeReservation() {
 
   											  //join(', ')..?여러개 선택하면 ,로 구분해주는거야..
       const confirmMsg = `날짜: ${selectedDate}\n시간: ${selectedTimes.join(', ')}\n\n맞으면 확인눌러`;
-      alert(confirmMsg)
       //const confirmed = confirm(confirmMsg)
       
       	$.ajax({

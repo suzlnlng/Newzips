@@ -70,6 +70,7 @@ public class ItemListUserController {
         mav.setViewName("user/itemlist_user");
 
         return mav;
+        
     }
 
     @PostMapping(value = "/newzips/itemList_user")

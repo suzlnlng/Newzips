@@ -260,8 +260,9 @@ display: table-cell;
 }
 
 #suggest_item_img{
-width: 350px;
-height: 250px;
+overflow: hidden;
+vertical-align: middle;
+display: table-cell;
 }
 
 

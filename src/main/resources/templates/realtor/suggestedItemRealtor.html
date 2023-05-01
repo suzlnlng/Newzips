@@ -30,8 +30,8 @@
     		* <span style="font-weight: bold; color: #64A3FF;">[[${realtorId}]]</span>님이 제안한 매물
        	</div>
 		<div id="content_area" th:if="${realtorList!=null}" th:each="item : ${realtorList}">
- 			<div  id="suggestItem_image">
-				  <img id="suggest_item_img" alt="매물사진">
+ 			<div id="suggestItem_image">
+				  <img alt="매물사진" th:src="@{|/assets/listing_images/${item.itemId}/1.png|}" class="img-fluid">
 			</div>
 			<div id="content_info" >
 			<div id="reserver_info">

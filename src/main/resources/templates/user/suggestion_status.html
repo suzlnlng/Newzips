@@ -25,7 +25,7 @@
         <div id="content_area" th:each="dto: ${suggestionList}">
         
             <div id="item_image">
-                <img alt="매물사진" src="/listing_images/${dto.itemId}/1.png">
+                <img alt="매물사진" th:src="@{|/assets/listing_images/${dto.itemId}/1.png|}" class="img-fluid">
             </div>
             <div class="reservation_itemList_shortcut">
 

@@ -41,11 +41,7 @@ function itemCheck(){
 
 function addWish(itemId){
 
-	alert("addWish js");
-
 	var url = '/newzips/addWish/'+itemId;
-	
-	alert(url);	
 
 }
     
@@ -105,7 +101,6 @@ $(window).on("load", function() {
     	
     	//var itemId = $(this).next('.hiddenItemId').val();
     	var itemId = $(this).next('input').val();
-    	alert(itemId);
     	var url = '/newzips/deleteWish/'+itemId;
     	
     	$.ajax({

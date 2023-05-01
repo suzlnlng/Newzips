@@ -223,7 +223,7 @@ public class SuggestRealtorController {
 				if(list.getYearly_monthly().equals("전세")) {
 					
 					item.setItemId(suggested.getItemId());
-					item.setAddrDetail(suggested.getItemId());
+					item.setAddrDetail(list.getAddrDetail());
 					item.setYearly_monthly(list.getYearly_monthly());
 					item.setDeposit(junsae.getYearlyFee_web());					
 					item.setMaintenanceCost(list.getMaintenanceCost());
