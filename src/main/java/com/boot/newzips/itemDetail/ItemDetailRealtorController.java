@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,11 +20,8 @@ public class ItemDetailRealtorController {
 	@Resource
 	private ItemDetailService itemDetailService;
 	
-	@GetMapping("/newzips/itemDetail_realtor")
-	public ModelAndView itemDetail_user(HttpServletRequest request) throws Exception{
-		
-		String itemId = request.getParameter("itemId");
-		itemId = "34918222";
+	@GetMapping("/newzips/itemDetail_realtor/{itemId}")
+	public ModelAndView itemDetail_user(HttpServletRequest request, @PathVariable("itemId") String itemId) throws Exception{
 				
 		ModelAndView mav = new ModelAndView();	
 				
