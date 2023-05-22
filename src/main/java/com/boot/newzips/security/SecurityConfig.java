@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -25,17 +26,27 @@ import com.boot.newzips.account.UserSecurityService;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Configuration
 @EnableWebSecurity
+@Configuration
+@Order(1)
 public class SecurityConfig {
 	
 	private final AuthenticationFailureHandler customFailureHandler;
-	
-	private final UserSecurityService userSecurityService;
-	private final BaseCustomOAuth2UserService baseCustomOAuth2UserService;
 
+	private final BaseCustomOAuth2UserService baseCustomOAuth2UserService;
+	
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+	public UserDetailsService userDetailService() {
+		return new UserSecurityService();
+	}
+	
+	@Bean
+	public PasswordEncoder userPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public SecurityFilterChain filterChain1(HttpSecurity http) throws Exception{
 
 		http
 		.authorizeRequests().antMatchers("/**").permitAll()
@@ -67,11 +78,32 @@ public class SecurityConfig {
 		
 	}
 	
-	
 	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+	public SecurityFilterChain filterChain2(HttpSecurity http) throws Exception{
+
+		http
+		.authorizeRequests().antMatchers("/**").permitAll()
+		.and()
+		.formLogin()
+			.loginPage("/newzips/realtor/login")
+			.usernameParameter("realtorId")
+			.passwordParameter("realtorPwd")
+			.defaultSuccessUrl("/newzips/realtor")
+			.failureUrl("/newzips/realtor/login")
+		.and()
+		.logout()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/newzips/realtor/logout"))
+			.logoutSuccessUrl("/newzips/realtor")
+			.deleteCookies("JSESSIONID")
+			.invalidateHttpSession(true)
+		;
+		//.failureHandler(customFailureHandler)
+		return http.build();
+		
 	}
+	
+	
+
 	
 	@Bean
 	public AuthenticationManager authenticationManager(

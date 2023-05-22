@@ -59,7 +59,13 @@
 		          <input type="password" th:field="*{realtorPwd}" placeholder="비밀번호">
 		        </div>
 		      <div style="margin-top: 20px"></div>
+				<div th:if="${error != null}">
 
+		        <div class="login-form-field">
+					<p class="input-error">[[${error}]]</p>
+		        </div>
+		        		      <div style="margin-top: 10px"></div>
+		        </div>
 			<div style="margin-left: 50px"></div>
 			<div class="login-check-field">
 			<input type= "checkbox" id="select1" name="check" onclick=""/>

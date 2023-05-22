@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.boot.newzips.dto.MemberDTO;
 import com.boot.newzips.dto.RealtorDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -105,43 +106,55 @@ public class AccountRealtorController {
 	}
 	
 	@GetMapping("/realtor/login")
-	public ModelAndView login(RealtorDTO realtorDTO) throws Exception{
+	public ModelAndView login(HttpServletRequest request, RealtorDTO realtorDTO) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
+		try {
+			if(request.getParameter("error").equals("true")) {
+				String errorMsg = request.getParameter("exception");
+				if(errorMsg.equals("badcredential")) {
+					mav.addObject("error", "아이디 또는 비밀번호를 확인해주세요.");	
+				}
+				
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+				
 		mav.setViewName("realtor/login_realtor");
 
 		return mav;
 		
 	}
 	
-	@PostMapping("/realtor/login")
-	public ModelAndView login_ok(RealtorDTO realtorDTO, HttpServletRequest request) throws Exception{
-		
-		ModelAndView mav = new ModelAndView();
-		RealtorDTO realtorUser = null; //아이디랑 이름만 받아오는 DTO로 수정해야 할듯
-		
-		System.out.println("==============================");
-		System.out.println(realtorDTO.getRealtorId());
-		
-		Optional<RealtorDTO> _user = accountRealtorService.getUserById(realtorDTO.getRealtorId());
-		
-		if(_user.isPresent())
-			realtorUser = _user.get();
-		
-		if(realtorUser.getRealtorPwd().equals(realtorDTO.getRealtorPwd())) {
-			
-			System.out.println("일치일치..");
-		
-			httpSession.setAttribute("realtorId", realtorUser.getRealtorId());
-		
-		}
-		
-		mav.setViewName("redirect:/newzips/realtor");
-
-		return mav;
-		
-	}
+//	@PostMapping("/realtor/login")
+//	public ModelAndView login_ok(RealtorDTO realtorDTO, HttpServletRequest request) throws Exception{
+//		
+//		ModelAndView mav = new ModelAndView();
+//		RealtorDTO realtorUser = null; //아이디랑 이름만 받아오는 DTO로 수정해야 할듯
+//		
+//		System.out.println("==============================");
+//		System.out.println(realtorDTO.getRealtorId());
+//		
+//		Optional<RealtorDTO> _user = accountRealtorService.getUserById(realtorDTO.getRealtorId());
+//		
+//		if(_user.isPresent())
+//			realtorUser = _user.get();
+//		
+//		if(realtorUser.getRealtorPwd().equals(realtorDTO.getRealtorPwd())) {
+//			
+//			System.out.println("일치일치..");
+//		
+//			httpSession.setAttribute("realtorId", realtorUser.getRealtorId());
+//		
+//		}
+//		
+//		mav.setViewName("redirect:/newzips/realtor");
+//
+//		return mav;
+//		
+//	}
 	
 	@GetMapping("/realtor/logout")
 	public ModelAndView logout(HttpServletRequest request) throws Exception{
