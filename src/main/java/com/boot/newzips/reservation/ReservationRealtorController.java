@@ -1,5 +1,6 @@
 package com.boot.newzips.reservation;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,7 +30,7 @@ public class ReservationRealtorController {
 	private final ReservationRealtorService reservationRealtorService;
 
 	@GetMapping("/newzips/reservationRequestRealtor")
-	public ModelAndView ReservList() throws Exception {
+	public ModelAndView ReservList(Principal principal) throws Exception {
 
 		/*
 		List<VisitorReservDTO> visitorReserv = reservationRealtorService.getReserverInfo();
@@ -59,12 +60,16 @@ public class ReservationRealtorController {
 		*/
 		
 		ModelAndView mav = new ModelAndView();
-		String realtorId = (String)httpSession.getAttribute("realtorId");
+		String realtorId = null;
 		
-		if(realtorId == null) {
+		try {
+			realtorId = principal.getName();
+		} catch (Exception e) {
+			System.out.println(e.toString());
 			mav.setViewName("redirect:/newzips/realtor/login");
 			return mav;
 		}
+
 		
 		List<ReservInfoDTO> reservInfo = reservationRealtorService.getReserverInfo(realtorId); 
 		
@@ -117,12 +122,15 @@ public class ReservationRealtorController {
 
 	
 	@GetMapping("/newzips/reservationConfirmedRealtor")
-	public ModelAndView reservationConfirmedRealtor(HttpServletRequest req) throws Exception {
+	public ModelAndView reservationConfirmedRealtor(HttpServletRequest req, Principal principal) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		String realtorId = (String)httpSession.getAttribute("realtorId");
+		String realtorId = null;
 		
-		if(realtorId == null) {
+		try {
+			realtorId = principal.getName();
+		} catch (Exception e) {
+			System.out.println(e.toString());
 			mav.setViewName("redirect:/newzips/realtor/login");
 			return mav;
 		}
@@ -130,10 +138,10 @@ public class ReservationRealtorController {
 		String userId = req.getParameter("userId");
 		String itemId = req.getParameter("itemId");
 
-		ReservInfoDTO one = reservationRealtorService.getConfirmedInfo(userId, realtorId,itemId);
+		ReservInfoDTO one = reservationRealtorService.getConfirmedInfo(userId, realtorId, itemId);
 		
 		if(one.getConfirm().equals("F")) {
-		reservationRealtorService.setConfirmed(userId, realtorId,itemId);
+		reservationRealtorService.setConfirmed(userId, realtorId, itemId);
 		
 		mav.addObject("reservInfo", one);
 		
@@ -151,12 +159,15 @@ public class ReservationRealtorController {
 	}
 
 	@GetMapping("/newzips/reservationStateRealtor")
-	public ModelAndView reservationStateRealtor(HttpServletRequest req) throws Exception{
+	public ModelAndView reservationStateRealtor(HttpServletRequest req, Principal principal) throws Exception{
 
 		ModelAndView mav = new ModelAndView();
-		String realtorId = (String)httpSession.getAttribute("realtorId");
+		String realtorId = null;
 		
-		if(realtorId == null) {
+		try {
+			realtorId = principal.getName();
+		} catch (Exception e) {
+			System.out.println(e.toString());
 			mav.setViewName("redirect:/newzips/realtor/login");
 			return mav;
 		}

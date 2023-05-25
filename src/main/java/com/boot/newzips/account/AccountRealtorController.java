@@ -27,8 +27,6 @@ public class AccountRealtorController {
 	
 	private final AccountRealtorService accountRealtorService;
 	
-	private final HttpSession httpSession;
-	
 	@GetMapping("/realtor/joinTerm")
 	public ModelAndView joinTerm() throws Exception{
 		

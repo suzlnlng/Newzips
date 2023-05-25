@@ -1,5 +1,6 @@
 package com.boot.newzips.suggest;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -40,12 +41,15 @@ public class SuggestRealtorController {
 	ModelAndView mav = new ModelAndView();
 	
 	@GetMapping("/newzips/clientListRealtor")
-	public ModelAndView clientList() throws Exception{
+	public ModelAndView clientList(Principal principal) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
-		String realtorId = (String)httpSession.getAttribute("realtorId");
+		String realtorId = null;
 		
-		if(realtorId == null) {
+		try {
+			realtorId = principal.getName();
+		} catch (Exception e) {
+			System.out.println(e.toString());
 			mav.setViewName("redirect:/newzips/realtor/login");
 			return mav;
 		}
@@ -189,12 +193,15 @@ public class SuggestRealtorController {
 		
 	
 		@GetMapping("/newzips/suggestedItemRealtor")
-		public ModelAndView SuggestedItem() throws Exception{
+		public ModelAndView SuggestedItem(Principal principal) throws Exception{
 			
 			ModelAndView mav = new ModelAndView();
-			String realtorId = (String)httpSession.getAttribute("realtorId");
+			String realtorId = null;
 			
-			if(realtorId == null) {
+			try {
+				realtorId = principal.getName();
+			} catch (Exception e) {
+				System.out.println(e.toString());
 				mav.setViewName("redirect:/newzips/realtor/login");
 				return mav;
 			}
