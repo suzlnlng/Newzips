@@ -354,6 +354,14 @@ header.pb {
   line-height: 55px;
   border-bottom: 1px solid #0f1649;
 }
+
+.top-header-realtor {
+  background: #2D55C9;
+  height: 53px;
+  line-height: 55px;
+  border-bottom: 1px solid #2D55C9;
+}
+
 .header-address a {
   display: inline-block;
   color: #d6d8e0; 

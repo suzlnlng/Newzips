@@ -102,9 +102,18 @@ public class SuggestUserController {
 	}
 	
 	@GetMapping("newzips/updateOptionUser")
-	public ModelAndView updateOption(HttpServletRequest req) throws Exception {
+	public ModelAndView updateOption(HttpServletRequest req, Principal principal) throws Exception {
 		
-		String userId=req.getParameter("userId");
+		String userId = null;
+		ModelAndView mav = new ModelAndView();
+		
+		try {
+			userId = principal.getName();
+
+		} catch (Exception e) {
+			mav.setViewName("redirect:/newzips/login");
+			return mav;
+		}
 		
 		SuggestionDTO getAll = suggestUserService.getUserInfo(userId);
 		

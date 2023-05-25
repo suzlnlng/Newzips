@@ -23,7 +23,7 @@ public class AccountRealtorServiceImpl implements AccountRealtorService {
 	@Autowired
 	private AccountRealtorMapper accountRealtorMapper;
 
-	private final PasswordEncoder passwordEncoder;
+	private final PasswordEncoder realtorPasswordEncoder;
 
 	@Override
 	public void createMember(RealtorDTO realtorDTO) throws Exception {

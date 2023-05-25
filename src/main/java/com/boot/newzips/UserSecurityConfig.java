@@ -1,4 +1,4 @@
-package com.boot.newzips.security;
+package com.boot.newzips;
 
 
 import org.springframework.context.annotation.Bean;
@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -24,61 +25,72 @@ import com.boot.newzips.account.UserSecurityService;
 
 import lombok.RequiredArgsConstructor;
 
+
 @RequiredArgsConstructor
+@EnableWebSecurity(debug=true)
 @Configuration
-@EnableWebSecurity
-public class SecurityConfig {
+public class UserSecurityConfig {
 	
 	private final AuthenticationFailureHandler customFailureHandler;
-	
-	private final UserSecurityService userSecurityService;
+
 	private final BaseCustomOAuth2UserService baseCustomOAuth2UserService;
 
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-
-		http
-		.authorizeRequests().antMatchers("/**").permitAll()
-		.and()
-		.formLogin()
-			.loginPage("/newzips/login")
-			.usernameParameter("userId")
-			.passwordParameter("userPwd")
-			.defaultSuccessUrl("/newzips")
-			.failureUrl("/newzips/login")
-			.failureHandler(customFailureHandler)
-		.and()
-		.logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/newzips/logout"))
-			.logoutSuccessUrl("/newzips")
-			.deleteCookies("JSESSIONID")
-			.invalidateHttpSession(true)
-		.and()
-		.oauth2Login()
-			.loginPage("/newzips/login")
-			.defaultSuccessUrl("/newzips")
-			.userInfoEndpoint()
-			.userService(baseCustomOAuth2UserService)
-
-
-		;
-		//.failureHandler(customFailureHandler)
-		return http.build();
-		
+	public UserDetailsService userDetailsService() {
+		return new UserSecurityService();
 	}
 	
-	
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	public PasswordEncoder userPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
+
 	@Bean
-	public AuthenticationManager authenticationManager(
+	public DaoAuthenticationProvider userAuthenticationProvier() {
+		
+		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+		
+		provider.setUserDetailsService(userDetailsService());
+		provider.setPasswordEncoder(userPasswordEncoder());
+		
+		return provider;
+		
+	}
+	
+	@Bean
+	public AuthenticationManager userAuthenticationManager(
 			AuthenticationConfiguration authenticationConfiguration) throws Exception{
 
 		return authenticationConfiguration.getAuthenticationManager();
 		
+	}
+	
+	@Bean
+	public SecurityFilterChain userFilterChain(HttpSecurity http) throws Exception {
+	    http
+	        .authorizeRequests(authorize -> authorize.anyRequest().permitAll())
+	        .formLogin(form -> form
+	            .loginPage("/newzips/login")
+	            .usernameParameter("userId")
+	            .passwordParameter("userPwd")
+	            .failureUrl("/newzips/login?error=true")
+	            .failureHandler(customFailureHandler)
+	            .defaultSuccessUrl("/newzips")
+	            .permitAll())
+			.logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/newzips/logout"))
+				.logoutSuccessUrl("/newzips")
+				.deleteCookies("JSESSIONID")
+				.invalidateHttpSession(true)
+			.and()
+	        .oauth2Login()
+	            .loginPage("/newzips/login")
+	            .defaultSuccessUrl("/newzips")
+	            .userInfoEndpoint()
+	            .userService(baseCustomOAuth2UserService);
+	    
+	    return http.build();
 	}
 	
 	@Bean
@@ -87,10 +99,7 @@ public class SecurityConfig {
 		jsonView.setContentType("application/json;chaset=UTF-8");
 		return jsonView;
 	}
-	
-	
 
-	
 //	//사용자 조회를 UserSecurityService가 담당하도록 추가해줌
 //	@Bean
 //	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
@@ -104,6 +113,10 @@ public class SecurityConfig {
 	
 	
 /*	
+ * 
+ * 	
+	
+ * 
 	@Bean
 	public AuthenticationProvider authenticationProvider() {
 		

@@ -99,7 +99,7 @@
                 <div class="row">
                     <div th:each="item: ${listing}" class="col-lg-4 col-md-6"> <!-- 템플릿 반복문 -->
                         <div class="card">
-                            <a th:href="@{|/newzips/itemDetail_user/${item.itemId}|}" title="">
+                            <a th:href="@{|/newzips/itemDetail_realtor/${item.itemId}|}" title="">
                                  <div class="img-block">
                                     <div class="overlay_image"></div>
                                  <img th:src="${item.itemImagePath}" alt="" class="suggest_itemImage">
@@ -137,7 +137,7 @@
 									th:text="${roomType}"></span>
 								</a></a>
 							</div>
-							<a th:href="@{|/newzips/itemDetail_user/${item.itemId}|}" title="" class="ext-link"></a>
+							<a th:href="@{|/newzips/itemDetail_realtor/${item.itemId}|}" title="" class="ext-link"></a>
                         </div>
                     </div>
                     </div>

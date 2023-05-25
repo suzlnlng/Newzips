@@ -66,7 +66,7 @@
 		      <div class="login-form-field">
 		      <img src="/assets/images/newzips_logo_1.png" alt="logo">
 		      </div>
-		      <form th:object="${memberDTO}" tf:action="@{/newzips/login}" method="post">
+		      <form th:object="${memberDTO}" tf:action="@{http://localhost:8080/newzips/login}" method="post">
 		      
 		      	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 		        

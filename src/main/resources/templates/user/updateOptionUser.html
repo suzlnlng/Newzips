@@ -1,169 +1,18 @@
 <!doctype html>
-<html class="no-js" lang="kr">
+<html layout:decorate="~{user/layout_user}">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Newzip's</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8">
 
+<div layout:fragment="content">
 
-    <link rel="shortcut icon" href="/assets/images/favicon.png">
-    <link rel="stylesheet" href="/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-       <link rel="stylesheet" href="/assets/css/style_test.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/color.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/suggestList.css">
-    
-	<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
-
-<style type="text/css">
-body  {
-   font-family: 'Pretendard'; 
-   margin: auto;
-   align-content: center;
-   }
-</style>
-
-
-</head>
-<html class="no-js" lang="en">
-
-<body>
-
-    <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-
-
-    <div class="wrapper">
-
-     <header>
-
-            <div class="top-header">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-6 col-md-7 col-sm-12">
-                            <div class="header-address">
-                                <a href="#">
-                                    <i></i>
-                                    <span>중개인</span>
-                                </a>
-                                <a href="#">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-5 col-sm-12">
-                            <div class="header-social">
-                               <i class="la la-arrow-circle-right"></i>
-                                <a href="/newzips"><span>사용자로 전환</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <nav class="navbar navbar-expand-lg navbar-light">
-                                <a class="navbar-brand" href="/newzips/realtor">
-                                    <img src="/assets/images/newzips_logo_1.png" alt="">
-                                </a>
-                                <button class="menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
-                                    <span class="icon-spar"></span>
-                                    <span class="icon-spar"></span>
-                                    <span class="icon-spar"></span>
-                                </button>
-
-                                <div class="navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav mr-auto">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="/newzips/itemList_user">
-                                                매물검색
-                                            </a>
-                                         
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                                방문예약
-                                            </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="/newzips/reservationRequestRealtor">예약요청 확인하기</a>
-                                                <a class="dropdown-item" href="/newzips/reservationStateRealtor">예약현황 확인하기</a>
-                                            </div>
-                                           
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                               제안
-                                            </a>
-                                            <div class="dropdown-menu animated">
-                                                <a class="dropdown-item" href="21_List_Layout_With_Map.html">제안하기</a>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
-                                               뭐넣지..
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="d-inline my-2 my-lg-0">
-                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
-                                            <li class="nav-item signin-btn">
-                                                <a class="nav-link" href="/neazips/realtor/login">
-                                                    <i class="la la-sign-in"></i>
-                                                    <span><b id="header_login">로그인</b></span>
-                                                </a>
-                                                
-                                            </li>
-
-                                            <li class="nav-item submit-btn">
-                                                <a href="/newzips/realtor/join" class="my-2 my-sm-0 nav-link sbmt-btn">
-                                                    <span>회원가입</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        
-                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
-                                            <li class="nav-item signin-btn">
-                                                <a class="nav-link" href="/newzips/realtor/logout">
-                                                    <i class="la la-sign-in"></i>
-                                                    <span><b id="header_logout">로그아웃</b></span>
-                                                </a>
-                                                
-                                            </li>
-
-                                            <li class="nav-item submit-btn">
-                                                <a href="/newzips/realtor/mypage" class="my-2 my-sm-0 nav-link sbmt-btn">
-                                                    <span>마이페이지</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <a href="#" title="" class="close-menu"><i class="la la-close"></i></a>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </header><!--header end-->
-
 <!-- ============================================================ -->
 
         <section class="pager-sec bfr">
             <div class="container">
                 <div class="pager-sec-details">
-                    <h3>매물 제안 요청</h3>
+                    <h3>매물 제안 요청 수정</h3>
                     <ul>
-                        <li><a href="#" title="">Home</a></li>
-                        <li><span>List Layout</span></li>
                     </ul>
                 </div><!--pager-sec-details end-->
             </div>
@@ -174,6 +23,9 @@ body  {
 
 
 <section>
+<br/>
+<br/>
+<br/>
 
 <form th:object="${suggestionDTO}" th:action="@{/newzips/updateOkUser}" method="post">
 	<div class="option_container">
@@ -253,6 +105,10 @@ body  {
 		</div>
 	</div>
 	</form>
+	
+<br/>
+<br/>
+<br/>
 </section>
 
 
@@ -280,279 +136,203 @@ body  {
 <!-- ================================================================================================ -->
 
 
-  
- <a href="#" title="">    
-            <section class="cta st2 section-padding">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="cta-text">
-                                <h2></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </a>
-           <section class="bottom section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-sm-6 col-md-4">
-                        <div class="bottom-logo">
-                            <img src="/assets/images/newzips_logo_1.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                     <div class="office2">
-                  <div>(주)뉴집스</div>
-                  <div>대표 : 이수진</div> 
-                  <span>사업자 번호 : 137-22-1122</span>&nbsp;&nbsp;
-                  <span>통신판매업신고번호 : 제2013-서울-강남-137호</span>
-                  <div>주소 : 서울시 어쩌구 저쩌구</div>
-                  <span>고객센터 : 02-1234-5678</span>
-                  <span>┃</span>
-                  <span>평일 10:00 ~ 18:30, 점심시간 12:00 ~ 13:00(토·일요일,공휴일 휴무)</span>
-                  <div>팩스 : 02-123-1234</div>
-                  <span>프로모션/사업 제휴문의 : aaa@aaaa.co.kr</span>
-               </div>
+<script>
 
-                </div>
-            </div>
-        </section>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="footer-content">
-                            <div class="row justify-content-between">
-                                <div class="col-xl-6 col-md-6">
-                                    <div class="copyright">
-                                        <p>&copy; Newzip's. All Rights Reserved.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-md-6">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-
-<!-- ================================================================================================ -->
-
-
-    </div><!--wrapper end-->
-
-
-    
-
-    <script src="/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="/assets/js/modernizr-3.6.0.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/html5lightbox.js"></script>
-    <script src="/assets/js/scripts.js"></script>
-
-    <!-- Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-    <script src="/assets/js/map-cluster/infobox.min.js"></script>
-    <script src="/assets/js/map-cluster/markerclusterer.js"></script>
-    <script src="/assets/js/map-cluster/maps.js"></script>
-
-	<script>
 		function updateSelect() {
+			
 			var addrCity = document.getElementById("addrCity").value;
-			var addrGu = document.getElementById("addrGu").options;
+			var addrGu = document.querySelector("#addrGu");
+			$(addrGu).empty();
 			
 			if(addrCity == "서울특별시"){
-				addrGu[0].value = "강남구";
-				addrGu[1].value = "강동구";
-				addrGu[2].value = "강북구";
-				addrGu[3].value = "강서구";
-				addrGu[4].value = "관악구";
-				addrGu[5].value = "광진구";
-				addrGu[6].value = "구로구";
-				addrGu[7].value = "금천구";
-				addrGu[8].value = "노원구";
-				addrGu[9].value = "도봉구";
-				addrGu[10].value = "동대문구";
-				addrGu[12].value = "동작구";
-				addrGu[13].value = "마포구";
-				addrGu[14].value = "서대문구";
-				addrGu[15].value = "서초구";
-				addrGu[16].value = "성동구";
-				addrGu[17].value = "성북구";
-				addrGu[18].value = "송파구";
-				addrGu[19].value = "양천구";
-				addrGu[20].value = "영등포구";
-				addrGu[21].value = "용산구";
-				addrGu[22].value = "은평구";
-				addrGu[23].value = "종로구";
-				addrGu[24].value = "중구";
-				addrGu[25].value = "중랑구";
+				$(addrGu).append(returnOption("강남구"));
+				$(addrGu).append(returnOption("강동구"));
+				$(addrGu).append(returnOption("강북구"));
+				$(addrGu).append(returnOption("강서구"));
+				$(addrGu).append(returnOption("관악구"));
+				$(addrGu).append(returnOption("광진구"));
+				$(addrGu).append(returnOption("구로구"));
+				$(addrGu).append(returnOption("금천구"));
+				$(addrGu).append(returnOption("노원구"));
+				$(addrGu).append(returnOption("도봉구"));
+				$(addrGu).append(returnOption("동대문구"));
+				$(addrGu).append(returnOption("동작구"));
+				$(addrGu).append(returnOption("마포구"));
+				$(addrGu).append(returnOption("서대문구"));
+				$(addrGu).append(returnOption("서초구"));
+				$(addrGu).append(returnOption("성동구"));
+				$(addrGu).append(returnOption("성북구"));
+				$(addrGu).append(returnOption("송파구"));
+				$(addrGu).append(returnOption("양천구"));
+				$(addrGu).append(returnOption("영등포구"));
+				$(addrGu).append(returnOption("용산구"));
+				$(addrGu).append(returnOption("은평구"));
+				$(addrGu).append(returnOption("종로구"));
+				$(addrGu).append(returnOption("중구"));
+				$(addrGu).append(returnOption("중랑구"));
+
 			
 			} else if (addrCity == "경기도") {
 				
-				addrGu[0].value = "수원시 장안구";
-				addrGu[0].value = "수원시 팔달구";
-				addrGu[0].value = "수원시 영통구";
-				addrGu[0].value = "수원시 권선구";
-				addrGu[1].value = "용인시 수지구";
-				addrGu[1].value = "용인시 기흥구";
-				addrGu[1].value = "용인시 처인구";
-				addrGu[2].value = "성남시 수정구";
-				addrGu[2].value = "성남시 중원구";
-				addrGu[2].value = "성남시 분당구";
-				addrGu[3].value = "부천시 오정구";
-				addrGu[3].value = "부천시 원미구";
-				addrGu[3].value = "부천시 소사구";
-				addrGu[5].value = "안산시 단원구";
-				addrGu[5].value = "안산시 상록구";
-				addrGu[6].value = "안양시 만안구";
-				addrGu[6].value = "안양시 동안구";
-				addrGu[12].value = "광명시";
-				addrGu[14].value = "하남시";
-				addrGu[20].value = "과천시";
-				addrGu[21].value = "고양시";
-				addrGu[22].value = "남양주시";
-				addrGu[23].value = "파주시";
-				addrGu[24].value = "의정부시";
+				$(addrGu).append(returnOption("수원시 장안구"));
+				$(addrGu).append(returnOption("수원시 팔달구"));
+				$(addrGu).append(returnOption("수원시 영통구"));
+				$(addrGu).append(returnOption("수원시 권선구"));
+				$(addrGu).append(returnOption("용인시 수지구"));
+				$(addrGu).append(returnOption("용인시 기흥구"));
+				$(addrGu).append(returnOption("용인시 처인구"));
+				$(addrGu).append(returnOption("성남시 수정구"));
+				$(addrGu).append(returnOption("성남시 중원구"));
+				$(addrGu).append(returnOption("성남시 분당구"));
+				$(addrGu).append(returnOption("부천시 오정구"));
+				$(addrGu).append(returnOption("부천시 원미구"));
+				$(addrGu).append(returnOption("부천시 소사구"));
+				$(addrGu).append(returnOption("안산시 단원구"));
+				$(addrGu).append(returnOption("안산시 상록구"));
+				$(addrGu).append(returnOption("안양시 만안구"));
+				$(addrGu).append(returnOption("안양시 동안구"));
+				$(addrGu).append(returnOption( "광명시"));
+				$(addrGu).append(returnOption( "하남시"));
+				$(addrGu).append(returnOption( "과천시"));
+				$(addrGu).append(returnOption( "고양시"));
+				$(addrGu).append(returnOption( "남양주시"));
+				$(addrGu).append(returnOption( "파주시"));
+				$(addrGu).append(returnOption( "의정부시"));
 				
 			} else if (addrCity == "인천광역시"){
-				addrGu[0].value = "계양구";
-				addrGu[1].value = "남동구";
-				addrGu[2].value = "동구";
-				addrGu[3].value = "미추홀구";
-				addrGu[4].value = "부평구";
-				addrGu[5].value = "서구";
-				addrGu[6].value = "연수구";
-				addrGu[7].value = "중구";
+				$(addrGu).append(returnOption("계양구"));
+				$(addrGu).append(returnOption("남동구"));
+				$(addrGu).append(returnOption("동구"));
+				$(addrGu).append(returnOption("미추홀구"));
+				$(addrGu).append(returnOption("부평구"));
+				$(addrGu).append(returnOption("서구"));
+				$(addrGu).append(returnOption("연수구"));
+				$(addrGu).append(returnOption("중구"));
 		
 			} else if (addrCity == "부산광역시"){
-				addrGu[0].value = "강서구";
-				addrGu[1].value = "금정구";
-				addrGu[2].value = "남구";
-				addrGu[3].value = "동구";
-				addrGu[4].value = "동래구";
-				addrGu[5].value = "북구";
-				addrGu[6].value = "부산진구";
-				addrGu[7].value = "사상구";
-				addrGu[8].value = "사하구";
-				addrGu[9].value = "서구";
-				addrGu[10].value = "수영구";
-				addrGu[12].value = "연제구";
-				addrGu[13].value = "영동구";
-				addrGu[14].value = "중구";
-				addrGu[15].value = "해운대구";
+				$(addrGu).append(returnOption("강서구"));
+				$(addrGu).append(returnOption("금정구"));
+				$(addrGu).append(returnOption("남구"));
+				$(addrGu).append(returnOption("동구"));
+				$(addrGu).append(returnOption("동래구"));
+				$(addrGu).append(returnOption("북구"));
+				$(addrGu).append(returnOption("부산진구"));
+				$(addrGu).append(returnOption("사상구"));
+				$(addrGu).append(returnOption("사하구"));
+				$(addrGu).append(returnOption("서구"));
+				$(addrGu).append(returnOption("수영구"));
+				$(addrGu).append(returnOption("연제구"));
+				$(addrGu).append(returnOption("영동구"));
+				$(addrGu).append(returnOption("중구"));
+				$(addrGu).append(returnOption("해운대구"));
 			
 			} else if (addrCity == "대전광역시"){
-				addrGu[0].value = "대덕구";
-				addrGu[1].value = "동구";
-				addrGu[2].value = "서구";
-				addrGu[3].value = "유성구";
-				addrGu[4].value = "중구";
+				$(addrGu).append(returnOption("대덕구"));
+				$(addrGu).append(returnOption("동구"));
+				$(addrGu).append(returnOption("서구"));
+				$(addrGu).append(returnOption("유성구"));
+				$(addrGu).append(returnOption("중구"));
 				
 		} else if (addrCity == "대구광역시"){
-			addrGu[0].value = "남구";
-			addrGu[1].value = "달서구";
-			addrGu[2].value = "달성구";
-			addrGu[3].value = "동구";
-			addrGu[4].value = "북구";
-			addrGu[5].value = "수성구";
-			addrGu[6].value = "서구";
-			addrGu[7].value = "중구";
+			 $(addrGu).append(returnOption("남구"));
+			 $(addrGu).append(returnOption("달서구"));
+			 $(addrGu).append(returnOption("달성구"));
+			 $(addrGu).append(returnOption("동구"));
+			 $(addrGu).append(returnOption("북구"));
+			 $(addrGu).append(returnOption("수성구"));
+			 $(addrGu).append(returnOption("서구"));
+			 $(addrGu).append(returnOption("중구"));
 			
 	} else if (addrCity == "광주광역시"){
-		addrGu[0].value = "광산구";
-		addrGu[1].value = "남구";
-		addrGu[2].value = "동구";
-		addrGu[3].value = "북구";
-		addrGu[4].value = "서구";
+		 $(addrGu).append(returnOption("광산구"));
+		 $(addrGu).append(returnOption("남구"));
+		 $(addrGu).append(returnOption("동구"));
+		 $(addrGu).append(returnOption("북구"));
+		 $(addrGu).append(returnOption("서구"));
 	
 	} else if (addrCity == "울산광역시"){
-		addrGu[0].value = "남구";
-		addrGu[1].value = "동구";
-		addrGu[2].value = "북구";
-		addrGu[3].value = "울주군";
-		addrGu[4].value = "중구";
+		$(addrGu).append(returnOption("남구"));
+		$(addrGu).append(returnOption("동구"));
+		$(addrGu).append(returnOption("북구"));
+		$(addrGu).append(returnOption("울주군"));
+		$(addrGu).append(returnOption("중구"));
 	
 	} else if (addrCity == "충청북도"){
-		addrGu[0].value = "청주시 상당구";
-		addrGu[1].value = "청주시 서원구";
-		addrGu[2].value = "청주시 흥덕구";
-		addrGu[3].value = "청주시 청원구";
-		addrGu[4].value = "충주시";	
-		addrGu[5].value = "제천시";	
+		$(addrGu).append(returnOption("청주시 상당구"));
+		$(addrGu).append(returnOption("청주시 서원구"));
+		$(addrGu).append(returnOption("청주시 흥덕구"));
+		$(addrGu).append(returnOption("청주시 청원구"));
+		$(addrGu).append(returnOption("충주시"));	
+		$(addrGu).append(returnOption("제천시"));	
 		
 	} else if (addrCity == "충청남도"){
-		addrGu[0].value = "천안시";
-		addrGu[1].value = "공주시";
-		addrGu[2].value = "보령시";
-		addrGu[3].value = "아산시";
-		addrGu[4].value = "서산시";	
-		addrGu[5].value = "논산시";	
-		addrGu[6].value = "계룡시";
-		addrGu[7].value = "당진시";
+		$(addrGu).append(returnOption("천안시"));
+		$(addrGu).append(returnOption("공주시"));
+		$(addrGu).append(returnOption("보령시"));
+		$(addrGu).append(returnOption("아산시"));
+		$(addrGu).append(returnOption("서산시"));	
+		$(addrGu).append(returnOption("논산시"));	
+		$(addrGu).append(returnOption("계룡시"));
+		$(addrGu).append(returnOption("당진시"));
 		
 	} else if (addrCity == "전라북도"){
-		addrGu[0].value = "전주시";
-		addrGu[1].value = "군산시";
-		addrGu[2].value = "익산시";
-		addrGu[3].value = "정읍시";
-		addrGu[4].value = "남원시";	
-		addrGu[5].value = "김제시";	
+		$(addrGu).append(returnOption("전주시"));
+		$(addrGu).append(returnOption("군산시"));
+		$(addrGu).append(returnOption("익산시"));
+		$(addrGu).append(returnOption("정읍시"));
+		$(addrGu).append(returnOption("남원시"));	
+		$(addrGu).append(returnOption("김제시"));	
 		
 	} else if (addrCity == "전라남도"){
-		addrGu[0].value = "목포시";
-		addrGu[1].value = "여수시";
-		addrGu[2].value = "순천시";
-		addrGu[3].value = "나주시";
-		addrGu[4].value = "광양시";	
+		$(addrGu).append(returnOption("목포시"));
+		$(addrGu).append(returnOption("여수시"));
+		$(addrGu).append(returnOption("순천시"));
+		$(addrGu).append(returnOption("나주시"));
+		$(addrGu).append(returnOption("광양시"));	
 		
 	} else if (addrCity == "경상북도"){
-		addrGu[0].value = "안동시";
-		addrGu[1].value = "상주시";
-		addrGu[2].value = "문경시";
-		addrGu[3].value = "김천시";
-		addrGu[4].value = "구미시";	
-		addrGu[5].value = "영천시";	
-		addrGu[6].value = "경주시";
-		addrGu[7].value = "포항시";
+		$(addrGu).append(returnOption("안동시"));
+		$(addrGu).append(returnOption("상주시"));
+		$(addrGu).append(returnOption("문경시"));
+		$(addrGu).append(returnOption("김천시"));
+		$(addrGu).append(returnOption("구미시"));	
+		$(addrGu).append(returnOption("영천시"));	
+		$(addrGu).append(returnOption("경주시"));
+		$(addrGu).append(returnOption("포항시"));
 		
 	} else if (addrCity == "경상남도"){
-		addrGu[0].value = "창원시";
-		addrGu[1].value = "진주시";
-		addrGu[2].value = "밀양시";
-		addrGu[3].value = "사천시";
-		addrGu[4].value = "거제시";	
-		addrGu[5].value = "영천시";	
-		addrGu[6].value = "경주시";
-		addrGu[7].value = "포항시";
+		$(addrGu).append(returnOption("창원시"));
+		$(addrGu).append(returnOption("진주시"));
+		$(addrGu).append(returnOption("밀양시"));
+		$(addrGu).append(returnOption("사천시"));
+		$(addrGu).append(returnOption("거제시"));	
+		$(addrGu).append(returnOption("영천시"));	
+		$(addrGu).append(returnOption("경주시"));
+		$(addrGu).append(returnOption("포항시"));
 	
 	} else if (addrCity == "강원도"){
-		addrGu[0].value = "춘천시";
-		addrGu[1].value = "원주시";
-		addrGu[2].value = "강릉시";
-		addrGu[3].value = "동해시";
-		addrGu[4].value = "태백시";	
-		addrGu[5].value = "속초시";	
-		addrGu[6].value = "삼척시";
+		$(addrGu).append(returnOption("춘천시"));
+		$(addrGu).append(returnOption("원주시"));
+		$(addrGu).append(returnOption("강릉시"));
+		$(addrGu).append(returnOption("동해시"));
+		$(addrGu).append(returnOption("태백시"));	
+		$(addrGu).append(returnOption("속초시"));	
+		$(addrGu).append(returnOption("삼척시"));
 		
 	} else if (addrCity == "제주도"){
-		addrGu[0].value = "제주시";
-		addrGu[1].value = "서귀포시";
+		$(addrGu).append(returnOption("제주시"));
+		$(addrGu).append(returnOption("서귀포시"));
 
 	}
 			
-		}
+}
+		
+function returnOption(str){
+	return "<option value='"+ (str)+"'>" + (str) + "</option>";
+}
 		
 		</script>
 
-	<!-- btn js -->
-	
+</div>
 
-
-</body>
 </html>
