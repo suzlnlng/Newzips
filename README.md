@@ -1,4 +1,7 @@
 # Newzip's
+<div align="center">
+	<img width="300" src="https://github.com/suzlnlng/Newzips/assets/87789249/d9f40cc3-534c-459b-bf2a-5f5058573165" />
+</div>
 
 ## 프로젝트 소개
 ![image](https://github.com/suzlnlng/Newzips/assets/87789249/80b385c2-1be0-47db-b199-373eb1daf9a8)
@@ -31,7 +34,7 @@
  </div>
 
 ## ERD
-![newzips_ERD3](https://github.com/suzlnlng/Newzips/assets/87789249/d7c8a585-123a-457b-863f-985d49755186)
+![Copy_of_test (1)](https://github.com/suzlnlng/Newzips/assets/87789249/be416e8a-da60-48c0-b43a-51227022dd03)
 
 ## 팀원 및 역할
 ### 이수진(팀장)
@@ -50,7 +53,7 @@
 - 상품 상세 페이지
 
 ### 안이환(팀원)
-- 리스트 페이
+- 리스트 페이지
 
 ### 이나현(팀원)
 - 방문자 예약 시스템
@@ -58,3 +61,14 @@
 - 매물 계약 기능
 
 ## 기능 소개
+### 메인페이지
+![main](https://github.com/suzlnlng/Newzips/assets/87789249/aab78005-2f15-4c14-a972-b5c7e3b27073)
+
+### 회원가입
+![join2](https://github.com/suzlnlng/Newzips/assets/87789249/4ec65891-f84b-4b18-9344-1cd66be938be)
+
+### 로그인
+![login](https://github.com/suzlnlng/Newzips/assets/87789249/5d3189fe-8daf-477a-897d-a36f1bd7c3a0)
+
+### 
+
