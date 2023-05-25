@@ -116,6 +116,7 @@ public class AccountUserController {
 				
 			}
 		} catch (Exception e) {
+			System.out.println("에러: " + request.getParameter("error"));
 			System.out.println(e.toString());
 		}
 				
@@ -124,6 +125,7 @@ public class AccountUserController {
 		return mav;
 		
 	}
+	
 	
 	@PostMapping("/findId")
 	public ModelAndView findId(HttpServletRequest request) throws Exception{

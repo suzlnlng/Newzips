@@ -14,23 +14,24 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.boot.newzips.dto.MemberDTO;
+import com.boot.newzips.dto.RealtorDTO;
 
 import lombok.RequiredArgsConstructor;
 
 
 @Service
-public class UserSecurityService implements UserDetailsService{
+public class RealtorSecurityService implements UserDetailsService{
 
 	@Autowired
-	private AccountUserMapper accountUserMapper;
+	private AccountRealtorMapper accountRealtorMapper;
 	
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 		
-		Optional<MemberDTO> _user = null;
+		Optional<RealtorDTO> _user = null;
 		
 		try {
-			_user = accountUserMapper.getUserById(userId);
+			_user = accountRealtorMapper.getUserById(userId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,18 +41,22 @@ public class UserSecurityService implements UserDetailsService{
 			throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
 		}
 		
-		MemberDTO user = _user.get();
+		RealtorDTO user = _user.get();
 		
 		//유저에 권한부여
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
+		authorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getRole()));
+				
+		/*
 		if("admin".equals(user.getUserRole().toString())) {
 			authorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getRole()));
 		}else {
 			authorities.add(new SimpleGrantedAuthority(UserRole.USER.getRole()));
 		}
+		*/
 		
-		return new User(user.getUserId(), user.getUserPwd(), authorities);
+		return new User(user.getRealtorId(), user.getRealtorPwd(), authorities);
 		
 	}
 

@@ -27,8 +27,6 @@ public class AccountRealtorController {
 	
 	private final AccountRealtorService accountRealtorService;
 	
-	private final HttpSession httpSession;
-	
 	@GetMapping("/realtor/joinTerm")
 	public ModelAndView joinTerm() throws Exception{
 		
@@ -115,6 +113,7 @@ public class AccountRealtorController {
 		
 	}
 	
+	/*
 	@PostMapping("/realtor/login")
 	public ModelAndView login_ok(RealtorDTO realtorDTO, HttpServletRequest request) throws Exception{
 		
@@ -142,6 +141,7 @@ public class AccountRealtorController {
 		return mav;
 		
 	}
+
 	
 	@GetMapping("/realtor/logout")
 	public ModelAndView logout(HttpServletRequest request) throws Exception{
@@ -160,6 +160,7 @@ public class AccountRealtorController {
 		return mav;
 		
 	}
+	*/
 	
 	@PostMapping("/realtor/findId")
 	public ModelAndView findId(HttpServletRequest request) throws Exception{

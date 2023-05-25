@@ -22,12 +22,12 @@ public class AccountUserServiceImpl implements AccountUserService {
 	@Autowired
 	private AccountUserMapper accountUserMapper;
 
-	private final PasswordEncoder passwordEncoder;
+	private final PasswordEncoder userPasswordEncoder;
 
 	@Override
 	public void createMember(MemberDTO memberDTO) throws Exception {
 
-		memberDTO.setUserPwd(passwordEncoder.encode(memberDTO.getUserPwd()));
+		memberDTO.setUserPwd(userPasswordEncoder.encode(memberDTO.getUserPwd()));
 		memberDTO.setEmailReceive("T");
 		memberDTO.setUserRole("USER");
 
@@ -38,7 +38,7 @@ public class AccountUserServiceImpl implements AccountUserService {
 	@Override
 	public void createOauthMember(MemberDTO memberDTO) throws Exception {
 		
-		memberDTO.setUserPwd(passwordEncoder.encode(memberDTO.getUserPwd()));
+		memberDTO.setUserPwd(userPasswordEncoder.encode(memberDTO.getUserPwd()));
 		
 		accountUserMapper.createOauthMember(memberDTO);
 		

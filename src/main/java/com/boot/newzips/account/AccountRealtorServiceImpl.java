@@ -23,12 +23,12 @@ public class AccountRealtorServiceImpl implements AccountRealtorService {
 	@Autowired
 	private AccountRealtorMapper accountRealtorMapper;
 
-	private final PasswordEncoder passwordEncoder;
+	private final PasswordEncoder realtorPasswordEncoder;
 
 	@Override
 	public void createMember(RealtorDTO realtorDTO) throws Exception {
 
-		//realtorDTO.setRealtorPwd(passwordEncoder.encode(realtorDTO.getRealtorPwd()));
+		realtorDTO.setRealtorPwd(realtorPasswordEncoder.encode(realtorDTO.getRealtorPwd()));
 		realtorDTO.setRealtorAddr(realtorDTO.getRealtorAddr() + " " + realtorDTO.getRealtorDetailedAddr());
 
 		accountRealtorMapper.createMember(realtorDTO);
