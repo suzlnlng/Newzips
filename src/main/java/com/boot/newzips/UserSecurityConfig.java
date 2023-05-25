@@ -27,8 +27,9 @@ import lombok.RequiredArgsConstructor;
 
 
 @RequiredArgsConstructor
-@EnableWebSecurity(debug=true)
+@EnableWebSecurity
 @Configuration
+@Order(2)
 public class UserSecurityConfig {
 	
 	private final AuthenticationFailureHandler customFailureHandler;
@@ -69,7 +70,10 @@ public class UserSecurityConfig {
 	@Bean
 	public SecurityFilterChain userFilterChain(HttpSecurity http) throws Exception {
 	    http
-	        .authorizeRequests(authorize -> authorize.anyRequest().permitAll())
+	    	.authenticationProvider(userAuthenticationProvier())
+			.antMatcher("/**")
+			.authorizeHttpRequests(authorize -> authorize
+					.anyRequest().permitAll())
 	        .formLogin(form -> form
 	            .loginPage("/newzips/login")
 	            .usernameParameter("userId")

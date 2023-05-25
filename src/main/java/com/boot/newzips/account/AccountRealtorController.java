@@ -115,6 +115,7 @@ public class AccountRealtorController {
 		
 	}
 	
+	/*
 	@PostMapping("/realtor/login")
 	public ModelAndView login_ok(RealtorDTO realtorDTO, HttpServletRequest request) throws Exception{
 		
@@ -142,6 +143,7 @@ public class AccountRealtorController {
 		return mav;
 		
 	}
+
 	
 	@GetMapping("/realtor/logout")
 	public ModelAndView logout(HttpServletRequest request) throws Exception{
@@ -160,6 +162,7 @@ public class AccountRealtorController {
 		return mav;
 		
 	}
+	*/
 	
 	@PostMapping("/realtor/findId")
 	public ModelAndView findId(HttpServletRequest request) throws Exception{

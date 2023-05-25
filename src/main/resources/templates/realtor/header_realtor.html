@@ -22,7 +22,7 @@
                         <div class="col-xl-3 col-md-5 col-sm-12">
                             <div class="header-social">
                             	<i class="la la-arrow-circle-right"></i>
-                                <a href="/newzips"><span>사용자로 전환</span></a>
+                                <a href="/newzips/logout"><span>사용자로 전환</span></a>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                                         </li>
                                     </ul>
                                     <div class="d-inline my-2 my-lg-0">
-                                        <ul class="navbar-nav" th:if="${session.realtorId == null}">
+                                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
                                             <li class="nav-item signin-btn">
                                                 <a class="nav-link" href="/newzips/realtor/login">
                                                     <i class="la la-sign-in"></i>
@@ -88,7 +88,7 @@
                                             </li>
                                         </ul>
                                         
-                                        <ul class="navbar-nav" th:if="${session.realtorId != null}">
+                                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
                                             <li class="nav-item signin-btn">
                                                 <a class="nav-link" href="/newzips/realtor/logout">
                                                     <i class="la la-sign-in"></i>

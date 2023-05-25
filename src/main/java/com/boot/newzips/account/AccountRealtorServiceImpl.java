@@ -28,7 +28,7 @@ public class AccountRealtorServiceImpl implements AccountRealtorService {
 	@Override
 	public void createMember(RealtorDTO realtorDTO) throws Exception {
 
-		//realtorDTO.setRealtorPwd(passwordEncoder.encode(realtorDTO.getRealtorPwd()));
+		realtorDTO.setRealtorPwd(realtorPasswordEncoder.encode(realtorDTO.getRealtorPwd()));
 		realtorDTO.setRealtorAddr(realtorDTO.getRealtorAddr() + " " + realtorDTO.getRealtorDetailedAddr());
 
 		accountRealtorMapper.createMember(realtorDTO);
