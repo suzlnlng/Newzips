@@ -68,7 +68,6 @@
 
 ### 회원가입
 [상세보기](https://github.com/suzlnlng/Newzips/wiki/회원가입)
-- 
 - 주소 API 연동
 
 ### 로그인
@@ -80,7 +79,7 @@
 - 비밀번호 찾기
 
 ### 관심목록
-[상세보기](https://github.com/suzlnlng/Newzips/wiki/관심 목록)
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/관심목록)
 
 ### 매물리스트
 [상세보기](https://github.com/suzlnlng/Newzips/wiki/매물리스트)
@@ -89,16 +88,16 @@
 [상세보기](https://github.com/suzlnlng/Newzips/wiki/상세페이지)
 
 ### 거주자 예약시스템
-[상세보기](https://github.com/suzlnlng/Newzips/wiki/거주자 예약 시스템)
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/거주자예약시스템)
 
 ### 방문자 예약시스템
-[상세보기](https://github.com/suzlnlng/Newzips/wiki/방문자 예약 시스템)
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/방문자예약시스템)
 
 
 ## 중개인
 
 ### 방문예약
-[상세보기](https://github.com/suzlnlng/Newzips/wiki/방문자 예약)
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/방문자예약)
 
 ### 매물 제안
 [상세보기](https://github.com/suzlnlng/Newzips/wiki/매물제안)
