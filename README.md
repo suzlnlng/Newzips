@@ -64,13 +64,13 @@
 
 ## 일반 사용자
 ### 메인페이지
-![main](https://github.com/suzlnlng/Newzips/assets/87789249/aab78005-2f15-4c14-a972-b5c7e3b27073)
+![상세보기](https://github.com/suzlnlng/Newzips/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
 
 ### 회원가입
 ![join2](https://github.com/suzlnlng/Newzips/assets/87789249/4ec65891-f84b-4b18-9344-1cd66be938be)
 
 ### 로그인
-![login](https://github.com/suzlnlng/Newzips/assets/87789249/5d3189fe-8daf-477a-897d-a36f1bd7c3a0)
+![상세보기](https://github.com/suzlnlng/Newzips/wiki/로그인)
 
 ### 매물리스트
 ![009](https://github.com/suzlnlng/Newzips/assets/87789249/12d09986-ba94-40f6-96ae-d66d96de5711)
