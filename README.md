@@ -64,45 +64,43 @@
 
 ## 일반 사용자
 ### 메인페이지
-![상세보기](https://github.com/suzlnlng/Newzips/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/메인)
 
 ### 회원가입
-![join2](https://github.com/suzlnlng/Newzips/assets/87789249/4ec65891-f84b-4b18-9344-1cd66be938be)
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/회원가입)
+- 
+- 주소 API 연동
 
 ### 로그인
-![상세보기](https://github.com/suzlnlng/Newzips/wiki/로그인)
-
-### 매물리스트
-![009](https://github.com/suzlnlng/Newzips/assets/87789249/12d09986-ba94-40f6-96ae-d66d96de5711)
-
-### 상세페이지
-![image](https://github.com/suzlnlng/Newzips/assets/87789249/017980a5-84f8-4c01-b4bf-ffc542984fdd)
-
-### 거주자 예매물내놓기
-![017](https://github.com/suzlnlng/Newzips/assets/87789249/0b9ba2c0-9a65-4cf3-9ee3-386722511a09)
-![019](https://github.com/suzlnlng/Newzips/assets/87789249/3ca2e9c4-fa76-4c57-b47e-24f42d978d84)
-
-### 거주자 예약시스템
-![020](https://github.com/suzlnlng/Newzips/assets/87789249/323087c0-2291-4cbb-baa8-341343db4f84)
-
-### 방문자 예약시스템
-![014](https://github.com/suzlnlng/Newzips/assets/87789249/1ba59517-d20f-497a-89c1-0d52c1b25d5c)
-![021](https://github.com/suzlnlng/Newzips/assets/87789249/c46d6cbc-543d-43ef-8ab4-5c67e4e6747c)
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/로그인)
+- 스프링 시큐리티 사용
+- 일반사용자와 중개인 로그인 페이지 멀티로그인 구현
+- 소셜인그인
+- 아이디 찾기
+- 비밀번호 찾기
 
 ### 관심목록
-![022](https://github.com/suzlnlng/Newzips/assets/87789249/30dab0ec-4885-469d-bc7b-173e78be2d49)
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/관심 목록)
+
+### 매물리스트
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/매물리스트)
+
+### 상세페이지
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/상세페이지)
+
+### 거주자 예약시스템
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/거주자 예약 시스템)
+
+### 방문자 예약시스템
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/방문자 예약 시스템)
+
 
 ## 중개인
 
-### 방문예약 현황
-![024](https://github.com/suzlnlng/Newzips/assets/87789249/20d8e155-8491-4f4f-af66-66fa5af08573)
-
-### 매물 제안요청 확인
-![025](https://github.com/suzlnlng/Newzips/assets/87789249/af607ace-68c2-4e46-ae78-5a4dc7220c82)
+### 방문예약
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/방문자 예약)
 
 ### 매물 제안
-![026](https://github.com/suzlnlng/Newzips/assets/87789249/4bd948e1-cffd-4915-9da0-362f2f027da7)
+[상세보기](https://github.com/suzlnlng/Newzips/wiki/매물제안)
 
-### 제안현황 확인
-![027](https://github.com/suzlnlng/Newzips/assets/87789249/a090babd-5d0c-401f-9f25-c6bb651fa77a)
 
