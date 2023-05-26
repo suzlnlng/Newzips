@@ -1,6 +1,7 @@
 package com.boot.newzips;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -21,6 +22,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.boot.newzips.account.BaseCustomOAuth2UserService;
+import com.boot.newzips.account.CustomAuthFailureHandler;
+import com.boot.newzips.account.LoginSuccessHandler;
 import com.boot.newzips.account.UserSecurityService;
 
 import lombok.RequiredArgsConstructor;
@@ -31,8 +34,6 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @Order(2)
 public class UserSecurityConfig {
-	
-	private final AuthenticationFailureHandler customFailureHandler;
 
 	private final BaseCustomOAuth2UserService baseCustomOAuth2UserService;
 
@@ -68,6 +69,11 @@ public class UserSecurityConfig {
 	}
 	
 	@Bean
+	public AuthenticationFailureHandler failureHandler() {
+		return new CustomAuthFailureHandler();
+	}
+	
+	@Bean
 	public SecurityFilterChain userFilterChain(HttpSecurity http) throws Exception {
 	    http
 	    	.authenticationProvider(userAuthenticationProvier())
@@ -78,9 +84,9 @@ public class UserSecurityConfig {
 	            .loginPage("/newzips/login")
 	            .usernameParameter("userId")
 	            .passwordParameter("userPwd")
-	            .failureUrl("/newzips/login?error=true")
-	            .failureHandler(customFailureHandler)
-	            .defaultSuccessUrl("/newzips")
+	            //.defaultSuccessUrl("/newzips")
+	            .failureHandler(new CustomAuthFailureHandler())
+	            .successHandler(new LoginSuccessHandler())
 	            .permitAll())
 			.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/newzips/logout"))

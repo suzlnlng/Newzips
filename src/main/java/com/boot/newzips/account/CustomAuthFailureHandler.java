@@ -12,26 +12,26 @@ import org.springframework.security.authentication.InternalAuthenticationService
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
-@Service
+
 public class CustomAuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 	
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
 		
-		ModelAndView mav = new ModelAndView();
-		
-		String errorMessage;
 		
 		System.out.println("===============errorhandler");
-		System.out.println(request.getParameter("Pwd"));
+		//System.out.println(request.getParameter("userPwd"));
 		
+		
+		String errorMessage;
+
 		if (exception instanceof BadCredentialsException) {
 			errorMessage = "badcredential";
 		}else if (exception instanceof InternalAuthenticationServiceException) {

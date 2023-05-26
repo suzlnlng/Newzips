@@ -21,6 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.boot.newzips.account.BaseCustomOAuth2UserService;
+import com.boot.newzips.account.CustomAuthFailureHandler;
 import com.boot.newzips.account.RealtorSecurityService;
 import com.boot.newzips.account.UserSecurityService;
 
@@ -68,7 +69,7 @@ public class RealtorSecurityConfig {
 			.usernameParameter("realtorId")
 			.passwordParameter("realtorPwd")
 			.defaultSuccessUrl("/newzips/realtor")
-			.failureUrl("/newzips/realtor/login")
+            .failureHandler(new CustomAuthFailureHandler())
 			)
 		.logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/newzips/realtor/logout"))

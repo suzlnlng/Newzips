@@ -113,11 +113,9 @@ public class AccountUserController {
 		ModelAndView mav = new ModelAndView();
 		
 		try {
-			
 			if(request.getParameter("error").equals("true")) {
 				String errorMsg = request.getParameter("exception");
-				System.out.println("errorMsg: " + errorMsg);
-				if(errorMsg != null) {
+				if(errorMsg.equals("badcredential")) {
 					mav.addObject("error", "아이디 또는 비밀번호를 확인해주세요.");	
 				}
 			}
@@ -179,7 +177,6 @@ public class AccountUserController {
 		params.put("userPhone", userPhone);
 		
 		try {
-			
 			userPwd = accountUserService.findPwd(params);
 			System.out.println("비밀번호 찾기");
 		} catch (Exception e) {
