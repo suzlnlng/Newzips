@@ -59,7 +59,7 @@
 
 ## 💁‍♀️팀원 및 역할
 
-### 이수진(팀장)
+  ### 이수진(팀장)
 - 일반 사용자 회원가입/로그인
 - 일반 사용자 OAuth 로그인
 - 중개인 회원가입/로그인
@@ -89,14 +89,16 @@
 <br/>
 
 ## 💡기능 소개
-### 일반 사용자
+
+### ✅일반 사용자
+
 #### 메인페이지 👉[상세보기](https://github.com/suzlnlng/Newzips/wiki/메인)
 
 #### 회원가입 👉 [상세보기](https://github.com/suzlnlng/Newzips/wiki/회원가입)
 - Spring의 validation을 통하여 입력값에 대한 유효성 검증 진행
 - 카카오 주소 API 연동
 
-#### 로그인 👉[상세보기](https://github.com/suzlnlng/Newzips/wiki/로그인)
+  #### 로그인 👉[상세보기](https://github.com/suzlnlng/Newzips/wiki/로그인)
 - 스프링 시큐리티 사용
 - 일반사용자와 중개인 로그인 페이지 멀티로그인 구현
 - 소셜로그인
@@ -113,8 +115,9 @@
 
 #### 방문자 예약시스템 👉[상세보기](https://github.com/suzlnlng/Newzips/wiki/방문자예약시스템)
 
+<br/>
 
-### 중개인
+### ✅중개인
 
 #### 방문예약 👉[상세보기](https://github.com/suzlnlng/Newzips/wiki/방문자예약)
 
