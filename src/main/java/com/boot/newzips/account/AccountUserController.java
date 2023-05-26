@@ -30,6 +30,7 @@ public class AccountUserController {
 	
 	private final AccountUserService accountUserService;
 	
+	//사용자 회원가입 약관동의
 	@GetMapping("/joinTerm")
 	public ModelAndView joinTerm() throws Exception{
 		
@@ -42,6 +43,7 @@ public class AccountUserController {
 	}
 	
 
+	//사용자 회원가입 페이지
 	@GetMapping("/join")
 	public ModelAndView join(MemberDTO memberDTO) throws Exception{
 		
@@ -53,6 +55,7 @@ public class AccountUserController {
 		
 	}
 	
+	//사용자 회원가입 진행
 	@PostMapping("/join")
 	public String join_ok(@Valid MemberDTO memberDTO, BindingResult bindingResult) throws Exception{
 
@@ -63,22 +66,23 @@ public class AccountUserController {
 		
 		//비밀번호 & 비밀번호 재확인 비교 
 		if(!memberDTO.getUserPwd().equals(memberDTO.getUserPwd2())) {
-			bindingResult.rejectValue("userPwd2", "passwordInCorrect",
-					"비밀번호가 일치하지 않습니다");
 			
+			bindingResult.rejectValue("userPwd2", "passwordInCorrect", "비밀번호가 일치하지 않습니다");
 			return "user/join_user";
 			
 		}
 		
+		//중복ID 검색
 		if(accountUserService.checkId(memberDTO.getUserId())) {
 			bindingResult.rejectValue("userId", "duplicateUserID", "이미 등록된 사용자입니다. 다른 아이디를 사용해주세요.");
 			return "user/join_user"; 
 		}
 
-		try {
 		
+		//회원가입 진행
+		try {
+			
 			accountUserService.createMember(memberDTO);
-
 			
 		} catch (DataIntegrityViolationException e) {
 			
@@ -102,19 +106,22 @@ public class AccountUserController {
 		
 	}
 	
+	//로그인 페이지 창 띄우기
 	@GetMapping("/login")
 	public ModelAndView login(HttpServletRequest request, MemberDTO memberDTO) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
 		try {
+			
 			if(request.getParameter("error").equals("true")) {
 				String errorMsg = request.getParameter("exception");
-				if(errorMsg.equals("badcredential")) {
+				System.out.println("errorMsg: " + errorMsg);
+				if(errorMsg != null) {
 					mav.addObject("error", "아이디 또는 비밀번호를 확인해주세요.");	
 				}
-				
 			}
+			
 		} catch (Exception e) {
 			System.out.println("에러: " + request.getParameter("error"));
 			System.out.println(e.toString());
@@ -126,7 +133,7 @@ public class AccountUserController {
 		
 	}
 	
-	
+	//아이디 찾기
 	@PostMapping("/findId")
 	public ModelAndView findId(HttpServletRequest request) throws Exception{
 		
@@ -134,12 +141,6 @@ public class AccountUserController {
 		
 		String userName = request.getParameter("userName");
 		String userPhone = request.getParameter("userPhone");
-		
-		System.out.println("==================================");
-		System.out.println("findId");
-		
-		System.out.println(userName);
-		System.out.println(userPhone);
 		
 		String userId = null;
 		
@@ -149,7 +150,6 @@ public class AccountUserController {
 		
 		try {
 			userId = accountUserService.findId(params);
-			System.out.println("=================");
 			System.out.println(userId);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -161,6 +161,7 @@ public class AccountUserController {
 		
 	}
 	
+	//비밀번호 찾기
 	@PostMapping("/findPwd")
 	public ModelAndView findPwd(HttpServletRequest request) throws Exception{
 		
@@ -170,11 +171,7 @@ public class AccountUserController {
 		String userName = request.getParameter("userName");
 		String userPhone = request.getParameter("userPhone");
 		
-		System.out.println("==================================");
-		System.out.println("findPwd");
-		
-		System.out.println(userName);
-		System.out.println(userPhone);
+		String userPwd = null;
 
 		Map<String, Object> params= new HashMap<String, Object>();
 		params.put("userId", userId);
@@ -182,14 +179,14 @@ public class AccountUserController {
 		params.put("userPhone", userPhone);
 		
 		try {
-			String userPwd = accountUserService.findPwd(params);
-			System.out.println("=================");
-			System.out.println(userPwd);
+			
+			userPwd = accountUserService.findPwd(params);
+			System.out.println("비밀번호 찾기");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		mav.addObject("userId", userId);
+		mav.addObject("userPwd", userPwd);
 		
 		return mav;
 		

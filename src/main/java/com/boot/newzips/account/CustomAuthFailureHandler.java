@@ -35,13 +35,13 @@ public class CustomAuthFailureHandler extends SimpleUrlAuthenticationFailureHand
 		if (exception instanceof BadCredentialsException) {
 			errorMessage = "badcredential";
 		}else if (exception instanceof InternalAuthenticationServiceException) {
-			errorMessage = "내부적 시스템 문제";
+			errorMessage = "internal-authentication-service";
 		}else if (exception instanceof UsernameNotFoundException) {
-			errorMessage = "계정 존재X!!";
+			errorMessage = "username-not-found";
 		}else if (exception instanceof AuthenticationCredentialsNotFoundException) {
-			errorMessage = "인증 요청 거부";
+			errorMessage = "authentication-credentials-not-found";
 		}else {
-			errorMessage = "알 수 없는 이유";
+			errorMessage = "else";
 		}
 		
 		setDefaultFailureUrl("/newzips/login?error=true&exception="+errorMessage);
