@@ -60,11 +60,11 @@
 ## 💁‍♀️팀원 및 역할
 
   ### 이수진(팀장)
-- 일반 사용자 회원가입/로그인
-- 일반 사용자 OAuth 로그인
+- 일반 사용자 회원가입 👉 [상세보기](https://github.com/suzlnlng/Newzips/wiki/회원가입)
+- 일반 사용자 로그인 👉[상세보기](https://github.com/suzlnlng/Newzips/wiki/로그인)
 - 중개인 회원가입/로그인
-- 메인 페이지
-- 찜 기능
+- 메인 페이지 👉[상세보기](https://github.com/suzlnlng/Newzips/wiki/메인)
+- 찜 기능 👉[상세보기](https://github.com/suzlnlng/Newzips/wiki/관심목록)
 
 ### 김이현(팀원)
 - 중개인 예약 시스템
